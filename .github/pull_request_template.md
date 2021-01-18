@@ -1,13 +1,10 @@
 [STORY_LINK]
 
 ## Why?
----
 Describe why you do this PR.
 
 ## Changes
----
-What are changes.
+What are the changes. Explain them explicitly.
 
 ## Screenshot
----
-Where we can see the changes.
+A screenshot **before** the implementation and **after** the implementation.
