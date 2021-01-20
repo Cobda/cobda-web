@@ -3,7 +3,7 @@ import './styles.scss';
 
 export default function PageNotFound() {
   return (
-    <div className='root'>
+    <div className="root">
       <h1>404: Page Not Found</h1>
     </div>
   );

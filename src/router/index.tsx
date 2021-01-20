@@ -12,13 +12,13 @@ export default function Routes() {
   return (
     <Router>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path="/">
           <Home />
         </Route>
-        <Route path='/404'>
+        <Route path="/404">
           <PageNotFound />
         </Route>
-        <Redirect to='/404' />
+        <Redirect to="/404" />
       </Switch>
     </Router>
   );
