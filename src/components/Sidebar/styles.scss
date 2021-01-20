@@ -4,11 +4,11 @@
   left: 0;
   height: 100vh;
   overflow: auto;
-  width: rem(150);
+  width: rem(150px);
   background-color: $primary;
 
   @include flex-center();
   @include respond-above(md) {
-    width: rem(300);
+    width: rem(300px);
   }
 }

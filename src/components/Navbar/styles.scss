@@ -1,12 +1,12 @@
 @import '../../styles/main.scss';
 
 .navbar-container {
-  height: rem(32);
+  height: rem(32px);
   background-color: $background;
 
   @include sticky();
   @include flex-center();
   @include respond-above(md) {
-    height: rem(72);
+    height: rem(72px);
   }
 }
