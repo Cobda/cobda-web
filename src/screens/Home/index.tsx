@@ -6,10 +6,16 @@ import './styles.scss';
 
 export default function Home() {
   return (
-    <div className='root'>
-      <Navbar />
-      <Sidebar />
-      <Footer />
-    </div>
+    <>
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <Sidebar />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </>
   );
 }
