@@ -1,5 +1,6 @@
 @import '../../styles/main.scss';
 
 .root {
-  @include flexCenter();
+  flex-direction: column;
+  @include flex-center();
 }

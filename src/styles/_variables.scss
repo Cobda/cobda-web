@@ -5,13 +5,15 @@ $background: #c0c0c0;
 $light: #fff;
 $dark: #000;
 
-// Breakpoints
-$sm: '576px';
-$md: '768px';
-$ld: '992px';
-$xl: '1200px';
+// Map of breakpoints
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
 
-// Z-Index
+// Z-index
 $zindex-dropdown: 1000 !default;
 $zindex-sticky: 1020 !default;
 $zindex-fixed: 1030 !default;
