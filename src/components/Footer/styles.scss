@@ -1,0 +1,11 @@
+@import '../../styles/main.scss';
+
+.footer-container {
+  height: rem(32);
+  background-color: $secondary;
+
+  @include flex-center();
+  @include respond-above(md) {
+    height: rem(72);
+  }
+}

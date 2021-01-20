@@ -5,7 +5,6 @@
   height: 100vh;
   overflow: auto;
   width: rem(150);
-  position: fixed;
   background-color: $primary;
 
   @include flex-center();

@@ -48,5 +48,5 @@
 @mixin sticky() {
   top: 0;
   width: 100%;
-  position: sticky;
+  position: fixed;
 }
