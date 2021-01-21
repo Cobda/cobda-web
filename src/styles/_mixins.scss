@@ -44,9 +44,3 @@
   justify-content: center;
   align-items: center;
 }
-
-@mixin sticky() {
-  top: 0;
-  width: 100%;
-  position: fixed;
-}
