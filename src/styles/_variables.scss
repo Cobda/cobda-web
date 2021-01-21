@@ -1,0 +1,23 @@
+// Colors
+$primary: #778899;
+$secondary: #808080;
+$background: #c0c0c0;
+$light: #fff;
+$dark: #000;
+
+// Map of breakpoints
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+// Z-index
+$zindex-dropdown: 1000 !default;
+$zindex-sticky: 1020 !default;
+$zindex-fixed: 1030 !default;
+$zindex-modal-backdrop: 1040 !default;
+$zindex-modal: 1050 !default;
+$zindex-popover: 1060 !default;
+$zindex-tooltip: 1070 !default;
