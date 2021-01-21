@@ -1,4 +1,7 @@
-@function rem($size) {
-  $remSize: $size / 16px;
-  @return #{$remSize}rem;
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@function rem($value) {
+    @return #{strip-unit($value) / strip-unit(16px)}rem;
 }
