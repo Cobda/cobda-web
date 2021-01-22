@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <div className="footer-container">Footer
         <div className="footer-item">
-        <Link to="/aboutus">About Us</Link>
+        <Link to="/about-us">About Us</Link>
       </div>
     </div>
   );
