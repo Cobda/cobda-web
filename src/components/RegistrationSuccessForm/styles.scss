@@ -10,7 +10,6 @@
     height: rem(400px);
     width: rem(650px); 
     flex-direction: column;
-    
     background-color: $background;
   
     @include flex-center();

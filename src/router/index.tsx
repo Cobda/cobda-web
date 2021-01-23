@@ -24,7 +24,7 @@ export default function Routes() {
           <SignUp />
         </Route>
         <Route exact path="/registration-success">
-          <SignUp />
+          <RegistrationSuccessForm />
         </Route>
         <Redirect to="/404" />
       </Switch>
