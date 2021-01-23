@@ -1,14 +1,14 @@
-import React from 'react';
-import Navbar from '../../components/Navbar';
-import Sidebar from '../../components/Sidebar';
-import './styles.scss';
+import React from "react";
+import SignUpForm from '../../components/SignUpForm';
+import "./styles.scss";
 
 export default function SignUp() {
-    return (
-      <>
-        <header>
-          <Navbar />
-        </header>
-      </>
-    );
-  }
+  return (
+    <>
+      <div className="container">
+        <SignUpForm />
+        
+      </div>
+    </>
+  );
+}
