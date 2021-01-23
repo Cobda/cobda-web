@@ -9,9 +9,20 @@
     height: rem(72px);
   }
 }
+@import '../../styles/main.scss';
 
-.footer-item {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: normal;
+.footer {
+  height: rem(32px);
+  background-color: $secondary;
+  
+  @include flex-center();
+  @include respond-above(md) {
+     height: rem(72px);
+   }
+   
+  &__item {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+  }
 }
