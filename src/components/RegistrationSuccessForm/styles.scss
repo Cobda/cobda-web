@@ -1,0 +1,18 @@
+@import "../../styles/main.scss";
+
+.container {
+    min-height: 100vh;
+    @include flex-center();
+}
+
+.success-form {
+    margin: auto;
+    height: rem(400px);
+    width: rem(650px); 
+    flex-direction: column;
+    
+    background-color: $background;
+  
+    @include flex-center();
+}
+    
