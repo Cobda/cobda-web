@@ -5,11 +5,10 @@ import './styles.scss';
 export default function Search() {
   return (
     <div className="search-container">
-        <Link to="/product-list" className="btn btn-search">Search</Link>
+      <Link to="/product-list" className="btn btn-search">Search</Link>
     </div>
   );
 }
-
 
 
 
