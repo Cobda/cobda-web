@@ -1,7 +1,7 @@
-import React from 'react';
-import Footer from '../../components/Footer';
-import Navbar from '../../components/Navbar';
-import Sidebar from '../../components/Sidebar';
+import React from 'react'
+import Footer from '../../components/Footer'
+import Navbar from '../../components/Navbar'
+import Sidebar from '../../components/Sidebar'
 
 export default function ProductList() {
   return (
@@ -16,5 +16,5 @@ export default function ProductList() {
         <Footer />
       </footer>
     </>
-  );
+  )
 }
