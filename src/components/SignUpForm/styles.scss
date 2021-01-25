@@ -1,4 +1,4 @@
-@import "../../styles/main.scss";
+@import '../../styles/main.scss';
 
 .sign-up-form {
   width: 100%;
@@ -15,7 +15,7 @@
     border-radius: rem(3px);
 
     background-color: $shuttle-gray;
-    margin-top: 16px;
+    margin-top: rem(16px);
 
     &:hover {
       background-color: darken($background, 8%);
