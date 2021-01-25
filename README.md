@@ -1,4 +1,4 @@
-**Cobda** is ... (to be continued)
+**Cobda** is a community-like e-commerce website for selling and buying streetwear stuff. Plus, it's accessible anywhere and anytime through the internet.
 
 ## Prerequisite
 
