@@ -1,16 +1,21 @@
 import React from 'react';
+import { useEffect } from 'react';
 import Footer from '../../components/Footer';
+import HomeSection from '../../components/HomeSection';
 import Navbar from '../../components/Navbar';
-import Sidebar from '../../components/Sidebar';
 
 export default function Home() {
+  useEffect(() => {
+    document.body.classList.add('layout-home');
+  }, []);
+  
   return (
     <>
       <header>
         <Navbar />
       </header>
       <main>
-        <Sidebar />
+        <HomeSection />
       </main>
       <footer>
         <Footer />

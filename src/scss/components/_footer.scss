@@ -1,11 +1,8 @@
 @import '../abstracts/_abstracts-dir';
 
 .footer-container {
-  height: rem(32px);
+  height: 100%;
   background-color: $secondary;
 
   @include flex-center();
-  @include respond-above(md) {
-    height: rem(72px);
-  }
 }

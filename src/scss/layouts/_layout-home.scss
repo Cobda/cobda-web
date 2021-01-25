@@ -1,0 +1,41 @@
+.layout-home {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: rem(32px) 1fr rem(48px);
+    grid-template-areas:
+      'header'
+      'main'
+      'footer';
+
+    height: 100vh;
+
+      @include respond-above('md') {
+        grid-template-rows: rem(48px) 1fr rem(72px);
+      }
+
+      @include respond-above('lg') {
+        grid-template-rows: rem(72px) 1fr rem(100px);
+      }
+
+    & > header {
+        grid-area: header;
+    }
+
+    & > main {
+        grid-area: main;
+
+        padding: rem(24px) rem(16px);
+
+        @include respond-above('md') {
+          padding: 4.5%;
+        }
+
+        @include respond-above('lg') {
+            padding: 5% 10%;
+        }
+    }
+
+    & > footer {
+        grid-area: footer;
+    }
+}

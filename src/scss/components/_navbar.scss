@@ -1,18 +1,10 @@
 @import '../abstracts/_abstracts-dir';
 
-@mixin sticky() {
-  top: 0;
-  width: 100%;
-  position: fixed;
-}
+.navbar {
+  @include flex-center();
 
-.navbar-container {
-  height: rem(32px);
   background-color: $background;
 
-  @include sticky();
-  @include flex-center();
-  @include respond-above(md) {
-    height: rem(72px);
-  }
+  height: 100%;
+  width: 100%;
 }
