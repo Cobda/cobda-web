@@ -1,6 +1,8 @@
-@import '../../styles/main.scss';
+@import "../../styles/main.scss";
 
-.container {
-    min-height: 100vh;
-    @include flex-center();
+.sign-up {
+  height: 100vh;
+  padding: 10%;
+
+  @include flex-center();
 }
