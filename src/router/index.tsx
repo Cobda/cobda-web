@@ -19,7 +19,7 @@ export default function Routes() {
         <Route path="/404">
           <PageNotFound />
         </Route>
-        <Route exact path="/sign-up">
+        <Route path="/sign-up">
           <SignUp />
         </Route>
         <Redirect to="/404" />

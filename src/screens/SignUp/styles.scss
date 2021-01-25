@@ -1,0 +1,6 @@
+@import '../../styles/main.scss';
+
+.container {
+    min-height: 100vh;
+    @include flex-center();
+}

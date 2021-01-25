@@ -1,21 +1,5 @@
 @import "../../styles/main.scss";
 
-.container {
-    min-height: 100vh;
-    @include flex-center();
-}
-
-.signUp-form {
-    margin: auto;
-    height: rem(400px);
-    width: rem(650px); 
-    flex-direction: column;
-    
-    background-color: $background;
-  
-    @include flex-center();
-}
-
 @mixin button-bg($background) {
   background-color: $background;
   margin-top: 16px;
@@ -23,15 +7,19 @@
     background-color: darken($background, 8%);
   }
 }
+.sign-up-form {
+  margin: auto;
+  height: rem(400px);
+  width: rem(650px);
+  flex-direction: column;
+  background-color: $background;
+  @include flex-center();
 
-.btn {
-  color: white;
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 3px;
+  &__submit-button {
+    color: $light;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    @include button-bg(#5a6570);
+  }
 }
-
-.btn-submit {
-  @include button-bg(#5a6570);
-}
-    

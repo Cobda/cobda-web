@@ -1,4 +1,4 @@
-@import "../../styles/main.scss";
+@import '../../styles/main.scss';
 
 @mixin sticky() {
   top: 0;
@@ -15,21 +15,12 @@
   @include respond-above(md) {
     height: rem(72px);
   }
-
-  a {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: normal;
-  }
 }
 
-.link-container {
+.nav-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  &__right {
-    position: absolute;
-    right: 1rem;
-  }
+  position: absolute;
+  right: 1rem;
 }

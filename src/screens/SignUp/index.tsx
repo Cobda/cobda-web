@@ -7,7 +7,6 @@ export default function SignUp() {
     <>
       <div className="container">
         <SignUpForm />
-        
       </div>
     </>
   );
