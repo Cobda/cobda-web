@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,6 +9,10 @@ import Home from '../screens/Home';
 import PageNotFound from '../screens/PageNotFound';
 
 export default function Routes() {
+  useEffect(() => {
+    console.log('Body: ', document.body.classList.add('Test'));
+  });
+
   return (
     <Router>
       <Switch>
