@@ -1,11 +1,10 @@
-**Cobda** is a community-like e-commerce website for selling and buying streetwear stuff. Plus, it's accessible anywhere and anytime through the internet.
+**Cobda** is a community-like e-commerce website for selling and buying streetwears. Plus, it's accessible through any online devices.
 
-## Prerequisite
-
-You must download the following to be able to run.
+## Prerequisites
 
 - `Node.js (6.x or higher)` [download site](https://nodejs.org/en/download/package-manager/)
-- `local environment variable` **Please ask project owner privately for the environment variables.**
+- `Yarn (1.x or higher)` [download site](https://yarnpkg.com/getting-started/install)
+- `.env` **Please ask project owner privately for the environment variables.**
 
 ## Installation Steps
 
