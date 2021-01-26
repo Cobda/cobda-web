@@ -1,16 +1,10 @@
 import React from 'react'
+import HomeSearchSection from '../HomeSearchSection'
 
 const HomeSection = () => {
   return (
     <>
-      <section className="home-section">
-        <header className="home-section__header">
-          <h2 className="home-section__title">Sample 1</h2>
-          <p className="home-section__description">
-            This is a sample description
-          </p>
-        </header>
-      </section>
+      <HomeSearchSection />
       <section className="home-section home-section--dark">
         <header className="home-section__header">
           <h2 className="home-section__title">Sample 2</h2>
