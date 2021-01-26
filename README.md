@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- `Node.js (6.x or higher)` [download site](https://nodejs.org/en/download/package-manager/)
+- `Node.js (10.13 or higher)` [download site](https://nodejs.org/en/download/package-manager/)
 - `Yarn (1.x or higher)` [download site](https://yarnpkg.com/getting-started/install)
 - `.env` **Please ask project owner privately for the environment variables.**
 
