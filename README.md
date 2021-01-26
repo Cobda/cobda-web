@@ -1,4 +1,4 @@
-**Cobda** is a streetwear e-commerce website where sellers and buyers meet each other with ease, driven by our desire to make community-like websites available to everyone in a friendly way. **Make certain** with a powerful AI function that automatically takes out inappropriate and irrelevant content to make sure your vibe goes as smoothly as possible. **Buy with confidence** by looking at product reviews and buyer's profile. This website runs perfectly on any online device.
+**Cobda** is a streetwear e-commerce website where sellers and buyers met with ease. With a community alike design, it's available for every gender and generation. **Make certain** with an autonomous feature that validates newly registered products instantly. Selling product is now faster than ever. **Buy with confidence** guaranteed by other customers. The review system builds up credits for the seller while giving confidence to the buyer vice versa. Moreover, accessible through any devices with an internet connection.
 
 ## Prerequisites
 
