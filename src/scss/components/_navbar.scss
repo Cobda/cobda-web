@@ -3,8 +3,20 @@
 .navbar {
   @include flex-center();
 
-  background-color: $background;
-
   height: 100%;
-  width: 100%;
+  padding: 0 rem(16px);
+  background-color: $background;
+  box-sizing: border-box;
+
+  @include respond-above('md') {
+    padding: 0 rem(24px);
+  }
+
+  @include respond-above('lg') {
+    padding: 0 rem(32px);
+  }
+
+  @include respond-above('xl') {
+    padding: 0 rem(40px);
+  }
 }

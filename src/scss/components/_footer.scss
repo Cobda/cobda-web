@@ -2,7 +2,21 @@
 
 .footer-container {
   height: 100%;
+  padding: rem(16px);
   background-color: $secondary;
+  box-sizing: border-box;
 
   @include flex-center();
+
+  @include respond-above('md') {
+    padding: rem(24px);
+  }
+
+  @include respond-above('lg') {
+    padding: rem(32px);
+  }
+
+  @include respond-above('xl') {
+    padding: rem(40px);
+  }
 }
