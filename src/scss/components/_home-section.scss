@@ -1,36 +1,37 @@
 .home-section {
-    width: 100%;
-    height: rem(200px);
-    background-color: aquamarine;
-    padding: rem(16px);
-    box-sizing: border-box;
+  width: 100%;
+  height: rem(200px);
+  background-color: aquamarine;
+  padding: rem(16px);
+  box-sizing: border-box;
 
-    @include respond-above('md') {
-        padding: rem(24px);
-        height: rem(320px);
-    }
+  @include respond-above('md') {
+    padding: rem(24px);
+    height: rem(320px);
+  }
 
-    @include respond-above('lg') {
-        padding: rem(32px);
-        height: rem(400px);
-    }
+  @include respond-above('lg') {
+    padding: rem(32px);
+    height: rem(400px);
+  }
 
-    &--dark {
-        background-color: blue;
-    }
+  &--dark {
+    background-color: blue;
+  }
 
-    &--light {
-        background-color: blueviolet;
-    }
+  &--light {
+    background-color: blueviolet;
+  }
 
-    // TODO: For future implementation
-    &__header {}
+  // TODO: For future implementation
+  &__header {
+  }
 
-    &__title {
-        margin: 0 0 rem(24px) 0;
-    }
+  &__title {
+    margin: 0 0 rem(24px) 0;
+  }
 
-    &__description {
-        margin: 0;
-    }
+  &__description {
+    margin: 0;
+  }
 }
