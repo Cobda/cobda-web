@@ -1,5 +1,9 @@
 import React from 'react';
 
 export default function Navbar() {
-  return <nav className="navbar-container">COBDA</nav>;
+  return (
+    <nav className="navbar">
+      COBDA
+    </nav>
+  );
 }
