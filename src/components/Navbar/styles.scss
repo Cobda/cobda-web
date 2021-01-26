@@ -1,26 +1,34 @@
 @import '../../styles/main.scss';
 
-@mixin sticky() {
-  top: 0;
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
   width: 100%;
-  position: fixed;
-}
-
-.navbar-container {
-  height: rem(32px);
+  padding: rem(16px);
   background-color: $background;
+  
+  top: 0;
+  position: fixed;
 
-  @include sticky();
-  @include flex-center();
+  height: rem(32px);
+
   @include respond-above(md) {
     height: rem(72px);
   }
-}
 
-.nav-link {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: absolute;
-  right: 1rem;
+  &__title {
+    display: inline-block;
+
+    margin: 0;
+  }
+
+  &__item {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: rem(16px);
+    }
+  }
 }

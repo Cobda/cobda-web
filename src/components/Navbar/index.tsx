@@ -3,8 +3,8 @@ import React from 'react'
 export default function Navbar() {
   return (
     <nav className="navbar">
-      COBDA
-      <Link to="/sign-up" className="nav-link">
+      <h2 className="navbar__title">COBDA</h2>
+      <Link to="/sign-up" className="navbar__item">
         Sign Up
       </Link>
     </nav>
