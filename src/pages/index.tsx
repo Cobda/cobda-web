@@ -1,9 +1,9 @@
-import Footer from "../components/Footer";
-import HomeSection from "../components/HomeSection";
-import Navbar from "../components/Navbar";
+import Footer from '../components/Footer';
+import HomeSection from '../components/HomeSection';
+import Navbar from '../components/Navbar';
 
 const Home = () => (
-  <div className='layout-home'>
+  <div className="layout-home">
     <header>
       <Navbar />
     </header>
