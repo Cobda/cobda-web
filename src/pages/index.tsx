@@ -1,6 +1,6 @@
-import Footer from '../components/Footer';
-import HomeSection from '../components/HomeSection';
-import Navbar from '../components/Navbar';
+import Footer from '../components/Footer'
+import HomeSection from '../components/HomeSection'
+import Navbar from '../components/Navbar'
 
 const Home = () => (
   <div className="layout-home">
@@ -14,6 +14,6 @@ const Home = () => (
       <Footer />
     </footer>
   </div>
-);
+)
 
-export default Home;
+export default Home
