@@ -1,0 +1,23 @@
+@import '../abstracts/_abstracts-dir';
+
+.sign-up-form {
+  height: 100%;
+  flex-direction: column;
+  background-color: $background;
+  
+  @include flex-center();
+
+  &__submit-button {
+    color: $light;
+    text-decoration: none;
+    padding: rem(5px 10px);
+    border-radius: rem(3px);
+
+    background-color: $shuttle-gray;
+    margin-top: rem(16px);
+
+    &:hover {
+      background-color: darken($background, 8%);
+    }
+  }
+}

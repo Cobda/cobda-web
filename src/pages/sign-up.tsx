@@ -1,19 +1,19 @@
 import Footer from '../components/Footer'
-import HomeSection from '../components/HomeSection'
+import SignUpForm from '../components/SignUpForm'
 import Navbar from '../components/Navbar'
 
 const SignUp = () => (
-  <>
+  <div className="layout-sign-up">
     <header>
       <Navbar />
     </header>
     <main>
-      <HomeSection />
+      <SignUpForm />
     </main>
     <footer>
       <Footer />
     </footer>
-  </>
+  </div>
 )
 
 export default SignUp
