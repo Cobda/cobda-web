@@ -28,7 +28,7 @@
   & > main {
     grid-area: main;
 
-    padding: rem(24px) rem(16px);
+    padding: rem(24px 16px);
 
     @include respond-above('md') {
       padding: 4.5% 6%;

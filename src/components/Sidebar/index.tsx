@@ -1,5 +1,7 @@
 import React from 'react'
 
-export default function Sidebar() {
+const Sidebar = () => {
   return <div className="sidebar-container">Sidebar</div>
 }
+
+export default Sidebar
