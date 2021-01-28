@@ -1,14 +1,14 @@
 import Footer from '../components/Footer'
-import SignUpForm from '../components/SignUpForm'
+import SignUpSuccessForm from '../components/SignUpSuccessForm'
 import Navbar from '../components/Navbar'
 
-const SignUp = () => (
+const SignUpSuccess = () => (
   <div className="layout-authentication">
     <header>
       <Navbar />
     </header>
     <main>
-      <SignUpForm />
+      <SignUpSuccessForm />
     </main>
     <footer>
       <Footer />
@@ -16,4 +16,4 @@ const SignUp = () => (
   </div>
 )
 
-export default SignUp
+export default SignUpSuccess

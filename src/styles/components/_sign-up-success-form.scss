@@ -1,0 +1,8 @@
+@import '../abstracts/_abstracts-dir';
+
+.sign-up-success-form {
+  background-color: $background;
+  height: 100%;
+
+  @include flex-center();
+}

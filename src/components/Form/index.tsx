@@ -36,7 +36,7 @@ const Form = ({ title }: Form) => {
         <input type="text" className="form__input" />
       </div>
       <div className="form__actionable">
-        <Link href="/registration-success">
+        <Link href="/sign-up-success">
           <button className="form__button">Submit</button>
         </Link>
       </div>
