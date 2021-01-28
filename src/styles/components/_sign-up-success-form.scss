@@ -5,14 +5,14 @@
   flex-direction: column;
   background-color: $background;
 
-  &__header {
+  &__image {
+    display: flex;
+    justify-content: center;
     padding: rem(16px 0);
     margin-bottom: rem(24px);
-
-    @include flex-center();
   }
 
-  &__body {
+  &__header {
     display: flex;
     justify-content: center;
     margin-bottom: rem(24px);
@@ -20,5 +20,23 @@
 
   &__footer {
     margin-bottom: rem(24px);
+  }
+
+  &__actionable {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    color: $light;
+    text-decoration: none;
+    margin: 0;
+    padding: rem(5px 10px);
+    border-radius: rem(3px);
+    background-color: $shuttle-gray;
+
+    &:hover {
+      background-color: darken($background, 8%);
+    }
   }
 }
