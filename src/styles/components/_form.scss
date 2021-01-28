@@ -49,14 +49,14 @@
   &__input {
     width: 100%;
     box-sizing: border-box;
-    padding: rem(4px) rem(12px);
+    padding: rem(4px 12px);
   }
 
   &__button {
     color: $light;
     text-decoration: none;
     margin: 0;
-    padding: rem(5px) rem(10px);
+    padding: rem(5px 10px);
     border-radius: rem(3px);
     background-color: $shuttle-gray;
 
