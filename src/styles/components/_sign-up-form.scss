@@ -4,35 +4,22 @@
   display: flex;
   flex-direction: column;
   background-color: $background;
-  height: rem(800px);
 
-  @include respond-above('md') {
-    padding: rem(24px);
-    height: rem(800px);
-  }
-
-  @include respond-above('lg') {
-    padding: rem(32px);
-    height: rem(650px);
-  }
-
-  @include respond-above('lg') {
-    padding: rem(40px);
-    height: rem(800px);
-  }
-
-  &__header,
-  &__body,
-  &__footer {
+  &__header {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    background-color: greenyellow;
+    margin-bottom: rem(24px);
+    padding: rem(24px) 0;
+  }
+
+  &__body {
     margin-bottom: rem(24px);
   }
 
-  &__header {
-    background-color: goldenrod;
-
-    padding: rem(24px) 0;
+  &__footer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: rem(24px);
   }
 }
