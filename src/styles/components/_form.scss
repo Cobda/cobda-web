@@ -1,0 +1,67 @@
+@import '../abstracts/_abstracts-dir';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 rem(16px);
+
+  @include respond-above('md') {
+    padding: 0 5%;
+  }
+
+  @include respond-above('lg') {
+    padding: 0 10%;
+  }
+
+  &__header,
+  &__input-group,
+  &__actionable {
+    &:not(:last-child) {
+      margin-bottom: rem(24px);
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__actionable {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__input-label {
+    display: block;
+    margin-bottom: rem(12px);
+  }
+
+  &__input-group {
+    width: 100%;
+  }
+
+  &__input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: rem(4px 12px);
+  }
+
+  &__button {
+    color: $light;
+    text-decoration: none;
+    margin: 0;
+    padding: rem(5px 10px);
+    border-radius: rem(3px);
+    background-color: $shuttle-gray;
+
+    &:hover {
+      background-color: darken($background, 8%);
+    }
+  }
+}

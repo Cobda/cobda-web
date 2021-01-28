@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function HomeSection() {
+const HomeSection = () => {
   return (
     <>
       <section className="home-section">
@@ -38,3 +38,5 @@ export default function HomeSection() {
     </>
   )
 }
+
+export default HomeSection
