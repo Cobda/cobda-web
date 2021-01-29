@@ -1,5 +1,6 @@
 import Footer from '../components/Footer'
 import HomeSection from '../components/HomeSection'
+import Meta from '../components/Meta'
 import Navbar from '../components/Navbar'
 
 const Home = () => (
