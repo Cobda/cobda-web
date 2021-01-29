@@ -3,20 +3,27 @@
 .sign-up-success-form {
   display: flex;
   flex-direction: column;
+  padding: rem(16px 0);
   background-color: $background;
 
+  &__box,
   &__image,
   &__header,
   &__actionable {
     display: flex;
     justify-content: center;
-    margin-bottom: rem(24px);
+
+    &:not(:last-child) {
+      margin-bottom: rem(24px);
+    }
   }
+
   &__image {
-    width: 100%;
     height: rem(192px);
+    width: rem(192px);
+    align-items: center;
+    border-style: solid;
     padding: rem(16px 0);
-    margin-bottom: rem(24px);
   }
 
   &__button {
