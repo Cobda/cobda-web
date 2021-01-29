@@ -6,7 +6,7 @@
   padding: rem(16px 0);
   background-color: $background;
 
-  &__box,
+  &__image-container,
   &__image,
   &__header,
   &__actionable {
@@ -23,7 +23,6 @@
     width: rem(192px);
     align-items: center;
     border-style: solid;
-    padding: rem(16px 0);
   }
 
   &__button {
