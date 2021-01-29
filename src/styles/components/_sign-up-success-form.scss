@@ -5,26 +5,18 @@
   flex-direction: column;
   background-color: $background;
 
-  &__image {
-    display: flex;
-    justify-content: center;
-    padding: rem(16px 0);
-    margin-bottom: rem(24px);
-  }
-
-  &__header {
-    display: flex;
-    justify-content: center;
-    margin-bottom: rem(24px);
-  }
-
-  &__footer {
-    margin-bottom: rem(24px);
-  }
-
+  &__image,
+  &__header,
   &__actionable {
     display: flex;
     justify-content: center;
+    margin-bottom: rem(24px);
+  }
+  &__image {
+    width: 100%;
+    height: rem(192px);
+    padding: rem(16px 0);
+    margin-bottom: rem(24px);
   }
 
   &__button {
@@ -36,7 +28,7 @@
     background-color: $shuttle-gray;
 
     &:hover {
-      background-color: darken($background, 8%);
+      background-color: $shuttle-gray;
     }
   }
 }

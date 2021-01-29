@@ -7,11 +7,9 @@ const SignUpSuccessForm = () => {
       <header className="sign-up-success-form__header">
         <h2>Registration Success</h2>
       </header>
-      <footer className="sign-up-success-form__footer">
-        <div className="sign-up-success-form__actionable">
-          <button className="sign-up-success-form__button">Continue</button>
-        </div>
-      </footer>
+      <div className="sign-up-success-form__actionable">
+        <button className="sign-up-success-form__button">Continue</button>
+      </div>
     </section>
   )
 }

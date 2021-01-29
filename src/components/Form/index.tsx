@@ -9,7 +9,7 @@ interface Form {
 const Form = ({ title, href }: Form) => {
   const router = useRouter()
 
-  const handleFormSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onButtonSubmitClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
     router.push(href)
   }
@@ -44,7 +44,7 @@ const Form = ({ title, href }: Form) => {
         <input type="text" className="form__input" />
       </div>
       <div className="form__actionable">
-        <button className="form__button" onClick={handleFormSubmit}>
+        <button className="form__button" onClick={onButtonSubmitClick}>
           Submit
         </button>
       </div>

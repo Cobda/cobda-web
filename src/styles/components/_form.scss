@@ -41,6 +41,11 @@
     width: 100%;
   }
 
+  &__actionable {
+    display: flex;
+    justify-content: center;
+  }
+
   &__input {
     width: 100%;
     box-sizing: border-box;
