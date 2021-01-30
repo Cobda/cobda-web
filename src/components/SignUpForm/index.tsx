@@ -6,7 +6,7 @@ const SignUpForm = () => {
     <section className="sign-up-form">
       <header className="sign-up-form__header">Register</header>
       <div className="sign-up-form__body">
-        <Form title="Personal Detail" />
+        <Form title="Personal Detail" href="/sign-up-success" />
       </div>
       <footer className="sign-up-form__footer">
         Already have account? Sign in

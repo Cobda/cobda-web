@@ -10,6 +10,14 @@
   background-color: $background;
   box-sizing: border-box;
 
+  // TODO: for future implementation
+  &__title {
+  }
+
+  // TODO: for future implementation
+  &__item {
+  }
+
   @include respond-above('md') {
     padding: 0 rem(24px);
   }

@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
+import React from 'react'
+import { useRouter } from 'next/router'
 
 interface Form {
   title: string
+  href: string
 }
 
-const Form = ({ title }: Form) => {
+const Form = ({ title, href }: Form) => {
+  const router = useRouter()
+
+  const onSubmitButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    router.push(href)
+  }
+
   return (
     <form action="" className="form">
       <header className="form__header">
@@ -36,9 +44,9 @@ const Form = ({ title }: Form) => {
         <input type="text" className="form__input" />
       </div>
       <div className="form__actionable">
-        <Link href="/registration-success">
-          <button className="form__button">Submit</button>
-        </Link>
+        <button className="form__button" onClick={onSubmitButtonClick}>
+          Submit
+        </button>
       </div>
     </form>
   )
