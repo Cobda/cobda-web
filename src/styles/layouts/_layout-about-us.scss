@@ -1,0 +1,46 @@
+.layout-about-us {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: rem(40px) 1fr rem(200px);
+    grid-template-areas:
+      'header'
+      'main'
+      'footer';
+  
+    height: 100vh;
+  
+    @include respond-above('md') {
+      grid-template-rows: rem(80px) 1fr rem(250px);
+    }
+  
+    @include respond-above('lg') {
+      grid-template-rows: rem(100px) 1fr rem(300px);
+    }
+  
+    @include respond-above('xl') {
+      grid-template-rows: rem(140px) 1fr rem(350px);
+    }
+  
+    & > header {
+      grid-area: header;
+    }
+  
+    & > main {
+      grid-area: main;
+  
+      padding: rem(24px 16px);
+  
+      @include respond-above('md') {
+        padding: 4.5% 6%;
+      }
+  
+      @include respond-above('lg') {
+        padding: 5% 10%;
+      }
+    }
+  
+    & > footer {
+      grid-area: footer;
+    }
+  }
+  
