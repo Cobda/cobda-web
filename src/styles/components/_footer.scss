@@ -19,4 +19,10 @@
   @include respond-above('xl') {
     padding: rem(40px);
   }
+
+  &__item {
+    font-size: rem(16px);
+    font-weight: 500;
+    line-height: normal;
+  }
 }
