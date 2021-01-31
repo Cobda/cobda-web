@@ -1,6 +1,6 @@
 @import '../abstracts/_abstracts-dir';
 
-.footer-container {
+.footer {
   height: 100%;
   padding: rem(16px);
   background-color: $secondary;
@@ -18,5 +18,15 @@
 
   @include respond-above('xl') {
     padding: rem(40px);
+  }
+
+  &__item {
+    font-size: rem(16px);
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  &__link {
+    color: $dark;
   }
 }
