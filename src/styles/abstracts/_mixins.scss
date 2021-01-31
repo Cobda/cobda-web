@@ -44,3 +44,19 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin button-bg($bg) {
+  background: $bg;
+
+  padding: rem(5px 10px);
+  border-radius: rem(3px);
+  text-decoration: none;
+  
+  &:hover {
+    background: darken($bg, 8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background: darken($bg, 25%);
+  }
+}
