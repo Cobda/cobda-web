@@ -1,5 +1,5 @@
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
 
 const AboutUs = () => (
   <div className="layout-about-us">
@@ -13,6 +13,6 @@ const AboutUs = () => (
       <Footer />
     </footer>
   </div>
-);
+)
 
-export default AboutUs;
+export default AboutUs
