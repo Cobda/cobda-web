@@ -1,0 +1,27 @@
+@import '../abstracts/_abstracts-dir';
+
+.product-list {
+  background-color: $shuttle-gray;
+  padding: rem(16px);
+  box-sizing: border-box;
+
+  @include respond-above('md') {
+    padding: rem(24px);
+  }
+
+  @include respond-above('lg') {
+    padding: rem(32px);
+  }
+
+  @include respond-above('lg') {
+    padding: rem(40px);
+  }
+
+  &__title {
+    margin: 0 0 rem(24px) 0;
+  }
+
+  &__description {
+    margin: 0;
+  }
+}
