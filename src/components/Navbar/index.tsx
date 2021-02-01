@@ -1,7 +1,7 @@
 import React from 'react'
-import NavbarLogo from '../NavbarLogo'
-import NavbarMenu from '../NavbarMenu'
-import NavbarAccount from '../NavbarAccount'
+import NavbarLogo from './Logo'
+import NavbarMenu from './Menu'
+import NavbarAccount from './Account'
 
 const Navbar = () => {
   return (
