@@ -29,12 +29,8 @@
     }
   }
 
-  &__brand {
+  &__logo {
     display: flex;
-  }
-
-  // TODO: for future implementation
-  &__brand-name {
   }
 
   &__menu {
@@ -52,12 +48,12 @@
     text-decoration: none;
   }
 
-  &__authentication {
+  &__account {
     display: flex;
   }
 
   // TODO: for future implementation
-  &__authentication-button {
+  &__account-button {
   }
 
   &__avatar-button {
