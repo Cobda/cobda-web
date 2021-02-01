@@ -2,10 +2,10 @@ import React from 'react'
 import { useRouter } from 'next/router'
 
 interface NavbarAccount {
-  isUserExist?: boolean
+  isUserSignedIn?: boolean
 }
 
-const NavbarAccount = ({ isUserExist }: NavbarAccount) => {
+const NavbarAccount = ({ isUserSignedIn }: NavbarAccount) => {
   const router = useRouter()
 
   const handleSignInClick = () => {
@@ -20,26 +20,26 @@ const NavbarAccount = ({ isUserExist }: NavbarAccount) => {
     // TODO: Expand dropdown or sth
   }
 
+  const renderAvatarButton = () => (
+    <button className="navbar__avatar-button" onClick={handleAvatarClick}>
+      <img src="#" alt="avatar" />
+    </button>
+  )
+
+  const renderAuthenticationButton = () => (
+    <>
+      <button className="navbar__account-button" onClick={handleSignInClick}>
+        Sign In
+      </button>
+      <button className="navbar__account-button" onClick={handleSignUpClick}>
+        Sign Up
+      </button>
+    </>
+  )
+
   return (
     <div className="navbar__account">
-      {isUserExist ? (
-        <button className="navbar__avatar-button" onClick={handleAvatarClick}>
-          <img src="#" alt="avatar" />
-        </button>
-      ) : (
-        <>
-          <button
-            className="navbar__account-button"
-            onClick={handleSignInClick}>
-            Sign In
-          </button>
-          <button
-            className="navbar__account-button"
-            onClick={handleSignUpClick}>
-            Sign Up
-          </button>
-        </>
-      )}
+      {isUserSignedIn ? renderAvatarButton() : renderAuthenticationButton()}
     </div>
   )
 }

@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="navbar">
       <NavbarLogo />
       <NavbarMenu />
-      <NavbarAccount isUserExist={true} />
+      <NavbarAccount isUserSignedIn={true} />
     </nav>
   )
 }
