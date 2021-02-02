@@ -4,13 +4,12 @@
   @include flex-center();
 
   &__button {
-    @include button-hover($picton-blue);
+    @include button-darken-effect($picton-blue);
 
-    background: $picton-blue;
-
+    text-decoration: none;
     padding: rem(5px 10px);
     border-radius: rem(3px);
-    text-decoration: none;
+    background-color: $picton-blue;
   }
 
   &__text {

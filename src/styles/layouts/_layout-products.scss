@@ -15,7 +15,7 @@
   }
 
   @include respond-above('lg') {
-    grid-template-columns: minmax(250px, 400px) minmax(742px , 1fr);
+    grid-template-columns: minmax(250px, 400px) minmax(742px, 1fr);
     grid-template-rows: rem(100px) 1fr rem(300px);
     grid-template-areas:
     'header header'
