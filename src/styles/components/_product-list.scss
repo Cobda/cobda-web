@@ -1,36 +1,20 @@
 @import '../abstracts/_abstracts-dir';
 
-.home-section {
-  background-color: aquamarine;
+.product-list {
+  background-color: $shuttle-gray;
   padding: rem(16px);
   box-sizing: border-box;
-  height: rem(350px);
 
   @include respond-above('md') {
     padding: rem(24px);
-    height: rem(500px);
   }
 
   @include respond-above('lg') {
     padding: rem(32px);
-    height: rem(650px);
   }
 
   @include respond-above('lg') {
     padding: rem(40px);
-    height: rem(800px);
-  }
-
-  &--dark {
-    background-color: blue;
-  }
-
-  &--light {
-    background-color: blueviolet;
-  }
-
-  // TODO: For future implementation
-  &__header {
   }
 
   &__title {

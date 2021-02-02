@@ -1,0 +1,18 @@
+@import '../abstracts/_abstracts-dir';
+
+.home-search-box {
+  @include flex-center();
+
+  &__button {
+    @include button-darken-effect($picton-blue);
+
+    text-decoration: none;
+    padding: rem(5px 10px);
+    border-radius: rem(3px);
+    background-color: $picton-blue;
+  }
+
+  &__text {
+    color: $light;
+  }
+}

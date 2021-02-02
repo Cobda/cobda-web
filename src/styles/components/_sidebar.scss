@@ -1,14 +1,8 @@
 @import '../abstracts/_abstracts-dir';
 
-.sidebar-container {
-  left: 0;
-  height: 100vh;
-  overflow: auto;
-  width: rem(150px);
-  background-color: $primary;
-
+.sidebar {
   @include flex-center();
-  @include respond-above(md) {
-    width: rem(300px);
-  }
+
+  height: 100%;
+  background-color: $primary;
 }
