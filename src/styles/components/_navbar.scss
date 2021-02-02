@@ -23,7 +23,7 @@
   }
 
   &__menu-item,
-  &__authentication-button {
+  &__button--sign-in {
     &:not(:last-child) {
       margin-right: rem(16px);
     }
@@ -48,17 +48,19 @@
     text-decoration: none;
   }
 
-  &__account {
-    display: flex;
-  }
+  &__button {
+    &--sign-in {
+      // TODO: for future implementation
+    }
 
-  // TODO: for future implementation
-  &__account-button {
-  }
+    &--sign-up {
+      // TODO: for future implementation
+    }
 
-  &__avatar-button {
-    width: rem(48px);
-    height: rem(48px);
-    border-radius: 50%;
+    &--avatar {
+      width: rem(48px);
+      height: rem(48px);
+      border-radius: 50%;
+    }
   }
 }

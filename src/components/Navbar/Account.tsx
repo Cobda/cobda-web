@@ -21,17 +21,17 @@ const NavbarAccount = ({ isUserSignedIn }: NavbarAccount) => {
   }
 
   const renderAvatarButton = () => (
-    <button className="navbar__avatar-button" onClick={handleAvatarClick}>
+    <button className="navbar__button-avatar" onClick={handleAvatarClick}>
       <img src="#" alt="avatar" />
     </button>
   )
 
   const renderAuthenticationButton = () => (
     <>
-      <button className="navbar__account-button" onClick={handleSignInClick}>
+      <button className="navbar__button--sign-in" onClick={handleSignInClick}>
         Sign In
       </button>
-      <button className="navbar__account-button" onClick={handleSignUpClick}>
+      <button className="navbar__button--sign-up" onClick={handleSignUpClick}>
         Sign Up
       </button>
     </>
@@ -39,7 +39,7 @@ const NavbarAccount = ({ isUserSignedIn }: NavbarAccount) => {
 
   return (
     <div className="navbar__account">
-      {isUserSignedIn ? renderAvatarButton() : renderAuthenticationButton()}
+      {!isUserSignedIn ? renderAvatarButton() : renderAuthenticationButton()}
     </div>
   )
 }
