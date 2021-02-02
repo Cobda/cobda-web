@@ -10,14 +10,6 @@
   background-color: $background;
   box-sizing: border-box;
 
-  // TODO: for future implementation
-  &__title {
-  }
-
-  // TODO: for future implementation
-  &__item {
-  }
-
   @include respond-above('md') {
     padding: 0 rem(24px);
   }
@@ -28,5 +20,45 @@
 
   @include respond-above('xl') {
     padding: 0 rem(40px);
+  }
+
+  &__menu-item,
+  &__link {
+    &:not(:last-child) {
+      margin-right: rem(16px);
+    }
+  }
+
+  // TODO: for future implementation
+  &__logo {
+  }
+
+  &__menu {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+
+  // TODO: for future implementation
+  &__menu-item {
+  }
+
+  &__link {
+    text-decoration: none;
+
+    &--sign-in {
+      // TODO: for future implementation
+    }
+
+    &--sign-up {
+      // TODO: for future implementation
+    }
+
+    &--avatar {
+      width: rem(48px);
+      height: rem(48px);
+      border-radius: 50%;
+    }
   }
 }

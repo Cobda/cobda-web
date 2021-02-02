@@ -1,13 +1,14 @@
 import React from 'react'
-import Link from 'next/link'
+import NavbarLogo from './Logo'
+import NavbarMenu from './Menu'
+import NavbarAccount from './Account'
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <h2 className="navbar__title">COBDA</h2>
-      <Link href="/sign-up">
-        <a className="navbar__item">Sign Up</a>
-      </Link>
+      <NavbarLogo />
+      <NavbarMenu />
+      <NavbarAccount isUserSignedIn={true} />
     </nav>
   )
 }
