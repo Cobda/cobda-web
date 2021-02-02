@@ -45,18 +45,22 @@
   align-items: center;
 }
 
-@mixin button-bg($bg) {
-  background: $bg;
+@mixin transition($what: all, $time: 0.2s, $how: ease-in-out) {
+  -webkit-transition: $what $time $how;
+  -moz-transition:    $what $time $how;
+  -ms-transition:     $what $time $how;
+  -o-transition:      $what $time $how;
+  transition:         $what $time $how;
+}
 
-  padding: rem(5px 10px);
-  border-radius: rem(3px);
-  text-decoration: none;
-  
+@mixin button-hover($background-color) {
   &:hover {
-    background: darken($bg, 8%);
-    transition: all 0.3s ease;
+    background: darken($background-color, 8%);
+    
+    @include transition(all 0.3s ease);
   }
+
   &:active {
-    background: darken($bg, 25%);
+    background: darken($background-color, 25%);
   }
 }

@@ -3,10 +3,8 @@
 .home-search-box {
   @include flex-center();
 
-  display: flex;
-
   &__button {
-    @include button-hover-animation($picton-blue);
+    @include button-hover($picton-blue);
 
     background: $picton-blue;
 

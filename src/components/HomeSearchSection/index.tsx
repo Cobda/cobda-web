@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 import { useRouter } from 'next/router'
 
 export default function HomeSearchSection() {
-  const router = useRouter();
+  const router = useRouter()
 
   const handleSearchClick = () => {
-    router.push("/product-list");
-  };
+    router.push('/products')
+  }
 
   return (
     <section className="home-section">
@@ -16,11 +16,11 @@ export default function HomeSearchSection() {
           This is a sample description
         </p>
       </header>
-      <div className="home-search">
-        <button className="home-search__button" onClick={handleSearchClick}>
-          <div className="home-search__text">Search</div>
+      <div className="home-search-box">
+        <button className="home-search-box__button" onClick={handleSearchClick}>
+          <span className="home-search-box__text">Search</span>
         </button>
       </div>
     </section>
-  );
+  )
 }
