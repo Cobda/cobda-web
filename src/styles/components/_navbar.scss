@@ -23,14 +23,14 @@
   }
 
   &__menu-item,
-  &__button--sign-in {
+  &__link {
     &:not(:last-child) {
       margin-right: rem(16px);
     }
   }
 
+  // TODO: for future implementation
   &__logo {
-    display: flex;
   }
 
   &__menu {
@@ -46,9 +46,7 @@
 
   &__link {
     text-decoration: none;
-  }
 
-  &__button {
     &--sign-in {
       // TODO: for future implementation
     }

@@ -20,26 +20,32 @@ const NavbarAccount = ({ isUserSignedIn }: NavbarAccount) => {
     // TODO: Expand dropdown or sth
   }
 
-  const renderAvatarButton = () => (
-    <button className="navbar__button-avatar" onClick={handleAvatarClick}>
+  const renderAvatarLink = () => (
+    <a
+      className="navbar__link navbar__link--avatar"
+      onClick={handleAvatarClick}>
       <img src="#" alt="avatar" />
-    </button>
+    </a>
   )
 
-  const renderAuthenticationButton = () => (
+  const renderAuthenticationLink = () => (
     <>
-      <button className="navbar__button--sign-in" onClick={handleSignInClick}>
+      <a
+        className="navbar__link navbar__link--sign-in"
+        onClick={handleSignInClick}>
         Sign In
-      </button>
-      <button className="navbar__button--sign-up" onClick={handleSignUpClick}>
+      </a>
+      <a
+        className="navbar__link navbar__link--sign-up"
+        onClick={handleSignUpClick}>
         Sign Up
-      </button>
+      </a>
     </>
   )
 
   return (
     <div className="navbar__account">
-      {!isUserSignedIn ? renderAvatarButton() : renderAuthenticationButton()}
+      {isUserSignedIn ? renderAvatarLink() : renderAuthenticationLink()}
     </div>
   )
 }
