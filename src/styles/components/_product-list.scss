@@ -13,7 +13,7 @@
     padding: rem(32px);
   }
 
-  @include respond-above('lg') {
+  @include respond-above('xl') {
     padding: rem(40px);
   }
 
