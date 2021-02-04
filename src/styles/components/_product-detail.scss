@@ -1,0 +1,35 @@
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    'image'
+    'info'
+    'description';
+
+  @include respond-above('lg') {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+      'image info'
+      'description description';
+  }
+
+  & > .product-detail__content-image {
+    grid-area: image;
+
+    background-color: green;
+  }
+
+  & > .product-detail__content-info {
+    grid-area: info;
+
+    background-color: royalblue;
+  }
+
+  & > .product-detail__content-description {
+    grid-area: description;
+
+    background-color: powderblue;
+  }
+}
