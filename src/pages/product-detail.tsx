@@ -1,6 +1,6 @@
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import ProductDetailComponent from '../components/ProductDetail'
+import ProductView from '../components/ProductView'
 
 const ProductDetail = () => (
   <div className="layout-product-detail">
@@ -8,7 +8,7 @@ const ProductDetail = () => (
       <Navbar />
     </header>
     <main>
-      <ProductDetailComponent/>
+      <ProductView />
     </main>
     <footer>
       <Footer />
