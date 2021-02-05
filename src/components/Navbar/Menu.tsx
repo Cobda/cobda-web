@@ -10,7 +10,7 @@ const NavbarMenu = () => {
         </Link>
       </li>
       <li className="navbar__menu-item">
-        <Link href="/product-list">
+        <Link href="/products">
           <a className="navbar__link">Products</a>
         </Link>
       </li>
