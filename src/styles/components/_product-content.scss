@@ -21,13 +21,13 @@
     background-color: green;
   }
 
-  & > .product-view__detail {
+  & > .product-content__detail {
     grid-area: detail;
 
     background-color: royalblue;
   }
 
-  & > .product-view__information {
+  & > .product-content__information {
     grid-area: information;
 
     background-color: powderblue;

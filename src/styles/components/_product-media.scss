@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: rem(16px);
+  box-sizing: border-box;
 
   &__header {
     margin-bottom: rem(24px);
