@@ -1,16 +1,12 @@
 import React from 'react'
+import ProductCard from '../ProductCard'
 
 const ProductList = () => {
+  const articles = new Array(20).fill(<ProductCard />)
+
   return (
     <section className="product-list">
-      <a href="/product-detail">
-        <article>
-          <h2 className="product-list__title">Product List</h2>
-          <p className="product-list__description">
-            This is a sample description
-          </p>
-        </article>
-      </a>
+      {articles}
     </section>
   )
 }
