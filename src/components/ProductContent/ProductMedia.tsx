@@ -3,8 +3,13 @@ import React from 'react'
 const ProductMedia = () => {
   return (
     <div className="product-media">
+      <header className="product-media__header">
+        <h3 className="product-media__title">
+          Images
+        </h3>
+      </header>
       <div className="product-media__image-container">
-        <img src="#" alt="product-media__image" />
+        <div className="product-media__image"></div>
       </div>
     </div>
   )
