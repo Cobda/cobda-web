@@ -1,14 +1,14 @@
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import ProductView from '../components/ProductView'
+import ProductContent from '../components/ProductContent'
 
-const ProductDetail = () => (
-  <div className="layout-product-detail">
+const ProductView = () => (
+  <div className="layout-product-view">
     <header>
       <Navbar />
     </header>
     <main>
-      <ProductView />
+      <ProductContent />
     </main>
     <footer>
       <Footer />
@@ -16,4 +16,4 @@ const ProductDetail = () => (
   </div>
 )
 
-export default ProductDetail
+export default ProductView

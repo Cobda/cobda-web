@@ -1,7 +1,35 @@
 .product-content {
-  &__image {
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    'media'
+    'detail'
+    'information';
+
+  @include respond-above('lg') {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+      'media detail'
+      'information information';
+  }
+
+  & > .product-content__media {
+    grid-area: media;
+
+    background-color: green;
+  }
+
+  & > .product-view__detail {
+    grid-area: detail;
+
+    background-color: royalblue;
+  }
+
+  & > .product-view__information {
+    grid-area: information;
+
+    background-color: powderblue;
   }
 }
