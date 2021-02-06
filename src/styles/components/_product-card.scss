@@ -5,6 +5,14 @@
   padding: rem(20px 8px);
   box-sizing: border-box;
 
+  @include respond-above('lg') {
+    width: 33%;
+  }
+
+  @include respond-above('xl') {
+    width: 25%;
+  }
+
   &__content {
     height: 100%;
     background-color: orangered;
@@ -17,18 +25,7 @@
   }
 
   &__link {
-    text: {
-      decoration: none;
-    }
-
+    text-decoration: none;
     color: $dark;
-  }
-
-  @include respond-above('lg') {
-    width: 33%;
-  }
-
-  @include respond-above('xl') {
-    width: 25%;
   }
 }
