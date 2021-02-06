@@ -4,12 +4,10 @@ import Link from 'next/link'
 const ProductCard = () => {
   return (
     <div className="product-card">
-      <Link href="/product-view">
+      <Link href="/products/sample-product-view">
         <a className="product-card__link">
           <div className="product-card__content">
-            <span>
-              Click Me!
-            </span>
+            <span>Click Me!</span>
           </div>
         </a>
       </Link>
