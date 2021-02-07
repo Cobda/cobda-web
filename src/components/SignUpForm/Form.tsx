@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 
-const SignUpForm = () => {
+const Form = () => {
   const router = useRouter()
 
   const onSubmitButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -47,4 +47,4 @@ const SignUpForm = () => {
   )
 }
 
-export default SignUpForm
+export default Form
