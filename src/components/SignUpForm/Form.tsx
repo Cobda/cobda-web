@@ -1,23 +1,18 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 
-interface Form {
-  title: string
-  href: string
-}
-
-const Form = ({ title, href }: Form) => {
+const SignUpForm = () => {
   const router = useRouter()
 
   const onSubmitButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    router.push(href)
+    router.push('/sign-up-success')
   }
 
   return (
     <form action="" className="form">
       <header className="form__header">
-        <h2 className="form__title">{title}</h2>
+        <h2 className="form__title">Sign up</h2>
       </header>
       <div className="form__input-group">
         <label className="form__input-label">First Name</label>
@@ -52,4 +47,4 @@ const Form = ({ title, href }: Form) => {
   )
 }
 
-export default Form
+export default SignUpForm
