@@ -1,0 +1,25 @@
+@import '../abstracts/_abstracts-dir';
+
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  background-color: $background;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    background-color: greenyellow;
+    margin-bottom: rem(24px);
+    padding: rem(24px) 0;
+  }
+
+  &__body {
+    margin-bottom: rem(24px);
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: rem(24px);
+  }
+}

@@ -9,7 +9,7 @@ const NavbarAccount = ({ isUserSignedIn }: NavbarAccount) => {
   const router = useRouter()
 
   const handleSignInClick = () => {
-    // TODO: Open SignIn modal
+    router.push('/sign-in')
   }
 
   const handleSignUpClick = () => {
