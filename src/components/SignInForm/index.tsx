@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import Form from './Form'
 
 const SignInForm = () => {
@@ -9,7 +10,12 @@ const SignInForm = () => {
         <Form />
       </div>
       <footer className="sign-in-form__footer">
-        Don't have an account? Create here
+        Don't have an account?
+        <Link href="/sign-up">
+          <a className="sign-in-form__link">
+            Create here
+          </a>
+        </Link>
       </footer>
     </section>
   )
