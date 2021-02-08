@@ -2,8 +2,8 @@
   display: inline-block;
   width: 50%;
   height: rem(200px);
-  padding: rem(20px 8px);
   box-sizing: border-box;
+  padding: rem(20px 8px);
 
   @include respond-above('lg') {
     width: 33%;
@@ -15,9 +15,9 @@
 
   &__content {
     height: 100%;
-    background-color: orangered;
     border: rem(2px);
     border-style: solid;
+    background-color: orangered;
     // For mocking up
     display: flex;
     justify-content: center;
