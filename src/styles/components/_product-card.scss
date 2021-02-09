@@ -1,0 +1,31 @@
+.product-card {
+  display: inline-block;
+  width: 50%;
+  height: rem(200px);
+  box-sizing: border-box;
+  padding: rem(20px 8px);
+
+  @include respond-above('lg') {
+    width: 33%;
+  }
+
+  @include respond-above('xl') {
+    width: 25%;
+  }
+
+  &__content {
+    height: 100%;
+    border: rem(2px);
+    border-style: solid;
+    background-color: orangered;
+    // For mocking up
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $dark;
+  }
+}

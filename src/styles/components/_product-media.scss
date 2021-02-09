@@ -1,0 +1,30 @@
+.product-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: rem(16px);
+
+  &__header {
+    margin-bottom: rem(24px);
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: rem(200px);
+    height: rem(200px);
+    background-color: black;
+  }
+
+  &__image {
+    width: 60%;
+    height: 60%;
+    background-color: blueviolet;
+  }
+}

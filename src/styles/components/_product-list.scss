@@ -5,16 +5,8 @@
   padding: rem(16px);
   box-sizing: border-box;
 
-  @include respond-above('md') {
+  @include respond-above('lg') {
     padding: rem(24px);
-  }
-
-  @include respond-above('lg') {
-    padding: rem(32px);
-  }
-
-  @include respond-above('lg') {
-    padding: rem(40px);
   }
 
   &__title {

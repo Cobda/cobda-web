@@ -1,0 +1,35 @@
+.product-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: rem(300px) repeat(2, 1fr);
+  grid-template-areas:
+    'media'
+    'detail'
+    'information';
+
+  @include respond-above('lg') {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+      'media detail'
+      'information information';
+  }
+
+  & > .product-content__media {
+    grid-area: media;
+
+    background-color: green;
+  }
+
+  & > .product-content__detail {
+    grid-area: detail;
+
+    background-color: royalblue;
+  }
+
+  & > .product-content__information {
+    grid-area: information;
+
+    background-color: powderblue;
+  }
+}
