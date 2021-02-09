@@ -1,3 +1,4 @@
+import React from 'react'
 import Footer from '../components/Footer'
 import SignUpForm from '../components/SignUpForm'
 import Navbar from '../components/Navbar'
@@ -5,7 +6,7 @@ import Meta from '../components/Meta'
 
 const SignUp = () => (
   <div className="layout-authentication">
-    <Meta title="Registration | Cobda"/>
+    <Meta title="SignUp | Cobda" />
     <header>
       <Navbar />
     </header>

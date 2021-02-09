@@ -1,3 +1,4 @@
+import React from 'react'
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 import Sidebar from '../../components/Sidebar'
@@ -6,7 +7,7 @@ import Meta from '../../components/Meta'
 
 const Products = () => (
   <div className="layout-products">
-    <Meta title="Products | Cobda"/>
+    <Meta title="Products | Cobda" />
     <header>
       <Navbar />
     </header>

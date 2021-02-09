@@ -1,3 +1,4 @@
+import React from 'react'
 import Footer from '../components/Footer'
 import HomeSection from '../components/HomeSection'
 import Navbar from '../components/Navbar'
