@@ -5,7 +5,7 @@ import Meta from '../components/Meta'
 
 const SignUp = () => (
   <div className="layout-authentication">
-    <Meta title="Cobda Registration"/>
+    <Meta title="Registration | Cobda"/>
     <header>
       <Navbar />
     </header>
