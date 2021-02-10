@@ -11,7 +11,7 @@ const SignUpForm = () => {
       </div>
       <footer className="sign-up-form__footer">
         <div className="sign-up-form__footer-item">
-          <p className="sign-up-form__description">Already have account?</p>
+          <p className="sign-up-form__description">Already have an account?</p>
           <Link href="/sign-in">
             <a className="sign-up-form__link">Sign in</a>
           </Link>
