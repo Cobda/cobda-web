@@ -25,15 +25,15 @@
   }
 
   &__footer-item {
-    & > a,
-    & > p {
-      &:not(:last-child) {
-        margin-right: rem(4px);
-      }
-    }
-
     &:not(:last-child) {
       margin-bottom: rem(8px);
+    }
+  }
+
+  &__footer-item > a,
+  &__footer-item > p {
+    &:not(:last-child) {
+      margin-right: rem(4px);
     }
   }
 
