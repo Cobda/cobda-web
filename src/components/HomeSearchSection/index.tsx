@@ -3,9 +3,10 @@ import { useRouter } from 'next/router'
 
 export default function HomeSearchSection() {
   const router = useRouter()
+  const { locale } = router
 
   const handleSearchClick = () => {
-    router.push('/products')
+    router.push('/products', '/products', { locale: 'th' })
   }
 
   return (
@@ -18,7 +19,9 @@ export default function HomeSearchSection() {
       </header>
       <div className="home-search-box">
         <button className="home-search-box__button" onClick={handleSearchClick}>
-          <span className="home-search-box__text">Search</span>
+          <span className="home-search-box__text">
+            {locale === 'th' ? 'ค้นหา' : 'search'}
+          </span>
         </button>
       </div>
     </section>
