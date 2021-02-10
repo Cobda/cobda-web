@@ -30,8 +30,7 @@
     }
   }
 
-  &__footer-item > a,
-  &__footer-item > p {
+  &__footer-item > * {
     &:not(:last-child) {
       margin-right: rem(4px);
     }
