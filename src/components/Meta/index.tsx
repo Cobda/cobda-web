@@ -21,8 +21,8 @@ const Meta = ({ title, keywords, description }: Meta) => {
 }
 
 Meta.defaultProps = {
-  title: 'Cobda: Online Marketplace for Streetwear Products',
-  keywords: 'cobda, cobda.com, buy, sell, marketplace, streetwear, vintage, sneakers, shirts',
+  title: 'Cobda: Online Streetwear Marketplace for everyone',
+  keywords: 'cobda, cobda.com, buy, sell, marketplace, streetwear, vintage, sneakers, shoes, shirts',
   description: 'Buy and Sell streetwear products including sneakers and shirts.',
 }
 
