@@ -2,9 +2,9 @@ import React from 'react'
 import Head from 'next/head'
 
 interface Meta {
-  title?: string
-  keywords?: string
-  description?: string
+  readonly title?: string
+  readonly keywords?: string
+  readonly description?: string
 }
 
 const Meta = ({ title, keywords, description }: Meta) => {
