@@ -8,9 +8,9 @@ const Form = () => {
     event.preventDefault()
     router.push('/')
   }
-  
+
   return (
-    <form action="" className="form">
+    <form className="form">
       <header className="form__header">
         <h2 className="form__title">Sign In</h2>
       </header>

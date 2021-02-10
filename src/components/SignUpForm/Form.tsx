@@ -10,7 +10,7 @@ const Form = () => {
   }
 
   return (
-    <form action="" className="form">
+    <form className="form">
       <header className="form__header">
         <h2 className="form__title">Sign up</h2>
       </header>
