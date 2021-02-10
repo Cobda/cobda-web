@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 
 interface NavbarAccount {
-  isUserSignedIn?: boolean
+  readonly isUserSignedIn?: boolean
 }
 
 const NavbarAccount = ({ isUserSignedIn }: NavbarAccount) => {

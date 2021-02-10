@@ -10,12 +10,14 @@ const SignInForm = () => {
         <Form />
       </div>
       <footer className="sign-in-form__footer">
-        Don't have an account?
-        <Link href="/sign-up">
-          <a className="sign-in-form__link">Create here</a>
-        </Link>
+        <div className="sign-in-form__footer-item">
+          Don't have an account?
+          <Link href="/sign-up">
+            <a className="sign-in-form__link">Create here</a>
+          </Link>
+        </div>
         <Link href="">
-          <a className="sign-in-form__link">Forgot password</a>
+          <a>Forgot you password?</a>
         </Link>
       </footer>
     </section>

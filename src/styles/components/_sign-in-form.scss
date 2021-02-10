@@ -3,7 +3,7 @@
 .sign-in-form {
   display: flex;
   flex-direction: column;
-  background-color: $background;
+  background-color: $silver;
 
   &__header {
     display: flex;
@@ -19,10 +19,17 @@
 
   &__footer {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: rem(24px);
   }
 
+  &__footer-item {
+    &:not(:last-child) {
+      margin-bottom: rem(8px);
+    }
+  }
+  
   &__link {
     margin-left: rem(4px);
   }
