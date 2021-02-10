@@ -7,6 +7,7 @@ import Meta from '../../components/Meta'
 
 const Products = () => (
   <div className="layout-products">
+    {/* TODO: Title should be a user search result or a category. */}
     <Meta title="Products | Cobda" />
     <header>
       <Navbar />

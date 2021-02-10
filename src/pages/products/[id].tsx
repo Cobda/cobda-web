@@ -6,6 +6,7 @@ import ProductContent from '../../components/ProductContent'
 
 const ProductView = () => (
   <div className="layout-product-view">
+    {/* TODO: Title should be specific for each product name */}
     <Meta title="Product View | Cobda" />
     <header>
       <Navbar />
