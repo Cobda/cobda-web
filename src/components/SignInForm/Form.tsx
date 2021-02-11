@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 const Form = () => {
   const router = useRouter()
 
-  const onSubmitButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmitClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
     router.push('/')
   }
@@ -23,7 +23,7 @@ const Form = () => {
         <input type="password" className="form__input" />
       </div>
       <div className="form__actionable">
-        <button className="form__button" onClick={onSubmitButtonClick}>
+        <button className="form__button" onClick={handleSubmitClick}>
           Submit
         </button>
       </div>
