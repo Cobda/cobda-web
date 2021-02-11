@@ -7,7 +7,7 @@ export default function HomeSearchSection() {
   const { t } = useTranslation('home')
 
   const handleSearchClick = () => {
-    router.push('/products', '/products', { locale: 'th' })
+    router.push('/products')
   }
 
   return (
