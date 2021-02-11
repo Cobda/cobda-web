@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="navbar">
       <NavbarLogo />
       <NavbarMenu />
-      <NavbarAccount isUserSignedIn={true} />
+      <NavbarAccount isUserSignedIn={false} />
     </nav>
   )
 }
