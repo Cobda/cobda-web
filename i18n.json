@@ -1,0 +1,13 @@
+{
+  "locales": ["en", "th"],
+  "defaultLocale": "en",
+  "pages": {
+    "*": ["common"],
+    "/": ["home"],
+    "/about-us": ["about-us"],
+    "/products": ["products"],
+    "/sign-up": ["sign-up"],
+    "/sign-up-success": ["sign-up-success"]
+    // TODO: For future implementation
+  }
+}

@@ -1,6 +1,5 @@
+import nextTranslate from 'next-translate'
+
 module.exports = {
-  i18n: {
-    locales: ['th', 'en'],
-    defaultLocale: 'th',
-  },
+  ...nextTranslate()
 }
