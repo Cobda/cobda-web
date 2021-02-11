@@ -1,5 +1,3 @@
-import nextTranslate from 'next-translate'
+const nextTranslate = require('next-translate')
 
-module.exports = {
-  ...nextTranslate()
-}
+module.exports = nextTranslate()

@@ -8,6 +8,5 @@
     "/products": ["products"],
     "/sign-up": ["sign-up"],
     "/sign-up-success": ["sign-up-success"]
-    // TODO: For future implementation
   }
 }
