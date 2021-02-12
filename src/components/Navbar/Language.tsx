@@ -5,25 +5,28 @@ const NavbarLanguage = () => {
   const router = useRouter()
 
   const handleLocaleClick = (locale: string) => {
-    const currentPath: string = router.pathname
-    router.push(currentPath, currentPath, { locale })
+    const { pathname, asPath } = router
+    router.push(pathname, asPath, { locale })
   }
 
-  const renderLocaleLink = () => {
-    return router.locales?.map((locale: string, index: number) => {
-      return (
-        <a
-          key={index}
-          className="navbar__link navbar__link--locale"
-          onClick={() => handleLocaleClick(locale)}>
-          {/* TODO: Please change according to the design */}
-          {locale.toLocaleUpperCase()}
-        </a>
-      )
-    })
+  const renderNavbarFlag = () => {
+    const localeLinks = router.locales?.map((locale: string, index: number) => (
+      <a
+        key={index}
+        className="navbar__link navbar__link--locale"
+        onClick={() => handleLocaleClick(locale)}>
+        {/* TODO: Please change according to the design */}
+        {locale.toLocaleUpperCase()}
+      </a>
+    ))
+    return localeLinks ? (
+      <div className="navbar__flag">{localeLinks}</div>
+    ) : (
+      <></>
+    )
   }
 
-  return <div className="navbar__flag">{renderLocaleLink()}</div>
+  return renderNavbarFlag()
 }
 
 export default NavbarLanguage
