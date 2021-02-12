@@ -1,12 +1,12 @@
 import React from 'react'
 import NavbarAccount from './Account'
-import NavbarFlag from './Flag'
+import NavbarLanguage from './Language'
 
 const NavbarTool = () => {
   return (
     <div className="navbar__tool">
       <NavbarAccount isUserSignedIn={true} />
-      <NavbarFlag />
+      <NavbarLanguage />
     </div>
   )
 }

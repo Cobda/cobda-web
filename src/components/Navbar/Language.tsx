@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 
-const NavbarFlag = () => {
+const NavbarLanguage = () => {
   const router = useRouter()
 
   const handleLocaleClick = (locale: string) => {
@@ -11,20 +11,21 @@ const NavbarFlag = () => {
     }
   }
 
-  const renderFlags = () => {
-    return router.locales?.map((locale, index) => {
+  const renderLocaleLink = () => {
+    return router.locales?.map((locale: string, index: number) => {
       return (
         <a
           key={index}
           className="navbar__link navbar__link--locale"
           onClick={() => handleLocaleClick(locale)}>
-          {locale}
+          {/* TODO: Please change according to the design */}
+          {locale.toLocaleUpperCase()}
         </a>
       )
     })
   }
 
-  return <div className="navbar__flag">{renderFlags()}</div>
+  return <div className="navbar__flag">{renderLocaleLink()}</div>
 }
 
-export default NavbarFlag
+export default NavbarLanguage
