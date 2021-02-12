@@ -5,10 +5,8 @@ const NavbarLanguage = () => {
   const router = useRouter()
 
   const handleLocaleClick = (locale: string) => {
-    if (router.locale !== locale) {
-      const currentPath: string = router.pathname
-      router.push(currentPath, currentPath, { locale })
-    }
+    const currentPath: string = router.pathname
+    router.push(currentPath, currentPath, { locale })
   }
 
   const renderLocaleLink = () => {
