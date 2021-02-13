@@ -1,14 +1,14 @@
 import React from 'react'
 import NavbarLogo from './Logo'
 import NavbarMenu from './Menu'
-import NavbarAccount from './Account'
+import NavbarTool from './Tool'
 
 const Navbar = () => {
   return (
     <nav className="navbar">
       <NavbarLogo />
       <NavbarMenu />
-      <NavbarAccount isUserSignedIn={false} />
+      <NavbarTool />
     </nav>
   )
 }

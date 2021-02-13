@@ -1,8 +1,10 @@
 import React from 'react'
 import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
 
 export default function HomeSearchSection() {
   const router = useRouter()
+  const { t } = useTranslation('home')
 
   const handleSearchClick = () => {
     router.push('/products')
@@ -18,7 +20,7 @@ export default function HomeSearchSection() {
       </header>
       <div className="home-search-box">
         <button className="home-search-box__button" onClick={handleSearchClick}>
-          <span className="home-search-box__text">Search</span>
+          <span className="home-search-box__text">{t('search')}</span>
         </button>
       </div>
     </section>

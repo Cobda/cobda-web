@@ -60,5 +60,28 @@
       height: rem(48px);
       border-radius: 50%;
     }
+
+    &--locale {
+      // TODO: for future implementation
+    }
+  }
+
+  &__tool {
+    display: flex;
+    // TODO: for future implementation
+  }
+
+  &__tool > div {
+    &:not(:last-child) {
+      margin-right: rem(32px);
+    }
+  }
+
+  // TODO: for future implementation
+  &__account {
+  }
+
+  // TODO: for future implementation
+  &__flag {
   }
 }
