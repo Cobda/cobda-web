@@ -19,6 +19,7 @@ const NavbarLanguage = () => {
         {locale.toLocaleUpperCase()}
       </a>
     ))
+    
     return localeLinks ? (
       <div className="navbar__flag">{localeLinks}</div>
     ) : (
