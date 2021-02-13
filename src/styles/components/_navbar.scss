@@ -66,8 +66,15 @@
     }
   }
 
-  // TODO: for future implementation
   &__tool {
+    display: flex;
+    // TODO: for future implementation
+  }
+
+  &__tool > div {
+    &:not(:last-child) {
+      margin-right: rem(32px);
+    }
   }
 
   // TODO: for future implementation
