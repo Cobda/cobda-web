@@ -1,0 +1,8 @@
+@import '../abstracts/_abstracts-dir';
+
+.account-content {
+  @include flex-center();
+
+  height: 100%;
+  background-color: orange;
+}
