@@ -1,8 +1,17 @@
-@import '../abstracts/_abstracts-dir';
-
 .account-content {
-  @include flex-center();
-
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  background-color: orange;
+
+  &__product {
+    flex: 1;
+
+    background-color: orange;
+  }
+
+  &__review {
+    flex: 1;
+
+    background-color: royalblue;
+  }
 }

@@ -1,0 +1,13 @@
+.available-product {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  &__header {
+    margin-bottom: rem(32px);
+  }
+
+  &__title {
+    margin: 0;
+  }
+}
