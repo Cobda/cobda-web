@@ -1,39 +1,37 @@
-# Base on offical Node.js Alpine image
-FROM node:current-alpine AS base
+# Installation stage
+# Offical Node.js Alpine base image
+FROM node:lts-alpine AS base
 
 # Set working directory
 WORKDIR /base
 
-# Copy package.json and package-lock.json before other files
-# Utilise Docker cache to save re-installing dependencies if unchanged
+# Copy package.json and package-lock.json for utilising Docker cache 
+# to save re-installing dependencies if unchanged
 COPY package*.json yarn.lock ./ 
 
-# Install dependencies
-RUN yarn install --frozen-lockfile
+# Install dependencies only needed
+RUN yarn install --production --frozen-lockfile
 
-# Copy all files
+# Copy installed dependencies to current working directory
 COPY . .
 
-# Build app
+# Build stage
 FROM base AS builder
 ENV NODE_ENV=production
 WORKDIR /build
-COPY . .
-COPY --from=base /base/node_modules ./node_modules
-RUN yarn build
+COPY --from=base /base ./
+RUN yarn add --dev typescript @types/react @types/node && yarn build
 
-# Production image, copy all the files and run next
+# Production stage
 FROM node:current-alpine AS runner
 ENV NODE_ENV=production
 WORKDIR /app
 
-# Copy from build image
-COPY --from=builder /build/package*.json ./
-COPY --from=builder /build/node_modules ./node_modules
-COPY --from=builder /build/.next ./.next
-COPY --from=builder /build/public ./public
+# Copy files from build stage to production stage
+COPY --from=builder /build/package*.json /build/node_modules /build/.next /build/public ./
 
 # Expose the listening port
 EXPOSE 3000
+
 # Run yarn start script when container starts
 CMD ["yarn", "start"]
