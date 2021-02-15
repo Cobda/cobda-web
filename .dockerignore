@@ -5,12 +5,8 @@ docker-compose.yml
 # Markdown
 *.md
 
-# Existing Next.js builds
-.next/
+LICENSE
 
 # Git
 .git
 .gitignore
-
-LICENSE
-node_modules/   # Installed inside container
