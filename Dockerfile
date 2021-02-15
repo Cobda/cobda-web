@@ -10,21 +10,27 @@ WORKDIR /base
 COPY package*.json yarn.lock ./ 
 
 # Install dependencies only needed
-RUN yarn install --production --frozen-lockfile
+RUN yarn install --frozen-lockfile
 
 # Copy installed dependencies to current working directory
 COPY . .
 
 # Build stage
 FROM base AS builder
-ENV NODE_ENV=production
+
+# TO DO in further development
+# ENV NODE_ENV=production
+
 WORKDIR /build
-COPY --from=base /base ./
-RUN yarn add --dev typescript @types/react @types/node && yarn build
+COPY --from=base /base .
+RUN yarn build
 
 # Production stage
 FROM node:current-alpine AS runner
-ENV NODE_ENV=production
+
+# TO DO in further development
+# ENV NODE_ENV=production
+
 WORKDIR /app
 
 # Copy files from build stage to production stage
