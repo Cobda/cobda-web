@@ -1,7 +1,8 @@
 @import '../abstracts/_abstracts-dir';
 
 .account-information {
-  height: 500px;
+  box-sizing: border-box;
+  height: 100%;
   
   background-color: darkcyan;
 

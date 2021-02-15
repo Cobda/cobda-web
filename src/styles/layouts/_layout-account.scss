@@ -15,8 +15,10 @@
   }
 
   @include respond-above('lg') {
-    grid-template-columns: minmax(350px, 450px) minmax(642px, 1fr);
+    // TODO: Modify function to accept comma as a parameter 
+    grid-template-columns: minmax(rem(350px), rem(450px)) minmax(rem(642px), 1fr);
     grid-template-rows: rem(100px) 1fr rem(300px);
+    column-gap: rem(32px);
     grid-template-areas:
       'header header'
       'sidebar main'
@@ -41,7 +43,7 @@
     }
 
     @include respond-above('lg') {
-      padding: rem(45px 20px 75px 40px);
+      padding: rem(45px) 0 rem(75px 40px);
     }
   }
 
@@ -55,7 +57,7 @@
     }
 
     @include respond-above('lg') {
-      padding: rem(45px 40px 75px 20px);
+      padding: rem(45px 40px 75px) 0;
     }
   }
 
