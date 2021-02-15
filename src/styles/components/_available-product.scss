@@ -2,6 +2,18 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  height: rem(200px);
+  padding: rem(16px);
+
+  @include respond-above('md') {
+    height: rem(350px);
+    padding: rem(32px);
+  }
+
+  @include respond-above('lg') {
+    height: rem(500px);
+    padding: rem(40px);
+  }
 
   &__header {
     margin-bottom: rem(32px);

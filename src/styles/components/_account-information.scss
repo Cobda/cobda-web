@@ -1,8 +1,18 @@
 @import '../abstracts/_abstracts-dir';
 
 .account-information {
+  height: 500px;
+  background-color: darkcyan;
+
   @include flex-center();
 
-  height: 100%;
-  background-color: darkcyan;
+  @include respond-above('md') {
+    padding: rem(32px);
+    height: rem(750px);
+  }
+
+  @include respond-above('lg') {
+    padding: rem(40px);
+    height: rem(900px);
+  }
 }

@@ -1,17 +1,17 @@
 .account-content {
-  display: flex;
-  flex-direction: column;
   height: 100%;
 
-  &__product {
-    flex: 1;
+  & > div {
+    &:not(:last-child) {
+      margin-bottom: rem(32px);
+    }
+  }
 
+  &__product {
     background-color: orange;
   }
 
   &__review {
-    flex: 1;
-
     background-color: royalblue;
   }
 }

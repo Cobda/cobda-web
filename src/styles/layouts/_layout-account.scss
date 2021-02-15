@@ -1,7 +1,7 @@
 .layout-account {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: rem(40px) 1fr 1fr rem(200px);
+  grid-template-rows: rem(40px) 1fr 2fr rem(200px);
   grid-template-areas:
     'header'
     'sidebar'
@@ -11,11 +11,11 @@
   height: 100vh;
 
   @include respond-above('md') {
-    grid-template-rows: rem(80px) 1fr 1fr rem(250px);
+    grid-template-rows: rem(80px) 1fr 2fr rem(250px);
   }
 
   @include respond-above('lg') {
-    grid-template-columns: minmax(250px, 400px) minmax(742px, 1fr);
+    grid-template-columns: minmax(400px, 600px) minmax(742px, 1fr);
     grid-template-rows: rem(100px) 1fr rem(300px);
     grid-template-areas:
       'header header'
@@ -34,7 +34,7 @@
   & > aside {
     grid-area: sidebar;
 
-    padding: rem(24px 16px 8px 16px);
+    padding: rem(24px 16px 16px 16px);
 
     @include respond-above('md') {
       padding: 4% 6% 2% 6%;
@@ -48,7 +48,7 @@
   & > main {
     grid-area: main;
 
-    padding: rem(8px 16px 24px 16px);
+    padding: rem(16px 16px 24px 16px);
 
     @include respond-above('md') {
       padding: 2% 6% 4% 6%;
