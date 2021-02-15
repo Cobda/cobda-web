@@ -7,7 +7,7 @@ import AccountInformation from '../components/AccountInformation'
 
 const Account = () => (
   <div className="layout-account">
-    {/* TODO: Title should be username instead. Ex: Shawn Mentos | Cobda */}
+    {/* TODO: Title and file name should be username instead. Ex: Shawn Mentos | Cobda */}
     <Meta title="Account | Cobda" />
     <header>
       <Navbar />

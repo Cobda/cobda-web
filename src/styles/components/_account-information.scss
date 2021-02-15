@@ -2,17 +2,18 @@
 
 .account-information {
   height: 500px;
+  
   background-color: darkcyan;
 
   @include flex-center();
 
   @include respond-above('md') {
-    padding: rem(32px);
     height: rem(750px);
+    padding: rem(32px);
   }
 
   @include respond-above('lg') {
-    padding: rem(40px);
     height: rem(900px);
+    padding: rem(40px);
   }
 }
