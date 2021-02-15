@@ -37,7 +37,7 @@
     padding: rem(24px 16px 16px);
 
     @include respond-above('md') {
-      padding: 4% 2% 6%;
+      padding: 4% 6% 2%;
     }
 
     @include respond-above('lg') {
@@ -48,10 +48,10 @@
   & > main {
     grid-area: main;
 
-    padding: rem(16px 24px 16px);
+    padding: rem(16px 16px 24px);
 
     @include respond-above('md') {
-      padding: 2% 4% 6%;
+      padding: 2% 6% 4%;
     }
 
     @include respond-above('lg') {
