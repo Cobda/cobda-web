@@ -5,6 +5,8 @@
   height: rem(350px);
   padding: rem(16px);
 
+  background-color: royalblue;
+
   @include respond-above('md') {
     height: rem(500px);
     padding: rem(32px);
