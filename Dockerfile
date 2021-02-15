@@ -5,14 +5,14 @@ FROM node:lts-alpine AS base
 # Set working directory
 WORKDIR /base
 
-# Copy package.json and package-lock.json for utilising Docker cache 
+# Copy package.json and yarn-lock.json for utilising Docker cache 
 # to save re-installing dependencies if unchanged
 COPY package*.json yarn.lock ./ 
 
-# Install dependencies only needed
+# Install dependencies
 RUN yarn install --frozen-lockfile
 
-# Copy installed dependencies to current working directory
+# Copy installed dependencies to the current working directory
 COPY . .
 
 # Build stage
@@ -22,6 +22,8 @@ FROM base AS builder
 # ENV NODE_ENV=production
 
 WORKDIR /build
+
+# Copy files from base stage to build stage
 COPY --from=base /base .
 RUN yarn build
 
