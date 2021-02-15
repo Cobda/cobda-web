@@ -1,19 +1,19 @@
-.review {
+.product-available {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  height: rem(350px);
+  height: rem(200px);
   padding: rem(16px);
 
-  background-color: royalblue;
+  background-color: orange;
 
   @include respond-above('md') {
-    height: rem(500px);
+    height: rem(350px);
     padding: rem(32px);
   }
 
   @include respond-above('lg') {
-    height: rem(700px);
+    height: rem(500px);
     padding: rem(40px);
   }
 
