@@ -1,7 +1,7 @@
 .layout-account {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: rem(40px) 1fr 2fr rem(200px);
+  grid-template-rows: rem(40px) repeat(2, 1fr) rem(200px);
   grid-template-areas:
     'header'
     'sidebar'
@@ -11,11 +11,11 @@
   height: 100vh;
 
   @include respond-above('md') {
-    grid-template-rows: rem(80px) 1fr 2fr rem(250px);
+    grid-template-rows: rem(80px) repeat(2, 1fr) rem(250px);
   }
 
   @include respond-above('lg') {
-    grid-template-columns: minmax(400px, 600px) minmax(742px, 1fr);
+    grid-template-columns: minmax(350px, 450px) minmax(642px, 1fr);
     grid-template-rows: rem(100px) 1fr rem(300px);
     grid-template-areas:
       'header header'
@@ -41,7 +41,7 @@
     }
 
     @include respond-above('lg') {
-      padding: rem(45px 20px 75px 100px);
+      padding: rem(45px 20px 75px 40px);
     }
   }
 
@@ -55,7 +55,7 @@
     }
 
     @include respond-above('lg') {
-      padding: rem(45px 100px 75px 20px);
+      padding: rem(45px 40px 75px 20px);
     }
   }
 
