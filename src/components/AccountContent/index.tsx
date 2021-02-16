@@ -1,11 +1,11 @@
 import React from 'react'
-import ProductAvailable from './ProductAvailable'
+import AccountProduct from './AccountProduct'
 import ProductReview from './ProductReview'
 
 const AccountContent = () => {
   return (
     <section className="account-content">
-      <ProductAvailable />
+      <AccountProduct />
       <ProductReview />
     </section>
   )
