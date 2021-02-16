@@ -9,12 +9,10 @@
   @include flex-center();
 
   @include respond-above('md') {
-    height: rem(750px);
     padding: rem(32px);
   }
 
   @include respond-above('lg') {
-    height: rem(900px);
     padding: rem(40px);
   }
 }
