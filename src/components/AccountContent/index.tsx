@@ -1,6 +1,6 @@
 import React from 'react'
-import AccountProduct from './AccountProduct'
-import ProductReview from './ProductReview'
+import AccountProduct from '../AccountProduct'
+import ProductReview from '../ProductReview'
 
 const AccountContent = () => {
   return (
