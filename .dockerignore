@@ -1,0 +1,13 @@
+# Docker
+Dockerfile         
+.dockerignore
+docker-compose.yml
+
+# Markdown
+*.md
+
+LICENSE
+
+# Git
+.git
+.gitignore
