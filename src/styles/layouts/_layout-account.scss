@@ -1,0 +1,80 @@
+.layout-account {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: rem(40px) rem(250px) 1fr rem(200px);
+  grid-template-areas:
+    'header'
+    'sidebar'
+    'main'
+    'footer';
+
+  height: 100vh;
+
+  @include respond-above('md') {
+    grid-template-rows: rem(80px) rem(450px) 1fr rem(250px);
+  }
+
+  @include respond-above('lg') {
+    // TODO: Modify function to accept comma as a parameter 
+    grid-template-columns: minmax(rem(330px), rem(434px)) minmax(rem(630px), rem(734px));
+    grid-template-rows: rem(100px) 1fr rem(300px);
+    column-gap: rem(32px);
+    grid-template-areas:
+      'header header'
+      'sidebar main'
+      'footer footer';
+  }
+
+  @include respond-above('xl') {
+    grid-template-columns: 1fr minmax(rem(402px), rem(468px)) minmax(rem(702px), rem(876px)) 1fr;
+    grid-template-rows: rem(140px) 1fr rem(350px);
+    grid-template-areas:
+      'header header header header'
+      '. sidebar main .'
+      'footer footer footer footer';
+  }
+
+  & > header {
+    grid-area: header;
+  }
+
+  & > aside {
+    grid-area: sidebar;
+
+    padding: rem(24px 16px 16px);
+
+    @include respond-above('md') {
+      padding: 4% 6% rem(16px);
+    }
+
+    @include respond-above('lg') {
+      padding: rem(45px) 0 rem(350px) 10%;
+    }
+    
+    @include respond-above('xl') {
+      padding-left: 0;
+    }
+  }
+
+  & > main {
+    grid-area: main;
+
+    padding: rem(16px 16px 24px);
+
+    @include respond-above('md') {
+      padding: rem(16px) 6% 4%;
+    }
+
+    @include respond-above('lg') {
+      padding: rem(45px) 6% rem(75px) 0;
+    }
+
+    @include respond-above('xl') {
+      padding-right: 0;
+    }
+  }
+
+  & > footer {
+    grid-area: footer;
+  }
+}

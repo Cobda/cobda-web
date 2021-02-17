@@ -1,0 +1,50 @@
+.account-product {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: rem(200px);
+  padding: rem(16px);
+
+  background-color: orange;
+
+  @include respond-above('md') {
+    height: rem(350px);
+    padding: rem(32px);
+  }
+
+  @include respond-above('lg') {
+    height: rem(500px);
+    padding: rem(40px);
+  }
+
+  &__header {
+    margin-bottom: rem(32px);
+  }
+
+  &__list {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__list-item {
+    &:not(:last-child) {
+      margin-right: rem(16px);
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+
+    &--primary {
+      // TODO: Change color according to design
+      color: $dark;
+    }
+
+    &--secondary {
+      // TODO: Change color according to design
+      color: $light;
+    }
+  }
+}

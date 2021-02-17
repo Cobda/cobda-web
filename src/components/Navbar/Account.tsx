@@ -18,6 +18,7 @@ const NavbarAccount = ({ isUserSignedIn }: NavbarAccount) => {
 
   const handleAvatarClick = () => {
     // TODO: Expand dropdown or sth
+    router.push('/account')
   }
 
   const renderAvatarLink = () => (
