@@ -25,7 +25,7 @@
   &__menu-item,
   &__link {
     &:not(:last-child) {
-      margin-right: rem(16px);
+      margin-right: rem(30px);
     }
   }
 
@@ -61,11 +61,22 @@
     text-decoration: none;
 
     &--sign-in {
-      // TODO: for future implementation
+      color: $dark;
     }
 
     &--sign-up {
-      // TODO: for future implementation
+      @include button-darken-effect($cornflower-blue);
+
+      color: $light;
+      padding: rem(6px 15px);
+      border-radius: rem(26px);
+      box-shadow: rem(0 3px 6px 0) rgba(0, 0, 0, 0.16);
+      border: solid rem(3px) $light;
+      background-image: linear-gradient(
+        111deg,
+        $cornflower-blue 1%,
+        $royal-blue 101%
+      )
     }
 
     &--avatar {
@@ -81,6 +92,7 @@
 
   &__tool {
     display: flex;
+    align-items: center;
     // TODO: for future implementation
   }
 
@@ -92,6 +104,13 @@
 
   // TODO: for future implementation
   &__account {
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+    font-family: 'Poppins';
+    font-size: rem(16px);
+    font-weight: 600;
   }
 
   // TODO: for future implementation

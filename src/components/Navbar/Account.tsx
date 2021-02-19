@@ -34,7 +34,7 @@ const NavbarAccount = ({ isUserSignedIn }: NavbarAccount) => {
       <a
         className="navbar__link navbar__link--sign-in"
         onClick={handleSignInClick}>
-        Sign In
+        Log In
       </a>
       <a
         className="navbar__link navbar__link--sign-up"
