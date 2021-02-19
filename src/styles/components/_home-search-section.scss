@@ -1,0 +1,72 @@
+.home-search-section {
+  display: grid;
+  margin-bottom: rem(79px);
+
+  @include respond-above('xl') {
+    grid-template-columns: 39% 61%;
+    grid-template-rows: 1fr rem(133px) 1fr;
+    grid-template-areas:
+      'home-image title'
+      'home-image searchbox'
+      'home-image description';
+  }
+
+  & > .home-search-section__image {
+    grid-area: home-image;
+  }
+
+  & > .home-search-section__title {
+    grid-area: title;
+    margin-top: rem(147px);
+    margin-right: rem(48px);
+    margin-left: rem(37px);
+  }
+
+  & > .home-search-section__description {
+    grid-area: description;
+    margin-left: rem(123px);
+    margin-right: rem(99px);
+  }
+
+  & > .home-search-box {
+    grid-area: searchbox;
+    grid-column: span 2 / -1;
+    position: relative;
+    align-self: center;
+    justify-self: center;
+  }
+
+  &__image {
+    // width: rem(562.5px);
+    // height: 910px;
+    background-image: url(../../../public/images/yeezy-home.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.85;
+  }
+
+  &__title {
+    -webkit-text-stroke: 3px $dark;
+    font-size: 100px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: left;
+    color: $dark;
+  }
+
+  &__description {
+    // width: 655.5px;
+    font-size: 26px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    color: $dark;
+  }
+}
