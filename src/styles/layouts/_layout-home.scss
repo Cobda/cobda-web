@@ -18,7 +18,13 @@
   }
 
   @include respond-above('xl') {
+    grid-template-columns: 1fr minmax(rem(1200px), rem(1400px)) 1fr;
     grid-template-rows: rem(140px) 1fr rem(350px);
+    column-gap: rem(48px);
+    grid-template-areas:
+    'header header header'
+    '. main .'
+    'footer footer footer';
   }
 
   & > header {
@@ -31,11 +37,16 @@
     padding: rem(24px 16px);
 
     @include respond-above('md') {
-      padding: 4.5% 6%;
+      padding: 4.5% rem(24px);
     }
 
     @include respond-above('lg') {
-      padding: 5% 10%;
+      padding: 5% rem(32px);
+    }
+
+    @include respond-above('xl') {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 

@@ -1,0 +1,6 @@
+.carousel-item {
+  @include flex-center();
+
+  height: 100%;
+  background-color: bisque;
+}

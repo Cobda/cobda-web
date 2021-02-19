@@ -8,25 +8,52 @@
 
   @include respond-above('md') {
     padding: rem(24px);
-    height: rem(500px);
   }
 
   @include respond-above('lg') {
     padding: rem(32px);
-    height: rem(650px);
   }
 
   @include respond-above('lg') {
     padding: rem(40px);
-    height: rem(800px);
   }
 
   &--dark {
     background-color: blue;
+
+    @include respond-above('md') {
+      height: rem(500px);
+    }
+  
+    @include respond-above('lg') {
+      height: rem(650px);
+    }
+  
+    @include respond-above('lg') {
+      height: rem(800px);
+    }
   }
 
   &--light {
     background-color: blueviolet;
+
+    @include respond-above('md') {
+      height: rem(500px);
+    }
+  
+    @include respond-above('lg') {
+      height: rem(650px);
+    }
+  
+    @include respond-above('lg') {
+      height: rem(800px);
+    }
+  }
+  
+  &--popular-item {
+    height: auto;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   // TODO: For future implementation

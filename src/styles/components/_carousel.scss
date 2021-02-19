@@ -1,0 +1,34 @@
+.carousel {
+  &__container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  &__slide {
+    background-color: black;
+  }
+
+  &__inner-slide {
+    box-sizing: border-box;
+    padding: rem(20px);
+  }
+
+  .buttonBack {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  
+  .buttonNext {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+  
+  .dotGroup {
+    text-align: center;
+  }
+}
