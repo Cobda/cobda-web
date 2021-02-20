@@ -1,8 +1,38 @@
 @import '../abstracts/_abstracts-dir';
 
 .carousel-item {
-  @include flex-center();
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100%;
-  background-color: bisque;
+
+  &__image-container {
+    height: 100%;
+    width: 100%;
+    margin-bottom: rem(12px);
+    box-shadow: rem(1px 1px 2px 4px) $popular-item-shadow;
+
+    @include respond-above('sm') {
+      margin-bottom: rem(16px);
+      box-shadow: rem(3px 3px 4px 7px) $popular-item-shadow;
+    }
+
+    @include respond-above('md') {
+      margin-bottom: rem(24px);
+    }
+  }
+
+  &__caption {
+    margin: 0;
+    font-size: rem(12px);
+    font-weight: bold;
+
+    @include respond-above('md') {
+      font-size: rem(16px);
+    }
+    
+    @include respond-above('lg') {
+      font-size: rem(22px);
+    }
+  }
 }

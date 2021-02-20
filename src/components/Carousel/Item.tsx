@@ -7,7 +7,10 @@ interface CarouselItem {
 const CarouselItem = ({ caption }: CarouselItem) => {
   return (
     <div className="carousel-item">
-      {caption}
+      <div className="carousel-item__image-container"></div>
+      <p className="carousel-item__caption">
+        {caption}
+      </p>
     </div>
   )
 }

@@ -93,11 +93,6 @@
   
   .dotGroup {
     text-align: center;
-    margin-top: rem(6px);
-
-    @include respond-above('sm') {
-      margin-top: rem(12px);
-    }
 
     & > button {
       &:first-child {
