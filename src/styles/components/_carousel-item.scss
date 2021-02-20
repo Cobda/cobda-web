@@ -10,16 +10,31 @@
     height: 100%;
     width: 100%;
     margin-bottom: rem(12px);
+    padding: rem(5px);
+    box-sizing: border-box;
     box-shadow: rem(1px 1px 2px 4px) $popular-item-shadow;
 
     @include respond-above('sm') {
+      padding: rem(10px);
       margin-bottom: rem(16px);
       box-shadow: rem(3px 3px 4px 7px) $popular-item-shadow;
     }
 
     @include respond-above('md') {
+      padding: rem(12.5px);
       margin-bottom: rem(24px);
     }
+
+    @include respond-above('lg') {
+      padding: rem(15px);
+    }
+  }
+
+  &__image {
+    // TODO: Remove when images are inserted
+    height: 100%;
+    width: 100%;
+    background-color: lightgray;
   }
 
   &__caption {
