@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
 
-export default function HomeSearchSection() {
+const HomeSearchSection = () => {
   const router = useRouter()
   const { t } = useTranslation('home')
 
@@ -26,3 +26,5 @@ export default function HomeSearchSection() {
     </section>
   )
 }
+
+export default HomeSearchSection
