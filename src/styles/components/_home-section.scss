@@ -14,7 +14,7 @@
     padding: rem(32px);
   }
 
-  @include respond-above('lg') {
+  @include respond-above('xl') {
     padding: rem(40px);
   }
 
@@ -29,7 +29,7 @@
       height: rem(650px);
     }
   
-    @include respond-above('lg') {
+    @include respond-above('xl') {
       height: rem(800px);
     }
   }
@@ -45,7 +45,7 @@
       height: rem(650px);
     }
   
-    @include respond-above('lg') {
+    @include respond-above('xl') {
       height: rem(800px);
     }
   }
@@ -56,12 +56,29 @@
     padding-right: 0;
   }
 
-  // TODO: For future implementation
   &__header {
+    margin-bottom: rem(16px);
+
+    @include respond-above('lg') {
+      margin-bottom: rem(24px);
+    }
   }
 
   &__title {
-    margin: 0 0 rem(24px) 0;
+    font-size: rem(16px);
+    margin: 0;
+
+    @include respond-above('md') {
+      font-size: rem(24px);
+    }
+  
+    @include respond-above('lg') {
+      font-size: rem(32px);
+    }
+  
+    @include respond-above('xl') {
+      font-size: rem(40px);
+    }
   }
 
   &__description {

@@ -1,3 +1,5 @@
+@import '../abstracts/_abstracts-dir';
+
 .carousel {
   &__container {
     position: relative;
@@ -5,27 +7,64 @@
     margin: auto;
   }
 
-  &__slide {
-    background-color: black;
-  }
-
   &__inner-slide {
     box-sizing: border-box;
-    padding: rem(20px);
+    padding: 0 rem(10px);
+
+    @include respond-above('md') {
+      padding: rem(10px 25px);
+    }
+
+    @include respond-above('lg') {
+      padding: rem(12.5px 40px);
+    }
+
+    @include respond-above('xl') {
+      padding: rem(15px 55px);
+    }
+  }
+
+  .buttonBack,
+  .buttonNext {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background-color: $mine-shaft;
+    color: $light;
+    border: none;
+    
+    @include respond-above('sm') {
+      display: block;
+      padding: rem(20px 10px);
+      font-size: rem(12px);
+      opacity: 0.8;
+    }
+
+    @include respond-above('md') {
+      padding: rem(24px 12px);
+      font-size: rem(16px);
+      opacity: 1.0;
+    }
+
+    @include respond-above('lg') {
+      padding: rem(28px 14px);
+      font-size: rem(24px);
+    }
+
+    @include respond-above('xl') {
+      padding: rem(32px 16px);
+      font-size: rem(32px);
+    }
   }
 
   .buttonBack {
-    position: absolute;
-    top: 50%;
     left: 0;
-    transform: translateY(-50%);
   }
   
   .buttonNext {
-    position: absolute;
-    top: 50%;
     right: 0;
-    transform: translateY(-50%);
   }
   
   .dotGroup {
