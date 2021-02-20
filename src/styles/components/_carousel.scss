@@ -50,14 +50,14 @@
 
   .buttonBack,
   .buttonNext {
-    display: none;
     position: absolute;
     top: 40%;
     transform: translateY(-50%);
 
+    display: none;
     background-color: $mine-shaft;
-    color: $light;
     border: none;
+    color: $light;
     
     @include respond-above('sm') {
       display: block;
@@ -90,8 +90,8 @@
   }
   
   .dotGroup {
-    text-align: center;
     margin-top: 0;
+    text-align: center;
 
     @include respond-above('md') {
       margin-top: rem(16px);
