@@ -11,6 +11,14 @@
     width: 25%;
     padding: 0 rem(8px);
 
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+
     @include respond-above('sm') {
       padding: 0 rem(16px);
     }
