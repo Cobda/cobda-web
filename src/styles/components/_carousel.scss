@@ -1,11 +1,9 @@
 @import '../abstracts/_abstracts-dir';
 
 .carousel {
-  &__container {
-    position: relative;
-    max-width: 100%;
-    margin: auto;
-  }
+  position: relative;
+  max-width: 100%;
+  margin: auto;
 
   &__inner-slide {
     box-sizing: border-box;
