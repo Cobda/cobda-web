@@ -11,6 +11,10 @@
     box-sizing: border-box;
     padding: 0 rem(10px);
 
+    @include respond-above('sm') {
+      padding: rem(5px 15px);
+    }
+
     @include respond-above('md') {
       padding: rem(10px 25px);
     }
@@ -21,6 +25,28 @@
 
     @include respond-above('xl') {
       padding: rem(15px 55px);
+    }
+  }
+
+  &__dot {
+    border: none;
+    background-color: $athens-gray;
+    padding: rem(2px 10px);
+
+    &:disabled {
+      background-color: #638cff;
+    }
+
+    @include respond-above('sm') {
+      padding: rem(3px 12px);
+    }
+
+    @include respond-above('md') {
+      padding: rem(4px 16px);
+    }
+
+    @include respond-above('xl') {
+      padding: rem(5px 18px);
     }
   }
 
@@ -39,13 +65,11 @@
       display: block;
       padding: rem(20px 10px);
       font-size: rem(12px);
-      opacity: 0.8;
     }
 
     @include respond-above('md') {
       padding: rem(24px 12px);
       font-size: rem(16px);
-      opacity: 1.0;
     }
 
     @include respond-above('lg') {
@@ -69,5 +93,20 @@
   
   .dotGroup {
     text-align: center;
+    margin-top: rem(6px);
+
+    @include respond-above('sm') {
+      margin-top: rem(12px);
+    }
+
+    & > button {
+      &:first-child {
+        border-radius: rem(10px) 0 0 rem(10px);
+      }
+
+      &:last-child {
+        border-radius: 0 rem(10px 10px) 0;
+      }
+    }
   }
 }
