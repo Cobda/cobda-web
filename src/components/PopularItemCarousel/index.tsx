@@ -1,5 +1,12 @@
 import React from 'react'
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup } from 'pure-react-carousel'
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+  DotGroup
+} from 'pure-react-carousel'
 import CarouselItem from './Item'
 
 const PopularItemCarousel = () => {
@@ -9,8 +16,7 @@ const PopularItemCarousel = () => {
       naturalSlideWidth={400}
       naturalSlideHeight={500}
       totalSlides={5}
-      infinite={true}
-    >
+      infinite={true}>
       <Slider>
         <Slide index={0}>
           <CarouselItem caption={"1st slide"} />
