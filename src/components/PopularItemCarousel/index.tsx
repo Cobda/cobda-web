@@ -2,7 +2,7 @@ import React from 'react'
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup } from 'pure-react-carousel'
 import CarouselItem from './Item'
 
-const Carousel = () => {
+const PopularItemCarousel = () => {
   return (
     <CarouselProvider
       visibleSlides={3}
@@ -35,4 +35,4 @@ const Carousel = () => {
   )
 }
 
-export default Carousel
+export default PopularItemCarousel

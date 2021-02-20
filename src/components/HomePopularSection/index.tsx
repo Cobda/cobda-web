@@ -1,5 +1,5 @@
 import React from 'react'
-import Carousel from '../Carousel'
+import PopularItemCarousel from '../PopularItemCarousel'
 import useTranslation from 'next-translate/useTranslation'
 
 const HomePopularSection = () => {
@@ -10,7 +10,7 @@ const HomePopularSection = () => {
       <header className="home-section__header">
         <h1 className="home-section__title">{t('popularSectionHeader')}</h1>
       </header>
-      <Carousel />
+      <PopularItemCarousel />
     </section>
   )
 }
