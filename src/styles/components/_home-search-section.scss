@@ -1,3 +1,115 @@
 .home-search-section {
-  //TODO
+  display: grid;
+  grid-template-columns: rem(570px) rem(870px);
+  grid-template-rows: 1fr rem(133px) 1fr;
+  grid-template-areas:
+    'image title'
+    'image searchbox'
+    'image description';
+
+  height: rem(752px);
+
+  @include respond-above('xl') {
+    // grid-template-columns: 39% 61%;
+    // grid-template-rows: 1fr rem(133px) 1fr;
+    // grid-template-areas:
+    //   'image title'
+    //   'image searchbox'
+    //   'image description';
+  }
+
+  
+
+  & > .home-search-section__image {
+    grid-area: image;
+  }
+
+  & > .home-search-section__title {
+    grid-area: title;
+    width: rem(813px);
+    height: rem(184px);
+    margin-top: rem(43px);
+    margin-right: rem(32px);
+    margin-left: rem(25px);
+  }
+
+  & > .home-search-section__description {
+    grid-area: description;
+    margin-left: rem(76px);
+    margin-right: rem(130px);
+    height: rem(179px);
+    width: rem(664px);
+  }
+
+  &__image {
+    height: rem(692px);
+    opacity: 0.85;
+    background-image: url(../../../public/images/yeezy-home.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  &__title {
+    -webkit-text-stroke: rem(3px) $dark;
+    font-size: rem(75px);
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+  }
+
+  &__description {
+    font-size: rem(26px);
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    color: $dark;
+  }
+
+  &__searchbox {
+    @include flex-center();
+
+    grid-area: searchbox;
+    grid-column: span 2 / -1;
+    position: relative;
+    align-self: center;
+    justify-self: center;
+    height: rem(100px);
+    width: rem(1073px);
+    background-color: $light;
+    border: solid;
+
+    &--button {
+      @include button-darken-effect($picton-blue);
+
+      text-decoration: none;
+      padding: rem(5px 10px);
+      border-radius: rem(3px);
+      background-color: $picton-blue;
+    }
+
+    &--text {
+      color: $light;
+    }
+  }
+
+  &__decorate {
+    width: 656px;
+    height: 339px;
+    opacity: 0.85;
+    background-color: $alabaster;
+    position: absolute;
+    align-self: flex-end;
+    justify-self: center;
+    margin-left: rem(784px);
+    margin-top: rem(259px);
+    z-index: -1;
+  }
 }
