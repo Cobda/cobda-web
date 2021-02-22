@@ -1,55 +1,64 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import LocaleItem from '../LocaleItem'
 
 const NavbarLanguage = () => {
-  const [open, setOpen] = useState<boolean>(false)
+  const [isListOpen, setListOpen] = useState<boolean>(false)
   const [selectedLocale, setSelectedLocale] = useState<String>('th')
   const router = useRouter()
 
-  const handleLocaleClick = (locale: string) => {
+  const handleItemClick = (locale: string) => {
     const { pathname, asPath } = router
     setSelectedLocale(locale)
     router.push(pathname, asPath, { locale })
   }
 
-  const handleArrowClick = () => {
-    setOpen(!open)
+  const handleLocaleClick = () => {
+    setListOpen((prevState) => !prevState)
   }
 
-  const renderNavbarFlag = () => {
-    const flagTH = <Image src="/icons/thailand.svg" height={16} width={16} />
-    const flagEN = (
-      <Image src="/icons/united-kingdom.svg" height={16} width={16} />
+  const renderSelectedFlag = () => {
+    return selectedLocale === 'th' ? (
+      <Image src="/icons/thailand.svg" height={32} width={32} />
+    ) : (
+      <Image src="/icons/united-kingdom.svg" height={32} width={32} />
     )
-    const localeItems = router.locales?.map((locale: string, index: number) => (
-      <li
-        className="dd-list-item"
+  }
+
+  const renderLocaleDropdown = () => {
+    return (
+      <div className="" onClick={handleLocaleClick}>
+        {renderSelectedFlag()}
+        <div className=""></div>
+      </div>
+    )
+  }
+
+  const renderLocaleList = () => {
+    const localeList = router.locales?.map((locale: string, index: number) => (
+      <LocaleItem
         key={index}
-        onClick={() => handleLocaleClick(locale)}>
-        {locale === 'th' ? flagTH : flagEN}
-        <span key={index} className="navbar__link navbar__link--locale">
-          {locale.toLocaleUpperCase()}
-        </span>
-      </li>
+        locale={locale}
+        handleItemClick={() => handleItemClick(locale)}
+      />
     ))
 
-    return localeItems ? (
+    return isListOpen ? <ul className="">{localeList}</ul> : <></>
+  }
+
+  const renderNavbarLocale = () => {
+    return router.locale ? (
       <div className="navbar__flag">
-        {selectedLocale === 'th' ? (
-          <Image src="/icons/thailand.svg" height={32} width={32} />
-        ) : (
-          <Image src="/icons/united-kingdom.svg" height={32} width={32} />
-        )}
-        <button onClick={handleArrowClick}></button>
-        {open && <ul className="dd-list">{localeItems}</ul>}
+        {renderLocaleDropdown()}
+        {renderLocaleList()}
       </div>
     ) : (
       <></>
     )
   }
 
-  return renderNavbarFlag()
+  return renderNavbarLocale()
 }
 
 export default NavbarLanguage
