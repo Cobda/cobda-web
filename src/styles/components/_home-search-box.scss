@@ -1,7 +1,9 @@
-@import '../abstracts/_abstracts-dir';
-
 .home-search-box {
   @include flex-center();
+  width: rem(846px);
+  height: rem(80px);
+  background-color: $light;
+  border: solid;
 
   &__button {
     @include button-darken-effect($picton-blue);
