@@ -1,11 +1,11 @@
 import React from 'react'
+import Link from 'next/link'
 
 const NavbarLogo = () => {
   return (
-    <div className="navbar__logo">
-      {/* TODO: Use img tag for logo instead*/}
-      <span>COBDA</span>
-    </div>
+    <Link href="/">
+      <a className="navbar__logo">COBDA</a>
+    </Link>
   )
 }
 

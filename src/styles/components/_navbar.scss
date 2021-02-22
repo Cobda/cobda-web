@@ -30,13 +30,14 @@
   }
 
   &__logo {
+    text-align: left;
+    text-decoration: none;
+    color: $dark;
+    letter-spacing: rem(4px);
     font-size: rem(24px);
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
-    letter-spacing: rem(4px);
-    text-align: left;
-    color: $dark;
 
     @include respond-above('md') {
       font-size: rem(32px);
