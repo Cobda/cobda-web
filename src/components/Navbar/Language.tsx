@@ -5,7 +5,7 @@ import LocaleItem from '../LocaleItem'
 
 const NavbarLanguage = () => {
   const [isListOpen, setListOpen] = useState<boolean>(false)
-  const [selectedLocale, setSelectedLocale] = useState<String>('th')
+  const [selectedLocale, setSelectedLocale] = useState<String>('en')
   const router = useRouter()
 
   const handleItemClick = (locale: string) => {
@@ -31,22 +31,24 @@ const NavbarLanguage = () => {
     return (
       <div className="dropdown" onClick={handleDropdownToggle}>
         {renderSelectedFlag()}
-        <div className="dropdown__arrow"></div>
+        <span className="dropdown__arrow">▼</span>
       </div>
     )
   }
 
   const renderLocaleList = () => {
-    const localeList = router.locales?.map((currentLocale: string, index: number) => (
-      <LocaleItem
-        key={index}
-        locale={currentLocale}
-        isSelected={selectedLocale === currentLocale}
-        handleItemClick={() => handleItemClick(currentLocale)}
-      />
-    ))
+    const localeList = router.locales?.map(
+      (currentLocale: string, index: number) => (
+        <LocaleItem
+          key={index}
+          locale={currentLocale}
+          isSelected={selectedLocale === currentLocale}
+          handleItemClick={() => handleItemClick(currentLocale)}
+        />
+      )
+    )
 
-    return isListOpen ? <ul className="dropdown__list">{localeList}</ul> : <></>
+    return isListOpen ? <ul className="dropdown__menu">{localeList}</ul> : <></>
   }
 
   const renderNavbarLocale = () => {

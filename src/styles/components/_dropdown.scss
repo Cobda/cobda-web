@@ -1,24 +1,33 @@
+@import '../abstracts/_abstracts-dir';
+
 .dropdown {
+  display: flex;
+  align-items: center;
+
   &__arrow {
+    margin-left: rem(8px);
   }
 
-  &__list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    margin-top: rem(8px);
-    cursor: pointer;
-    
+  &__menu {
     position: absolute;
     right: 0;
+
+    list-style-type: none;
+    margin: 0;
+    padding: rem(2px) 0;
+    margin-top: rem(8px);
+    cursor: pointer;
+    width: max-content;
+    box-shadow: rem(1px 1px 4px) $dropdown-list-shadow;
+    border: rem(1px) $shuttle-gray;
+    border-radius: rem(6px);
+    background-color: $light;
   }
 
-  &__item {
+  &__menu-item {
     display: flex;
     align-items: center;
-    padding: rem(8px);
-
-    background-color: $light;
+    padding: rem(12px);
 
     & > * {
       &:first-child {
@@ -26,11 +35,18 @@
       }
     }
 
+    &:not(:last-child) {
+      border-bottom: 1px solid $porcelain;
+    }
+
+    @include button-darken-effect($silver);
+
     &--selected {
-      background-color: lightgrey;
+      font-weight: 600;
     }
   }
 
+  // TODO: Change font properties
   &__label {
   }
 }

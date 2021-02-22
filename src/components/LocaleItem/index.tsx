@@ -11,9 +11,9 @@ interface Country {
   [name: string]: string
 }
 
-const country: Country = {
-  th: 'Thailand',
+const COUNTRY: Country = {
   en: 'English',
+  th: 'ภาษาไทย',
 }
 
 const LocaleItem = ({ locale, isSelected, handleItemClick }: LocaleItem) => {
@@ -26,11 +26,15 @@ const LocaleItem = ({ locale, isSelected, handleItemClick }: LocaleItem) => {
   }
 
   const renderLocaleItem = () => {
-    const countryName = country[locale]
+    const countryName = COUNTRY[locale]
 
     return (
       <li
-        className={`dropdown__item ${isSelected && 'dropdown__item--selected'}`}
+        className={
+          isSelected
+            ? 'dropdown__menu-item dropdown__menu-item--selected'
+            : 'dropdown__menu-item'
+        }
         onClick={handleItemClick}>
         {renderFlagImage()}
         <span className="dropdown__label">{countryName}</span>
