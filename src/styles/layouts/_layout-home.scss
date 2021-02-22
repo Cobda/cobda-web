@@ -1,7 +1,7 @@
 .layout-home {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: rem(40px) 1fr rem(200px);
+  grid-template-rows: rem(56px) 1fr rem(200px);
   grid-template-areas:
     'header'
     'main'
@@ -14,12 +14,12 @@
   }
 
   @include respond-above('lg') {
-    grid-template-rows: rem(100px) 1fr rem(300px);
+    grid-template-rows: rem(96px) 1fr rem(300px);
   }
 
   @include respond-above('xl') {
     grid-template-columns: 1fr minmax(rem(1104px), rem(1440px)) 1fr;
-    grid-template-rows: rem(140px) 1fr rem(350px);
+    grid-template-rows: rem(120px) 1fr rem(350px);
     column-gap: rem(48px);
     grid-template-areas:
     'header header header'

@@ -11,15 +11,15 @@
   box-sizing: border-box;
 
   @include respond-above('md') {
-    padding: 0 rem(24px);
+    padding: 0 rem(48px);
   }
 
   @include respond-above('lg') {
-    padding: 0 rem(32px);
+    padding: 0 rem(56px);
   }
 
   @include respond-above('xl') {
-    padding: 0 rem(40px);
+    padding: 0 rem(64px);
   }
 
   &__menu-item,
@@ -29,8 +29,22 @@
     }
   }
 
-  // TODO: for future implementation
   &__logo {
+    font-size: rem(24px);
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: rem(4px);
+    text-align: left;
+    color: $dark;
+
+    @include respond-above('md') {
+      font-size: rem(32px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(36px);
+    }
   }
 
   &__menu {
