@@ -1,29 +1,42 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import LocaleItem from '../LocaleItem'
+import LanguageItem from '../LanguageItem'
 
 const NavbarLanguage = () => {
-  const [isListOpen, setListOpen] = useState<boolean>(false)
-  const [selectedLocale, setSelectedLocale] = useState<String>('en')
+  const [isMenuOpen, setMenuOpen] = useState<boolean>(false)
+  const [selectedLocale, setSelectedLocale] = useState<string>('en')
+  const flagRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
+  const { locales } = router
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleDropdownToggle)
+
+    return () => {
+      document.removeEventListener('mousedown', handleDropdownToggle)
+    }
+  }, [])
+
+  // TODO: find event
+  const handleDropdownToggle = (event: any) => {
+    setMenuOpen((prevState) => !prevState)
+  }
 
   const handleItemClick = (locale: string) => {
     const { pathname, asPath } = router
-    handleDropdownToggle()
     setSelectedLocale(locale)
+    setMenuOpen((prevState) => !prevState)
     router.push(pathname, asPath, { locale })
   }
 
-  const handleDropdownToggle = () => {
-    setListOpen((prevState) => !prevState)
-  }
-
   const renderSelectedFlag = () => {
+    const imageSize: number = 32
+
     return selectedLocale === 'th' ? (
-      <Image src="/icons/thailand.svg" height={32} width={32} />
+      <Image src="/icons/thailand.svg" height={imageSize} width={imageSize} />
     ) : (
-      <Image src="/icons/united-kingdom.svg" height={32} width={32} />
+      <Image src="/icons/united-kingdom.svg" height={imageSize} width={imageSize} />
     )
   }
 
@@ -31,15 +44,15 @@ const NavbarLanguage = () => {
     return (
       <div className="dropdown" onClick={handleDropdownToggle}>
         {renderSelectedFlag()}
-        <span className="dropdown__arrow">▼</span>
+        <span className="dropdown__arrow-down" />
       </div>
     )
   }
 
   const renderLocaleList = () => {
-    const localeList = router.locales?.map(
+    const localeList = locales?.map(
       (currentLocale: string, index: number) => (
-        <LocaleItem
+        <LanguageItem
           key={index}
           locale={currentLocale}
           isSelected={selectedLocale === currentLocale}
@@ -48,12 +61,12 @@ const NavbarLanguage = () => {
       )
     )
 
-    return isListOpen ? <ul className="dropdown__menu">{localeList}</ul> : <></>
+    return isMenuOpen ? <ul className="dropdown__menu">{localeList}</ul> : <></>
   }
 
   const renderNavbarLocale = () => {
-    return router.locale ? (
-      <div className="navbar__flag">
+    return locales ? (
+      <div className="navbar__flag" ref={flagRef}>
         {renderLocaleDropdown()}
         {renderLocaleList()}
       </div>

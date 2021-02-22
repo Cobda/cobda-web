@@ -1,14 +1,14 @@
 import React from 'react'
 import Image from 'next/image'
 
-interface LocaleItem {
-  locale: string
-  isSelected: boolean
-  handleItemClick: () => void
+interface LanguageItem {
+  readonly locale: string
+  readonly isSelected: boolean
+  readonly handleItemClick: () => void
 }
 
 interface Country {
-  [name: string]: string
+  readonly [name: string]: string
 }
 
 const COUNTRY: Country = {
@@ -16,12 +16,15 @@ const COUNTRY: Country = {
   th: 'ภาษาไทย',
 }
 
-const LocaleItem = ({ locale, isSelected, handleItemClick }: LocaleItem) => {
+const LanguageItem = ({ locale, isSelected, handleItemClick }: LanguageItem) => {
+  
   const renderFlagImage = () => {
+    const imageSize: number = 16
+    
     return locale === 'th' ? (
-      <Image src="/icons/thailand.svg" height={16} width={16} />
+      <Image src="/icons/thailand.svg" height={imageSize} width={imageSize} />
     ) : (
-      <Image src="/icons/united-kingdom.svg" height={16} width={16} />
+      <Image src="/icons/united-kingdom.svg" height={imageSize} width={imageSize} />
     )
   }
 
@@ -45,4 +48,4 @@ const LocaleItem = ({ locale, isSelected, handleItemClick }: LocaleItem) => {
   return renderLocaleItem()
 }
 
-export default LocaleItem
+export default LanguageItem
