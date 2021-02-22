@@ -6,7 +6,7 @@ interface HomeCategoryItem {
   readonly caption?: string
 }
 
-const HomeCategoryItem = ({imagePath, alternate, caption}: HomeCategoryItem) => {
+const HomeCategoryItem = ({ imagePath, alternate, caption }: HomeCategoryItem) => {
   return (
     <div className="home-category__item">
       <figure className="home-category__image-container">
