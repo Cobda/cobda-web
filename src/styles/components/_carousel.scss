@@ -32,7 +32,7 @@
     padding: rem(2px 10px);
 
     &:disabled {
-      background-color: #638cff;
+      background-color: $cornflower-blue;
     }
 
     @include respond-above('sm') {
