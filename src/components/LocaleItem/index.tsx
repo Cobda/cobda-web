@@ -3,20 +3,20 @@ import Image from 'next/image'
 
 interface LocaleItem {
   locale: string
+  isSelected: boolean
   handleItemClick: () => void
 }
 
-interface CountryName {
+interface Country {
   [name: string]: string
 }
 
-const countryName: CountryName = {
+const country: Country = {
   th: 'Thailand',
   en: 'English',
 }
 
-const LocaleItem = ({ locale, handleItemClick }: LocaleItem) => {
-  
+const LocaleItem = ({ locale, isSelected, handleItemClick }: LocaleItem) => {
   const renderFlagImage = () => {
     return locale === 'th' ? (
       <Image src="/icons/thailand.svg" height={16} width={16} />
@@ -26,10 +26,14 @@ const LocaleItem = ({ locale, handleItemClick }: LocaleItem) => {
   }
 
   const renderLocaleItem = () => {
+    const countryName = country[locale]
+
     return (
-      <li className="" onClick={handleItemClick}>
+      <li
+        className={`dropdown__item ${isSelected && 'dropdown__item--selected'}`}
+        onClick={handleItemClick}>
         {renderFlagImage()}
-        <span className="">{countryName[locale]}</span>
+        <span className="dropdown__label">{countryName}</span>
       </li>
     )
   }

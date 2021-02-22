@@ -10,11 +10,12 @@ const NavbarLanguage = () => {
 
   const handleItemClick = (locale: string) => {
     const { pathname, asPath } = router
+    handleDropdownToggle()
     setSelectedLocale(locale)
     router.push(pathname, asPath, { locale })
   }
 
-  const handleLocaleClick = () => {
+  const handleDropdownToggle = () => {
     setListOpen((prevState) => !prevState)
   }
 
@@ -28,23 +29,24 @@ const NavbarLanguage = () => {
 
   const renderLocaleDropdown = () => {
     return (
-      <div className="" onClick={handleLocaleClick}>
+      <div className="dropdown" onClick={handleDropdownToggle}>
         {renderSelectedFlag()}
-        <div className=""></div>
+        <div className="dropdown__arrow"></div>
       </div>
     )
   }
 
   const renderLocaleList = () => {
-    const localeList = router.locales?.map((locale: string, index: number) => (
+    const localeList = router.locales?.map((currentLocale: string, index: number) => (
       <LocaleItem
         key={index}
-        locale={locale}
-        handleItemClick={() => handleItemClick(locale)}
+        locale={currentLocale}
+        isSelected={selectedLocale === currentLocale}
+        handleItemClick={() => handleItemClick(currentLocale)}
       />
     ))
 
-    return isListOpen ? <ul className="">{localeList}</ul> : <></>
+    return isListOpen ? <ul className="dropdown__list">{localeList}</ul> : <></>
   }
 
   const renderNavbarLocale = () => {
