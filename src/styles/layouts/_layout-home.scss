@@ -19,7 +19,7 @@
 
   @include respond-above('xl') {
     grid-template-columns: 1fr minmax(rem(1104px), rem(1440px)) 1fr;
-    grid-template-rows: map-get($header-height, 'xl') 1fr map-get($footer-height, 'sm');
+    grid-template-rows: map-get($header-height, 'xl') 1fr map-get($footer-height, 'xl');
     column-gap: rem(48px);
     grid-template-areas:
     'header header header'
@@ -29,6 +29,10 @@
 
   & > header {
     grid-area: header;
+
+    display: flex;
+    justify-content: center;
+    background-color: $silver;
   }
 
   & > main {

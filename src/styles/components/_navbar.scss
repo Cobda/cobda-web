@@ -5,9 +5,10 @@
   justify-content: space-between;
   align-items: center;
 
+  width: 100%;
   height: 100%;
+  max-width: rem(1440px);
   padding: 0 rem(16px);
-  background-color: $silver;
   box-sizing: border-box;
 
   @include respond-above('md') {
@@ -36,8 +37,6 @@
     letter-spacing: rem(4px);
     font-size: rem(24px);
     font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
 
     @include respond-above('md') {
       font-size: rem(32px);
