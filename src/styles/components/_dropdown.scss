@@ -5,6 +5,11 @@
   align-items: center;
 
   &__arrow {
+    width: 0;
+    height: 0;
+    border-top: rem(4px) solid $dark;
+    border-right: rem(4px) solid transparent;
+    border-left: rem(4px) solid transparent;
     margin-left: rem(8px);
   }
 
@@ -12,16 +17,15 @@
     position: absolute;
     right: 0;
 
-    list-style-type: none;
-    margin: 0;
-    padding: rem(2px) 0;
-    margin-top: rem(8px);
-    cursor: pointer;
-    width: max-content;
     box-shadow: rem(1px 1px 4px) $dropdown-list-shadow;
+    width: max-content;
+    padding: rem(2px) 0;
     border: rem(1px) $shuttle-gray;
     border-radius: rem(6px);
+    margin-top: rem(8px);
+    
     background-color: $light;
+    cursor: pointer;
   }
 
   &__menu-item {
@@ -29,17 +33,11 @@
     align-items: center;
     padding: rem(12px);
 
-    & > * {
-      &:first-child {
-        margin-right: rem(8px) !important;
-      }
-    }
-
     &:not(:last-child) {
       border-bottom: 1px solid $porcelain;
     }
 
-    @include button-darken-effect($silver);
+    @include button-darken-effect($light);
 
     &--selected {
       font-weight: 600;
@@ -48,5 +46,6 @@
 
   // TODO: Change font properties
   &__label {
+    margin-left: rem(8px);
   }
 }

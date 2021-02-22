@@ -44,7 +44,7 @@ const NavbarLanguage = () => {
     return (
       <div className="dropdown" onClick={handleDropdownToggle}>
         {renderSelectedFlag()}
-        <span className="dropdown__arrow-down" />
+        <span className="dropdown__arrow" />
       </div>
     )
   }
