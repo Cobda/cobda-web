@@ -1,40 +1,83 @@
 @import '../abstracts/_abstracts-dir';
 
 .home-section {
-  background-color: aquamarine;
   padding: rem(16px);
   box-sizing: border-box;
   height: rem(350px);
 
   @include respond-above('md') {
     padding: rem(24px);
-    height: rem(500px);
   }
 
   @include respond-above('lg') {
     padding: rem(32px);
-    height: rem(650px);
   }
 
-  @include respond-above('lg') {
+  @include respond-above('xl') {
     padding: rem(40px);
-    height: rem(800px);
   }
 
   &--dark {
     background-color: blue;
+
+    @include respond-above('md') {
+      height: rem(500px);
+    }
+  
+    @include respond-above('lg') {
+      height: rem(650px);
+    }
+  
+    @include respond-above('xl') {
+      height: rem(800px);
+    }
   }
 
   &--light {
     background-color: blueviolet;
+
+    @include respond-above('md') {
+      height: rem(500px);
+    }
+  
+    @include respond-above('lg') {
+      height: rem(650px);
+    }
+  
+    @include respond-above('xl') {
+      height: rem(800px);
+    }
+  }
+  
+  &--popular-item {
+    height: auto;
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  // TODO: For future implementation
   &__header {
+    margin-bottom: rem(16px);
+
+    @include respond-above('lg') {
+      margin-bottom: rem(24px);
+    }
   }
 
   &__title {
-    margin: 0 0 rem(24px) 0;
+    font-size: rem(16px);
+    margin: 0;
+
+    @include respond-above('md') {
+      font-size: rem(24px);
+    }
+  
+    @include respond-above('lg') {
+      font-size: rem(32px);
+    }
+  
+    @include respond-above('xl') {
+      font-size: rem(40px);
+    }
   }
 
   &__description {
