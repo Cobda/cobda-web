@@ -1,36 +1,25 @@
 @import '../abstracts/_abstracts-dir';
 
 .home-section {
-  padding: rem(16px);
+  padding: rem(16px) 0;
   box-sizing: border-box;
   height: rem(350px);
 
   @include respond-above('md') {
-    padding: rem(24px);
+    padding: rem(24px) 0;
   }
 
   @include respond-above('lg') {
-    padding: rem(32px);
+    padding: rem(32px) 0;
   }
 
   @include respond-above('xl') {
-    padding: rem(40px);
+    padding: rem(40px) 0;
   }
 
   &--dark {
-    background-color: blue;
-
-    @include respond-above('md') {
-      height: rem(500px);
-    }
-  
-    @include respond-above('lg') {
-      height: rem(650px);
-    }
-  
-    @include respond-above('xl') {
-      height: rem(800px);
-    }
+    height: auto;
+    background-color: $alabaster;
   }
 
   &--light {
@@ -51,8 +40,6 @@
   
   &--popular-item {
     height: auto;
-    padding-left: 0;
-    padding-right: 0;
   }
 
   &__header {

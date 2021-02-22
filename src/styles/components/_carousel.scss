@@ -55,8 +55,8 @@
     transform: translateY(-50%);
 
     display: none;
-    background-color: $mine-shaft;
     border: none;
+    background-color: $mine-shaft;
     color: $light;
     
     @include respond-above('sm') {
