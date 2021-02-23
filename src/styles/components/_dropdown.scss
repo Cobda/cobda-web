@@ -35,11 +35,13 @@
       border-bottom: rem(1px) solid $porcelain;
     }
 
-    @include button-darken-effect($light);
+    &:hover {
+      color: $picton-blue;
+    }
 
     &--selected {
       color: $picton-blue;
-      font-weight: 600;
+      font-weight: bold;
     }
   }
 

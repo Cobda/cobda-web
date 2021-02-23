@@ -64,7 +64,7 @@ const NavbarLanguage = () => {
       <LanguageItem
         key={index}
         locale={currentLocale.toLocaleUpperCase()}
-        isSelected={selectedLocale === currentLocale}
+        isSelected={selectedLocale === currentLocale.toLocaleUpperCase()}
         handleItemClick={() => handleItemClick(currentLocale)}
       />
     ))
