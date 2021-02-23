@@ -5,8 +5,6 @@
   align-items: center;
 
   &__arrow {
-    width: 0;
-    height: 0;
     border-top: rem(4px) solid $dark;
     border-right: rem(4px) solid transparent;
     border-left: rem(4px) solid transparent;
@@ -23,8 +21,7 @@
     padding: rem(2px) 0;
     border: rem(1px) $shuttle-gray;
     border-radius: rem(6px);
-    margin-top: rem(8px);
-    
+    margin: rem(16px) 0 0;
     background-color: $light;
     cursor: pointer;
   }
@@ -40,8 +37,8 @@
 
     @include button-darken-effect($light);
 
-    // TODO: Adject this when font is available
     &--selected {
+      color: $picton-blue;
       font-weight: 600;
     }
   }
