@@ -34,12 +34,12 @@ const NavbarAccount = ({ isUserSignedIn }: NavbarAccount) => {
   const renderAuthenticationLink = () => (
     <>
       <a
-        className="navbar__link navbar__link--sign-in"
+        className="navbar__link navbar__link--secondary"
         onClick={handleSignInClick}>
         {t('signIn')}
       </a>
       <a
-        className="navbar__link navbar__link--sign-up"
+        className="navbar__link navbar__link--primary"
         onClick={handleSignUpClick}>
         {t('signUp')}
       </a>
