@@ -5,10 +5,10 @@
   justify-content: space-between;
   align-items: center;
 
+  box-sizing: border-box;
   width: 100%;
   max-width: $navbar-max-width;
   padding: 0 rem(16px);
-  box-sizing: border-box;
 
   @include respond-above('md') {
     padding: 0 rem(24px);
@@ -76,17 +76,16 @@
 
     &--primary {
       display: none;
-
       border-radius: rem(26px);
       border: solid rem(3px) $light;
       box-shadow: 0 rem(3px 6px) $signup-button-shadow;
 
-      color: $light;
       background-image: linear-gradient(
         111deg,
         $cornflower-blue 1%,
         $royal-blue 101%
       );
+      color: $light;
 
       @include button-darken-effect($cornflower-blue);
 
@@ -100,7 +99,6 @@
     &--avatar {
       width: rem(48px);
       height: rem(48px);
-
       border-radius: 50%;
     }
 
