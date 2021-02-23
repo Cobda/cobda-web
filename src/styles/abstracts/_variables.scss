@@ -31,9 +31,9 @@ $zindex-popover: 1060 !default;
 $zindex-tooltip: 1070 !default;
 
 // Shadows
-$popular-item-shadow: rgba(68, 68, 68, 0.03);
-$signup-button-shadow: rgba(0, 0, 0, 0.16);
-$dropdown-list-shadow : rgba(0, 0, 0, 0.2);
+$popular-item-shadow: hsla(0, 0%, 27%, 0.03);
+$signup-button-shadow: hsla(0, 0%, 0%, 0.16);
+$dropdown-list-shadow: hsla(0, 0%, 0%, 0.2);
 
 // Grid components height
 $footer-height: (
