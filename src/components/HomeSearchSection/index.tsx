@@ -11,14 +11,16 @@ const HomeSearchSection = () => {
   }
 
   return (
-    <section className="home-section home-section--background-image home-section--search">
-      <div className="home-search">
-        <h1 className="home-search__title">COBDA, PRESENTED BY BANK.</h1>
-        <p className="home-search__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mi
-          magna, placerat eu semper at, pretium sit amet libero. Integer
-          ultrices tristique quam.
-        </p>
+    <section className="home-section home-section--background-image">
+      <div className="home-search home-search--background">
+        <div className="home-search__content">
+          <h1 className="home-search__title">COBDA, PRESENTED BY BANK.</h1>
+          <p className="home-search__description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mi
+            magna, placerat eu semper at, pretium sit amet libero. Integer
+            ultrices tristique quam.
+          </p>
+        </div>
       </div>
       {/* <div className="home-search-box">
         <button className="home-search-box__button" onClick={handleSearchClick}>

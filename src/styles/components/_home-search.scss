@@ -1,17 +1,41 @@
+@import '../abstracts/_abstracts-dir';
+
 .home-search {
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  max-width: 47.5%;
+  justify-content: flex-end;
+  height: rem(250px);
 
   @include respond-above('sm') {
-    margin-bottom: 0;
-    max-width: 50%;
+    height: rem(400px);
   }
 
+  @include respond-above('md') {
+    height: rem(500px);
+  }
+  
   @include respond-above('lg') {
-    justify-content: space-between;
-    max-width: 55%;
+    height: rem(600px);
+  }
+
+  @include respond-above('xl') {
+    height: rem(700px);
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    max-width: 47.5%;
+  
+    @include respond-above('sm') {
+      margin-bottom: 0;
+      max-width: 50%;
+    }
+  
+    @include respond-above('lg') {
+      justify-content: space-between;
+      max-width: 55%;
+    }
   }
 
   &__title {
