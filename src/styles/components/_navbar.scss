@@ -25,7 +25,11 @@
   &__menu-item,
   &__link {
     &:not(:last-child) {
-      margin-right: rem(32px);
+      margin-right: rem(16px);
+      
+      @include respond-above('lg') {
+        margin-right: rem(32px);
+      }
     }
   }
 
@@ -63,7 +67,6 @@
     &--secondary {
       display: none;
       color: $dark;
-
 
       @include respond-above('md') {
         display: block;
@@ -120,7 +123,7 @@
   &__account {
     display: flex;
     align-items: center;
-    
+
     font-size: rem(16px);
     font-weight: 600;
 
