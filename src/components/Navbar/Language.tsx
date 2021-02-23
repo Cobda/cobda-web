@@ -46,7 +46,7 @@ const NavbarLanguage = () => {
     return selectedLocale === LocaleCode.Thai ? (
       <Image src="/icons/thailand.svg" height={imageSize} width={imageSize} />
     ) : (
-      <Image src="/icons/united-kingdom.svg" height={imageSize} width={imageSize} />
+      <Image src="/icons/united-states.svg" height={imageSize} width={imageSize} />
     )
   }
 
