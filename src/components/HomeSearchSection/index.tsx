@@ -11,18 +11,20 @@ const HomeSearchSection = () => {
   }
 
   return (
-    <section className="home-section">
-      <header className="home-section__header">
-        <h2 className="home-section__title">Sample 1</h2>
-        <p className="home-section__description">
-          This is a sample description
+    <section className="home-section home-section--background-image home-section--search">
+      <div className="home-search">
+        <h1 className="home-search__title">COBDA, PRESENTED BY BANK.</h1>
+        <p className="home-search__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mi
+          magna, placerat eu semper at, pretium sit amet libero. Integer
+          ultrices tristique quam.
         </p>
-      </header>
-      <div className="home-search-box">
-        <button className="home-search-box__button" onClick={handleSearchClick}>
-          <span className="home-search-box__text">{t('search')}</span>
-        </button>
       </div>
+      {/* <div className="home-search-box">
+        <button className="home-search-box__button" onClick={handleSearchClick}>
+          <span className="home-search-box__text">{t("search")}</span>
+        </button>
+      </div> */}
     </section>
   )
 }

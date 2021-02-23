@@ -3,7 +3,6 @@
 .home-section {
   padding: rem(16px) 0;
   box-sizing: border-box;
-  height: rem(350px);
 
   @include respond-above('md') {
     padding: rem(24px) 0;
@@ -15,6 +14,37 @@
 
   @include respond-above('xl') {
     padding: rem(40px) 0;
+  }
+
+  &--search {
+    display: flex;
+    height: rem(250px);
+    justify-content: flex-end;
+
+    @include respond-above('sm') {
+      height: rem(400px);
+    }
+
+    @include respond-above('md') {
+      height: rem(500px);
+    }
+    
+    @include respond-above('lg') {
+      height: rem(600px);
+    }
+
+    @include respond-above('xl') {
+      height: rem(700px);
+    }
+  }
+
+  &--background-image {
+    background: {
+      image: url('../../../public/images/bank-jojo.jpg');
+      repeat: no-repeat;
+      size: contain;
+      position: left;
+    };
   }
 
   &--dark {
