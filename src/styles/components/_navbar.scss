@@ -101,10 +101,6 @@
       height: rem(48px);
       border-radius: 50%;
     }
-
-    &--locale {
-      // TODO: for future implementation
-    }
   }
 
   &__tool {
@@ -129,7 +125,13 @@
   }
 
   &__flag {
+    // TODO: Remove display: none when there is a hamburger menu
+    display: none;
     position: relative;
     cursor: pointer;
+
+    @include respond-above('sm') {
+      display: block;
+    }
   }
 }

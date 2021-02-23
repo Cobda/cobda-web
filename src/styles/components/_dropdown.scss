@@ -15,6 +15,7 @@
 
   &__menu {
     position: absolute;
+    z-index: $zindex-dropdown;
     right: 0;
 
     box-shadow: rem(1px 1px 4px) $dropdown-list-shadow;
@@ -34,11 +35,12 @@
     padding: rem(12px);
 
     &:not(:last-child) {
-      border-bottom: 1px solid $porcelain;
+      border-bottom: rem(1px) solid $porcelain;
     }
 
     @include button-darken-effect($light);
 
+    // TODO: Adject this when font is available
     &--selected {
       font-weight: 600;
     }
