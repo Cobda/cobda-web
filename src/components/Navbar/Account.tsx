@@ -1,5 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
 
 interface NavbarAccount {
   readonly isUserSignedIn?: boolean
@@ -7,6 +8,7 @@ interface NavbarAccount {
 
 const NavbarAccount = ({ isUserSignedIn }: NavbarAccount) => {
   const router = useRouter()
+  const { t } = useTranslation('common')
 
   const handleSignInClick = () => {
     router.push('/sign-in')
@@ -32,14 +34,14 @@ const NavbarAccount = ({ isUserSignedIn }: NavbarAccount) => {
   const renderAuthenticationLink = () => (
     <>
       <a
-        className="navbar__link navbar__link--sign-in"
+        className="navbar__link navbar__link--secondary"
         onClick={handleSignInClick}>
-        Sign In
+        {t('signIn')}
       </a>
       <a
-        className="navbar__link navbar__link--sign-up"
+        className="navbar__link navbar__link--primary"
         onClick={handleSignUpClick}>
-        Sign Up
+        {t('signUp')}
       </a>
     </>
   )

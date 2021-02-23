@@ -10,6 +10,7 @@ $mine-shaft: #262626;
 $athens-gray: #edf0f4;
 $cornflower-blue: #638cff;
 $alabaster: #f7f7f7;
+$royal-blue: #5358d8;
 
 // Map of breakpoints
 $breakpoints: (
@@ -30,6 +31,7 @@ $zindex-tooltip: 1070 !default;
 
 // Shadows
 $popular-item-shadow: rgba(68, 68, 68, 0.03);
+$signup-button-shadow: rgba(0, 0, 0, 0.16);
 
 // Grid components height
 $footer-height: (
@@ -45,3 +47,6 @@ $header-height: (
   lg: rem(96px),
   xl: rem(120px),
 );
+
+// Components width
+$navbar-max-width: rem(1536px);

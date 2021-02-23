@@ -1,3 +1,4 @@
 {
-  "greeting": "Hello"
+  "signIn": "Sign in",
+  "signUp": "Sign up"
 }

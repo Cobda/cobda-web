@@ -5,10 +5,10 @@
   justify-content: space-between;
   align-items: center;
 
-  width: 100%;
-  max-width: rem(1536px);
-  padding: 0 rem(16px);
   box-sizing: border-box;
+  width: 100%;
+  max-width: $navbar-max-width;
+  padding: 0 rem(16px);
 
   @include respond-above('md') {
     padding: 0 rem(24px);
@@ -26,6 +26,10 @@
   &__link {
     &:not(:last-child) {
       margin-right: rem(16px);
+      
+      @include respond-above('lg') {
+        margin-right: rem(32px);
+      }
     }
   }
 
@@ -60,12 +64,36 @@
   &__link {
     text-decoration: none;
 
-    &--sign-in {
-      // TODO: for future implementation
+    &--secondary {
+      display: none;
+      color: $dark;
+
+      @include respond-above('md') {
+        display: block;
+        font-size: rem(16px);
+      }
     }
 
-    &--sign-up {
-      // TODO: for future implementation
+    &--primary {
+      display: none;
+      border-radius: rem(26px);
+      border: solid rem(3px) $light;
+      box-shadow: 0 rem(3px 6px) $signup-button-shadow;
+
+      background-image: linear-gradient(
+        111deg,
+        $cornflower-blue 1%,
+        $royal-blue 101%
+      );
+      color: $light;
+
+      @include button-darken-effect($cornflower-blue);
+
+      @include respond-above('md') {
+        display: block;
+        padding: rem(6px 15px);
+        font-size: rem(16px);
+      }
     }
 
     &--avatar {
@@ -81,7 +109,7 @@
 
   &__tool {
     display: flex;
-    // TODO: for future implementation
+    align-items: center;
   }
 
   &__tool > div {
@@ -90,8 +118,14 @@
     }
   }
 
-  // TODO: for future implementation
   &__account {
+    display: flex;
+    align-items: center;
+
+    font-size: rem(16px);
+    font-weight: 600;
+
+    cursor: pointer;
   }
 
   // TODO: for future implementation
