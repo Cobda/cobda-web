@@ -20,7 +20,7 @@ const LanguageItem = ({ locale, isSelected, handleItemClick }: LanguageItem) => 
   
   const renderFlagImage = () => {
     const imageSize: number = 16
-    
+
     return locale === 'th' ? (
       <Image src="/icons/thailand.svg" height={imageSize} width={imageSize} />
     ) : (
@@ -29,16 +29,13 @@ const LanguageItem = ({ locale, isSelected, handleItemClick }: LanguageItem) => 
   }
 
   const renderLocaleItem = () => {
-    const countryName = COUNTRY[locale]
-
+    const countryName: string = COUNTRY[locale]
+    const itemClassName: string = isSelected
+      ? 'dropdown__menu-item dropdown__menu-item--selected'
+      : 'dropdown__menu-item'
+      
     return (
-      <li
-        className={
-          isSelected
-            ? 'dropdown__menu-item dropdown__menu-item--selected'
-            : 'dropdown__menu-item'
-        }
-        onClick={handleItemClick}>
+      <li className={itemClassName} onClick={handleItemClick}>
         {renderFlagImage()}
         <span className="dropdown__label">{countryName}</span>
       </li>

@@ -11,26 +11,33 @@ const NavbarLanguage = () => {
   const { locales } = router
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleDropdownToggle)
+    document.addEventListener('mousedown', handleMouseClick)
 
     return () => {
-      document.removeEventListener('mousedown', handleDropdownToggle)
+      document.removeEventListener('mousedown', handleMouseClick)
     }
   }, [])
 
-  // TODO: find event
-  const handleDropdownToggle = (event: any) => {
+  const handleDropdownToggle = () => {
     setMenuOpen((prevState) => !prevState)
+  }
+
+  const handleMouseClick = (event: MouseEvent) => {
+    const isClickedOutside: boolean = !flagRef.current?.contains(event.target as Node)
+
+    if (isClickedOutside) {
+      setMenuOpen(false)
+    }
   }
 
   const handleItemClick = (locale: string) => {
     const { pathname, asPath } = router
+    handleDropdownToggle()
     setSelectedLocale(locale)
-    setMenuOpen((prevState) => !prevState)
     router.push(pathname, asPath, { locale })
   }
 
-  const renderSelectedFlag = () => {
+  const renderSelectedFlagImage = () => {
     const imageSize: number = 32
 
     return selectedLocale === 'th' ? (
@@ -43,32 +50,30 @@ const NavbarLanguage = () => {
   const renderLocaleDropdown = () => {
     return (
       <div className="dropdown" onClick={handleDropdownToggle}>
-        {renderSelectedFlag()}
-        <span className="dropdown__arrow" />
+        {renderSelectedFlagImage()}
+        <div className="dropdown__arrow" />
       </div>
     )
   }
 
-  const renderLocaleList = () => {
-    const localeList = locales?.map(
-      (currentLocale: string, index: number) => (
-        <LanguageItem
-          key={index}
-          locale={currentLocale}
-          isSelected={selectedLocale === currentLocale}
-          handleItemClick={() => handleItemClick(currentLocale)}
-        />
-      )
-    )
+  const renderLocaleMenu = () => {
+    const localeMenu = locales?.map((currentLocale: string, index: number) => (
+      <LanguageItem
+        key={index}
+        locale={currentLocale}
+        isSelected={selectedLocale === currentLocale}
+        handleItemClick={() => handleItemClick(currentLocale)}
+      />
+    ))
 
-    return isMenuOpen ? <ul className="dropdown__menu">{localeList}</ul> : <></>
+    return isMenuOpen ? <ul className="dropdown__menu">{localeMenu}</ul> : <></>
   }
 
   const renderNavbarLocale = () => {
     return locales ? (
       <div className="navbar__flag" ref={flagRef}>
         {renderLocaleDropdown()}
-        {renderLocaleList()}
+        {renderLocaleMenu()}
       </div>
     ) : (
       <></>
