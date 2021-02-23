@@ -3,9 +3,14 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import LanguageItem from '../LanguageItem'
 
+export enum LocaleCode {
+  English = 'EN',
+  Thai = 'TH'
+}
+
 const NavbarLanguage = () => {
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false)
-  const [selectedLocale, setSelectedLocale] = useState<string>('en')
+  const [selectedLocale, setSelectedLocale] = useState<string>(LocaleCode.English)
   const flagRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
   const { locales } = router
@@ -18,14 +23,12 @@ const NavbarLanguage = () => {
     }
   }, [])
 
-  const handleDropdownToggle = () => {
-    setMenuOpen((prevState) => !prevState)
-  }
+  const handleDropdownToggle = () => setMenuOpen((prevState) => !prevState)
 
   const handleMouseClick = (event: MouseEvent) => {
-    const isClickedOutside: boolean = !flagRef.current?.contains(event.target as Node)
+    const isFocused: boolean | undefined = flagRef.current?.contains(event.target as Node)
 
-    if (isClickedOutside) {
+    if (!isFocused) {
       setMenuOpen(false)
     }
   }
@@ -33,14 +36,14 @@ const NavbarLanguage = () => {
   const handleItemClick = (locale: string) => {
     const { pathname, asPath } = router
     handleDropdownToggle()
-    setSelectedLocale(locale)
+    setSelectedLocale(locale.toLocaleUpperCase())
     router.push(pathname, asPath, { locale })
   }
 
   const renderSelectedFlagImage = () => {
     const imageSize: number = 32
 
-    return selectedLocale === 'th' ? (
+    return selectedLocale === LocaleCode.Thai ? (
       <Image src="/icons/thailand.svg" height={imageSize} width={imageSize} />
     ) : (
       <Image src="/icons/united-kingdom.svg" height={imageSize} width={imageSize} />
@@ -60,7 +63,7 @@ const NavbarLanguage = () => {
     const localeMenu = locales?.map((currentLocale: string, index: number) => (
       <LanguageItem
         key={index}
-        locale={currentLocale}
+        locale={currentLocale.toLocaleUpperCase()}
         isSelected={selectedLocale === currentLocale}
         handleItemClick={() => handleItemClick(currentLocale)}
       />
