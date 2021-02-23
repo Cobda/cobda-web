@@ -16,10 +16,10 @@
     z-index: $zindex-dropdown;
     right: 0;
 
-    box-shadow: rem(1px 1px 4px) $dropdown-list-shadow;
+    box-shadow: 1px 1px rem(4px) $dropdown-list-shadow;
     width: max-content;
     padding: rem(2px) 0;
-    border: rem(1px) $shuttle-gray;
+    border: 1px $shuttle-gray;
     border-radius: rem(6px);
     margin: rem(16px) 0 0;
     background-color: $light;
@@ -32,7 +32,7 @@
     padding: rem(12px);
 
     &:not(:last-child) {
-      border-bottom: rem(1px) solid $porcelain;
+      border-bottom: 1px solid $porcelain;
     }
 
     &:hover {
