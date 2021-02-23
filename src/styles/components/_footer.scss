@@ -1,14 +1,19 @@
 @import '../abstracts/_abstracts-dir';
 
 .footer {
-  height: 100%;
-  padding: rem(16px);
-  background-color: $secondary;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   box-sizing: border-box;
+  width: 100%;
+  height: fit-content;
+  max-width: $navbar-max-width;
+  padding: rem(16px);
 
-  @include flex-center();
+  background-color: $light;
 
   @include respond-above('md') {
+    flex-direction: row;
     padding: rem(24px);
   }
 
@@ -17,16 +22,50 @@
   }
 
   @include respond-above('xl') {
-    padding: rem(40px);
+    padding: rem(48px);
   }
 
-  &__item {
-    font-size: rem(16px);
+  &__logo-container {
+    & > * {
+      &:last-child {
+        margin-top: rem(32px);
+      }
+    }
+  }
+
+  &__list {
+    list-style-type: none;
+    padding: 0;
+    margin: rem(8px) 0 0;
+  }
+
+  &__list-item {
+    font-size: rem(12px);
     font-weight: 500;
     line-height: normal;
+
+    color: $mine-shaft;
+
+    &:not(:last-child) {
+      margin-bottom: rem(16px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(16px);
+    }
+  }
+
+  &__list-title {
+    margin: 0;
   }
 
   &__link {
-    color: $dark;
+    text-decoration: none;
+    color: $mine-shaft;
+
+    &--danger {
+      color: red;
+      font-weight: 600;
+    }
   }
 }
