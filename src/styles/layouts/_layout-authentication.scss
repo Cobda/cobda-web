@@ -1,7 +1,7 @@
 .layout-authentication {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: rem(40px) 1fr rem(200px);
+  grid-template-rows: map-get($header-height, 'sm') 1fr map-get($footer-height, 'sm');
   grid-template-areas:
     'header'
     'main'
@@ -10,19 +10,23 @@
   height: 100vh;
 
   @include respond-above('md') {
-    grid-template-rows: rem(80px) 1fr rem(250px);
+    grid-template-rows: map-get($header-height, 'md') 1fr map-get($footer-height, 'md');
   }
 
   @include respond-above('lg') {
-    grid-template-rows: rem(100px) 1fr rem(300px);
+    grid-template-rows: map-get($header-height, 'lg') 1fr map-get($footer-height, 'lg');
   }
 
   @include respond-above('xl') {
-    grid-template-rows: rem(140px) 1fr rem(350px);
+    grid-template-rows: map-get($header-height, 'xl') 1fr map-get($footer-height, 'xl');
   }
 
   & > header {
     grid-area: header;
+
+    display: flex;
+    justify-content: center;
+    background-color: $silver;
   }
 
   & > main {

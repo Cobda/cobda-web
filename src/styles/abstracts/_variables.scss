@@ -30,3 +30,18 @@ $zindex-tooltip: 1070 !default;
 
 // Shadows
 $popular-item-shadow: rgba(68, 68, 68, 0.03);
+
+// Grid components height
+$footer-height: (
+  sm: rem(200px),
+  md: rem(200px),
+  lg: rem(300px),
+  xl: rem(350px),
+);
+
+$header-height: (
+  sm: rem(56px),
+  md: rem(80px),
+  lg: rem(96px),
+  xl: rem(120px),
+);

@@ -5,9 +5,9 @@
   justify-content: space-between;
   align-items: center;
 
-  height: 100%;
+  width: 100%;
+  max-width: rem(1536px);
   padding: 0 rem(16px);
-  background-color: $silver;
   box-sizing: border-box;
 
   @include respond-above('md') {
@@ -19,7 +19,7 @@
   }
 
   @include respond-above('xl') {
-    padding: 0 rem(40px);
+    padding: 0 rem(48px);
   }
 
   &__menu-item,
@@ -29,8 +29,21 @@
     }
   }
 
-  // TODO: for future implementation
   &__logo {
+    text-align: left;
+    text-decoration: none;
+    color: $dark;
+    letter-spacing: rem(4px);
+    font-size: rem(24px);
+    font-weight: bold;
+
+    @include respond-above('md') {
+      font-size: rem(32px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(36px);
+    }
   }
 
   &__menu {
