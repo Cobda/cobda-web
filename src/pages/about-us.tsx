@@ -11,15 +11,15 @@ const AboutUs = () => (
     </header>
     <main>
       <div className="about-us-introduction-section">
-        <h2 className="about-us-introduction-section__title-first">
+        <h2 className="about-us-introduction-section__title-short">
           WE ARE COBDA,
         </h2>
-        <h2 className="about-us-introduction-section__title-second">
+        <h2 className="about-us-introduction-section__title-long">
           THE PLACE WHERE BUYER AND SELLER MEETS.
         </h2>
-        <div className="about-us-introduction-section__decoration-box-first"></div>
+        <div className="about-us-introduction-section__decoration-box-long"></div>
         <div className="about-us-introduction-section__image"></div>
-        <div className="about-us-introduction-section__decoration-box-second"></div>
+        <div className="about-us-introduction-section__decoration-box-short"></div>
         <p className="about-us-introduction-section__description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis
           risus mi. Ut placerat quam lectus. Curabitur dictum velit non lacus
