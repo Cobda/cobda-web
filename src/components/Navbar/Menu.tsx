@@ -6,17 +6,17 @@ const NavbarMenu = () => {
     <ul className="navbar__menu">
       <li className="navbar__menu-item">
         <Link href="/">
-          <a className="navbar__link">Home</a>
+          <a className="navbar__link navbar__link--item">Home</a>
         </Link>
       </li>
       <li className="navbar__menu-item">
         <Link href="/products">
-          <a className="navbar__link">Products</a>
+          <a className="navbar__link navbar__link--item">Products</a>
         </Link>
       </li>
       <li className="navbar__menu-item">
         <Link href="/about-us">
-          <a className="navbar__link">About Us</a>
+          <a className="navbar__link navbar__link--item">About Us</a>
         </Link>
       </li>
     </ul>

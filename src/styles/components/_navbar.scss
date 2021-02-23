@@ -60,13 +60,39 @@
     margin: 0;
   }
 
-  // TODO: for future implementation
   &__menu-item {
+    font-size: 16px;
+    font-weight: 600;
+
+    &::after {
+      content: '';
+      display: block;
+      margin: auto;
+      width: 0;
+      height: rem(4px);
+      transition: width 0.3s;
+      background-color: $havelock-blue;
+    }
+
+    &:hover::after {
+      width: 64%;
+    }
   }
 
   &__link {
     text-decoration: none;
+    color: $dark;
+
     cursor: pointer;
+
+    &--item {
+      display: none;
+      padding-bottom: rem(4px);
+
+      @include respond-above('md') {
+        display: block;
+      }
+    }
 
     &--secondary {
       display: none;
