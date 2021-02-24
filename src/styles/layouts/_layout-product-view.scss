@@ -45,5 +45,9 @@
 
   & > footer {
     grid-area: footer;
+
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 rem(20px) 0 box-shadow-opacity(0.16);
   }
 }

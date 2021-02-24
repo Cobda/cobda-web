@@ -14,3 +14,7 @@
   }
   @return $remValues;
 }
+
+@function box-shadow-opacity($opacity) {
+  @return hsla(0, 0%, 0%, $opacity);
+}

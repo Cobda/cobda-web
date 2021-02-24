@@ -16,7 +16,7 @@
     z-index: $zindex-dropdown;
     right: 0;
 
-    box-shadow: 1px 1px rem(4px) $dropdown-list-shadow;
+    box-shadow: 1px 1px rem(4px) box-shadow-opacity(0.2);
     width: max-content;
     padding: rem(2px) 0;
     border: 1px $shuttle-gray;
