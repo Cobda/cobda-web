@@ -4,8 +4,11 @@ import Image from 'next/image'
 import Logo from '../Navbar/Logo'
 import FooterItem from './item'
 import LanguageDropdown from '../LanguageDropdown'
+import useTranslation from 'next-translate/useTranslation'
 
 const Footer = () => {
+  const { t } = useTranslation('common')
+
   const renderLogoColumn = () => (
     <div className="footer__logo-container">
       <Logo />
@@ -15,24 +18,24 @@ const Footer = () => {
 
   const renderHelpColumn = () => (
     <ul className="footer__list">
-      <FooterItem isTitleText label="Help Center" />
+      <FooterItem isTitleText label={t('helpCenter')} />
       {/* TODO: Add href when path is available */}
-      <FooterItem href="" label="Terms of Service" />
-      <FooterItem href="" label="Privacy Policy" />
-      <FooterItem isEmergencyText href="" label="Emergency Line" />
+      <FooterItem href="" label={t('termsOfService')} />
+      <FooterItem href="" label={t('privacyPolicy')} />
+      <FooterItem isEmergencyText href="" label={t('emergencyLine')} />
     </ul>
   )
 
   const renderAboutColumn = () => (
     <ul className="footer__list">
-      <FooterItem isTitleText label="About" />
-      <FooterItem href="/about-us" label="About Us" />
+      <FooterItem isTitleText label={t('about')} />
+      <FooterItem href="/about-us" label={t('aboutUs')} />
     </ul>
   )
 
   const renderContactColumn = () => (
     <ul className="footer__list">
-      <FooterItem isTitleText label="Contact Us" />
+      <FooterItem isTitleText label={t('contactUs')} />
       <div className="footer__email-container">
         <Image src="/icons/email.svg" height={17} width={21} />
         {/* TODO: Redirect when path is available */}
