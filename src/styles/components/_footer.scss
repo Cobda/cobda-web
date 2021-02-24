@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
   box-sizing: border-box;
   width: 100%;
   height: fit-content;
@@ -14,6 +15,7 @@
 
   @include respond-above('md') {
     flex-direction: row;
+    align-items: stretch;
     height: 100%;
     padding: rem(24px) 0 0;
   }
@@ -27,9 +29,20 @@
   }
 
   &__logo-container {
+    width: min-content;
+
     & > * {
       &:last-child {
-        margin-top: rem(32px);
+        display: none;
+
+        @include respond-above('md') {
+          display: block;
+          margin-top: rem(16px);
+        }
+
+        @include respond-above('lg') {
+          margin-top: rem(32px);
+        }
       }
     }
   }
@@ -46,20 +59,22 @@
   }
 
   &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 0;
     margin: rem(32px) 0 0;
     list-style-type: none;
 
     @include respond-above('md') {
       margin: rem(8px) 0 0;
+      align-items: flex-start;
     }
   }
 
   &__list-item {
     color: $cat-black;
     font-size: rem(12px);
-    font-weight: 500;
-    line-height: normal;
 
     &:not(:last-child) {
       margin-bottom: rem(16px);

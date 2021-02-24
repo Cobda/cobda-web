@@ -3,6 +3,7 @@
 .dropdown-container {
   position: relative;
   cursor: pointer;
+  float: right;
 
   .dropdown {
     display: flex;
@@ -32,7 +33,7 @@
       padding: rem(2px) 0;
       border: 1px $shuttle-gray;
       border-radius: rem(6px);
-      margin: rem(16px) 0 0;
+      margin: rem(12px) 0 0;
       background-color: $light;
       cursor: pointer;
     }
@@ -59,6 +60,18 @@
     // TODO: Change font properties
     &__label {
       margin-left: rem(8px);
+
+      &--bold {
+        font-weight: bold;
+      }
+
+      @include respond-above('md') {
+        font-size: rem(12px);
+      }
+
+      @include respond-above('lg') {
+        font-size: rem(16px);
+      }
     }
   }
 }

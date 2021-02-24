@@ -65,7 +65,7 @@ const LanguageDropdown = ({ isHeading }: LanguageDropdown) => {
   const renderSelectedLocale = () => (
     <>
       <Image src="/icons/world.svg" height={24} width={24} />
-      <span className="dropdown__label">
+      <span className="dropdown__label dropdown__label--bold">
         {selectedLocale.toLocaleUpperCase()}
       </span>
     </>

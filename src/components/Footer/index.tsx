@@ -36,7 +36,7 @@ const Footer = () => {
       <div className="footer__email-container">
         <Image src="/icons/email.svg" height={17} width={21} />
         {/* TODO: Redirect when path is available */}
-        <FooterItem href="" label="support@cobda.com" />
+        <FooterItem href="" label="cobda.dev@gmail.com" />
       </div>
     </ul>
   )
