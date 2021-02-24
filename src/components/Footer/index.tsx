@@ -14,26 +14,24 @@ const Footer = () => {
 
   const renderHelpColumn = () => (
     <ul className="footer__list">
-      <FooterItem isTitleText href="" label="Help Center" />
-      {/* TODO: Redirect when path is available */}
+      <FooterItem isTitleText label="Help Center" />
+      {/* TODO: Add href when path is available */}
       <FooterItem href="" label="Terms of Service" />
-      {/* TODO: Redirect when path is available */}
       <FooterItem href="" label="Privacy Policy" />
-      {/* TODO: Redirect when path is available */}
       <FooterItem isEmergencyText href="" label="Emergency Line" />
     </ul>
   )
 
   const renderAboutColumn = () => (
     <ul className="footer__list">
-      <FooterItem isTitleText href="/about-us" label="About" />
+      <FooterItem isTitleText label="About" />
       <FooterItem href="/about-us" label="About Us" />
     </ul>
   )
 
   const renderContactColumn = () => (
     <ul className="footer__list">
-      <FooterItem isTitleText href="" label="Contact Us" />
+      <FooterItem isTitleText label="Contact Us" />
       {/* Email Icon */}
       {/* TODO: Redirect when path is available */}
       <FooterItem href="" label="support@cobda.com" />

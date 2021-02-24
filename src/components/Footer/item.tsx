@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 interface FooterItem {
   readonly label: string
-  readonly href: string
+  readonly href?: string
   readonly isTitleText?: boolean
   readonly isEmergencyText?: boolean
 }
@@ -14,7 +14,7 @@ const FooterItem = ({ label, href, isTitleText, isEmergencyText }: FooterItem) =
     ? 'footer__link footer__link--danger'
     : 'footer__link'
 
-  const renderItem = () =>
+  const renderListItem = () =>
     isTitleText ? (
       <h3 className="footer__list-title">{label}</h3>
     ) : (
@@ -25,7 +25,7 @@ const FooterItem = ({ label, href, isTitleText, isEmergencyText }: FooterItem) =
 
   return (
     <li className="footer__list-item">
-      {renderItem()}
+      {renderListItem()}
     </li>
   )
 }
