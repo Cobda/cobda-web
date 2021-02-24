@@ -3,7 +3,6 @@
 .home-section {
   padding: rem(16px) 0;
   box-sizing: border-box;
-  height: rem(350px);
 
   @include respond-above('md') {
     padding: rem(24px) 0;
@@ -15,31 +14,6 @@
 
   @include respond-above('xl') {
     padding: rem(40px) 0;
-  }
-
-  &--dark {
-    height: auto;
-    background-color: $alabaster;
-  }
-
-  &--light {
-    background-color: blueviolet;
-
-    @include respond-above('md') {
-      height: rem(500px);
-    }
-  
-    @include respond-above('lg') {
-      height: rem(650px);
-    }
-  
-    @include respond-above('xl') {
-      height: rem(800px);
-    }
-  }
-  
-  &--popular-item {
-    height: auto;
   }
 
   &__header {
@@ -69,5 +43,40 @@
 
   &__description {
     margin: 0;
+  }
+
+  &--background-image {
+    background: {
+      image: url('/images/bank-jojo.jpg'),
+        url('/images/plain-grey-square.png');
+      repeat: no-repeat;
+      size: contain, auto 40%;
+      position: left, bottom 30% right;
+    };
+  }
+
+  &--dark {
+    height: auto;
+    background-color: $alabaster;
+  }
+
+  &--light {
+    background-color: blueviolet;
+
+    @include respond-above('md') {
+      height: rem(500px);
+    }
+  
+    @include respond-above('lg') {
+      height: rem(650px);
+    }
+  
+    @include respond-above('xl') {
+      height: rem(800px);
+    }
+  }
+  
+  &--popular-item {
+    height: auto;
   }
 }
