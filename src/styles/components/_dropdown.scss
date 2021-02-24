@@ -2,8 +2,8 @@
 
 .dropdown-container {
   position: relative;
-  cursor: pointer;
   float: right;
+  cursor: pointer;
 
   .dropdown {
     display: flex;
@@ -34,6 +34,7 @@
       border: 1px $shuttle-gray;
       border-radius: rem(6px);
       margin: rem(12px) 0 0;
+      
       background-color: $light;
       cursor: pointer;
     }

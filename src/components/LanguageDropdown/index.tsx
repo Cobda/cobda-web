@@ -5,7 +5,7 @@ import LanguageItem from '../LanguageItem'
 
 export enum LocaleCode {
   English = 'EN',
-  Thai = 'TH',
+  Thai = 'TH'
 }
 
 interface LanguageDropdown {
@@ -14,9 +14,7 @@ interface LanguageDropdown {
 
 const LanguageDropdown = ({ isHeading }: LanguageDropdown) => {
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false)
-  const [selectedLocale, setSelectedLocale] = useState<string>(
-    LocaleCode.English
-  )
+  const [selectedLocale, setSelectedLocale] = useState<string>(LocaleCode.English)
   const flagRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
   const { locales } = router
@@ -32,9 +30,7 @@ const LanguageDropdown = ({ isHeading }: LanguageDropdown) => {
   const handleDropdownToggle = () => setMenuOpen((prevState) => !prevState)
 
   const handleMouseClick = (event: MouseEvent) => {
-    const isFocused: boolean | undefined = flagRef.current?.contains(
-      event.target as Node
-    )
+    const isFocused: boolean | undefined = flagRef.current?.contains(event.target as Node)
 
     if (!isFocused) {
       setMenuOpen(false)
@@ -54,17 +50,13 @@ const LanguageDropdown = ({ isHeading }: LanguageDropdown) => {
     return selectedLocale === LocaleCode.Thai ? (
       <Image src="/icons/thailand.svg" height={imageSize} width={imageSize} />
     ) : (
-      <Image
-        src="/icons/united-states.svg"
-        height={imageSize}
-        width={imageSize}
-      />
+      <Image src="/icons/united-states.svg" height={imageSize} width={imageSize} />
     )
   }
 
   const renderSelectedLocale = () => (
     <>
-      <Image src="/icons/world.svg" height={24} width={24} />
+      <Image src="/icons/world.svg" height={16} width={16} />
       <span className="dropdown__label dropdown__label--bold">
         {selectedLocale.toLocaleUpperCase()}
       </span>

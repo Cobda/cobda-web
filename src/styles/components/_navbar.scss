@@ -37,12 +37,12 @@
   }
 
   &__logo {
-    text-align: left;
-    text-decoration: none;
     color: $dark;
-    letter-spacing: rem(4px);
     font-size: rem(24px);
     font-weight: bold;
+    letter-spacing: rem(4px);
+    text-align: left;
+    text-decoration: none;
 
     @include respond-above('md') {
       font-size: rem(32px);
@@ -57,6 +57,7 @@
     display: flex;
     padding: 0;
     margin: 0;
+    list-style-type: none;
   }
 
   &__menu-item {
