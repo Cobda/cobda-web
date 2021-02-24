@@ -13,11 +13,14 @@ interface LanguageDropdown {
 }
 
 const LanguageDropdown = ({ isHeading }: LanguageDropdown) => {
-  const [isMenuOpen, setMenuOpen] = useState<boolean>(false)
-  const [selectedLocale, setSelectedLocale] = useState<string>(LocaleCode.English)
-  const flagRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
-  const { locales } = router
+  const { locales, locale } = router
+
+  const [isMenuOpen, setMenuOpen] = useState<boolean>(false)
+  const [selectedLocale, setSelectedLocale] = useState<string>(
+    locale?.toLocaleUpperCase() || LocaleCode.English
+  )
+  const flagRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     document.addEventListener('mousedown', handleMouseClick)
@@ -30,7 +33,9 @@ const LanguageDropdown = ({ isHeading }: LanguageDropdown) => {
   const handleDropdownToggle = () => setMenuOpen((prevState) => !prevState)
 
   const handleMouseClick = (event: MouseEvent) => {
-    const isFocused: boolean | undefined = flagRef.current?.contains(event.target as Node)
+    const isFocused: boolean | undefined = flagRef.current?.contains(
+      event.target as Node
+    )
 
     if (!isFocused) {
       setMenuOpen(false)
@@ -50,7 +55,11 @@ const LanguageDropdown = ({ isHeading }: LanguageDropdown) => {
     return selectedLocale === LocaleCode.Thai ? (
       <Image src="/icons/thailand.svg" height={imageSize} width={imageSize} />
     ) : (
-      <Image src="/icons/united-states.svg" height={imageSize} width={imageSize} />
+      <Image
+        src="/icons/united-states.svg"
+        height={imageSize}
+        width={imageSize}
+      />
     )
   }
 
