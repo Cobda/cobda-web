@@ -72,20 +72,19 @@
       color: $tornado;
     }
 
-    &:hover::after {
-      margin: 0 auto;
-      width: 64%;
-      transition: width 0.3s;
-      border-bottom: rem(3px) solid $havelock-blue;
-    }
-
     &:after {
       content: '';
       display: block;
       width: 0;
-      transition: width 0.3s;
-      color: $dark;
     }
+    
+    &:hover::after {
+      width: 64%;
+      border-bottom: rem(3px) solid $havelock-blue;
+      margin: 0 auto;
+      transition: width 0.3s;
+    }
+
 
     &--selected {
       color: $dark;

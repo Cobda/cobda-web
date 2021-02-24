@@ -5,25 +5,30 @@ import useTranslation from 'next-translate/useTranslation'
 
 const NavbarMenu = () => {
   const router = useRouter()
-  const currentPath = router.pathname
+  const { pathname } = router
   const paths = ['/', '/products', '/about-us']
   const pathNames = ['home', 'product', 'aboutUs']
   const { t } = useTranslation('common')
 
-  const isSelectedItem = (isSelected: boolean) =>
-    isSelected
-      ? 'navbar__menu-item navbar__menu-item--selected'
-      : 'navbar__menu-item'
+  const menuItems = (routerPath: string) =>
+    paths.map((path, index) => {
+      const linkClassName =
+        path === routerPath
+          ? 'navbar__menu-item navbar__menu-item--selected'
+          : 'navbar__menu-item'
 
-  const menuItems = paths.map((path, index) => (
-    <Link href={path} key={index}>
-      <a className={isSelectedItem(path === currentPath)}>
-        {t(pathNames[index])}
-      </a>
-    </Link>
-  ))
+      return (
+        <Link href={path} key={index}>
+          <a className={linkClassName}>{t(pathNames[index])}</a>
+        </Link>
+      )
+    })
 
-  return currentPath ? <ul className="navbar__menu">{menuItems}</ul> : <></>
+  return pathname ? (
+    <ul className="navbar__menu">{menuItems(pathname)}</ul>
+  ) : (
+    <></>
+  )
 }
 
 export default NavbarMenu
