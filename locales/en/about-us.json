@@ -1,5 +1,4 @@
 {
-  "aboutUsSectionTitleIntro": "WE ARE COBDA,",
-  "aboutUsSectionTitleDescription": "THE PLACE WHERE BUYER AND SELLER MEETS.",
-  "aboutUsSectionDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis risus mi. Ut placerat qua lectus. Curabitur dictum velit non lacus ornare tempor. Nullam quis augue in leo aliquet malesuada sit amet eget eros. Sed laoreet posuere velit sit amet varius. Nulla eget purus non erat fringilla sodales vel a nulla. Cras sit amet tempus risus. Fusce dignissim blandit justo, eget elementum risus tristique a. Nunc fringilla lacus lacus, sit amet accumsan est pulvinar non. Praesent tristique enim lorem."
+  "introductionSectionTitle": "<0>WE ARE COBDA,<1></1> THE PLACE WHERE BUYER AND SELLER MEETS.</0>",
+  "introductionSectionDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis risus mi. Ut placerat qua lectus. Curabitur dictum velit non lacus ornare tempor. Nullam quis augue in leo aliquet malesuada sit amet eget eros. Sed laoreet posuere velit sit amet varius. Nulla eget purus non erat fringilla sodales vel a nulla. Cras sit amet tempus risus. Fusce dignissim blandit justo, eget elementum risus tristique a. Nunc fringilla lacus lacus, sit amet accumsan est pulvinar non. Praesent tristique enim lorem."
 }
