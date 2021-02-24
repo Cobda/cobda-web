@@ -1,8 +1,8 @@
 import React from 'react'
+import AboutUsSection from '../components/AboutUsSection'
 import Footer from '../components/Footer'
 import Meta from '../components/Meta'
 import Navbar from '../components/Navbar'
-import AboutUsIntroduction from '../components/AboutUsIntroduction'
 
 const AboutUs = () => (
   <div className="layout-about-us">
@@ -11,7 +11,7 @@ const AboutUs = () => (
       <Navbar />
     </header>
     <main>
-      <AboutUsIntroduction />
+      <AboutUsSection />
     </main>
     <footer>
       <Footer />

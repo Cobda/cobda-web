@@ -1,3 +1,5 @@
+@import '../abstracts/_abstracts-dir';
+
 .about-us-section {
   box-sizing: border-box;
   padding: rem(16px) 0;
@@ -12,5 +14,54 @@
 
   @include respond-above('xl') {
     padding: rem(40px) 0;
+  }
+
+  &__header {
+    margin-bottom: rem(16px);
+
+    @include respond-above('lg') {
+      margin-bottom: rem(24px);
+    }
+  }
+
+  &__title {
+    font-size: rem(16px);
+    margin: 0;
+
+    @include respond-above('md') {
+      font-size: rem(24px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(32px);
+    }
+
+    @include respond-above('xl') {
+      font-size: rem(40px);
+    }
+  }
+
+  &__description {
+    margin: 0;
+  }
+
+  &--light {
+    background-color: teal;
+
+    @include respond-above('md') {
+      height: rem(500px);
+    }
+
+    @include respond-above('lg') {
+      height: rem(650px);
+    }
+
+    @include respond-above('xl') {
+      height: rem(800px);
+    }
+  }
+
+  &--quote {
+    height: auto;
   }
 }
