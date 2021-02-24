@@ -8,7 +8,7 @@ const NavbarMenu = () => {
   const currentPath = router.pathname
   const paths = ['/', '/products', '/about-us']
   const pathNames = ['home', 'product', 'aboutUs']
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('common')
 
   const isSelectedItem = (isSelected: boolean) =>
     isSelected
@@ -17,11 +17,13 @@ const NavbarMenu = () => {
 
   const menuItems = paths.map((path, index) => (
     <Link href={path} key={index}>
-      <a className={isSelectedItem(path === currentPath)}>{t(pathNames[index])}</a>
+      <a className={isSelectedItem(path === currentPath)}>
+        {t(pathNames[index])}
+      </a>
     </Link>
   ))
 
-  return <ul className="navbar__menu">{menuItems}</ul>
+  return currentPath ? <ul className="navbar__menu">{menuItems}</ul> : <></>
 }
 
 export default NavbarMenu
