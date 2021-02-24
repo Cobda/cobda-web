@@ -2,17 +2,18 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import LanguageItem from '../LanguageItem'
+import { ComponentType } from '../Footer'
 
 export enum LocaleCode {
   English = 'EN',
-  Thai = 'TH'
+  Thai = 'TH',
 }
 
 interface LanguageDropdown {
-  readonly isHeading?: boolean
+  readonly componentType: ComponentType
 }
 
-const LanguageDropdown = ({ isHeading }: LanguageDropdown) => {
+const LanguageDropdown = ({ componentType }: LanguageDropdown) => {
   const router = useRouter()
   const { locales, locale } = router
 
@@ -73,13 +74,16 @@ const LanguageDropdown = ({ isHeading }: LanguageDropdown) => {
   )
 
   const renderLocaleDropdown = () => {
-    const arrowClassName: string = isHeading
-      ? 'dropdown__arrow'
-      : 'dropdown__arrow dropdown__arrow--large'
+    const arrowClassName: string =
+      componentType === ComponentType.Header
+        ? 'dropdown__arrow'
+        : 'dropdown__arrow dropdown__arrow--large'
 
     return (
       <div className="dropdown" onClick={handleDropdownToggle}>
-        {isHeading ? renderSelectedFlagImage() : renderSelectedLocale()}
+        {componentType === ComponentType.Header
+          ? renderSelectedFlagImage()
+          : renderSelectedLocale()}
         <div className={arrowClassName} />
       </div>
     )

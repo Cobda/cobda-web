@@ -6,13 +6,18 @@ import FooterItem from './item'
 import LanguageDropdown from '../LanguageDropdown'
 import useTranslation from 'next-translate/useTranslation'
 
+export enum ComponentType {
+  Header,
+  Footer
+}
+
 const Footer = () => {
   const { t } = useTranslation('common')
 
   const renderLogoColumn = () => (
     <div className="footer__logo-container">
       <Logo />
-      <LanguageDropdown isHeading={false} />
+      <LanguageDropdown componentType={ComponentType.Footer} />
     </div>
   )
 
