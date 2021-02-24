@@ -8,21 +8,22 @@
   width: 100%;
   height: fit-content;
   max-width: $navbar-max-width;
-  padding: rem(16px);
-
+  padding: rem(32px);
+  
   background-color: $light;
 
   @include respond-above('md') {
     flex-direction: row;
-    padding: rem(24px);
+    height: 100%;
+    padding: rem(24px) 0 0;
   }
 
   @include respond-above('lg') {
-    padding: rem(32px);
+    padding: rem(32px) 0 0;
   }
 
   @include respond-above('xl') {
-    padding: rem(48px);
+    padding: rem(48px) 0 0;
   }
 
   &__logo-container {
@@ -34,17 +35,20 @@
   }
 
   &__list {
-    list-style-type: none;
     padding: 0;
-    margin: rem(8px) 0 0;
+    margin: rem(32px) 0 0;
+    list-style-type: none;
+
+    @include respond-above('md') {
+      margin: rem(8px) 0 0;
+    }
   }
 
   &__list-item {
+    color: $cat-black;
     font-size: rem(12px);
     font-weight: 500;
     line-height: normal;
-
-    color: $mine-shaft;
 
     &:not(:last-child) {
       margin-bottom: rem(16px);
@@ -55,16 +59,17 @@
     }
   }
 
+  // TODO: Adjust font style according to design
   &__list-title {
     margin: 0;
   }
 
   &__link {
+    color: $cat-black;
     text-decoration: none;
-    color: $mine-shaft;
 
     &--danger {
-      color: red;
+      color: $coral-red;
       font-weight: 600;
     }
   }
