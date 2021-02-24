@@ -50,7 +50,7 @@
       image: url('../../../public/images/bank-jojo.jpg'),
         url('../../../public/images/plain-grey-square.png');
       repeat: no-repeat;
-      size: contain, auto;
+      size: contain, auto 40%;
       position: left, bottom 30% right;
     };
   }
