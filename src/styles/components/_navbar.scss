@@ -168,10 +168,9 @@
     font-weight: 600;
   }
 
+  // TODO: Modify when hamburger is available
   &__flag {
     display: none;
-    position: relative;
-    cursor: pointer;
 
     @include respond-above('md') {
       display: block;

@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { LocaleCode } from '../Navbar/Language'
+import { LocaleCode } from '../LanguageDropdown'
 
 interface LanguageItem {
   readonly locale: string

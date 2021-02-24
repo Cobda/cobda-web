@@ -5,12 +5,18 @@ import LanguageItem from '../LanguageItem'
 
 export enum LocaleCode {
   English = 'EN',
-  Thai = 'TH'
+  Thai = 'TH',
 }
 
-const NavbarLanguage = () => {
+interface LanguageDropdown {
+  readonly isHeading?: boolean
+}
+
+const LanguageDropdown = ({ isHeading }: LanguageDropdown) => {
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false)
-  const [selectedLocale, setSelectedLocale] = useState<string>(LocaleCode.English)
+  const [selectedLocale, setSelectedLocale] = useState<string>(
+    LocaleCode.English
+  )
   const flagRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
   const { locales } = router
@@ -26,7 +32,9 @@ const NavbarLanguage = () => {
   const handleDropdownToggle = () => setMenuOpen((prevState) => !prevState)
 
   const handleMouseClick = (event: MouseEvent) => {
-    const isFocused: boolean | undefined = flagRef.current?.contains(event.target as Node)
+    const isFocused: boolean | undefined = flagRef.current?.contains(
+      event.target as Node
+    )
 
     if (!isFocused) {
       setMenuOpen(false)
@@ -46,15 +54,32 @@ const NavbarLanguage = () => {
     return selectedLocale === LocaleCode.Thai ? (
       <Image src="/icons/thailand.svg" height={imageSize} width={imageSize} />
     ) : (
-      <Image src="/icons/united-states.svg" height={imageSize} width={imageSize} />
+      <Image
+        src="/icons/united-states.svg"
+        height={imageSize}
+        width={imageSize}
+      />
     )
   }
 
+  const renderSelectedLocale = () => (
+    <>
+      <Image src="/icons/world.svg" height={24} width={24} />
+      <span className="dropdown__label">
+        {selectedLocale.toLocaleUpperCase()}
+      </span>
+    </>
+  )
+
   const renderLocaleDropdown = () => {
+    const arrowClassName: string = isHeading
+      ? 'dropdown__arrow'
+      : 'dropdown__arrow dropdown__arrow--large'
+
     return (
       <div className="dropdown" onClick={handleDropdownToggle}>
-        {renderSelectedFlagImage()}
-        <div className="dropdown__arrow" />
+        {isHeading ? renderSelectedFlagImage() : renderSelectedLocale()}
+        <div className={arrowClassName} />
       </div>
     )
   }
@@ -72,9 +97,9 @@ const NavbarLanguage = () => {
     return isMenuOpen ? <ul className="dropdown__menu">{localeMenu}</ul> : <></>
   }
 
-  const renderNavbarLocale = () => {
+  const renderDropdownContainer = () => {
     return locales ? (
-      <div className="navbar__flag" ref={flagRef}>
+      <div className="dropdown-container" ref={flagRef}>
         {renderLocaleDropdown()}
         {renderLocaleMenu()}
       </div>
@@ -83,7 +108,7 @@ const NavbarLanguage = () => {
     )
   }
 
-  return renderNavbarLocale()
+  return renderDropdownContainer()
 }
 
-export default NavbarLanguage
+export default LanguageDropdown

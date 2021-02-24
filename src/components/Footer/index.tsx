@@ -2,14 +2,14 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Logo from '../Navbar/Logo'
-import NavbarLanguage from '../Navbar/Language'
 import FooterItem from './item'
+import LanguageDropdown from '../LanguageDropdown'
 
 const Footer = () => {
   const renderLogoColumn = () => (
     <div className="footer__logo-container">
       <Logo />
-      <NavbarLanguage />
+      <LanguageDropdown isHeading={false} />
     </div>
   )
 
