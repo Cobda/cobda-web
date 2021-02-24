@@ -2,59 +2,52 @@ import React from 'react'
 import Link from 'next/link'
 import NavbarLogo from '../Navbar/Logo'
 import NavbarLanguage from '../Navbar/Language'
+import FooterItem from './item'
 
-const Footer = () => (
-  <div className="footer">
+const Footer = () => {
+  const renderLogoColumn = () => (
     <div className="footer__logo-container">
       <NavbarLogo />
       <NavbarLanguage />
     </div>
+  )
+
+  const renderHelpColumn = () => (
     <ul className="footer__list">
-      <li className="footer__list-item">
-        <h3 className="footer__list-title">Help Center</h3>
-      </li>
-      <li className="footer__list-item">
-        {/* TODO: Redirect when path is available */}
-        <Link href="#">
-          <a className="footer__link">Terms of Service</a>
-        </Link>
-      </li>
-      <li className="footer__list-item">
-        {/* TODO: Redirect when path is available */}
-        <Link href="#">
-          <a className="footer__link">Privacy Policy</a>
-        </Link>
-      </li>
-      <li className="footer__list-item">
-        {/* TODO: Redirect when path is available */}
-        <Link href="#">
-          <a className="footer__link footer__link--danger">Emergency Line</a>
-        </Link>
-      </li>
+      <FooterItem isTitleText href="" label="Help Center" />
+      {/* TODO: Redirect when path is available */}
+      <FooterItem href="" label="Terms of Service" />
+      {/* TODO: Redirect when path is available */}
+      <FooterItem href="" label="Privacy Policy" />
+      {/* TODO: Redirect when path is available */}
+      <FooterItem isEmergencyText href="" label="Emergency Line" />
     </ul>
+  )
+
+  const renderAboutColumn = () => (
     <ul className="footer__list">
-      <li className="footer__list-item">
-        <h3 className="footer__list-title">About</h3>
-      </li>
-      <li className="footer__list-item">
-        <Link href="/about-us">
-          <a className="footer__link">About Us</a>
-        </Link>
-      </li>
+      <FooterItem isTitleText href="/about-us" label="About" />
+      <FooterItem href="/about-us" label="About Us" />
     </ul>
+  )
+
+  const renderContactColumn = () => (
     <ul className="footer__list">
-      <li className="footer__list-item">
-        <h3 className="footer__list-title">Contact Us</h3>
-      </li>
-      <li className="footer__list-item">
-        {/* Email Icon */}
-        {/* TODO: Redirect when path is available */}
-        <Link href="/">
-          <a className="footer__link">support@cobda.com</a>
-        </Link>
-      </li>
+      <FooterItem isTitleText href="" label="Contact Us" />
+      {/* Email Icon */}
+      {/* TODO: Redirect when path is available */}
+      <FooterItem href="" label="support@cobda.com" />
     </ul>
-  </div>
-)
+  )
+
+  return (
+    <div className="footer">
+      {renderLogoColumn()}
+      {renderHelpColumn()}
+      {renderAboutColumn()}
+      {renderContactColumn()}
+    </div>
+  )
+}
 
 export default Footer
