@@ -1,4 +1,7 @@
 {
   "signIn": "Sign in",
-  "signUp": "Sign up"
+  "signUp": "Sign up",
+  "home" : "Home",
+  "product" : "Products",
+  "aboutUs" : "About us"
 }
