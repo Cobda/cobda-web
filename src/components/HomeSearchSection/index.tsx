@@ -6,7 +6,7 @@ const HomeSearchSection = () => {
 
   return (
     <section className="home-section home-section--background-image">
-      <div className="home-search home-search--background">
+      <div className="home-search">
         <div className="home-search__content">
           <h1 className="home-search__title">{t('searchSectionTitle')}</h1>
           <p className="home-search__description">{t('searchSectionDescription')}</p>
