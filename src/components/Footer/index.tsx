@@ -1,13 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
-import NavbarLogo from '../Navbar/Logo'
+import Image from 'next/image'
+import Logo from '../Navbar/Logo'
 import NavbarLanguage from '../Navbar/Language'
 import FooterItem from './item'
 
 const Footer = () => {
   const renderLogoColumn = () => (
     <div className="footer__logo-container">
-      <NavbarLogo />
+      <Logo />
       <NavbarLanguage />
     </div>
   )
@@ -32,9 +33,11 @@ const Footer = () => {
   const renderContactColumn = () => (
     <ul className="footer__list">
       <FooterItem isTitleText label="Contact Us" />
-      {/* Email Icon */}
-      {/* TODO: Redirect when path is available */}
-      <FooterItem href="" label="support@cobda.com" />
+      <div className="footer__email-container">
+        <Image src="/icons/email.svg" height={17} width={21} />
+        {/* TODO: Redirect when path is available */}
+        <FooterItem href="" label="support@cobda.com" />
+      </div>
     </ul>
   )
 
