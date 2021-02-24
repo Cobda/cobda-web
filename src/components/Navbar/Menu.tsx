@@ -1,26 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const NavbarMenu = () => {
-  return (
-    <ul className="navbar__menu">
-      <li className="navbar__menu-item">
-        <Link href="/">
-          <a className="navbar__link navbar__link--item">Home</a>
-        </Link>
-      </li>
-      <li className="navbar__menu-item">
-        <Link href="/products">
-          <a className="navbar__link navbar__link--item">Products</a>
-        </Link>
-      </li>
-      <li className="navbar__menu-item">
-        <Link href="/about-us">
-          <a className="navbar__link navbar__link--item">About Us</a>
-        </Link>
-      </li>
-    </ul>
-  )
+  const router = useRouter()
+  const currentPath = router.pathname
+  const paths = ['/', '/products', '/about-us']
+  const pathNames = ['Home', 'Products', 'About us']
+
+  const isSelectedItem = (isSelected: boolean) =>
+    isSelected
+      ? 'navbar__link navbar__link-item--selected'
+      : 'navbar__link navbar__link-item'
+
+  const menuItems = paths.map((path, index) => (
+    <Link href={path} key={index}>
+      <a className={isSelectedItem(path === currentPath)}>{pathNames[index]}</a>
+    </Link>
+  ))
+
+  return <ul className="navbar__menu">{menuItems}</ul>
 }
 
 export default NavbarMenu
