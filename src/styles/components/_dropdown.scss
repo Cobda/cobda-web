@@ -1,0 +1,52 @@
+@import '../abstracts/_abstracts-dir';
+
+.dropdown {
+  display: flex;
+  align-items: center;
+
+  &__arrow {
+    border-top: rem(4px) solid $dark;
+    border-right: rem(4px) solid transparent;
+    border-left: rem(4px) solid transparent;
+    margin-left: rem(8px);
+  }
+
+  &__menu {
+    position: absolute;
+    z-index: $zindex-dropdown;
+    right: 0;
+
+    box-shadow: 1px 1px rem(4px) $dropdown-list-shadow;
+    width: max-content;
+    padding: rem(2px) 0;
+    border: 1px $shuttle-gray;
+    border-radius: rem(6px);
+    margin: rem(16px) 0 0;
+    background-color: $light;
+    cursor: pointer;
+  }
+
+  &__menu-item {
+    display: flex;
+    align-items: center;
+    padding: rem(12px);
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $porcelain;
+    }
+
+    &:hover {
+      color: $picton-blue;
+    }
+
+    &--selected {
+      color: $picton-blue;
+      font-weight: bold;
+    }
+  }
+
+  // TODO: Change font properties
+  &__label {
+    margin-left: rem(8px);
+  }
+}

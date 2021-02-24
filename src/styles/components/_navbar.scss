@@ -4,7 +4,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   box-sizing: border-box;
   width: 100%;
   max-width: $navbar-max-width;
@@ -26,8 +25,12 @@
   &__link {
     &:not(:last-child) {
       margin-right: rem(16px);
-      
+
       @include respond-above('lg') {
+        margin-right: rem(24px);
+      }
+
+      @include respond-above('xl') {
         margin-right: rem(32px);
       }
     }
@@ -63,6 +66,7 @@
 
   &__link {
     text-decoration: none;
+    cursor: pointer;
 
     &--secondary {
       display: none;
@@ -70,7 +74,6 @@
 
       @include respond-above('md') {
         display: block;
-        font-size: rem(16px);
       }
     }
 
@@ -101,10 +104,6 @@
       height: rem(48px);
       border-radius: 50%;
     }
-
-    &--locale {
-      // TODO: for future implementation
-    }
   }
 
   &__tool {
@@ -114,7 +113,15 @@
 
   &__tool > div {
     &:not(:last-child) {
-      margin-right: rem(32px);
+      margin-right: rem(16px);
+
+      @include respond-above('lg') {
+        margin-right: rem(24px);
+      }
+
+      @include respond-above('xl') {
+        margin-right: rem(32px);
+      }
     }
   }
 
@@ -124,11 +131,15 @@
 
     font-size: rem(16px);
     font-weight: 600;
-
-    cursor: pointer;
   }
 
-  // TODO: for future implementation
   &__flag {
+    display: none;
+    position: relative;
+    cursor: pointer;
+
+    @include respond-above('md') {
+      display: block;
+    }
   }
 }
