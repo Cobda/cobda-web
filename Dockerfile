@@ -10,7 +10,10 @@ WORKDIR /base
 COPY package*.json yarn.lock ./ 
 
 # Install dependencies
-RUN yarn install --frozen-lockfile
+RUN yarn install
+
+# TO DO in further development to lock down dependency versions
+# RUN yarn install --frozen-lockfile
 
 # Copy installed dependencies to the current working directory
 COPY . .
