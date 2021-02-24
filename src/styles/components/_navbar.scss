@@ -54,55 +54,55 @@
   }
 
   &__menu {
-    list-style-type: none;
     display: flex;
     padding: 0;
     margin: 0;
-    font-size: rem(16px);
-    font-weight: 600;
   }
 
   &__menu-item {
-    // TODO: for future implementation
-  }
-
-  &__link {
+    display: none;
+    list-style-type: none;
     text-decoration: none;
+    font-size: rem(16px);
+    font-weight: 600;
     line-height: 1.52;
-    color: $dark;
 
-    cursor: pointer;
-
-    &-item {
-      display: none;
+    @include respond-above('md') {
+      display: block;
       color: $tornado;
 
-      @include respond-above('md') {
+      &:after {
+        content: '';
         display: block;
+        width: 0;
+        transition: width 0.3s;
+        color: $dark;
+      }
+
+      &:hover::after {
+        margin: 0 auto;
+        width: 64%;
+        transition: width 0.3s;
+        border-bottom: rem(3px) solid $havelock-blue;
+      }
+
+      &--selected {
+        color: $dark;
 
         &:after {
           content: '';
           display: block;
-          width: 0;
-          transition: width 0.3s;
-        }
-
-        &:hover::after {
-          margin: 0 auto;
-          width: 64%;
-          transition: width 0.3s;
-          border-bottom: rem(3px) solid $havelock-blue;
-        }
-
-        &--selected:after {
-          content: '';
-          display: block;
-          margin: 0 auto;
           width: 64%;
           border-bottom: rem(3px) solid $havelock-blue;
+          margin: 0 auto;
         }
       }
     }
+  }
+
+  &__link {
+    text-decoration: none;
+    cursor: pointer;
 
     &--secondary {
       display: none;

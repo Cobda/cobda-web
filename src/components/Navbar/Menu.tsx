@@ -10,8 +10,8 @@ const NavbarMenu = () => {
 
   const isSelectedItem = (isSelected: boolean) =>
     isSelected
-      ? 'navbar__link navbar__link-item--selected'
-      : 'navbar__link navbar__link-item'
+      ? 'navbar__menu-item navbar__menu-item--selected'
+      : 'navbar__menu-item'
 
   const menuItems = paths.map((path, index) => (
     <Link href={path} key={index}>
