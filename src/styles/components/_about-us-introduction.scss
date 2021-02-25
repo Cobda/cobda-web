@@ -1,4 +1,4 @@
-.about-us-introduction-section {
+.about-us-introduction {
   display: flex;
   flex-direction: column;
 
@@ -33,7 +33,7 @@
     }
   }
 
-  &__title-description {
+  &__title {
     width: 58%;
     height: 12.5%;
     margin-block-start: 0%;
