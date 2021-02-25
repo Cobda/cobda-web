@@ -6,7 +6,7 @@ import { ComponentType } from '../Footer'
 
 export enum LocaleCode {
   English = 'EN',
-  Thai = 'TH',
+  Thai = 'TH'
 }
 
 interface LanguageDropdown {
@@ -16,11 +16,8 @@ interface LanguageDropdown {
 const LanguageDropdown = ({ componentType }: LanguageDropdown) => {
   const router = useRouter()
   const { locales, locale } = router
-
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false)
-  const [selectedLocale, setSelectedLocale] = useState<string>(
-    locale?.toLocaleUpperCase() || LocaleCode.English
-  )
+  const [selectedLocale, setSelectedLocale] = useState<string>(locale?.toLocaleUpperCase() || LocaleCode.English)
   const flagRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -56,11 +53,7 @@ const LanguageDropdown = ({ componentType }: LanguageDropdown) => {
     return selectedLocale === LocaleCode.Thai ? (
       <Image src="/icons/thailand.svg" height={imageSize} width={imageSize} />
     ) : (
-      <Image
-        src="/icons/united-states.svg"
-        height={imageSize}
-        width={imageSize}
-      />
+      <Image src="/icons/united-states.svg" height={imageSize} width={imageSize} />
     )
   }
 
