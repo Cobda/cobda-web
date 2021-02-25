@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import LanguageItem from '../LanguageItem'
-import { ComponentType } from '../../enum/ComponentType'
+import { ComponentType } from '../../enum/component-type'
 
 export enum LocaleCode {
   English = 'EN',

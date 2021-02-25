@@ -5,7 +5,8 @@ import Logo from '../Logo'
 import FooterItem from './item'
 import LanguageDropdown from '../LanguageDropdown'
 import useTranslation from 'next-translate/useTranslation'
-import { ComponentType } from '../../enum/ComponentType'
+import { ComponentType } from '../../enum/component-type'
+import { ContextType } from '../../enum/context-type'
 
 const Footer = () => {
   const { t } = useTranslation('common')
@@ -19,24 +20,24 @@ const Footer = () => {
 
   const renderHelpColumn = () => (
     <ul className="footer__list">
-      <FooterItem isTitleText label={t('helpCenter')} />
+      <FooterItem context={ContextType.Title} label={t('helpCenter')} />
       {/* TODO: Add href when path is available */}
       <FooterItem href="" label={t('termsOfService')} />
       <FooterItem href="" label={t('privacyPolicy')} />
-      <FooterItem isEmergencyText href="" label={t('emergencyLine')} />
+      <FooterItem context={ContextType.Helpline} href="" label={t('emergencyLine')} />
     </ul>
   )
 
   const renderAboutColumn = () => (
     <ul className="footer__list">
-      <FooterItem isTitleText label={t('about')} />
+      <FooterItem context={ContextType.Title} label={t('about')} />
       <FooterItem href="/about-us" label={t('aboutUs')} />
     </ul>
   )
 
   const renderContactColumn = () => (
     <ul className="footer__list">
-      <FooterItem isTitleText label={t('contactUs')} />
+      <FooterItem context={ContextType.Title} label={t('contactUs')} />
       <div className="footer__email-container">
         <Image src="/icons/email.svg" height={17} width={21} />
         {/* TODO: Redirect when path is available */}

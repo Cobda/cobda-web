@@ -1,7 +1,7 @@
 import React from 'react'
 import NavbarAccount from './Account'
 import LanguageDropdown from '../LanguageDropdown'
-import { ComponentType } from '../../enum/ComponentType'
+import { ComponentType } from '../../enum/component-type'
 
 const NavbarTool = () => {
   return (

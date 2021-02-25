@@ -1,21 +1,21 @@
 import React from 'react'
 import Link from 'next/link'
+import { ContextType } from '../../enum/context-type'
 
 interface FooterItem {
   readonly label: string
   readonly href?: string
-  readonly isTitleText?: boolean
-  readonly isEmergencyText?: boolean
+  readonly context?: ContextType 
 }
 
-const FooterItem = ({ label, href, isTitleText, isEmergencyText }: FooterItem) => {
+const FooterItem = ({ label, href, context }: FooterItem) => {
   
-  const linkClassName: string = isEmergencyText
-    ? 'footer__link footer__link--danger'
+  const linkClassName: string = context === ContextType.Helpline
+    ? 'footer__link footer__link--helpline'
     : 'footer__link'
 
   const renderListItem = () =>
-    isTitleText ? (
+    context === ContextType.Title ? (
       <h3 className="footer__list-title">{label}</h3>
     ) : (
       <Link href={href || ''}>
