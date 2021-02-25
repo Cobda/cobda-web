@@ -31,9 +31,7 @@ const LanguageDropdown = ({ parent }: LanguageDropdown) => {
   const handleDropdownToggle = () => setMenuOpen((prevState) => !prevState)
 
   const handleMouseClick = (event: MouseEvent) => {
-    const isFocused: boolean | undefined = flagRef.current?.contains(
-      event.target as Node
-    )
+    const isFocused: boolean | undefined = flagRef.current?.contains(event.target as Node)
 
     if (!isFocused) {
       setMenuOpen(false)

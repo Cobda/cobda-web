@@ -12,7 +12,7 @@ const NavbarMenu = () => {
 
   const menuItems = (routerPath: string) =>
     paths.map((path, index) => {
-      const linkClassName =
+      const linkClassName: string =
         path === routerPath
           ? 'navbar__menu-item navbar__menu-item--selected'
           : 'navbar__menu-item'
