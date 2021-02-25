@@ -66,14 +66,14 @@ const LanguageDropdown = ({ componentType }: LanguageDropdown) => {
     </>
   )
 
-  const renderLocaleDropdown = () => {
+  const renderDropdownToggle = () => {
     const arrowClassName: string =
       componentType === ComponentType.Header
         ? 'dropdown__arrow'
         : 'dropdown__arrow dropdown__arrow--large'
 
     return (
-      <div className="dropdown" onClick={handleDropdownToggle}>
+      <div className="dropdown__toggle" onClick={handleDropdownToggle}>
         {componentType === ComponentType.Header
           ? renderSelectedFlagImage()
           : renderSelectedLocale()}
@@ -95,10 +95,10 @@ const LanguageDropdown = ({ componentType }: LanguageDropdown) => {
     return isMenuOpen ? <ul className="dropdown__menu">{localeMenu}</ul> : <></>
   }
 
-  const renderDropdownContainer = () => {
+  const renderLanguageDropdown = () => {
     return locales ? (
-      <div className="dropdown-container" ref={flagRef}>
-        {renderLocaleDropdown()}
+      <div className="dropdown" ref={flagRef}>
+        {renderDropdownToggle()}
         {renderLocaleMenu()}
       </div>
     ) : (
@@ -106,7 +106,7 @@ const LanguageDropdown = ({ componentType }: LanguageDropdown) => {
     )
   }
 
-  return renderDropdownContainer()
+  return renderLanguageDropdown()
 }
 
 export default LanguageDropdown
