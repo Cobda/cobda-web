@@ -11,8 +11,10 @@ const HomeSearchSection = () => {
           <h1 className="home-search__title">{t('searchSectionTitle')}</h1>
           <p className="home-search__description">{t('searchSectionDescription')}</p>
         </div>
+        <div className="home-search__actionable">
+          <button className="home-search-box">Search</button>
+        </div>
       </div>
-      {/* TODO: Add search box */}
     </section>
   )
 }
