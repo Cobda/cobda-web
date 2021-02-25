@@ -1,25 +1,33 @@
 import React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
 
 const NavbarMenu = () => {
-  return (
-    <ul className="navbar__menu">
-      <li className="navbar__menu-item">
-        <Link href="/">
-          <a className="navbar__link">Home</a>
+  const router = useRouter()
+  const { pathname } = router
+  const paths = ['/', '/products', '/about-us']
+  const pathNames = ['home', 'product', 'aboutUs']
+  const { t } = useTranslation('common')
+
+  const menuItems = (routerPath: string) =>
+    paths.map((path, index) => {
+      const linkClassName =
+        path === routerPath
+          ? 'navbar__menu-item navbar__menu-item--selected'
+          : 'navbar__menu-item'
+
+      return (
+        <Link href={path} key={index}>
+          <a className={linkClassName}>{t(pathNames[index])}</a>
         </Link>
-      </li>
-      <li className="navbar__menu-item">
-        <Link href="/products">
-          <a className="navbar__link">Products</a>
-        </Link>
-      </li>
-      <li className="navbar__menu-item">
-        <Link href="/about-us">
-          <a className="navbar__link">About Us</a>
-        </Link>
-      </li>
-    </ul>
+      )
+    })
+
+  return pathname ? (
+    <ul className="navbar__menu">{menuItems(pathname)}</ul>
+  ) : (
+    <></>
   )
 }
 

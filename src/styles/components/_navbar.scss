@@ -54,14 +54,49 @@
   }
 
   &__menu {
-    list-style-type: none;
     display: flex;
     padding: 0;
     margin: 0;
   }
 
-  // TODO: for future implementation
   &__menu-item {
+    display: none;
+    list-style-type: none;
+    text-decoration: none;
+    font-size: rem(16px);
+    font-weight: 600;
+    line-height: 1.52;
+
+    @include respond-above('md') {
+      display: block;
+      color: $tornado;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      width: 0;
+    }
+    
+    &:hover::after {
+      width: 64%;
+      border-bottom: rem(3px) solid $havelock-blue;
+      margin: 0 auto;
+      transition: width 0.3s;
+    }
+
+
+    &--selected {
+      color: $dark;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 64%;
+        border-bottom: rem(3px) solid $havelock-blue;
+        margin: 0 auto;
+      }
+    }
   }
 
   &__link {
