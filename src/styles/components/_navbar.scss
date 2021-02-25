@@ -36,23 +36,6 @@
     }
   }
 
-  &__logo {
-    color: $dark;
-    font-size: rem(24px);
-    font-weight: bold;
-    letter-spacing: rem(4px);
-    text-align: left;
-    text-decoration: none;
-
-    @include respond-above('md') {
-      font-size: rem(32px);
-    }
-
-    @include respond-above('lg') {
-      font-size: rem(36px);
-    }
-  }
-
   &__menu {
     display: flex;
     padding: 0;

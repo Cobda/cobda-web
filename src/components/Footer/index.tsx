@@ -1,15 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import Logo from '../Navbar/Logo'
+import Logo from '../Logo'
 import FooterItem from './item'
 import LanguageDropdown from '../LanguageDropdown'
 import useTranslation from 'next-translate/useTranslation'
-
-export enum ComponentType {
-  Header,
-  Footer
-}
+import { ComponentType } from '../../enum/ComponentType'
 
 const Footer = () => {
   const { t } = useTranslation('common')
@@ -17,7 +13,7 @@ const Footer = () => {
   const renderLogoColumn = () => (
     <div className="footer__logo-container">
       <Logo />
-      <LanguageDropdown componentType={ComponentType.Footer} />
+      <LanguageDropdown parent={ComponentType.Footer} />
     </div>
   )
 

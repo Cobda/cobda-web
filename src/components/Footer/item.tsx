@@ -18,7 +18,7 @@ const FooterItem = ({ label, href, isTitleText, isEmergencyText }: FooterItem) =
     isTitleText ? (
       <h3 className="footer__list-title">{label}</h3>
     ) : (
-      <Link href={href || '#'}>
+      <Link href={href || ''}>
         <a className={linkClassName}>{label}</a>
       </Link>
     )

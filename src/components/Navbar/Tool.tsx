@@ -1,13 +1,13 @@
 import React from 'react'
 import NavbarAccount from './Account'
 import LanguageDropdown from '../LanguageDropdown'
-import { ComponentType } from '../Footer'
+import { ComponentType } from '../../enum/ComponentType'
 
 const NavbarTool = () => {
   return (
     <div className="navbar__tool">
       <NavbarAccount isUserSignedIn={false} />
-      <LanguageDropdown componentType={ComponentType.Header}/>
+      <LanguageDropdown parent={ComponentType.Header}/>
     </div>
   )
 }

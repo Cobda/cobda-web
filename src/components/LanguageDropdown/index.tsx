@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import LanguageItem from '../LanguageItem'
-import { ComponentType } from '../Footer'
+import { ComponentType } from '../../enum/ComponentType'
 
 export enum LocaleCode {
   English = 'EN',
@@ -10,10 +10,10 @@ export enum LocaleCode {
 }
 
 interface LanguageDropdown {
-  readonly componentType: ComponentType
+  readonly parent: ComponentType
 }
 
-const LanguageDropdown = ({ componentType }: LanguageDropdown) => {
+const LanguageDropdown = ({ parent }: LanguageDropdown) => {
   const router = useRouter()
   const { locales, locale } = router
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false)
@@ -68,13 +68,13 @@ const LanguageDropdown = ({ componentType }: LanguageDropdown) => {
 
   const renderDropdownToggle = () => {
     const arrowClassName: string =
-      componentType === ComponentType.Header
+      parent === ComponentType.Header
         ? 'dropdown__arrow'
         : 'dropdown__arrow dropdown__arrow--large'
 
     return (
       <div className="dropdown__toggle" onClick={handleDropdownToggle}>
-        {componentType === ComponentType.Header
+        {parent === ComponentType.Header
           ? renderSelectedFlagImage()
           : renderSelectedLocale()}
         <div className={arrowClassName} />
