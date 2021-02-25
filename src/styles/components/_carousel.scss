@@ -58,6 +58,10 @@
     border: none;
     background-color: $mine-shaft;
     color: $light;
+
+    &--center {
+      top: 50%
+    }
     
     @include respond-above('sm') {
       display: block;
@@ -84,11 +88,11 @@
   .buttonBack {
     left: 0;
   }
-  
+
   .buttonNext {
     right: 0;
   }
-  
+
   .dotGroup {
     margin-top: 0;
     text-align: center;

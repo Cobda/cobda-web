@@ -47,6 +47,7 @@
 
   &--light {
     background-color: teal;
+    height: rem(200px);
 
     @include respond-above('md') {
       height: rem(500px);
