@@ -24,7 +24,7 @@ const Footer = () => {
       {/* TODO: Add href when path is available */}
       <FooterItem href="" label={t('termsOfService')} />
       <FooterItem href="" label={t('privacyPolicy')} />
-      <FooterItem context={ContextType.Helpline} href="" label={t('emergencyLine')} />
+      <FooterItem context={ContextType.Helpline} href="" label={t('helpline')} />
     </ul>
   )
 
