@@ -82,11 +82,12 @@
   }
 
   &--background {
-    background: url(../../../public/images/hand-shake.jpg) left 10% top 42%
-        no-repeat,
-      url(../../../public/images/plain-black-rectangle.png) left bottom 40%
-        no-repeat;
-    background-size: 53% auto, 100% 45%;
+    background: {
+      image: url(../../../public/images/hand-shake.jpg), url(../../../public/images/plain-black-rectangle.png);
+      position: left 10% top 42%, left bottom 40%;
+      size: 53% auto, 100% 45%;
+      repeat: no-repeat, no-repeat;
+    }
   }
 
   .about-us-section {
