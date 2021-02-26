@@ -15,6 +15,7 @@
     @include respond-above('md') {
       flex-direction: row;
       justify-content: center;
+      padding-top: rem(16px);
     }
   }
 

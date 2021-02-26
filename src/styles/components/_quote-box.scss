@@ -1,8 +1,20 @@
 @import '../abstracts/_abstracts-dir';
 
 .quote-box {
+  height: fit-content;
+
   @include respond-above('md') {
     width: 70%;
+  }
+
+  &--background-image {
+    background: {
+      image: url('/images/double-quote-left.png'), 
+        url('/images/double-quote-left.png');
+      repeat: no-repeat;
+      size: rem(36px 32px), rem(36px 32px);
+      position: top left, bottom right;
+    }
   }
 
   &__header {
@@ -17,5 +29,9 @@
 
   &__title {
     margin: rem(12px) 0 0 rem(24px);
+  }
+
+  &__ {
+    
   }
 }

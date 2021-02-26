@@ -1,6 +1,9 @@
 @import '../abstracts/_abstracts-dir';
 
 .profile-card {
+  display: flex;
+  justify-content: flex-end;
+
   @include respond-above('md') {
     width: 30%;
   }
@@ -15,53 +18,89 @@
   }
 
   &__body {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: rem(24px 24px 48px);
+    width: fit-content;
+    padding: rem(12px 12px 16px);
     margin: rem(24px) 0;
     box-sizing: border-box;
     box-shadow: 0 0 rem(20px) 0 rgba(0, 0, 0, 0.16);
     background-color: $light;
+
+    @include flex-center();
+
+    @include respond-above('sm') {
+      padding: rem(16px 16px 24px);
+    }
+
+    @include respond-above('lg') {
+      padding: rem(20px 20px 28px);
+    }
+
+    @include respond-above('xl') {
+      padding: rem(24px 24px 32px);
+    }
   }
 
   &__image {
-    width: 100%;
-    height: 100%;
+    width: rem(90px);
+    height: rem(70px);
     background-color: lightgray;
     margin-bottom: rem(12px);
+
+    @include respond-above('sm') {
+      width: rem(120px);
+      height: rem(100px);
+    }
+
+    @include respond-above('md') {
+      width: rem(160px);
+      height: rem(140px);
+    }
+
+    @include respond-above('lg') {
+      width: rem(200px);
+      height: rem(180px);
+    }
+
+    @include respond-above('xl') {
+      width: rem(230px);
+      height: rem(210px);
+    }
   }
 
   &__label {
-    font-size: rem(12px);
 
     &:not(:last-child) {
-      margin-bottom: rem(8px);
+      margin-bottom: rem(4px);
+
+      @include respond-above('sm') {
+        margin-bottom: rem(8px);
+      }
     }
 
     &--name {
-      font-size: rem(16px);
+      font-size: rem(12px);
       font-weight: bold;
 
-      @include respond-above('md') {
-        font-size: rem(18px);
+      @include respond-above('sm') {
+        font-size: rem(16px);
       }
-  
-      @include respond-above('lg') {
-        font-size: rem(24px);
+
+      @include respond-above('xl') {
+        font-size: rem(20px);
       }
     }
 
     &--role {
+      font-size: rem(8px);
       font-style: italic;
 
-      @include respond-above('md') {
-        font-size: rem(14px);
+      @include respond-above('sm') {
+        font-size: rem(12px);
       }
-  
-      @include respond-above('lg') {
-        font-size: rem(20px);
+
+      @include respond-above('xl') {
+        font-size: rem(16px);
       }
     }
   }
