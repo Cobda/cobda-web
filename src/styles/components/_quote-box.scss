@@ -5,39 +5,44 @@
   height: fit-content;
 
   @include respond-above('md') {
-    width: 70%;
+    margin-top: rem(24px);
   }
 
-  &--background-image {
-    background: {
-      image: url('/images/double-quote-left.png'), 
-        url('/images/double-quote-left.png');
-      repeat: no-repeat;
-      size: rem(14px 16px), rem(14px 16px);
-      position: top left, bottom right;
-    }
+  &__container {
+    margin: rem(24px) 0 0 rem(24px);
 
-    @include respond-above('sm') {
-      background-size: rem(22px 20px), rem(22px 20px);
-    }
+    &--background-image {
+      background: {
+        image: url('/images/double-quote-left.png'),
+          url('/images/double-quote-left.png');
+        repeat: no-repeat;
+        size: rem(14px 16px), rem(14px 16px);
+        position: top left, bottom right;
+      }
 
-    @include respond-above('md') {
-      background-size: rem(26px 24px), rem(26px 24px);
-    }
+      @include respond-above('sm') {
+        background-size: rem(22px 20px), rem(22px 20px);
+      }
 
-    @include respond-above('lg') {
-      background-size: rem(30px 28px), rem(30px 28px);
-    }
+      @include respond-above('md') {
+        background-size: rem(26px 24px), rem(26px 24px);
+      }
 
-    @include respond-above('xl') {
-      background-size: rem(36px 32px), rem(36px 32px);
+      @include respond-above('lg') {
+        background-size: rem(30px 28px), rem(30px 28px);
+      }
+
+      @include respond-above('xl') {
+        background-size: rem(36px 32px), rem(36px 32px);
+      }
     }
   }
 
   &__header {
     display: none;
-    width: 40%;
+    width: 30%;
     border-top: solid rem(12px) $dark;
+    padding: rem(12px) 0 0 rem(24px);
 
     @include respond-above('md') {
       display: block;
@@ -45,11 +50,19 @@
   }
 
   &__title {
-    margin: rem(12px) 0 0 rem(24px);
+    margin: 0;
+
+    @include respond-above('md') {
+      font-size: rem(22px);
+    }
   }
 
   &__content {
     margin: 0;
-    padding: rem(32px)
+    padding: rem(32px 36px);
+
+    @include respond-above('xl') {
+      padding: rem(32px 48px);
+    }
   }
 }

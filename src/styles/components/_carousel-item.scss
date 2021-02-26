@@ -11,10 +11,11 @@
     height: fit-content;
     padding: rem(32px);
     box-shadow: 0 0 rem(20px) 0 rgba(0, 0, 0, 0.16);
-
+    
     @include respond-above('md') {
       flex-direction: row;
       justify-content: center;
+      align-items: flex-start;
       padding-top: rem(16px);
     }
   }

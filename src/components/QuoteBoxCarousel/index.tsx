@@ -7,8 +7,11 @@ import {
   ButtonNext,
 } from 'pure-react-carousel'
 import CarouselItem from './Item'
+import useTranslation from 'next-translate/useTranslation'
 
 const QouteBoxCarousel = () => {
+  const { t } = useTranslation('about-us')
+
   return (
     <CarouselProvider
       visibleSlides={1}
@@ -23,9 +26,9 @@ const QouteBoxCarousel = () => {
           <CarouselItem
             imagePath="/images/yeezy-380.jpg"
             alternate=""
-            name="Eren Bayer"
-            role="Developer"
-            quote="Sample 1"
+            name="Eren Buyer"
+            role={t('role')}
+            quote={t('quoteSectionContent')}
           />
         </Slide>
         <Slide index={1}>
@@ -33,8 +36,8 @@ const QouteBoxCarousel = () => {
             imagePath="/images/yeezy-380.jpg"
             alternate=""
             name="Amanda Jones"
-            role="Developer"
-            quote="Sample 2"
+            role={t('role')}
+            quote={t('quoteSectionContent')}
           />
         </Slide>
         <Slide index={2}>
@@ -42,8 +45,8 @@ const QouteBoxCarousel = () => {
             imagePath="/images/yeezy-380.jpg"
             alternate=""
             name="Shawn Mentos"
-            role="Developer"
-            quote="Sample 2"
+            role={t('role')}
+            quote={t('quoteSectionContent')}
           />
         </Slide>
         <Slide index={3}>
@@ -51,8 +54,8 @@ const QouteBoxCarousel = () => {
             imagePath="/images/yeezy-380.jpg"
             alternate=""
             name="John Cena"
-            role="Developer"
-            quote="Sample 3"
+            role={t('role')}
+            quote={t('quoteSectionContent')}
           />
         </Slide>
       </Slider>
