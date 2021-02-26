@@ -27,7 +27,7 @@
     margin-block-end: 0%;
 
     color: $dark;
-    -webkit-text-stroke: rem(1px) $dark;
+    -webkit-text-stroke: 1px $dark;
 
     @include respond-above('md') {
       font-size: rem(28px);

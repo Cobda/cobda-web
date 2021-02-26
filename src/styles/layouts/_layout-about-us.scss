@@ -1,7 +1,7 @@
 .layout-about-us {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: map-get($header-height, 'sm') 1fr map-get($footer-height,'sm');
+  grid-template-rows: map-get($header-height, 'sm') 1fr map-get($footer-height, 'sm');
   grid-template-areas:
     'header'
     'main'
@@ -10,16 +10,16 @@
   height: 100vh;
 
   @include respond-above('md') {
-    grid-template-rows: map-get($header-height, 'md') 1fr map-get($footer-height,'md');
+    grid-template-rows: map-get($header-height, 'md') 1fr map-get($footer-height, 'md');
   }
 
   @include respond-above('lg') {
-    grid-template-rows: map-get($header-height, 'lg') 1fr map-get($footer-height,'lg');
+    grid-template-rows: map-get($header-height, 'lg') 1fr map-get($footer-height, 'lg');
   }
 
   @include respond-above('xl') {
     grid-template-columns: 1fr minmax(rem(1104px), rem(1440px)) 1fr;
-    grid-template-rows: map-get($header-height, 'xl') 1fr map-get($footer-height,'xl');
+    grid-template-rows: map-get($header-height, 'xl') 1fr map-get($footer-height, 'xl');
     column-gap: rem(48px);
     grid-template-areas:
       'header header header'
