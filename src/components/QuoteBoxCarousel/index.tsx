@@ -15,7 +15,7 @@ const QouteBoxCarousel = () => {
   return (
     <CarouselProvider
       visibleSlides={1}
-      naturalSlideWidth={1}
+      naturalSlideWidth={3.5}
       naturalSlideHeight={1}
       totalSlides={4}
       infinite={true}

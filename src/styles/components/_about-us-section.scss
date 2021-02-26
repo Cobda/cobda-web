@@ -17,28 +17,18 @@
   }
 
   &__header {
-    margin-bottom: rem(16px);
+    display: flex;
+    justify-content: center;
+    padding-bottom: rem(32px);
 
-    @include respond-above('lg') {
-      margin-bottom: rem(24px);
+    @include respond-above('md') {
+      display: none;
     }
   }
 
   &__title {
     font-size: rem(16px);
     margin: 0;
-
-    @include respond-above('md') {
-      font-size: rem(24px);
-    }
-
-    @include respond-above('lg') {
-      font-size: rem(32px);
-    }
-
-    @include respond-above('xl') {
-      font-size: rem(40px);
-    }
   }
 
   &__description {
