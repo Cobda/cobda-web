@@ -4,18 +4,27 @@ import Trans from 'next-translate/Trans'
 
 const AboutUsIntroduction = () => {
   const { t } = useTranslation('about-us')
-  const Component = (props) => <h1 className="about-us-introduction__title" {...props} />
+
+  const Title = (props) => <h1 className="about-us-introduction__title" {...props} />
+
+  const renderIntroductionTitle = () => (
+    <Trans
+      i18nKey={t('introductionSectionTitle')}
+      components={[<Title />, <br />]}
+    />
+  )
+
+  const renderIntroductionDescription = () => (
+    <p className="about-us-introduction__description">
+      {t('introductionSectionDescription')}
+    </p>
+  )
 
   return (
     <section className="about-us-section">
       <div className="about-us-introduction about-us-introduction--background">
-        <Trans
-          i18nKey={t('introductionSectionTitle')}
-          components={[<Component />, <br />]}
-        />
-        <p className="about-us-introduction__description">
-          {t('introductionSectionDescription')}
-        </p>
+        {renderIntroductionTitle()}
+        {renderIntroductionDescription()}
       </div>
     </section>
   )
