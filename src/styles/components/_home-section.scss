@@ -61,7 +61,7 @@
   }
 
   &--light {
-    background-color: blueviolet;
+    background-color: $light;
 
     @include respond-above('md') {
       height: rem(500px);

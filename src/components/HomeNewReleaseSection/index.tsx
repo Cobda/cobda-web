@@ -7,7 +7,7 @@ const HomeNewReleaseSection = () => {
   return (
     <section className="home-section home-section--light">
       <div className="home-release">
-        <h2 className="home-release__title">{t('releaseSectionTitle')}</h2>
+        <h2 className="home-release__header">{t('releaseSectionTitle')}</h2>
         <p className="home-release__description">{t('releaseSectionDescription')}</p>
       </div>
     </section>
