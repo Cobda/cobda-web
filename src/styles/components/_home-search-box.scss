@@ -2,14 +2,58 @@
 
 .home-search-box {
   @include flex-center();
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  left: 0%;
+
+  width: 100%;
+
+  & > input {
+    width: 75%;
+    padding: rem(35.5px 59.3px 34.4px 58px);
+
+    box-shadow: 5px 10px 20px 0 hsla(0, 0%, 0%, 0.16);
+    color: $dove-gray;
+    background-color: $light;
+
+    border: none;
+    font-size: rem(18px);
+    line-height: 1.23;
+    text-align: left;
+
+    @include respond-above('md') {
+      width: 75%;
+      font-size: rem(22px);
+    }
+  }
 
   &__button {
-    @include button-darken-effect($picton-blue);
+    position: absolute;
+    right: 10%;
+    top: 36%;
 
-    text-decoration: none;
+    width: 5%;
+    height: 50%;
     padding: rem(5px 10px);
-    border-radius: rem(3px);
-    background-color: $picton-blue;
+
+    background-color: $light;
+    border: none;
+    outline: none;
+    background: {
+      image: url('../../../public/icons/search-icon.svg');
+      repeat: no-repeat;
+      size: contain;
+      position: center;
+    }
+
+    @include respond-above('md') {
+      top: 32%;
+    }
+
+    @include respond-above('lg') {
+      top: 25%;
+    }
   }
 
   &__text {

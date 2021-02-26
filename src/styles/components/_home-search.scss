@@ -13,7 +13,7 @@
   @include respond-above('md') {
     height: rem(500px);
   }
-  
+
   @include respond-above('lg') {
     height: rem(600px);
   }
@@ -27,11 +27,11 @@
     justify-content: space-around;
     flex-direction: column;
     max-width: 47.5%;
-  
+
     @include respond-above('sm') {
       max-width: 50%;
     }
-  
+
     @include respond-above('lg') {
       justify-content: space-between;
       max-width: 55%;
@@ -77,9 +77,9 @@
     }
   }
 
-  &__actionable {
-    position: absolute;
-    top: 50%;
-    right: 50%;
-  }
+  // &__actionable {
+  //   position: absolute;
+  //   top: 50%;
+  //   right: 50%;
+  // }
 }

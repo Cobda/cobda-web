@@ -6,8 +6,8 @@ const HomeSearchBox = () => {
 
   return (
     <div className="home-search-box">
-      <input type="text" placeholder="Search" className="home-search-box" />
-      <button className="home-search-box">Search</button>
+      <input type="text" placeholder="What are you looking for?" />
+      <button className="home-search-box__button" />
     </div>
   )
 }
