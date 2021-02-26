@@ -1,6 +1,7 @@
 @import '../abstracts/_abstracts-dir';
 
 .quote-box {
+  width: 100%;
   height: fit-content;
 
   @include respond-above('md') {
@@ -12,8 +13,24 @@
       image: url('/images/double-quote-left.png'), 
         url('/images/double-quote-left.png');
       repeat: no-repeat;
-      size: rem(36px 32px), rem(36px 32px);
+      size: rem(14px 16px), rem(14px 16px);
       position: top left, bottom right;
+    }
+
+    @include respond-above('sm') {
+      background-size: rem(22px 20px), rem(22px 20px);
+    }
+
+    @include respond-above('md') {
+      background-size: rem(26px 24px), rem(26px 24px);
+    }
+
+    @include respond-above('lg') {
+      background-size: rem(30px 28px), rem(30px 28px);
+    }
+
+    @include respond-above('xl') {
+      background-size: rem(36px 32px), rem(36px 32px);
     }
   }
 
@@ -31,7 +48,8 @@
     margin: rem(12px) 0 0 rem(24px);
   }
 
-  &__ {
-    
+  &__content {
+    margin: 0;
+    padding: rem(32px)
   }
 }
