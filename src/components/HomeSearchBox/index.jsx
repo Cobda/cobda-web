@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import useTranslation from 'next-translate/useTranslation'
-import { useRouter } from "next/router"
 
 const HomeSearchBox = () => {
   const { t } = useTranslation('home')
-  const [searchItem, setSearch] = useState('');
+  const [searchItem, setSearch] = useState('')
 
   const handleClickSearch = (e) => {
-    window.open(`products/${searchItem}`);
+    window.open(`products/${searchItem}`)
     setSearch("")
   }
 
@@ -24,7 +23,7 @@ const HomeSearchBox = () => {
         type="text"
         onChange={(e) => setSearch(e.target.value)}
         onKeyUp={handleKeyPress}
-        placeholder="What are you looking for?"
+        placeholder={t('searchPlaceholder')}
         name="search"
       />
       <button data-key="13" onClick={handleClickSearch} className="home-search-box__button" />

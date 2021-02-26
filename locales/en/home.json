@@ -3,5 +3,6 @@
   "popularSectionTitle": "POPULAR SEARCHES",
   "categorySectionTitle": "CATEGORIES",
   "searchSectionTitle": "COBDA, PRESENTED BY BANK.",
-  "searchSectionDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mimagna, placerat eu semper at, pretium sit amet libero. Integerultrices tristique quam."
+  "searchSectionDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mimagna, placerat eu semper at, pretium sit amet libero. Integerultrices tristique quam.",
+  "searchPlaceholder": "What are you looking for?"
 }
