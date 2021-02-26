@@ -1,0 +1,89 @@
+.hamburger {
+  display: block;
+  position: relative;
+
+  z-index: 1;
+  user-select: none;
+
+  & span {
+    display: block;
+    width: rem(33px);
+    height: rem(4px);
+    margin-bottom: rem(5px);
+    position: relative;
+
+    background: $dark;
+    border-radius: rem(3px);
+
+    z-index: 1;
+
+    transform-origin: rem(4px 0px);
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      opacity 0.55s ease;
+  }
+
+  & span:first-child {
+    transform-origin: 0% 0%;
+  }
+
+  & span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+  }
+
+  &__input {
+    position: absolute;
+    display: block;
+    width: rem(33px);
+    height: rem(33px);
+    margin: 0;
+    opacity: 0;
+
+    cursor: pointer;
+
+    z-index: 2; /* and place it over the hamburger */
+
+    -webkit-touch-callout: none;
+
+    &:checked ~ .hamburger__menu {
+      transform: none;
+    }
+
+    &:checked ~ span {
+      opacity: 1;
+      transform: rotate(45deg) translate(-2px, -1px);
+    }
+
+    &:checked ~ span:nth-last-child(3) {
+      opacity: 0;
+      transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    &:checked ~ span:nth-last-child(2) {
+      transform: rotate(-45deg) translate(0, -1px);
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    box-sizing: border-box;
+    width: rem(300px);
+    margin: rem(-16px) 0 0 rem(-16px);
+    padding: rem(60px 25px 40px 40px);
+
+    background: #ededed;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    /* to stop flickering of text in safari */
+
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+
+  &__menu-list {
+    padding: rem(10px) 0;
+    font-size: rem(16px);
+  }
+}

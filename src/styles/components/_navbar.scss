@@ -1,8 +1,9 @@
 @import '../abstracts/_abstracts-dir';
 
 .navbar {
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   box-sizing: border-box;
   width: 100%;
@@ -10,6 +11,7 @@
   padding: 0 rem(16px);
 
   @include respond-above('md') {
+    justify-content: space-between;
     padding: 0 rem(24px);
   }
 
@@ -150,5 +152,28 @@
 
     font-size: rem(16px);
     font-weight: 600;
+  }
+
+  &__flag {
+    display: none;
+    position: relative;
+    cursor: pointer;
+
+    @include respond-above('md') {
+      display: block;
+    }
+  }
+
+  &__hamburger-container {
+    position: absolute;
+    left: rem(16px);
+
+    display: block;
+    width: rem(24px);
+    height: rem(24px);
+
+    @include respond-above('md') {
+      display: none;
+    }
   }
 }
