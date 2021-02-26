@@ -13,7 +13,7 @@ const QouteBoxCarousel = () => {
     <CarouselProvider
       visibleSlides={1}
       naturalSlideWidth={1}
-      naturalSlideHeight={1}
+      naturalSlideHeight={2}
       totalSlides={4}
       infinite={true}
       // isPlaying={true}
@@ -21,25 +21,25 @@ const QouteBoxCarousel = () => {
       <Slider>
         <Slide index={0}>
           <CarouselItem
-            imagePath=""
+            imagePath="/images/yeezy-380.jpg"
             alternate=""
-            name="The Rock"
+            name="Eren Bayer"
             role="Developer"
             quote="Sample 1"
           />
         </Slide>
         <Slide index={1}>
           <CarouselItem
-            imagePath=""
+            imagePath="/images/yeezy-380.jpg"
             alternate=""
-            name="John Cena"
+            name="Amanda Jones"
             role="Developer"
             quote="Sample 2"
           />
         </Slide>
         <Slide index={2}>
           <CarouselItem
-            imagePath=""
+            imagePath="/images/yeezy-380.jpg"
             alternate=""
             name="Shawn Mentos"
             role="Developer"
@@ -48,9 +48,9 @@ const QouteBoxCarousel = () => {
         </Slide>
         <Slide index={3}>
           <CarouselItem
-            imagePath=""
+            imagePath="/images/yeezy-380.jpg"
             alternate=""
-            name="Amanda Jones"
+            name="John Cena"
             role="Developer"
             quote="Sample 3"
           />

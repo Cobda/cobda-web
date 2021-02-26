@@ -1,0 +1,21 @@
+@import '../abstracts/_abstracts-dir';
+
+.quote-box {
+  @include respond-above('md') {
+    width: 70%;
+  }
+
+  &__header {
+    display: none;
+    width: 40%;
+    border-top: solid rem(12px) $dark;
+
+    @include respond-above('md') {
+      display: block;
+    }
+  }
+
+  &__title {
+    margin: rem(12px) 0 0 rem(24px);
+  }
+}

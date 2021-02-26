@@ -1,4 +1,6 @@
 import React from 'react'
+import ProfileCard from '../ProfileCard'
+import QuoteBox from '../QuoteBox'
 
 interface CarouselItem {
   readonly imagePath: string
@@ -11,28 +13,13 @@ interface CarouselItem {
 const CarouselItem = ({ imagePath, alternate, name, role, quote }: CarouselItem) => {
   return (
     <div className="carousel-item carousel-item--quote-box">
-      <div className="carousel-item__profile-container">
-        <div className="carousel-item__profile-background">
-          <div className="carousel-item__profile-card">
-            <figure className="">
-              <img
-                src={imagePath}
-                alt={alternate}
-                className="carousel-item__image carousel-item__image--profile"
-              />
-              <figcaption className="carousel-item__caption">{name}</figcaption>
-              <span className="carousel-item__role">{role}</span>
-            </figure>
-          </div>
-        </div>
-      </div>
-      <div className="carousel-item__quote-container">
-        <header className="carousel-item__header">
-          <h3 className="carousel-item__title">QUOTES</h3>
-        </header>
-        {/* TODO */}
-        <p>{quote}</p>
-      </div>
+        <ProfileCard
+          imagePath={imagePath}
+          alternate={alternate}
+          name={name}
+          role={role}
+        />      
+        <QuoteBox quote={quote} />
     </div>
   )
 }
