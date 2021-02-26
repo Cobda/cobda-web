@@ -16,12 +16,8 @@
         image: url('/images/double-quote-left.png'),
           url('/images/double-quote-left.png');
         repeat: no-repeat;
-        size: rem(14px 16px), rem(14px 16px);
+        size: rem(22px 20px), rem(22px 20px);
         position: top left, bottom right;
-      }
-
-      @include respond-above('sm') {
-        background-size: rem(22px 20px), rem(22px 20px);
       }
 
       @include respond-above('md') {
