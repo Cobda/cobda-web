@@ -20,6 +20,7 @@
   @include respond-above('xl') {
     grid-template-columns: 1fr minmax(rem(1104px), rem(1440px)) 1fr;
     grid-template-rows: map-get($header-height, 'xl') 1fr map-get($footer-height,'xl');
+    column-gap: rem(48px);
     grid-template-areas:
       'header header header'
       '. main .'
@@ -40,11 +41,11 @@
     padding: rem(24px 16px);
 
     @include respond-above('md') {
-      padding: 4.5% rem(24px);
+      padding: 3% rem(20px);
     }
 
     @include respond-above('lg') {
-      padding: 5% rem(32px);
+      padding: 4% rem(30px);
     }
 
     @include respond-above('xl') {

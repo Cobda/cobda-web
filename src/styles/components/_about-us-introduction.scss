@@ -7,6 +7,7 @@
   @include respond-above('sm') {
     height: rem(400px);
   }
+
   @include respond-above('md') {
     height: rem(500px);
   }
@@ -14,6 +15,7 @@
   @include respond-above('lg') {
     height: rem(600px);
   }
+
   @include respond-above('xl') {
     height: rem(700px);
   }
@@ -22,6 +24,7 @@
     width: 58%;
     height: 12.5%;
     margin-block-start: 0%;
+    margin-block-end: 0%;
 
     color: $dark;
     -webkit-text-stroke: rem(1px) $dark;
@@ -42,48 +45,48 @@
 
     font-size: rem(24px);
     font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
     line-height: 1.22;
-    letter-spacing: normal;
     text-align: left;
   }
 
   &__description {
-    transform: translateY(-10%);
+    transform: translateY(-30%);
     align-self: flex-end;
     box-sizing: border-box;
     width: 55%;
-    height: 55%;
+    height: 45%;
     padding: 3% 5% 2% 2.5%;
+    margin-block-start: 0%;
+    margin-block-end: 0%;
 
     color: $light;
-    background-color: black;
+    background-color: $dark;
 
     @include respond-above('md') {
-      font-size: rem(16px);
+      transform: translateY(-20%);
+      height: 50%;
+
+      font-size: rem(14px);
     }
 
     @include respond-above('lg') {
-      font-size: rem(20px);
+      font-size: rem(18px);
     }
 
     @include respond-above('xl') {
-      font-size: rem(24px);
+      font-size: rem(22px);
     }
-
-    font-size: rem(14px);
+    
+    font-size: rem(10px);
     font-weight: 200;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
     text-align: left;
+    line-height: 1.5;
   }
 
   &--background {
     background: {
-      image: url(../../../public/images/hand-shake.jpg), url(../../../public/images/plain-black-rectangle.png);
+      image: url(../../../public/images/hand-shake.jpg),
+        url(../../../public/images/plain-black-rectangle.png);
       position: left 10% top 42%, left bottom 40%;
       size: 53% auto, 100% 45%;
       repeat: no-repeat, no-repeat;
