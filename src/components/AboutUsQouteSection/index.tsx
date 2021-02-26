@@ -1,10 +1,10 @@
 import React from 'react'
-import AboutUsCarousel from './carousel'
+import QouteBoxCarousel from '../QuoteBoxCarousel'
 
 const AboutUsQuoteSection = () => {
   return (
     <section className="about-us-section about-us-section--quote">
-      <AboutUsCarousel />
+      <QouteBoxCarousel />
     </section>
   )
 }

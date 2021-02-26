@@ -6,17 +6,18 @@ import {
   ButtonBack,
   ButtonNext,
 } from 'pure-react-carousel'
-import CarouselItem from './item'
+import CarouselItem from './Item'
 
-const AboutUsCarousel = () => {
+const QouteBoxCarousel = () => {
   return (
     <CarouselProvider
       visibleSlides={1}
-      naturalSlideWidth={1000}
-      naturalSlideHeight={400}
+      naturalSlideWidth={1}
+      naturalSlideHeight={1}
       totalSlides={4}
       infinite={true}
-      isPlaying={true}>
+      // isPlaying={true}
+    >
       <Slider>
         <Slide index={0}>
           <CarouselItem
@@ -61,4 +62,4 @@ const AboutUsCarousel = () => {
   )
 }
 
-export default AboutUsCarousel
+export default QouteBoxCarousel
