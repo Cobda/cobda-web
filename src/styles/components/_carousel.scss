@@ -6,23 +6,23 @@
   margin: auto;
 
   &--quote {
-    height: rem(550px);
-
-    @include respond-above('sm') {
-      height: rem(200px);
-    }
+    height: rem(450px);
 
     @include respond-above('md') {
-      height: rem(200px);
+      height: rem(370px);
     }
 
     @include respond-above('lg') {
-      height: rem(200px);
+      height: rem(430px);
     }
 
     @include respond-above('xl') {
-      height: rem(200px);
+      height: rem(470px);
     }
+  }
+
+  &__slider {
+    height: inherit;
   }
 
   &__inner-slide {

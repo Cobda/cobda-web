@@ -20,7 +20,8 @@ const QuoteBoxCarousel = () => {
       naturalSlideHeight={5}
       totalSlides={4}
       infinite={true}
-      // isPlaying={true}
+      lockOnWindowScroll
+      isPlaying={true}
     >
       <Slider>
         <Slide index={0}>
