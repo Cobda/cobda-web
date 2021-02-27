@@ -24,14 +24,15 @@
     display: flex;
     justify-content: center;
     padding-bottom: rem(24px);
+    
+    &--quote {
+      @include respond-above('sm') {
+        padding-bottom: rem(32px);
+      }
 
-    @include respond-above('sm') {
-      padding-bottom: rem(32px);
-    }
-
-    @include respond-above('md') {
-      display: none;
-      padding-bottom: rem(32px);
+      @include respond-above('md') {
+        display: none;
+      }
     }
   }
 
