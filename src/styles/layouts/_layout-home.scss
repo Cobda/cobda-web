@@ -41,11 +41,11 @@
     padding: 0 rem(16px);
 
     @include respond-above('md') {
-      padding: 3% rem(20px);
+      padding: 0 rem(24px);
     }
 
     @include respond-above('lg') {
-      padding: 4% rem(30px);
+      padding: 0 rem(32px);
     }
 
     @include respond-above('xl') {
