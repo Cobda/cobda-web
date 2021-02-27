@@ -61,8 +61,8 @@ const QuoteBoxCarousel = () => {
           />
         </Slide>
       </Slider>
-      <ButtonBack className="buttonBack buttonBack--center">{'<'}</ButtonBack>
-      <ButtonNext className="buttonNext buttonNext--center">{'>'}</ButtonNext>
+      <ButtonBack className="buttonBack buttonBack">{'<'}</ButtonBack>
+      <ButtonNext className="buttonNext buttonNext">{'>'}</ButtonNext>
     </CarouselProvider>
   )
 }

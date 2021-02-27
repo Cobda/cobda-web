@@ -7,10 +7,9 @@
   height: 100%;
 
   &--quote {
-    // TODO: Change shadow
     height: fit-content;
     padding: rem(16px) 0;
-    box-shadow: 0 0 rem(20px) 0 rgba(0, 0, 0, 0.16);
+    box-shadow: 0 0 rem(20px) 0 box-shadow-opacity(0.16);
 
     @include respond-above('md') {
       flex-direction: row;

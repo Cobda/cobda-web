@@ -6,7 +6,11 @@
   margin: auto;
 
   &--quote {
-    height: rem(450px);
+    height: rem(400px);
+
+    @include respond-above('sm') {
+      height: rem(450px);
+    }
 
     @include respond-above('md') {
       height: rem(370px);
@@ -98,10 +102,6 @@
     @include respond-above('xl') {
       padding: rem(32px 16px);
       font-size: rem(32px);
-    }
-
-    &--center {
-      top: 50%;
     }
   }
 
