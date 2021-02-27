@@ -1,0 +1,162 @@
+@import '../abstracts/_abstracts-dir';
+
+.release-item {
+  display: flex;
+  justify-content: space-between;
+  height: 162px;
+
+  @include respond-above('md') {
+    height: 300px;
+  }
+
+  @include respond-above('lg') {
+    height: 378px;
+  }
+
+  @include respond-above('xl') {
+    height: 454px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: rem(16px) 0 0 rem(16px);
+    box-sizing: border-box;
+    width: 45%;
+
+    @include respond-above('md') {
+      padding: rem(24px) 0 0 rem(40px);
+    }
+
+    @include respond-above('lg') {
+      width: 45%;
+      padding: rem(32px) 0 0 rem(44px);
+    }
+
+    @include respond-above('xl') {
+      padding: rem(44px) 0 0 rem(52px);
+    }
+  }
+
+  &__content > * {
+    &:not(:last-child) {
+      margin-bottom: rem(8px);
+    }
+  }
+
+  &--grey-background {
+    background-color: $alabaster;
+  }
+
+  &__header {
+    margin: 0;
+    font-size: rem(12px);
+    font-weight: bold;
+    line-height: 1.44;
+
+    @include respond-above('md') {
+      padding-bottom: rem(16px);
+      font-size: rem(24px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(28px);
+    }
+
+    @include respond-above('xl') {
+      font-size: rem(36px);
+    }
+  }
+
+  &__description {
+    width: 80%;
+    margin: 0;
+    font-size: rem(8px);
+    font-weight: 500;
+    line-height: 1.44;
+    color: $mine-shaft;
+
+    @include respond-above('md') {
+      padding-bottom: rem(16px);
+      font-size: rem(12px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(16px);
+    }
+
+    @include respond-above('xl') {
+      font-size: rem(24px);
+    }
+  }
+
+  &__price {
+    margin: 0;
+    padding-bottom: rem(12px);
+    font-size: rem(14px);
+    font-weight: bold;
+
+    @include respond-above('md') {
+      padding-bottom: rem(44px);
+      font-size: rem(24px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(28px);
+    }
+
+    @include respond-above('xl') {
+      font-size: rem(36px);
+    }
+  }
+
+  &__product {
+    font-size: rem(6px);
+    font-weight: bold;
+    color: $azure-radiance;
+
+    @include respond-above('md') {
+      font-size: rem(12px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(20px);
+    }
+
+    @include respond-above('xl') {
+      font-size: rem(28px);
+    }
+  }
+
+  &__media {
+    width: 55%;
+  }
+
+  &__image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  &__image {
+    width: 100%;
+    height: 162px;
+
+    @include respond-above('md') {
+      height: 300px;
+    }
+
+    @include respond-above('lg') {
+      height: 378px;
+    }
+
+    @include respond-above('xl') {
+      height: 454px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+}

@@ -1,77 +1,73 @@
 @import '../abstracts/_abstracts-dir';
 
-.home-release {
+.release-banner {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: rem(250px);
+  height: rem(130px);
+  padding: rem(16px 16px);
 
   background: {
-    image: url('/images/shoes-new-release.jpg');
+    image: url('/images/new-release.png');
+    position: center;
     repeat: no-repeat;
     size: cover;
   }
 
-  @include respond-above('sm') {
-    height: rem(375px);
-  }
-
   @include respond-above('md') {
-    height: rem(500px);
+    padding: rem(40px 40px);
+    height: rem(220px);
   }
 
   @include respond-above('lg') {
-    height: rem(600px);
+    padding: rem(44px 44px);
+    height: rem(290px);
   }
 
   @include respond-above('xl') {
-    height: rem(700px);
+    padding: rem(52px 52px);
+    height: rem(350px);
   }
 
   &__header {
     margin: 0;
-    padding-left: rem(28px);
     font-size: rem(24px);
+    line-height: 1;
     color: $light;
+    margin-bottom: rem(10px);
 
     @include respond-above('md') {
-      padding-left: rem(36px);
       font-size: rem(45px);
     }
 
     @include respond-above('lg') {
-      padding-left: rem(44px);
       font-size: rem(60px);
     }
 
     @include respond-above('xl') {
-      padding-left: rem(52px);
       font-size: rem(75px);
     }
   }
 
   &__description {
     margin: 0;
-    padding: 0 0 rem(20px 28px);
-    max-width: 60%;
-    font-size: rem(12px);
+    max-width: 90%;
+    font-size: rem(8px);
     line-height: 1.3;
     color: $light;
 
     @include respond-above('md') {
-      padding: 0 0 rem(28px 36px);
+      max-width: 70%;
       font-size: rem(16px);
       line-height: 1.5;
     }
 
     @include respond-above('lg') {
-      max-width: 55%;
-      padding: 0 0 rem(36px 44px);
+      max-width: 60%;
       font-size: rem(20px);
     }
 
     @include respond-above('xl') {
-      padding: 0 0 rem(44px 52px);
       font-size: rem(26px);
     }
   }

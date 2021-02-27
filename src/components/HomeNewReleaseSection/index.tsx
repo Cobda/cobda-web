@@ -1,15 +1,13 @@
 import React from 'react'
-import useTranslation from 'next-translate/useTranslation'
+import NewReleaseBanner from '../NewReleaseBanner'
+import NewRelease from '../NewRelease'
 
 const HomeNewReleaseSection = () => {
-  const { t } = useTranslation('home')
-
   return (
     <section className="home-section home-section--light">
-      <div className="home-release">
-        <h2 className="home-release__header">{t('releaseSectionTitle')}</h2>
-        <p className="home-release__description">{t('releaseSectionDescription')}</p>
-      </div>
+      <NewReleaseBanner />
+      <NewRelease leftContent={true} />
+      <NewRelease />
     </section>
   )
 }

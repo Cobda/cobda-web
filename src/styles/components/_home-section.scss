@@ -47,12 +47,11 @@
 
   &--background-image {
     background: {
-      image: url('/images/bank-jojo.jpg'),
-        url('/images/plain-grey-square.png');
+      image: url('/images/bank-jojo.jpg'), url('/images/plain-grey-square.png');
       repeat: no-repeat;
       size: contain, auto 40%;
       position: left, bottom 30% right;
-    };
+    }
   }
 
   &--dark {
@@ -61,18 +60,15 @@
   }
 
   &--light {
+    height: auto;
     background-color: $light;
 
-    @include respond-above('md') {
-      height: rem(500px);
-    }
+    & > *:not(:last-child) {
+      margin-bottom: rem(16px);
 
-    @include respond-above('lg') {
-      height: rem(650px);
-    }
-
-    @include respond-above('xl') {
-      height: rem(800px);
+      @include respond-above('md') {
+        font-size: rem(30px);
+      }
     }
   }
 

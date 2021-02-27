@@ -6,5 +6,9 @@
   "searchSectionDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mimagna, placerat eu semper at, pretium sit amet libero. Integerultrices tristique quam.",
   "searchPlaceholder": "What are you looking for?",
   "releaseSectionTitle": "NEW RELEASE",
-  "releaseSectionDescription": "In consequat, quam id sodales hendrerit, eros mi molestie leo, nec lacinia risus neque tristique augue. Proin tempus urna vel congue elementum. Vestibulum euismod accumsan dui, ac iaculis sem "
+  "releaseSectionHeader": "<0>NEW<1/> RELEASES</0>",
+  "releaseSectionDescription": "In consequat, quam id sodales hendrerit, eros mi molestie leo, nec lacinia risus neque tristique augue. Proin tempus urna vel congue elementum. Vestibulum euismod accumsan dui, ac iaculis sem",
+  "releaseItemSectionHeader": "<0>MEN RUNNING<1/>SHOES BLACK</0>",
+  "releaseItemSectionDescription": "This is just a simple sentence to describe men running black shoes",
+  "releaseItemSectionProduct": "VIEW PRODUCT"
 }
