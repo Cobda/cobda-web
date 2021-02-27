@@ -1,11 +1,12 @@
 import React from 'react'
 import useTranslation from 'next-translate/useTranslation'
+
 interface QuoteBox {
   readonly quote: string
 }
 
 const QuoteBox = ({ quote }: QuoteBox) => {
-  const {t} = useTranslation('about-us');
+  const { t } = useTranslation('about-us')
 
   return (
     <div className="quote-box">

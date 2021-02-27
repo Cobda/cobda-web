@@ -10,7 +10,7 @@
 
   &__container {
     margin: rem(16px);
-    
+
     @include respond-above('md') {
       margin: rem(24px) 0 0 rem(24px);
     }
@@ -41,8 +41,8 @@
   &__header {
     display: none;
     width: 30%;
-    border-top: solid rem(12px) $dark;
     padding: rem(12px) 0 0 rem(24px);
+    border-top: solid rem(12px) $dark;
 
     @include respond-above('md') {
       display: block;
@@ -58,8 +58,8 @@
   }
 
   &__content {
-    margin: 0;
     padding: rem(32px 36px);
+    margin: 0;
 
     @include respond-above('xl') {
       padding: rem(32px 48px);

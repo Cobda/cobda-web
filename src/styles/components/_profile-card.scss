@@ -19,11 +19,11 @@
 
   &__body {
     flex-direction: column;
+    box-sizing: border-box;
+    box-shadow: 0 0 rem(20px) 0 rgba(0, 0, 0, 0.16);
     width: fit-content;
     padding: rem(12px 12px 16px);
     margin: rem(24px) 0;
-    box-sizing: border-box;
-    box-shadow: 0 0 rem(20px) 0 rgba(0, 0, 0, 0.16);
     background-color: $light;
 
     @include flex-center();
@@ -44,8 +44,8 @@
   &__image {
     width: rem(90px);
     height: rem(70px);
-    background-color: lightgray;
     margin-bottom: rem(12px);
+    background-color: lightgray;
 
     @include respond-above('sm') {
       width: rem(120px);
@@ -69,7 +69,6 @@
   }
 
   &__label {
-
     &:not(:last-child) {
       margin-bottom: rem(4px);
 
