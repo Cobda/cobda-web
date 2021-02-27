@@ -2,18 +2,23 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import LanguageItem from '../LanguageItem'
+import { ComponentType } from '../../enum/component-type'
 
 export enum LocaleCode {
   English = 'EN',
   Thai = 'TH'
 }
 
-const NavbarLanguage = () => {
-  const [isMenuOpen, setMenuOpen] = useState<boolean>(false)
-  const [selectedLocale, setSelectedLocale] = useState<string>(LocaleCode.English)
-  const flagRef = useRef<HTMLDivElement>(null)
+interface LanguageDropdown {
+  readonly parent: ComponentType
+}
+
+const LanguageDropdown = ({ parent }: LanguageDropdown) => {
   const router = useRouter()
-  const { locales } = router
+  const { locales, locale } = router
+  const [isMenuOpen, setMenuOpen] = useState<boolean>(false)
+  const [selectedLocale, setSelectedLocale] = useState<string>(locale?.toLocaleUpperCase() || LocaleCode.English)
+  const flagRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     document.addEventListener('mousedown', handleMouseClick)
@@ -50,11 +55,27 @@ const NavbarLanguage = () => {
     )
   }
 
-  const renderLocaleDropdown = () => {
+  const renderSelectedLocale = () => (
+    <>
+      <Image src="/icons/world.svg" height={16} width={16} />
+      <span className="dropdown__label dropdown__label--bold">
+        {selectedLocale.toLocaleUpperCase()}
+      </span>
+    </>
+  )
+
+  const renderDropdownToggle = () => {
+    const arrowClassName: string =
+      parent === ComponentType.Header
+        ? 'dropdown__arrow'
+        : 'dropdown__arrow dropdown__arrow--large'
+
     return (
-      <div className="dropdown" onClick={handleDropdownToggle}>
-        {renderSelectedFlagImage()}
-        <div className="dropdown__arrow" />
+      <div className="dropdown__toggle" onClick={handleDropdownToggle}>
+        {parent === ComponentType.Header
+          ? renderSelectedFlagImage()
+          : renderSelectedLocale()}
+        <div className={arrowClassName} />
       </div>
     )
   }
@@ -72,10 +93,10 @@ const NavbarLanguage = () => {
     return isMenuOpen ? <ul className="dropdown__menu">{localeMenu}</ul> : <></>
   }
 
-  const renderNavbarLocale = () => {
+  const renderLanguageDropdown = () => {
     return locales ? (
-      <div className="navbar__flag" ref={flagRef}>
-        {renderLocaleDropdown()}
+      <div className="dropdown" ref={flagRef}>
+        {renderDropdownToggle()}
         {renderLocaleMenu()}
       </div>
     ) : (
@@ -83,7 +104,7 @@ const NavbarLanguage = () => {
     )
   }
 
-  return renderNavbarLocale()
+  return renderLanguageDropdown()
 }
 
-export default NavbarLanguage
+export default LanguageDropdown

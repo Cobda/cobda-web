@@ -1,7 +1,7 @@
 .layout-products {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: map-get($header-height, 'sm') rem(50px) 1fr map-get($footer-height, 'sm');
+  grid-template-rows: map-get($header-height, 'sm') rem(50px) 1fr 1fr;
   grid-template-areas:
     'header'
     'sidebar'
@@ -55,5 +55,9 @@
 
   & > footer {
     grid-area: footer;
+
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 rem(20px) 0 box-shadow-opacity(0.16);
   }
 }

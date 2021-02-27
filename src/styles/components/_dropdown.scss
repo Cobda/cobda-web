@@ -1,14 +1,27 @@
 @import '../abstracts/_abstracts-dir';
 
 .dropdown {
-  display: flex;
-  align-items: center;
+  position: relative;
+  float: right;
+  cursor: pointer;
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+  }
 
   &__arrow {
     border-top: rem(4px) solid $dark;
     border-right: rem(4px) solid transparent;
     border-left: rem(4px) solid transparent;
     margin-left: rem(8px);
+
+    &--large {
+      border-top: rem(6px) solid $dark;
+      border-right: rem(6px) solid transparent;
+      border-left: rem(6px) solid transparent;
+      margin-left: rem(16px);
+    }
   }
 
   &__menu {
@@ -16,12 +29,13 @@
     z-index: $zindex-dropdown;
     right: 0;
 
-    box-shadow: 1px 1px rem(4px) $dropdown-list-shadow;
+    box-shadow: 1px 1px rem(4px) box-shadow-opacity(0.2);
     width: max-content;
     padding: rem(2px) 0;
     border: 1px $shuttle-gray;
     border-radius: rem(6px);
-    margin: rem(16px) 0 0;
+    margin: rem(12px) 0 0;
+
     background-color: $light;
     cursor: pointer;
   }
@@ -48,5 +62,17 @@
   // TODO: Change font properties
   &__label {
     margin-left: rem(8px);
+
+    @include respond-above('md') {
+      font-size: rem(12px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(16px);
+    }
+
+    &--bold {
+      font-weight: bold;
+    }
   }
 }

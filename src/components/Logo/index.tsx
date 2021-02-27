@@ -1,12 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
 
-const NavbarLogo = () => {
+const Logo = () => {
   return (
     <Link href="/">
-      <a className="navbar__logo">COBDA</a>
+      <a className="logo">COBDA</a>
     </Link>
   )
 }
 
-export default NavbarLogo
+export default Logo

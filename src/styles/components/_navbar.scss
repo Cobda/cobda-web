@@ -36,27 +36,11 @@
     }
   }
 
-  &__logo {
-    text-align: left;
-    text-decoration: none;
-    color: $dark;
-    letter-spacing: rem(4px);
-    font-size: rem(24px);
-    font-weight: bold;
-
-    @include respond-above('md') {
-      font-size: rem(32px);
-    }
-
-    @include respond-above('lg') {
-      font-size: rem(36px);
-    }
-  }
-
   &__menu {
     display: flex;
     padding: 0;
     margin: 0;
+    list-style-type: none;
   }
 
   &__menu-item {
@@ -116,7 +100,7 @@
       display: none;
       border-radius: rem(26px);
       border: solid rem(3px) $light;
-      box-shadow: 0 rem(3px 6px) $signup-button-shadow;
+      box-shadow: 0 rem(3px 6px) box-shadow-opacity(0.16);
 
       background-image: linear-gradient(
         111deg,
@@ -168,10 +152,9 @@
     font-weight: 600;
   }
 
+  // TODO: Modify when hamburger is available
   &__flag {
     display: none;
-    position: relative;
-    cursor: pointer;
 
     @include respond-above('md') {
       display: block;

@@ -3,5 +3,11 @@
   "signUp": "Sign up",
   "home" : "Home",
   "product" : "Products",
-  "aboutUs" : "About Us"
+  "aboutUs" : "About Us",
+  "helpCenter": "Help Center",
+  "termsOfService": "Terms of Service",
+  "privacyPolicy": "Privacy Policy",
+  "helpline": "Helpline",
+  "about": "About",
+  "contactUs": "Contact Us"
 }
