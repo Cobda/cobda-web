@@ -1,13 +1,16 @@
+import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
-import QouteBoxCarousel from '../QuoteBoxCarousel'
+import QuoteBoxCarousel from '../QuoteBoxCarousel'
 
 const AboutUsQuoteSection = () => {
+  const {t} = useTranslation('about-us')
+
   return (
     <section className="about-us-section about-us-section--quote">
       <header className="about-us-section__header">
-        <h1 className="about-us-section__title">QUOTES</h1>
+        <h1 className="about-us-section__title">{t('quoteSectionHeader')}</h1>
       </header>
-      <QouteBoxCarousel />
+      <QuoteBoxCarousel />
     </section>
   )
 }

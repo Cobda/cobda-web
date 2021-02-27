@@ -9,14 +9,14 @@ import {
 import CarouselItem from './Item'
 import useTranslation from 'next-translate/useTranslation'
 
-const QouteBoxCarousel = () => {
+const QuoteBoxCarousel = () => {
   const { t } = useTranslation('about-us')
 
   return (
     <CarouselProvider
       visibleSlides={1}
-      naturalSlideWidth={3.5}
-      naturalSlideHeight={1}
+      naturalSlideWidth={4}
+      naturalSlideHeight={5}
       totalSlides={4}
       infinite={true}
       // isPlaying={true}
@@ -26,7 +26,7 @@ const QouteBoxCarousel = () => {
           <CarouselItem
             imagePath="/images/yeezy-380.jpg"
             alternate=""
-            name="Eren Buyer"
+            name={t('name')}
             role={t('role')}
             quote={t('quoteSectionContent')}
           />
@@ -35,7 +35,7 @@ const QouteBoxCarousel = () => {
           <CarouselItem
             imagePath="/images/yeezy-380.jpg"
             alternate=""
-            name="Amanda Jones"
+            name={t('name')}
             role={t('role')}
             quote={t('quoteSectionContent')}
           />
@@ -44,7 +44,7 @@ const QouteBoxCarousel = () => {
           <CarouselItem
             imagePath="/images/yeezy-380.jpg"
             alternate=""
-            name="Shawn Mentos"
+            name={t('name')}
             role={t('role')}
             quote={t('quoteSectionContent')}
           />
@@ -53,7 +53,7 @@ const QouteBoxCarousel = () => {
           <CarouselItem
             imagePath="/images/yeezy-380.jpg"
             alternate=""
-            name="John Cena"
+            name={t('name')}
             role={t('role')}
             quote={t('quoteSectionContent')}
           />
@@ -65,4 +65,4 @@ const QouteBoxCarousel = () => {
   )
 }
 
-export default QouteBoxCarousel
+export default QuoteBoxCarousel

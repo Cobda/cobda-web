@@ -1,5 +1,5 @@
 import React from 'react'
-import AboutUsQuoteSection from '../AboutUsQouteSection'
+import AboutUsQuoteSection from '../AboutUsQuoteSection'
 
 const AboutUsSection = () => {
   return (

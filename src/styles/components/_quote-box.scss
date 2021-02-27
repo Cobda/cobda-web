@@ -9,7 +9,11 @@
   }
 
   &__container {
-    margin: rem(24px) 0 0 rem(24px);
+    margin: rem(16px);
+    
+    @include respond-above('md') {
+      margin: rem(24px) 0 0 rem(24px);
+    }
 
     &--background-image {
       background: {
