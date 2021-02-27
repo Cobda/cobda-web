@@ -6,17 +6,17 @@
   align-items: center;
   height: 100%;
 
-  &--quote-box {
+  &--quote {
     // TODO: Change shadow
     height: fit-content;
-    padding: rem(32px);
-    box-shadow: 0 0 rem(20px) 0 box-shadow-opacity(0.16) rgba(0, 0, 0, 0.16);
+    padding: rem(16px) 0;
+    box-shadow: 0 0 rem(20px) 0 rgba(0, 0, 0, 0.16);
 
     @include respond-above('md') {
       flex-direction: row;
       justify-content: center;
       align-items: flex-start;
-      padding-top: rem(16px);
+      padding: rem(16px 32px 32px);
     }
   }
 

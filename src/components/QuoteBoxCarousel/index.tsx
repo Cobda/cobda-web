@@ -14,6 +14,7 @@ const QuoteBoxCarousel = () => {
 
   return (
     <CarouselProvider
+      className="carousel--quote"
       visibleSlides={1}
       naturalSlideWidth={4}
       naturalSlideHeight={5}

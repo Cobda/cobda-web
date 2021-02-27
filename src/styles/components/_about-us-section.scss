@@ -1,8 +1,12 @@
 @import '../abstracts/_abstracts-dir';
 
 .about-us-section {
+  padding: rem(24px) 0;
   box-sizing: border-box;
-  padding: rem(16px) 0;
+
+  @include respond-above('sm') {
+    padding: rem(32px) 0;
+  }
 
   @include respond-above('md') {
     padding: rem(24px) 0;
@@ -19,15 +23,25 @@
   &__header {
     display: flex;
     justify-content: center;
-    padding-bottom: rem(32px);
+    padding-bottom: rem(24px);
+
+    @include respond-above('sm') {
+      padding-bottom: rem(32px);
+    }
 
     @include respond-above('md') {
       display: none;
+      padding-bottom: rem(32px);
     }
   }
 
   &__title {
     margin: 0;
+    font-size: rem(16px);
+
+    @include respond-above('sm') {
+      font-size: rem(18px);
+    }
   }
 
   &__description {

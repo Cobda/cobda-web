@@ -72,7 +72,7 @@
     &:not(:last-child) {
       margin-bottom: rem(4px);
 
-      @include respond-above('sm') {
+      @include respond-above('md') {
         margin-bottom: rem(8px);
       }
     }
@@ -82,6 +82,10 @@
       font-weight: bold;
 
       @include respond-above('sm') {
+        font-size: rem(14px);
+      }
+
+      @include respond-above('md') {
         font-size: rem(16px);
       }
 

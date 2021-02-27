@@ -12,7 +12,7 @@ interface CarouselItem {
 
 const CarouselItem = ({ imagePath, alternate, name, role, quote }: CarouselItem) => {
   return (
-    <div className="carousel-item carousel-item--quote-box">
+    <div className="carousel-item carousel-item--quote">
         <ProfileCard
           imagePath={imagePath}
           alternate={alternate}

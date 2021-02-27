@@ -15,6 +15,10 @@
       margin: rem(24px) 0 0 rem(24px);
     }
 
+    @include respond-above('lg') {
+      margin-left: rem(32px);
+    }
+
     &--background-image {
       background: {
         image: url('/images/double-quote-left.png'),
@@ -47,6 +51,10 @@
     @include respond-above('md') {
       display: block;
     }
+
+    @include respond-above('lg') {
+      padding-left: rem(32px);
+    }
   }
 
   &__title {
@@ -61,8 +69,25 @@
     padding: rem(32px 36px);
     margin: 0;
 
-    @include respond-above('xl') {
+    font-size: rem(12px);
+    font-weight: 200;
+
+    @include respond-above('sm') {
+      font-size: rem(14px);
+    }
+
+    @include respond-above('md') {
+      font-size: rem(16px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(18px);
       padding: rem(32px 48px);
+    }
+
+    @include respond-above('xl') {
+      font-size: rem(20px);
+      padding: rem(36px 48px);
     }
   }
 }
