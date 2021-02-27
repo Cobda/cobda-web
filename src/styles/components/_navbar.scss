@@ -61,14 +61,13 @@
       display: block;
       width: 0;
     }
-    
+
     &:hover::after {
       width: 64%;
       border-bottom: rem(3px) solid $havelock-blue;
       margin: 0 auto;
       transition: width 0.3s;
     }
-
 
     &--selected {
       color: $dark;
@@ -88,16 +87,10 @@
     cursor: pointer;
 
     &--secondary {
-      display: none;
       color: $dark;
-
-      @include respond-above('md') {
-        display: block;
-      }
     }
 
     &--primary {
-      display: none;
       border-radius: rem(26px);
       border: solid rem(3px) $light;
       box-shadow: 0 rem(3px 6px) box-shadow-opacity(0.16);
@@ -112,7 +105,6 @@
       @include button-darken-effect($cornflower-blue);
 
       @include respond-above('md') {
-        display: block;
         padding: rem(6px 15px);
         font-size: rem(16px);
       }
@@ -126,8 +118,12 @@
   }
 
   &__tool {
-    display: flex;
-    align-items: center;
+    display: none;
+
+    @include respond-above('md') {
+      display: flex;
+      align-items: center;
+    }
   }
 
   &__tool > div {
@@ -150,14 +146,5 @@
 
     font-size: rem(16px);
     font-weight: 600;
-  }
-
-  // TODO: Modify when hamburger is available
-  &__flag {
-    display: none;
-
-    @include respond-above('md') {
-      display: block;
-    }
   }
 }
