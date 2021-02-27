@@ -1,45 +1,55 @@
 @import '../abstracts/_abstracts-dir';
 
 .home-search-box {
-  @include flex-center();
-  position: absolute;
-  top: 50%;
-  right: 0%;
-  left: 0%;
+  width: 80%;
 
-  width: 100%;
+  background-color: $light;
+  box-shadow: rem(5px 10px 20px 0px) hsla(0, 0%, 0%, 0.16);
+
+  @include respond-above('md') {
+    width: 90%;
+  }
 
   & > input {
     width: 75%;
-    padding: rem(35.5px 59.3px 34.4px 58px);
+    padding: rem(5px 10px 5px 10px);
 
-    box-shadow: 5px 10px 20px 0 hsla(0, 0%, 0%, 0.16);
     color: $dove-gray;
-    background-color: $light;
 
     border: none;
-    font-size: rem(18px);
+    font-size: rem(14px);
     line-height: 1.23;
     text-align: left;
 
+    @include respond-above('sm') {
+      padding: rem(10px 20px 10px 20px);
+      font-size: rem(16px);
+    }
+
     @include respond-above('md') {
-      width: 75%;
-      font-size: rem(22px);
+      padding: rem(20px 40px 20px 40px);
+      font-size: rem(20px);
+    }
+
+    @include respond-above('lg') {
+      padding: rem(35px 60px 35px 60px);
+      font-size: rem(24px);
     }
   }
 
   &__button {
     position: absolute;
-    right: 10%;
-    top: 36%;
+    top: 10%;
+    right: 15%;
 
     width: 5%;
-    height: 50%;
-    padding: rem(5px 10px);
+    height: 80%;
+    padding: 0%;
 
     background-color: $light;
     border: none;
     outline: none;
+
     background: {
       image: url('../../../public/icons/search-icon.svg');
       repeat: no-repeat;
@@ -47,12 +57,16 @@
       position: center;
     }
 
-    @include respond-above('md') {
-      top: 32%;
+    @include respond-above('sm') {
+      top: 10%;
+      right: 15%;
     }
 
-    @include respond-above('lg') {
+    @include respond-above('md') {
       top: 25%;
+      right: 10%;
+
+      height: 50%;
     }
   }
 

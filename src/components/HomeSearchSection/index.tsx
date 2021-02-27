@@ -14,7 +14,7 @@ const HomeSearchSection = () => {
             {t('searchSectionDescription')}
           </p>
         </div>
-        <div className="home-search__actionable">
+        <div className="home-search__box">
           <HomeSearchBox />
         </div>
       </div>
