@@ -42,10 +42,9 @@
   }
 
   &__image {
-    width: rem(90px);
+    width: rem(80px);
     height: rem(70px);
     margin-bottom: rem(12px);
-    background-color: lightgray;
 
     @include respond-above('sm') {
       width: rem(120px);
@@ -78,7 +77,7 @@
     }
 
     &--name {
-      font-size: rem(12px);
+      font-size: rem(10px);
       font-weight: bold;
 
       @include respond-above('sm') {

@@ -6,10 +6,10 @@
   margin: auto;
 
   &--quote {
-    height: rem(400px);
+    height: rem(360px);
 
     @include respond-above('sm') {
-      height: rem(450px);
+      height: rem(420px);
     }
 
     @include respond-above('md') {
@@ -17,7 +17,7 @@
     }
 
     @include respond-above('lg') {
-      height: rem(430px);
+      height: rem(420px);
     }
 
     @include respond-above('xl') {
@@ -77,7 +77,7 @@
     position: absolute;
     top: 40%;
     transform: translateY(-50%);
-
+    outline: thin dotted;
     display: none;
     border: none;
     background-color: $mine-shaft;

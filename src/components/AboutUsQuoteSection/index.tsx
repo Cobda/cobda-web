@@ -3,7 +3,7 @@ import React from 'react'
 import QuoteBoxCarousel from '../QuoteBoxCarousel'
 
 const AboutUsQuoteSection = () => {
-  const {t} = useTranslation('about-us')
+  const { t } = useTranslation('about-us')
 
   return (
     <section className="about-us-section about-us-section--quote">

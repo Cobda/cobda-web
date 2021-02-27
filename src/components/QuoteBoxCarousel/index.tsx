@@ -21,13 +21,13 @@ const QuoteBoxCarousel = () => {
       totalSlides={4}
       infinite={true}
       lockOnWindowScroll
-      isPlaying={true}
-    >
+      isPlaying={true}>
       <Slider>
         <Slide index={0}>
+          {/* TODO: Change these value */}
           <CarouselItem
             imagePath="/images/yeezy-380.jpg"
-            alternate=""
+            alternate="Adidas fashion sportswear"
             name={t('name')}
             role={t('role')}
             quote={t('quoteSectionContent')}
@@ -36,7 +36,7 @@ const QuoteBoxCarousel = () => {
         <Slide index={1}>
           <CarouselItem
             imagePath="/images/yeezy-380.jpg"
-            alternate=""
+            alternate="Adidas fashion sportswear"
             name={t('name')}
             role={t('role')}
             quote={t('quoteSectionContent')}
@@ -45,7 +45,7 @@ const QuoteBoxCarousel = () => {
         <Slide index={2}>
           <CarouselItem
             imagePath="/images/yeezy-380.jpg"
-            alternate=""
+            alternate="Adidas fashion sportswear"
             name={t('name')}
             role={t('role')}
             quote={t('quoteSectionContent')}
@@ -54,7 +54,7 @@ const QuoteBoxCarousel = () => {
         <Slide index={3}>
           <CarouselItem
             imagePath="/images/yeezy-380.jpg"
-            alternate=""
+            alternate="Adidas fashion sportswear"
             name={t('name')}
             role={t('role')}
             quote={t('quoteSectionContent')}

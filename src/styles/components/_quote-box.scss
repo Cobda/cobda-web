@@ -22,22 +22,26 @@
     &--background-image {
       background: {
         image: url('/images/double-quote-left.png'),
-          url('/images/double-quote-left.png');
+          url('/images/double-quote-right.png');
         repeat: no-repeat;
-        size: rem(22px 20px), rem(22px 20px);
+        size: rem(14px 12px);
         position: top left, bottom right;
+      }
+      
+      @include respond-above('sm') {
+        background-size: rem(22px 20px);
       }
 
       @include respond-above('md') {
-        background-size: rem(26px 24px), rem(26px 24px);
+        background-size: rem(26px 24px);
       }
 
       @include respond-above('lg') {
-        background-size: rem(30px 28px), rem(30px 28px);
+        background-size: rem(30px 28px);
       }
 
       @include respond-above('xl') {
-        background-size: rem(36px 32px), rem(36px 32px);
+        background-size: rem(36px 32px);
       }
     }
   }
@@ -66,17 +70,19 @@
   }
 
   &__content {
-    padding: rem(32px 36px);
+    padding: rem(16px 8px);
     margin: 0;
 
-    font-size: rem(12px);
+    font-size: rem(8px);
     font-weight: 200;
 
     @include respond-above('sm') {
+      padding: rem(24px 28px);
       font-size: rem(14px);
     }
 
     @include respond-above('md') {
+      padding: rem(32px 36px);
       font-size: rem(16px);
     }
 
