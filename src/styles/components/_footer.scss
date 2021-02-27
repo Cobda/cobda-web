@@ -10,7 +10,7 @@
   max-width: $navbar-max-width;
   height: fit-content;
   padding: rem(32px);
-  
+
   background-color: $light;
 
   @include respond-above('md') {
@@ -31,18 +31,16 @@
   &__logo-container {
     width: min-content;
 
-    & > * {
-      &:last-child {
-        display: none;
+    .dropdown {
+      display: none;
 
-        @include respond-above('md') {
-          display: block;
-          margin-top: rem(16px);
-        }
+      @include respond-above('md') {
+        display: block;
+        margin-top: rem(16px);
+      }
 
-        @include respond-above('lg') {
-          margin-top: rem(32px);
-        }
+      @include respond-above('lg') {
+        margin-top: rem(32px);
       }
     }
   }
@@ -51,10 +49,8 @@
     display: flex;
     align-items: flex-end;
 
-    & > * {
-      &:last-child {
-        margin-left: rem(8px);
-      }
+    .footer__list-item {
+      margin-left: rem(8px);
     }
   }
 

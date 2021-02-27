@@ -1,7 +1,7 @@
 .layout-about-us {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: map-get($header-height, 'sm') 1fr map-get($footer-height, 'sm');
+  grid-template-rows: map-get($header-height, 'sm') 1fr 1fr;
   grid-template-areas:
     'header'
     'main'

@@ -63,16 +63,16 @@
   &__label {
     margin-left: rem(8px);
 
-    &--bold {
-      font-weight: bold;
-    }
-
     @include respond-above('md') {
       font-size: rem(12px);
     }
 
     @include respond-above('lg') {
       font-size: rem(16px);
+    }
+
+    &--bold {
+      font-weight: bold;
     }
   }
 }
