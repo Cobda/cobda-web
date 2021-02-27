@@ -1,6 +1,7 @@
 .about-us-introduction {
   display: flex;
   flex-direction: column;
+
   @include respond-above('md') {
     justify-content: space-between;
     height: rem(500px);
@@ -74,8 +75,8 @@
 
   &--background {
     background: {
-      image: url(../../../public/images/hand-shake.jpg),
-        url(../../../public/images/plain-black-rectangle.png);
+      image: url(/images/hand-shake.jpg),
+        url(/images/plain-black-rectangle.png);
       position: left 50% bottom 65%, left bottom 40%;
       size: 70% auto, auto 40%;
       repeat: no-repeat;

@@ -38,14 +38,14 @@
   & > main {
     grid-area: main;
 
-    padding: rem(24px 16px);
+    padding: 2% rem(16px);
 
     @include respond-above('md') {
-      padding: 3% rem(20px);
+      padding: 3% rem(24px);
     }
 
     @include respond-above('lg') {
-      padding: 4% rem(30px);
+      padding: 4% rem(32px);
     }
 
     @include respond-above('xl') {
