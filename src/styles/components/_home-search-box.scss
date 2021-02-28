@@ -40,7 +40,7 @@
   }
 
   &__input:focus {
-    outline: none;
+    outline: 0;
   }
 
   &__button {
@@ -51,7 +51,7 @@
     background: {
       image: url('/icons/search-icon.svg');
       repeat: no-repeat;
-      size: contain;
+      size: 70%;
       position: left;
     }
 
@@ -61,6 +61,6 @@
   }
 
   &__button:focus {
-    outline: none;
+    outline: 0;
   }
 }

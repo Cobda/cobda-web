@@ -4,10 +4,11 @@
   position: relative;
   display: flex;
   justify-content: flex-end;
-  padding-top: 10%;
+  padding-top: rem(43px);
   height: rem(250px);
 
   @include respond-above('sm') {
+    padding-top: rem(55px);
     height: rem(375px);
   }
 

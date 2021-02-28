@@ -9,7 +9,6 @@ const HomeSearchBox = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value)
-    console.log(searchValue)
   }
 
   const handleSearchClick = (event: React.MouseEvent<HTMLButtonElement>) => {
