@@ -5,14 +5,15 @@
   width: 80%;
 
   background-color: $light;
-  box-shadow: rem(5px 10px 20px 0px) hsla(0, 0%, 0%, 0.16);
+  box-shadow: rem(5px 10px 20px) 0px box-shadow-opacity(0.16);
 
   @include respond-above('md') {
     width: 90%;
   }
 
   & > input {
-    width: 75%;
+    width: 100%;
+    box-sizing: border-box;
     padding: rem(5px 10px 5px 10px);
 
     color: $dove-gray;
@@ -45,11 +46,10 @@
 
     width: 5%;
     height: 80%;
-    padding: 0%;
+    padding: 0;
 
-    background-color: $light;
+    background-color: transparent;
     border: none;
-    outline: none;
 
     background: {
       image: url('../../../public/icons/search-icon.svg');
@@ -58,16 +58,12 @@
       position: center;
     }
 
-    @include respond-above('sm') {
-      top: 10%;
-      right: 15%;
-    }
-
     @include respond-above('md') {
-      top: 25%;
       right: 10%;
-
-      height: 50%;
     }
+  }
+
+  &__button::before {
+    outline: 0;
   }
 }
