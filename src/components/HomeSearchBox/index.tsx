@@ -27,11 +27,12 @@ const HomeSearchBox = () => {
     <div className="home-search-box">
       <input
         value={searchValue}
-        type="text"
+        type="search"
         onChange={handleChange}
         onKeyUp={handleKeyPress}
         placeholder={t('searchPlaceholder')}
-        name="search"
+        name="text"
+        className="home-search-box__input"
       />
       <button
         disabled={!searchValue}

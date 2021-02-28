@@ -11,7 +11,7 @@
     width: 90%;
   }
 
-  & > input {
+  &__input {
     width: 100%;
     box-sizing: border-box;
     padding: rem(5px 10px 5px 10px);
@@ -39,31 +39,24 @@
     }
   }
 
-  & > input:focus {
+  &__input:focus {
     outline: none;
   }
 
   &__button {
-    position: absolute;
-    top: 10%;
-    right: 15%;
-
-    width: 5%;
-    height: 80%;
+    width: 10%;
     padding: 0;
-
-    background-color: transparent;
+    background-color: $light;
     border: none;
-
     background: {
-      image: url('../../../public/icons/search-icon.svg');
+      image: url('/icons/search-icon.svg');
       repeat: no-repeat;
       size: contain;
-      position: center;
+      position: left;
     }
 
     @include respond-above('md') {
-      right: 10%;
+      width: 7%;
     }
   }
 
