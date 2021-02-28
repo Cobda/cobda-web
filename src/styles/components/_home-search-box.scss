@@ -39,6 +39,10 @@
     }
   }
 
+  & > input:focus {
+    outline: none;
+  }
+
   &__button {
     position: absolute;
     top: 10%;
@@ -63,7 +67,7 @@
     }
   }
 
-  &__button::before {
-    outline: 0;
+  &__button:focus {
+    outline: none;
   }
 }
