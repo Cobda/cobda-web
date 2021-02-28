@@ -1,6 +1,7 @@
 @import '../abstracts/_abstracts-dir';
 
 .home-search-box {
+  display: flex;
   width: 80%;
 
   background-color: $light;
@@ -68,9 +69,5 @@
 
       height: 50%;
     }
-  }
-
-  &__text {
-    color: $light;
   }
 }

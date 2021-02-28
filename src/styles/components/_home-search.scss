@@ -4,6 +4,7 @@
   position: relative;
   display: flex;
   justify-content: flex-end;
+  padding-top: 10%;
   height: rem(250px);
 
   @include respond-above('sm') {
@@ -88,6 +89,20 @@
 
     @include respond-above('md') {
       top: 50%;
+    }
+  }
+
+  &--background-image {
+    background: {
+      image: url('/images/bank-jojo.jpg'), url('/images/plain-grey-square.png');
+      origin: content-box;
+      repeat: no-repeat;
+      size: contain, auto 40%;
+      position: left, bottom 30% right;
+    }
+
+    @include respond-above('md') {
+      background-origin: unset;
     }
   }
 }

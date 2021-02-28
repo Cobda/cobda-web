@@ -7,7 +7,7 @@ const HomeSearchBox = () => {
   const router = useRouter()
   const [searchValue, setSearchValue] = useState<string>('')
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value)
     console.log(searchValue)
   }
@@ -18,7 +18,7 @@ const HomeSearchBox = () => {
   }
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter' && searchValue.trim()) {
+    if (event.key === 'Enter' && searchValue) {
       handleSearchClick()
     }
   }
