@@ -7,11 +7,11 @@ const HomeSearchBox = () => {
   const router = useRouter()
   const [searchValue, setSearchValue] = useState<string>('')
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value)
   }
 
-  const handleSearchClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSearchClick = () => {
     if (searchValue) {
       router.push('products/${searchValue}')
       setSearchValue('')
@@ -29,7 +29,7 @@ const HomeSearchBox = () => {
       <input
         value={searchValue}
         type="search"
-        onChange={handleChange}
+        onChange={handleInputChange}
         onKeyUp={handleKeyPress}
         placeholder={t('searchPlaceholder')}
         name="search"
