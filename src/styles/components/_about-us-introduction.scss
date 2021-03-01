@@ -1,0 +1,92 @@
+.about-us-introduction {
+  display: flex;
+  flex-direction: column;
+
+  @include respond-above('md') {
+    justify-content: space-between;
+    height: rem(500px);
+  }
+
+  @include respond-above('lg') {
+    height: rem(600px);
+  }
+
+  @include respond-above('xl') {
+    height: rem(700px);
+  }
+
+  &__title {
+    margin: 0 0 33% 0;
+
+    color: $dark;
+    -webkit-text-stroke: 1px $dark;
+
+    font-size: rem(24px);
+    font-weight: bold;
+    line-height: 1.22;
+    text-align: center;
+
+    @include respond-above('md') {
+      width: 50%;
+      margin-bottom: 0;
+
+      font-size: rem(28px);
+      text-align: left;
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(36px);
+    }
+  }
+
+  &__description {
+    align-self: center;
+    box-sizing: border-box;
+    width: 80%;
+    padding: 3.5%;
+    margin: 0;
+
+    background-color: $dark;
+    color: $light;
+
+    font-size: rem(12px);
+    font-weight: 200;
+    text-align: center;
+
+    @include respond-above('md') {
+      align-self: flex-end;
+      width: 60%;
+      padding: 3% 5% 2% 2.5%;
+
+      font-size: rem(16px);
+      line-height: 1.35;
+      text-align: left;
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(20px);
+      line-height: 1.5;
+    }
+
+    @include respond-above('xl') {
+      font-size: rem(24px);
+    }
+  }
+
+  &--background {
+    background: {
+      image: url('/images/hand-shake.jpg'),
+        url('/images/plain-black-rectangle.png');
+      position: left 50% bottom 65%, left bottom 40%;
+      size: 70% auto, auto 40%;
+      repeat: no-repeat;
+    }
+
+    @include respond-above('md') {
+      background: {
+        position: left 10% bottom 60%, left bottom 45%;
+        size: 50% auto, 45% 40%;
+      }
+    }
+  }
+}

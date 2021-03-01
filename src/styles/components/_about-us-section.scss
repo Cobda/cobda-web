@@ -1,0 +1,16 @@
+.about-us-section {
+  box-sizing: border-box;
+  padding: rem(16px) 0;
+
+  @include respond-above('md') {
+    padding: rem(24px) 0;
+  }
+
+  @include respond-above('lg') {
+    padding: rem(32px) 0;
+  }
+
+  @include respond-above('xl') {
+    padding: rem(40px) 0;
+  }
+}

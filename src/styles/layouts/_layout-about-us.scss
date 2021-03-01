@@ -1,7 +1,7 @@
 .layout-about-us {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: map-get($header-height, 'sm') 1fr 1fr;
+  grid-template-rows: map-get($header-height, 'sm') repeat(2, 1fr);
   grid-template-areas:
     'header'
     'main'
@@ -18,7 +18,13 @@
   }
 
   @include respond-above('xl') {
+    grid-template-columns: 1fr minmax(rem(1104px), rem(1440px)) 1fr;
     grid-template-rows: map-get($header-height, 'xl') 1fr map-get($footer-height, 'xl');
+    column-gap: rem(48px);
+    grid-template-areas:
+      'header header header'
+      '. main .'
+      'footer footer footer';
   }
 
   & > header {
@@ -32,14 +38,19 @@
   & > main {
     grid-area: main;
 
-    padding: rem(24px 16px);
+    padding: 0 rem(16px);
 
     @include respond-above('md') {
-      padding: 4.5% 6%;
+      padding: 0 rem(24px);
     }
 
     @include respond-above('lg') {
-      padding: 5% 10%;
+      padding: 0 rem(32px);
+    }
+
+    @include respond-above('xl') {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 
