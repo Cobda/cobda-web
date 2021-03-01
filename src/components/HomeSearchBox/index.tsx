@@ -12,12 +12,14 @@ const HomeSearchBox = () => {
   }
 
   const handleSearchClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    router.push('products/${searchValue}')
-    setSearchValue('')
+    if (searchValue) {
+      router.push('products/${searchValue}')
+      setSearchValue('')
+    }
   }
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter' && searchValue) {
+    if (event.key === 'Enter') {
       handleSearchClick()
     }
   }
@@ -30,14 +32,10 @@ const HomeSearchBox = () => {
         onChange={handleChange}
         onKeyUp={handleKeyPress}
         placeholder={t('searchPlaceholder')}
-        name="text"
+        name="search"
         className="home-search-box__input"
       />
-      <button
-        disabled={!searchValue}
-        onClick={handleSearchClick}
-        className="home-search-box__button"
-      />
+      <button onClick={handleSearchClick} className="home-search-box__button" />
     </div>
   )
 }

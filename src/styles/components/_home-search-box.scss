@@ -14,37 +14,32 @@
   &__input {
     width: 100%;
     box-sizing: border-box;
-    padding: rem(5px 10px 5px 10px);
+    padding: rem(5px 10px);
 
     color: $dove-gray;
 
     border: none;
     font-size: rem(14px);
     line-height: 1.23;
-    text-align: left;
 
     @include respond-above('sm') {
-      padding: rem(10px 20px 10px 20px);
+      padding: rem(10px 20px);
       font-size: rem(16px);
     }
 
     @include respond-above('md') {
-      padding: rem(20px 40px 20px 40px);
+      padding: rem(20px 40px);
       font-size: rem(20px);
     }
 
     @include respond-above('lg') {
-      padding: rem(35px 60px 35px 60px);
+      padding: rem(35px 60px);
       font-size: rem(24px);
     }
   }
 
-  &__input:focus {
-    outline: 0;
-  }
-
   &__button {
-    width: 10%;
+    width: rem(28px);
     padding: 0;
     background-color: $light;
     border: none;
@@ -55,12 +50,16 @@
       position: left;
     }
 
-    @include respond-above('md') {
-      width: 7%;
+    @include respond-above('sm') {
+      width: rem(40px);
     }
-  }
 
-  &__button:focus {
-    outline: 0;
+    @include respond-above('md') {
+      width: rem(64px);
+    }
+
+    @include respond-above('lg') {
+      width: rem(100px);
+    }
   }
 }
