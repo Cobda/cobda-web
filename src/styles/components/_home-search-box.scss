@@ -3,22 +3,23 @@
 .home-search-box {
   display: flex;
   width: 80%;
+  box-shadow: rem(5px 10px 20px) 0 box-shadow-opacity(0.16);
 
   background-color: $light;
-  box-shadow: rem(5px 10px 20px) 0px box-shadow-opacity(0.16);
 
   @include respond-above('md') {
     width: 90%;
   }
 
   &__input {
-    width: 100%;
     box-sizing: border-box;
+    width: 100%;
     padding: rem(5px 10px);
+    border: none;
 
     color: $dove-gray;
 
-    border: none;
+    text-overflow: ellipsis;
     font-size: rem(14px);
     line-height: 1.23;
 
@@ -41,9 +42,9 @@
   &__button {
     width: rem(28px);
     padding: 0;
-    background-color: $light;
     border: none;
     background: {
+      color: $light;
       image: url('/icons/search-icon.svg');
       repeat: no-repeat;
       size: 70%;
