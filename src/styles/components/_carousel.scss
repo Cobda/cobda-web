@@ -13,15 +13,15 @@
     }
 
     @include respond-above('md') {
-      height: rem(370px);
+      height: rem(390px);
     }
 
     @include respond-above('lg') {
-      height: rem(420px);
+      height: rem(440px);
     }
 
     @include respond-above('xl') {
-      height: rem(470px);
+      height: rem(490px);
     }
   }
 
