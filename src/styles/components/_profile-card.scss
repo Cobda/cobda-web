@@ -10,7 +10,7 @@
 
   &--background-image {
     background: {
-      image: url('/images/blue-ellipse.jpg');
+      image: url('/images/product-card-background.png');
       repeat: no-repeat;
       size: contain;
       position: center;
@@ -21,8 +21,7 @@
     flex-direction: column;
     box-sizing: border-box;
     box-shadow: 0 0 rem(20px) 0 box-shadow-opacity(0.16);
-    width: fit-content;
-    padding: rem(12px 12px 16px);
+    padding: rem(12px 12px 18px);
     margin: rem(24px) 0;
     background-color: $light;
 
@@ -42,28 +41,28 @@
   }
 
   &__image {
-    width: rem(80px);
-    height: rem(70px);
+    width: rem(120px);
+    height: rem(120px);
     margin-bottom: rem(12px);
 
     @include respond-above('sm') {
-      width: rem(120px);
-      height: rem(100px);
+      width: rem(140px);
+      height: rem(140px);
     }
 
     @include respond-above('md') {
       width: rem(160px);
-      height: rem(140px);
+      height: rem(160px);
     }
 
     @include respond-above('lg') {
       width: rem(200px);
-      height: rem(180px);
+      height: rem(200px);
     }
 
     @include respond-above('xl') {
       width: rem(230px);
-      height: rem(210px);
+      height: rem(230px);
     }
   }
 

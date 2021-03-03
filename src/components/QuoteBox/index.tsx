@@ -13,7 +13,7 @@ const QuoteBox = ({ quote }: QuoteBox) => {
       <header className="quote-box__header">
         <h3 className="quote-box__title">{t('quoteSectionHeader')}</h3>
       </header>
-      <div className="quote-box__container quote-box__container--background-image">
+      <div className="quote-box__body quote-box__body--background-image">
         <p className="quote-box__content">{quote}</p>
       </div>
     </div>

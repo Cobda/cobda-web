@@ -87,13 +87,13 @@
     }
 
     @include respond-above('lg') {
-      font-size: rem(18px);
       padding: rem(32px 48px);
+      font-size: rem(18px);
     }
 
     @include respond-above('xl') {
-      font-size: rem(20px);
       padding: rem(36px 48px);
+      font-size: rem(20px);
     }
   }
 }
