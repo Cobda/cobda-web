@@ -1,18 +1,22 @@
 @import '../abstracts/_abstracts-dir';
 
 .home-search {
+  position: relative;
   display: flex;
   justify-content: flex-end;
+  padding-top: rem(43px);
   height: rem(250px);
 
   @include respond-above('sm') {
+    padding-top: rem(55px);
     height: rem(375px);
   }
 
   @include respond-above('md') {
+    padding: 0;
     height: rem(500px);
   }
-  
+
   @include respond-above('lg') {
     height: rem(600px);
   }
@@ -26,11 +30,11 @@
     justify-content: space-around;
     flex-direction: column;
     max-width: 47.5%;
-  
+
     @include respond-above('sm') {
       max-width: 50%;
     }
-  
+
     @include respond-above('lg') {
       justify-content: space-between;
       max-width: 55%;
@@ -73,6 +77,21 @@
     @include respond-above('xl') {
       padding-bottom: rem(32px);
       font-size: rem(26px);
+    }
+  }
+
+  &__box {
+    position: absolute;
+    top: 0%;
+
+    width: 100%;
+
+    @include flex-center();
+
+    @include respond-above('md') {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }

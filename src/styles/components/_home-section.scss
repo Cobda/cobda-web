@@ -31,11 +31,11 @@
     @include respond-above('md') {
       font-size: rem(24px);
     }
-  
+
     @include respond-above('lg') {
       font-size: rem(32px);
     }
-  
+
     @include respond-above('xl') {
       font-size: rem(40px);
     }
@@ -66,16 +66,16 @@
     @include respond-above('md') {
       height: rem(500px);
     }
-  
+
     @include respond-above('lg') {
       height: rem(650px);
     }
-  
+
     @include respond-above('xl') {
       height: rem(800px);
     }
   }
-  
+
   &--popular-item {
     height: auto;
   }
