@@ -4,20 +4,20 @@ import Trans from 'next-translate/Trans'
 
 const NewReleaseBanner = () => {
   const { t } = useTranslation('home')
-  const Header = (props) => <h2 className="release-banner__header" {...props} />
+  const Header = (props) => <h2 className="new-release-banner__header" {...props} />
 
   const renderIntroductionHeader = () => (
     <Trans
-      i18nKey={t('releaseSectionHeader')}
+      i18nKey={t('newReleaseSectionHeader')}
       components={[<Header />, <br />]}
     />
   )
 
   return (
-      <div className="release-banner">
+      <div className="new-release-banner">
         {renderIntroductionHeader()}
-        <p className="release-banner__description">
-          {t('releaseSectionDescription')}
+        <p className="new-release-banner__description">
+          {t('newReleaseSectionDescription')}
         </p>
       </div>
   )
