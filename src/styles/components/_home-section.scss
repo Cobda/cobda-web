@@ -61,13 +61,13 @@
 
   &--light {
     height: auto;
-    background-color: $light;
+    background-color: transparent;
 
     & > *:not(:last-child) {
       margin-bottom: rem(16px);
 
       @include respond-above('md') {
-        font-size: rem(30px);
+        margin-bottom: rem(30px);
       }
     }
   }
