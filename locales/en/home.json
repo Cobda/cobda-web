@@ -5,10 +5,6 @@
   "searchSectionTitle": "COBDA, PRESENTED BY BANK.",
   "searchSectionDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mimagna, placerat eu semper at, pretium sit amet libero. Integerultrices tristique quam.",
   "searchPlaceholder": "What are you looking for?",
-  "newReleaseSectionTitle": "NEW RELEASE",
   "newReleaseSectionHeader": "<0>NEW<1/>RELEASES</0>",
-  "newReleaseSectionDescription": "In consequat, quam id sodales hendrerit, eros mi molestie leo, nec lacinia risus neque tristique augue. Proin tempus urna vel congue elementum. Vestibulum euismod accumsan dui, ac iaculis sem",
-  "newReleaseItemSectionHeader": "<0>MEN RUNNING<1/>SHOES BLACK</0>",
-  "newReleaseItemSectionDescription": "This is just a simple sentence to describe men running black shoes",
-  "newReleaseItemSectionProduct": "VIEW PRODUCT"
+  "newReleaseSectionDescription": "In consequat, quam id sodales hendrerit, eros mi molestie leo, nec lacinia risus neque tristique augue. Proin tempus urna vel congue elementum. Vestibulum euismod accumsan dui, ac iaculis sem"
 }
