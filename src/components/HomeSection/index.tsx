@@ -2,14 +2,14 @@ import React from 'react'
 import HomeSearchSection from '../HomeSearchSection'
 import HomePopularSection from '../HomePopularSection'
 import HomeCategorySection from '../HomeCategorySection'
-import HomeNewRealeaseSection from '../HomeNewReleaseSection'
+import HomeNewReleaseSection from '../HomeNewReleaseSection'
 
 const HomeSection = () => {
   return (
     <>
       <HomeSearchSection />
       <HomeCategorySection />
-      <HomeNewRealeaseSection />
+      <HomeNewReleaseSection />
       <HomePopularSection />
     </>
   )
