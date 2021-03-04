@@ -9,7 +9,8 @@
   width: 100%;
   max-width: $navbar-max-width;
   padding: 0 rem(16px);
-
+  background-color: $light;
+  
   @include respond-above('md') {
     justify-content: space-between;
     padding: 0 rem(24px);
@@ -167,10 +168,9 @@
   &__hamburger-container {
     position: absolute;
     left: rem(16px);
+    width: 100%;
 
     display: block;
-    width: rem(24px);
-    height: rem(24px);
 
     @include respond-above('md') {
       display: none;

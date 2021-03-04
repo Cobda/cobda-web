@@ -1,6 +1,6 @@
 .hamburger {
-  display: block;
   position: relative;
+  display: block;
 
   z-index: 1;
   user-select: none;
@@ -34,8 +34,8 @@
   &__input {
     position: absolute;
     display: block;
-    width: rem(33px);
-    height: rem(33px);
+    width: 30px;
+    height: 24px;
     margin: 0;
     opacity: 0;
 
@@ -67,23 +67,24 @@
   &__menu {
     position: absolute;
     box-sizing: border-box;
-    width: rem(300px);
-    margin: rem(-16px) 0 0 rem(-16px);
-    padding: rem(60px 25px 40px 40px);
+    width: 100%;
+    margin: rem(14px) 0 0 rem(-16px);
+    padding: rem(20px 40px) rem(40px);
 
-    background: #ededed;
+    background: $light;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */
 
     transform-origin: 0% 0%;
-    transform: translate(-100%, 0);
+    transform: translate(0, -126%);
 
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
   }
 
   &__menu-list {
     padding: rem(10px) 0;
+    border-bottom: rem(1px) solid $silver;
     font-size: rem(16px);
   }
 }
