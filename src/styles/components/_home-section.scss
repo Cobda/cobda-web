@@ -1,6 +1,7 @@
 @import '../abstracts/_abstracts-dir';
 
 .home-section {
+  height: auto;
   padding: rem(16px) 0;
   box-sizing: border-box;
 
@@ -55,24 +56,10 @@
   }
 
   &--dark {
-    height: auto;
     background-color: $alabaster;
   }
 
   &--light {
-    height: auto;
-    background-color: transparent;
-
-    & > *:not(:last-child) {
-      margin-bottom: rem(16px);
-
-      @include respond-above('md') {
-        margin-bottom: rem(30px);
-      }
-    }
-  }
-
-  &--popular-item {
-    height: auto;
+    background-color: $light;
   }
 }

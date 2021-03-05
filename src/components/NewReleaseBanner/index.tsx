@@ -6,13 +6,9 @@ const NewReleaseBanner = () => {
   const { t } = useTranslation('home')
   const header = [<h2 className="new-release-banner__header" />, <br />]
 
-  const renderIntroductionHeader = () => (
-    <Trans i18nKey={t('newReleaseSectionHeader')} components={header} />
-  )
-
   return (
     <div className="new-release-banner">
-      {renderIntroductionHeader()}
+      <Trans i18nKey={t('newReleaseSectionHeader')} components={header} />
       <p className="new-release-banner__description">
         {t('newReleaseSectionDescription')}
       </p>
