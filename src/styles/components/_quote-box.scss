@@ -2,13 +2,12 @@
 
 .quote-box {
   width: 100%;
-  height: fit-content;
 
   @include respond-above('md') {
-    margin-top: rem(24px);
+    padding-top: rem(24px);
   }
 
-  &__container {
+  &__body {
     margin: rem(16px);
 
     @include respond-above('md') {
@@ -24,7 +23,7 @@
         image: url('/images/double-quote-left.png'),
           url('/images/double-quote-right.png');
         repeat: no-repeat;
-        size: rem(14px 12px);
+        size: rem(18px 16px);
         position: top left, bottom right;
       }
       
@@ -70,20 +69,19 @@
   }
 
   &__content {
-    padding: rem(16px 8px);
+    padding: rem(20px);
     margin: 0;
 
-    font-size: rem(8px);
+    font-size: rem(14px);
     font-weight: 200;
 
     @include respond-above('sm') {
       padding: rem(24px 28px);
-      font-size: rem(14px);
+      font-size: rem(16px);
     }
 
     @include respond-above('md') {
       padding: rem(32px 36px);
-      font-size: rem(16px);
     }
 
     @include respond-above('lg') {

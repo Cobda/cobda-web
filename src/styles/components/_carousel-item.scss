@@ -7,12 +7,12 @@
   height: 100%;
 
   &--quote {
-    height: rem(320px);
-    padding: rem(8px) 0 0 ;
+    box-sizing: border-box;
     box-shadow: 0 0 rem(20px) 0 box-shadow-opacity(0.16);
+    height: fit-content;
+    padding: rem(8px) 0 0;
 
     @include respond-above('sm') {
-      height: rem(350px);
       padding: rem(16px) 0;
     }
 
@@ -20,14 +20,21 @@
       flex-direction: row;
       justify-content: center;
       align-items: flex-start;
-      height: fit-content;
-      padding: rem(32px);
+      padding: rem(48px);
+    }
+
+    @include respond-above('lg') {
+      padding: rem(48px 64px);
+    }
+
+    @include respond-above('xl') {
+      padding: rem(48px 80px);
     }
   }
 
   &__image-container {
     box-sizing: border-box;
-    box-shadow: rem(1px 1px 2px 4px) $popular-item-shadow;
+    box-shadow: 1px 1px rem(2px 4px) $popular-item-shadow;
     width: 100%;
     height: 100%;
     padding: rem(5px);

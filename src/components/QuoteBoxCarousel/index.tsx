@@ -16,13 +16,14 @@ const QuoteBoxCarousel = () => {
     <CarouselProvider
       className="carousel--quote"
       visibleSlides={1}
-      naturalSlideWidth={4}
-      naturalSlideHeight={5}
+      naturalSlideWidth={1}
+      naturalSlideHeight={1}
       totalSlides={4}
       infinite={true}
-      lockOnWindowScroll
-      isPlaying={true}>
-      <Slider>
+      isPlaying={true}
+      isIntrinsicHeight={true}
+      lockOnWindowScroll={true}>
+      <Slider className="slider">
         <Slide index={0}>
           {/* TODO: Change these value */}
           <CarouselItem
@@ -61,8 +62,8 @@ const QuoteBoxCarousel = () => {
           />
         </Slide>
       </Slider>
-      <ButtonBack className="buttonBack buttonBack">{'<'}</ButtonBack>
-      <ButtonNext className="buttonNext buttonNext">{'>'}</ButtonNext>
+      <ButtonBack className="buttonBack buttonBack--center">{'<'}</ButtonBack>
+      <ButtonNext className="buttonNext buttonNext--center">{'>'}</ButtonNext>
     </CarouselProvider>
   )
 }

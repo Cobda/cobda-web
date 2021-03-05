@@ -12,10 +12,10 @@ const ProfileCard = ({ imagePath, alternate, name, role }: ProfileCard) => {
     <div className="profile-card profile-card--background-image">
       <div className="profile-card__body">
         <img src={imagePath} alt={alternate} className="profile-card__image" />
-        <div className="profile-card__label profile-card__label--name">
+        <div className="profile-card__label profile-card__label--primary">
           {name}
         </div>
-        <div className="profile-card__label profile-card__label--role">
+        <div className="profile-card__label profile-card__label--secondary">
           {role}
         </div>
       </div>

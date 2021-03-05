@@ -5,48 +5,24 @@
   max-width: 100%;
   margin: auto;
 
-  &--quote {
-    height: rem(360px);
-
-    @include respond-above('sm') {
-      height: rem(420px);
-    }
-
-    @include respond-above('md') {
-      height: rem(390px);
-    }
-
-    @include respond-above('lg') {
-      height: rem(440px);
-    }
-
-    @include respond-above('xl') {
-      height: rem(490px);
-    }
-  }
-
-  &__slider {
-    height: inherit;
-  }
-
   &__inner-slide {
     box-sizing: border-box;
-    padding: 0 rem(10px);
+    padding: rem(8px 10px);
 
     @include respond-above('sm') {
-      padding: 0 rem(15px);
+      padding: rem(10px 15px);
     }
 
     @include respond-above('md') {
-      padding: 0 rem(25px);
+      padding: rem(16px 25px);
     }
 
     @include respond-above('lg') {
-      padding: 0 rem(40px);
+      padding: rem(16px 40px);
     }
 
     @include respond-above('xl') {
-      padding: 0 rem(55px);
+      padding: rem(16px 55px);
     }
   }
 
@@ -102,6 +78,10 @@
     @include respond-above('xl') {
       padding: rem(32px 16px);
       font-size: rem(32px);
+    }
+
+    &--center {
+      top: 50%;
     }
   }
 
