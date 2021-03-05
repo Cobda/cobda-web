@@ -44,6 +44,7 @@
   }
 
   &__menu-item {
+    position: relative;
     display: none;
     list-style-type: none;
     text-decoration: none;
@@ -57,6 +58,9 @@
     }
 
     &:after {
+      position: absolute;
+      left: 0;
+      right: 0;
       content: '';
       display: block;
       width: 0;
