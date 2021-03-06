@@ -6,17 +6,13 @@ const AboutUsIntroduction = () => {
   const { t } = useTranslation('about-us')
   const titles = [<h1 className="about-us-introduction__title" />, <br />]
 
-  const renderIntroductionDescription = () => (
-    <p className="about-us-introduction__description">
-      {t('introductionSectionDescription')}
-    </p>
-  )
-
   return (
     <section className="about-us-section">
       <div className="about-us-introduction about-us-introduction--background">
         <Trans i18nKey={t('introductionSectionTitle')} components={titles} />
-        {renderIntroductionDescription()}
+        <p className="about-us-introduction__description">
+          {t('introductionSectionDescription')}
+        </p>
       </div>
     </section>
   )
