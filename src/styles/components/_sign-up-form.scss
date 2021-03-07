@@ -7,13 +7,19 @@
   margin: auto;
 
   @include respond-above('md') {
-    padding: rem(60px 80px);
-    border-radius: rem(80px);
     box-shadow: rem(5px 10px 20px) 0 box-shadow-opacity(0.16);
+    
+    padding: rem(50px 80px 36px);
+    border-radius: rem(80px);
   }
 
   @include respond-above('lg') {
-    padding: rem(50px 100px);
+    padding: rem(60px 100px 36px);
+    border-radius: rem(100px);
+  }
+
+  @include respond-above('xl') {
+    padding: rem(70px 120px 36px);
     border-radius: rem(100px);
   }
 
@@ -23,13 +29,25 @@
 
   &__title {
     margin: 0 0 rem(32px);
-    font-size: rem(16px);
+
+    @include respond-above('lg') {
+      font-size: rem(20px);
+    }
+
+    @include respond-above('xl') {
+      font-size: rem(22px);
+    }
   }
 
   &__subtitle {
     padding-left: rem(8px);
     margin: 0;
+
     color: $cat-black;
+
+    @include respond-above('lg') {
+      font-size: rem(18px);
+    }
   }
 
   &__body {
@@ -43,8 +61,22 @@
   &__profile {
     width: 100%;
     height: rem(140px);
-    background-color: chocolate;
     margin-bottom: rem(32px);
+
+    // TODO: Change this color
+    background-color: chocolate;
+
+    @include respond-above('md') {
+      height: rem(160px);
+    }
+
+    @include respond-above('lg') {
+      height: rem(180px);
+    }
+
+    @include respond-above('xl') {
+      height: rem(200px);
+    }
   }
 
   &__footer {

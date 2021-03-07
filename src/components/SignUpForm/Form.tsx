@@ -33,7 +33,7 @@ const Form = () => {
   }
 
   const renderUpperInput = () => (
-    <div className="form__input-section form__input-section--upper">
+    <div className="form__input-stack form__input-stack--upper">
       <div className="form__input-group">
         <label className="form__input-label">First Name</label>
         <input type="text" className="form__input" />
@@ -46,7 +46,7 @@ const Form = () => {
   )
 
   const renderLowerInput = () => (
-    <div className="form__input-section form__input-section--lower">
+    <div className="form__input-stack form__input-stack--lower">
       <div className="form__input-group">
         <label className="form__input-label">Username</label>
         <input type="text" className="form__input" />
@@ -75,6 +75,7 @@ const Form = () => {
 
   return (
     <form className="form">
+      {/* TODO: Change these inputs according to the design */}
       {renderUpperInput()}
       {renderLowerInput()}
       {renderFormActionable()}

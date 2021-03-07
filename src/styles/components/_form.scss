@@ -9,6 +9,12 @@
   &__header,
   &__recaptcha,
   &__actionable {
+    &:not(:last-child) {
+      margin-bottom: rem(24px);
+    }
+  }
+
+  &__input-stack {
     display: flex;
     justify-content: center;
     
@@ -73,18 +79,26 @@
     width: 100%;
     height: rem(105px);
     margin-bottom: rem(32px);
+
     background-color: cadetblue;
   }
 
   &__button {
-    padding: rem(16px 96px);
+    padding: rem(16px 112px);
     border-radius: rem(26px);
     margin: 0;
 
     background-color: $dodger-blue;
     color: $light;
 
+    font-size: rem(18px);
+    font-weight: 500;
     text-decoration: none;
+
+    @include respond-above('md') {
+      padding: rem(12px 42px);
+      font-size: rem(16px);
+    }
 
     &:hover {
       background-color: darken($dodger-blue, 8%);
