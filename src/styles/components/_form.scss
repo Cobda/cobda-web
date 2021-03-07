@@ -5,7 +5,6 @@
   flex-direction: column;
   box-sizing: border-box;
   width: 100%;
-  padding: 0 rem(16px);
 
   @include respond-above('md') {
     padding: 0 5%;
@@ -77,16 +76,26 @@
     }
   }
 
+  // TODO: Remove this when reCAPTCHA is available
+  &__recaptcha {
+    width: 100%;
+    height: rem(105px);
+    margin-bottom: rem(32px);
+    background-color: cadetblue;
+  }
+
   &__button {
-    color: $light;
-    text-decoration: none;
+    padding: rem(16px 96px);
+    border-radius: rem(26px);
     margin: 0;
-    padding: rem(5px 10px);
-    border-radius: rem(3px);
-    background-color: $shuttle-gray;
+
+    background-color: $dodger-blue;
+    color: $light;
+
+    text-decoration: none;
 
     &:hover {
-      background-color: darken($silver, 8%);
+      background-color: darken($dodger-blue, 8%);
     }
   }
 

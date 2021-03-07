@@ -27,76 +27,57 @@ const Form = () => {
   const router = useRouter()
   const { t } = useTranslation('sign-up')
 
-  const handleSubmitClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmitClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault()
     router.push('/sign-up-success')
   }
 
-  const handleInputChange = (inputValue: FormInput) => (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const { name, value } = event.target
-    setInputValue({ ...inputValue, [name]: value })
-  }
+  const renderUpperInput = () => (
+    <div className="form__input-section form__input-section--upper">
+      <div className="form__input-group">
+        <label className="form__input-label">First Name</label>
+        <input type="text" className="form__input" />
+      </div>
+      <div className="form__input-group">
+        <label className="form__input-label">Surname</label>
+        <input type="text" className="form__input" />
+      </div>
+    </div>
+  )
 
-  return (
-    <form className="form">
-      <header className="form__header">
-        <h2 className="form__title">Sign up</h2>
-      </header>
-      <ProfileUpload />
-      <TextField
-        name="username"
-        label={t('username')}
-        inputType="text"
-        inputValue={inputValue.username}
-        placeholder={t('usernamePlaceholder')}
-        errorMessage={t('usernameAlreadyUsed')}
-        onChange={handleInputChange(inputValue)}
-      />
-      <TextField
-        name="email"
-        label={t('email')}
-        inputType="email"
-        inputValue={inputValue.email}
-        placeholder={t('emailPlaceholder')}
-        errorMessage={t('emailIncorrectFormat')}
-        onChange={handleInputChange(inputValue)}
-      />
-      <PasswordField
-        name="password"
-        label={t('password')}
-        inputValue={inputValue.password}
-        placeholder={t('passwordPlaceholder')}
-        errorMessage={t('passwordRequiredFormat')}
-        onChange={handleInputChange(inputValue)}
-      />
-      <TextField
-        name="firstName"
-        label={t('firstName')}
-        inputType="text"
-        inputValue={inputValue.firstName}
-        placeholder={t('firstNamePlaceholder')}
-        errorMessage={t('inputImproperName')}
-        onChange={handleInputChange(inputValue)}
-      />
-      <TextField
-        name="lastName"
-        label={t('lastName')}
-        inputType="text"
-        inputValue={inputValue.lastName}
-        placeholder={t('lastNamePlaceholder')}
-        errorMessage={t('inputImproperName')}
-        onChange={handleInputChange(inputValue)}
-      />
+  const renderLowerInput = () => (
+    <div className="form__input-section form__input-section--lower">
+      <div className="form__input-group">
+        <label className="form__input-label">Username</label>
+        <input type="text" className="form__input" />
+      </div>
+      <div className="form__input-group">
+        <label className="form__input-label">Email</label>
+        <input type="text" className="form__input" />
+      </div>
+      <div className="form__input-group">
+        <label className="form__input-label">Password</label>
+        <input type="text" className="form__input" />
+      </div>
+    </div>
+  )
+
+  const renderFormActionable = () => (
+    <div className="form__actionable">
       <div className="form__recaptcha">
         <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} />
       </div>
-      <div className="form__actionable">
-        <button className="form__button" onClick={handleSubmitClick}>
-          Submit
-        </button>
-      </div>
+      <a className="form__button" onClick={handleSubmitClick}>
+        {t('register')}
+      </a>
+    </div>
+  )
+
+  return (
+    <form className="form">
+      {renderUpperInput()}
+      {renderLowerInput()}
+      {renderFormActionable()}
     </form>
   )
 }

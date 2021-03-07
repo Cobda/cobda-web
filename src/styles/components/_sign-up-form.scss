@@ -6,34 +6,62 @@
   max-width: $sign-up-form-max-width;
   margin: auto;
 
-  background-color: $light;
+  @include respond-above('md') {
+    padding: rem(60px 80px);
+    border-radius: rem(80px);
+    box-shadow: rem(5px 10px 20px) 0 box-shadow-opacity(0.16);
+  }
+
+  @include respond-above('lg') {
+    padding: rem(50px 100px);
+    border-radius: rem(100px);
+  }
 
   &__header {
-    display: flex;
-    justify-content: center;
-    background-color: greenyellow;
-    margin-bottom: rem(24px);
-    padding: rem(24px) 0;
+    margin-bottom: rem(16px);
+  }
+
+  &__title {
+    margin: 0 0 rem(32px);
+    font-size: rem(16px);
+  }
+
+  &__subtitle {
+    padding-left: rem(8px);
+    margin: 0;
+    color: $cat-black;
   }
 
   &__body {
-    margin-bottom: rem(24px);
+    padding: 0 rem(32px 32px);
+  }
+
+  &__profile {
+    width: 100%;
+    height: rem(140px);
+    background-color: chocolate;
+    margin-bottom: rem(32px);
   }
 
   &__footer {
     display: flex;
     justify-content: center;
-    margin-bottom: rem(24px);
   }
 
   &__footer-item > * {
+    color: $dark-charcoal;
+    font-size: rem(16px);
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.5;
+
     &:not(:last-child) {
       margin-right: rem(4px);
     }
   }
 
   &__link {
-    text-decoration-color: none;
+    color: $azure-radiance;
   }
 
   &__description {
