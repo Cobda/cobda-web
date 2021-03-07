@@ -35,11 +35,11 @@ const Form = () => {
   const renderUpperInput = () => (
     <div className="form__input-stack form__input-stack--upper">
       <div className="form__input-group">
-        <label className="form__input-label">First Name</label>
+        <label className="form__input-label">{t('firstName')}</label>
         <input type="text" className="form__input" />
       </div>
       <div className="form__input-group">
-        <label className="form__input-label">Surname</label>
+        <label className="form__input-label">{t('surname')}</label>
         <input type="text" className="form__input" />
       </div>
     </div>
@@ -48,15 +48,15 @@ const Form = () => {
   const renderLowerInput = () => (
     <div className="form__input-stack form__input-stack--lower">
       <div className="form__input-group">
-        <label className="form__input-label">Username</label>
+        <label className="form__input-label">{t('username')}</label>
         <input type="text" className="form__input" />
       </div>
       <div className="form__input-group">
-        <label className="form__input-label">Email</label>
+        <label className="form__input-label">{t('email')}</label>
         <input type="text" className="form__input" />
       </div>
       <div className="form__input-group">
-        <label className="form__input-label">Password</label>
+        <label className="form__input-label">{t('password')}</label>
         <input type="text" className="form__input" />
       </div>
     </div>

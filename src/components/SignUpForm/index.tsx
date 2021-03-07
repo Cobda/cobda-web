@@ -23,9 +23,9 @@ const SignUpForm = () => {
   const renderFormFooter = () => (
     <footer className="sign-up-form__footer">
       <div className="sign-up-form__footer-item">
-        <p className="sign-up-form__description">Already have an account?</p>
+        <p className="sign-up-form__description">{t('alreadyHaveAccount')}</p>
         <Link href="/sign-in">
-          <a className="sign-up-form__link">Sign in</a>
+          <a className="sign-up-form__link">{t('signIn')}</a>
         </Link>
       </div>
     </footer>
