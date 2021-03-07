@@ -6,14 +6,6 @@
   box-sizing: border-box;
   width: 100%;
 
-  @include respond-above('md') {
-    padding: 0 5%;
-  }
-
-  @include respond-above('lg') {
-    padding: 0 10%;
-  }
-
   &__header,
   &__recaptcha,
   &__actionable {
