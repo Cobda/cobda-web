@@ -1,27 +1,26 @@
 @import '../abstracts/_abstracts-dir';
 
 .navbar {
-  position: relative;
+  position: fixed;
   display: flex;
   justify-content: center;
-  align-items: center;
   box-sizing: border-box;
   width: 100%;
   max-width: $navbar-max-width;
-  padding: 0 rem(16px);
+  padding: rem(16px);
   background-color: $light;
   
   @include respond-above('md') {
     justify-content: space-between;
-    padding: 0 rem(24px);
+    padding: rem(24px);
   }
 
   @include respond-above('lg') {
-    padding: 0 rem(32px);
+    padding: rem(32px);
   }
 
   @include respond-above('xl') {
-    padding: 0 rem(48px);
+    padding: rem(48px);
   }
 
   &__menu-item,
@@ -39,8 +38,27 @@
     }
   }
 
+  &__logo {
+    z-index: 1;
+    text-align: left;
+    text-decoration: none;
+    color: $dark;
+    letter-spacing: rem(4px);
+    font-size: rem(24px);
+    font-weight: bold;
+
+    @include respond-above('md') {
+      font-size: rem(32px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(36px);
+    }
+  }
+
   &__menu {
     display: flex;
+    align-items: center;
     padding: 0;
     margin: 0;
     list-style-type: none;
