@@ -9,8 +9,41 @@ import {
 import CarouselItem from './Item'
 import useTranslation from 'next-translate/useTranslation'
 
+interface QuoteBoxItem {
+  imagePath: string
+  alternate: string
+  name: string
+  role: string
+  quote: string
+}
+
 const QuoteBoxCarousel = () => {
   const { t } = useTranslation('about-us')
+  // TODO: Remove this sample and use data from backend instead
+  const carouselItemList: Array<QuoteBoxItem> = new Array(4).fill({
+    imagePath: '/images/yeezy-380.jpg',
+    alternate: 'Adidas fashion sportswear',
+    name: t('name'),
+    role: t('role'),
+    quote: t('quoteSectionContent'),
+  })
+
+  const renderCarouselSlide = () => {
+    return carouselItemList?.map((item, index) => {
+      const { imagePath, alternate, name, role, quote } = item
+      return (
+        <Slide index={index}>
+          <CarouselItem
+            imagePath={imagePath}
+            alternate={alternate}
+            name={name}
+            role={role}
+            quote={quote}
+          />
+        </Slide>
+      )
+    })
+  }
 
   return (
     <CarouselProvider
@@ -19,49 +52,11 @@ const QuoteBoxCarousel = () => {
       naturalSlideWidth={1}
       naturalSlideHeight={1}
       totalSlides={4}
-      infinite={true}
+      infinite
       isPlaying={true}
-      isIntrinsicHeight={true}
-      lockOnWindowScroll={true}>
-      <Slider className="slider">
-        <Slide index={0}>
-          {/* TODO: Change these value */}
-          <CarouselItem
-            imagePath="/images/yeezy-380.jpg"
-            alternate="Adidas fashion sportswear"
-            name={t('name')}
-            role={t('role')}
-            quote={t('quoteSectionContent')}
-          />
-        </Slide>
-        <Slide index={1}>
-          <CarouselItem
-            imagePath="/images/yeezy-380.jpg"
-            alternate="Adidas fashion sportswear"
-            name={t('name')}
-            role={t('role')}
-            quote={t('quoteSectionContent')}
-          />
-        </Slide>
-        <Slide index={2}>
-          <CarouselItem
-            imagePath="/images/yeezy-380.jpg"
-            alternate="Adidas fashion sportswear"
-            name={t('name')}
-            role={t('role')}
-            quote={t('quoteSectionContent')}
-          />
-        </Slide>
-        <Slide index={3}>
-          <CarouselItem
-            imagePath="/images/yeezy-380.jpg"
-            alternate="Adidas fashion sportswear"
-            name={t('name')}
-            role={t('role')}
-            quote={t('quoteSectionContent')}
-          />
-        </Slide>
-      </Slider>
+      isIntrinsicHeight
+      lockOnWindowScroll>
+      <Slider className="slider">{renderCarouselSlide()}</Slider>
       <ButtonBack className="buttonBack buttonBack--center">{'<'}</ButtonBack>
       <ButtonNext className="buttonNext buttonNext--center">{'>'}</ButtonNext>
     </CarouselProvider>
