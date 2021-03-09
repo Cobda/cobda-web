@@ -29,8 +29,16 @@
     padding: rem(52px);
   }
 
-  &__header {
-    margin: 0 0 rem(12px) 0;
+  &__header > * {
+    display: flex;
+    flex-direction: column;
+    &:not(:last-child) {
+      margin-bottom: rem(12px);
+    }
+  }
+
+  &__title {
+    margin: 0;
     color: $light;
     font-size: rem(24px);
     font-weight: bold;
