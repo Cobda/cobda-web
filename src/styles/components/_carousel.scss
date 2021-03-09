@@ -5,31 +5,71 @@
   max-width: 100%;
   margin: auto;
 
-  &__inner-slide {
-    box-sizing: border-box;
-    padding: rem(8px 10px);
+  &--popular-item {
+    .carousel__inner-slide {
+      box-sizing: border-box;
+      padding: rem(8px 10px);
 
-    @include respond-above('sm') {
-      padding: rem(10px 15px);
+      @include respond-above('sm') {
+        padding: rem(10px 15px);
+      }
+
+      @include respond-above('md') {
+        padding: rem(16px 25px);
+      }
+
+      @include respond-above('lg') {
+        padding: rem(16px 40px);
+      }
+
+      @include respond-above('xl') {
+        padding: rem(16px 55px);
+      }
+    }
+  }
+
+  &--quote {
+    .carousel__slider {
+      min-width: rem(250px);
+      max-width: 87vw;
+      margin: auto;
+
+      @include respond-above('sm') {
+        min-width: auto;
+        max-width: 93vw;
+      }
+
+      @include respond-above('lg') {
+        max-width: 93.5vw;
+      }
     }
 
-    @include respond-above('md') {
-      padding: rem(16px 25px);
-    }
+    .carousel__inner-slide {
+      box-sizing: border-box;
+      padding: rem(16px 18px 24px);
 
-    @include respond-above('lg') {
-      padding: rem(16px 40px);
-    }
+      @include respond-above('sm') {
+        padding: rem(24px 18px 32px);
+      }
 
-    @include respond-above('xl') {
-      padding: rem(16px 55px);
+      @include respond-above('md') {
+        padding: rem(32px 18px);
+      }
+
+      @include respond-above('lg') {
+        padding: rem(48px 20px);
+      }
+
+      @include respond-above('xl') {
+        padding: rem(48px 28px);
+      }
     }
   }
 
   &__dot {
+    padding: rem(2px 10px);
     border: none;
     background-color: $athens-gray;
-    padding: rem(2px 10px);
 
     @include respond-above('sm') {
       padding: rem(3px 12px);
@@ -51,11 +91,13 @@
   .buttonBack,
   .buttonNext {
     position: absolute;
-    top: 40%;
+    top: 50%;
     transform: translateY(-50%);
-    outline: thin dotted;
+
     display: none;
     border: none;
+    outline: thin dotted;
+
     background-color: $mine-shaft;
     color: $light;
 
@@ -80,8 +122,8 @@
       font-size: rem(32px);
     }
 
-    &--center {
-      top: 50%;
+    &--uplift {
+      top: 40%;
     }
   }
 

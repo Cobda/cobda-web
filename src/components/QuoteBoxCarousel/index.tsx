@@ -4,7 +4,7 @@ import {
   Slider,
   Slide,
   ButtonBack,
-  ButtonNext,
+  ButtonNext
 } from 'pure-react-carousel'
 import CarouselItem from './Item'
 import useTranslation from 'next-translate/useTranslation'
@@ -19,6 +19,7 @@ interface QuoteBoxItem {
 
 const QuoteBoxCarousel = () => {
   const { t } = useTranslation('about-us')
+
   // TODO: Remove this sample and use data from backend instead
   const carouselItemList: Array<QuoteBoxItem> = new Array(4).fill({
     imagePath: '/images/yeezy-380.jpg',
@@ -31,6 +32,7 @@ const QuoteBoxCarousel = () => {
   const renderCarouselSlide = () => {
     return carouselItemList?.map((item, index) => {
       const { imagePath, alternate, name, role, quote } = item
+
       return (
         <Slide index={index}>
           <CarouselItem
@@ -47,18 +49,18 @@ const QuoteBoxCarousel = () => {
 
   return (
     <CarouselProvider
-      className="carousel--quote"
+      className="carousel carousel--quote"
       visibleSlides={1}
       naturalSlideWidth={1}
       naturalSlideHeight={1}
       totalSlides={4}
       infinite
-      isPlaying={true}
+      isPlaying={false}
       isIntrinsicHeight
       lockOnWindowScroll>
-      <Slider className="slider">{renderCarouselSlide()}</Slider>
-      <ButtonBack className="buttonBack buttonBack--center">{'<'}</ButtonBack>
-      <ButtonNext className="buttonNext buttonNext--center">{'>'}</ButtonNext>
+      <Slider>{renderCarouselSlide()}</Slider>
+      <ButtonBack className="buttonBack">{'<'}</ButtonBack>
+      <ButtonNext className="buttonNext">{'>'}</ButtonNext>
     </CarouselProvider>
   )
 }

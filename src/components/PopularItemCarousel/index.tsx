@@ -14,6 +14,7 @@ interface PopularItem {
 }
 
 const PopularItemCarousel = () => {
+  // TODO: Remove this sample and use data from backend instead
   const carouselItemList: Array<PopularItem> = [
     { caption: '1st slide' },
     { caption: '2nd slide' },
@@ -25,6 +26,7 @@ const PopularItemCarousel = () => {
   const renderCarouselSlide = () => {
     return carouselItemList?.map((item, index) => {
       const { caption } = item
+
       return (
         <Slide index={index}>
           <CarouselItem caption={caption} />
@@ -35,14 +37,15 @@ const PopularItemCarousel = () => {
 
   return (
     <CarouselProvider
+      className="carousel carousel--popular-item"
       visibleSlides={3}
       naturalSlideWidth={400}
       naturalSlideHeight={500}
       totalSlides={5}
-      infinite={true}>
+      infinite>
       <Slider>{renderCarouselSlide()}</Slider>
-      <ButtonBack className="buttonBack">{'<'}</ButtonBack>
-      <ButtonNext className="buttonNext">{'>'}</ButtonNext>
+      <ButtonBack className="buttonBack buttonBack--uplift">{'<'}</ButtonBack>
+      <ButtonNext className="buttonNext buttonBack--uplift">{'>'}</ButtonNext>
       <DotGroup className="dotGroup" />
     </CarouselProvider>
   )

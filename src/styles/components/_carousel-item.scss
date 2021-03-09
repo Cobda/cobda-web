@@ -9,7 +9,6 @@
   &--quote {
     box-sizing: border-box;
     box-shadow: 0 0 rem(20px) 0 box-shadow-opacity(0.16);
-    height: fit-content;
     padding: rem(8px) 0 0;
 
     @include respond-above('sm') {

@@ -1,21 +1,20 @@
 @import '../abstracts/_abstracts-dir';
 
 .about-us-section {
-  padding: rem(16px) 0;
   box-sizing: border-box;
+  padding-top: rem(16px);
 
-  @include respond-above('lg') {
-    padding: rem(32px) 0;
+  @include respond-above('sm') {
+    padding-top: rem(24px);
   }
 
-  @include respond-above('xl') {
-    padding: rem(40px) 0;
+  @include respond-above('md') {
+    padding-top: 0;
   }
 
   &__header {
     display: flex;
     justify-content: center;
-    padding-bottom: rem(16px);
 
     &--quote {
       @include respond-above('md') {
