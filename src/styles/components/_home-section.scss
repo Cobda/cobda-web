@@ -1,6 +1,7 @@
 @import '../abstracts/_abstracts-dir';
 
 .home-section {
+  height: auto;
   padding: rem(16px) 0;
   box-sizing: border-box;
 
@@ -47,36 +48,18 @@
 
   &--background-image {
     background: {
-      image: url('/images/bank-jojo.jpg'),
-        url('/images/plain-grey-square.png');
+      image: url('/images/bank-jojo.jpg'), url('/images/plain-grey-square.png');
       repeat: no-repeat;
       size: contain, auto 40%;
       position: left, bottom 30% right;
-    };
+    }
   }
 
   &--dark {
-    height: auto;
     background-color: $alabaster;
   }
 
   &--light {
-    background-color: blueviolet;
-
-    @include respond-above('md') {
-      height: rem(500px);
-    }
-
-    @include respond-above('lg') {
-      height: rem(650px);
-    }
-
-    @include respond-above('xl') {
-      height: rem(800px);
-    }
-  }
-
-  &--popular-item {
-    height: auto;
+    background-color: $light;
   }
 }
