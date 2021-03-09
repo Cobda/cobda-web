@@ -46,22 +46,14 @@
 
     .carousel__inner-slide {
       box-sizing: border-box;
-      padding: rem(16px 18px 24px);
-
-      @include respond-above('sm') {
-        padding: rem(24px 18px 32px);
-      }
-
-      @include respond-above('md') {
-        padding: rem(32px 18px);
-      }
+      padding: rem(16px 18px);
 
       @include respond-above('lg') {
-        padding: rem(48px 20px);
+        padding: rem(16px 20px);
       }
 
       @include respond-above('xl') {
-        padding: rem(48px 28px);
+        padding: rem(16px 28px);
       }
     }
   }

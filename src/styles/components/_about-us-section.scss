@@ -2,14 +2,18 @@
 
 .about-us-section {
   box-sizing: border-box;
-  padding-top: rem(16px);
+  padding: rem(16px) 0;
 
   @include respond-above('sm') {
-    padding-top: rem(24px);
+    padding: rem(24px) 0;
   }
 
-  @include respond-above('md') {
-    padding-top: 0;
+  @include respond-above('lg') {
+    padding: rem(32px) 0;
+  }
+
+  @include respond-above('xl') {
+    padding: rem(40px) 0;
   }
 
   &__header {
