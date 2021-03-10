@@ -13,6 +13,7 @@ const productHandler = (req: NextApiRequest, res: NextApiResponse) => {
 
   const handlePost = () => {
     const products = [product('shoe1', 1), product('shoe2', 1), product('shoe3', 1)]
+
     return {
       products,
       context: body
