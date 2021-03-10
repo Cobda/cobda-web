@@ -1,0 +1,97 @@
+@import '../abstracts/_abstracts-dir';
+
+.quote-box {
+  width: 100%;
+
+  @include respond-above('md') {
+    padding-top: rem(24px);
+  }
+
+  &__body {
+    margin: rem(16px);
+
+    @include respond-above('md') {
+      margin: rem(24px) 0 0 rem(24px);
+    }
+
+    @include respond-above('lg') {
+      margin-left: rem(32px);
+    }
+
+    &--background-image {
+      background: {
+        image: url('/images/double-quote-left.png'),
+          url('/images/double-quote-right.png');
+        repeat: no-repeat;
+        size: rem(18px 16px);
+        position: top left, bottom right;
+      }
+      
+      @include respond-above('sm') {
+        background-size: rem(22px 20px);
+      }
+
+      @include respond-above('md') {
+        background-size: rem(26px 24px);
+      }
+
+      @include respond-above('lg') {
+        background-size: rem(30px 28px);
+      }
+
+      @include respond-above('xl') {
+        background-size: rem(36px 32px);
+      }
+    }
+  }
+
+  &__header {
+    display: none;
+    width: 30%;
+    padding: rem(12px) 0 0 rem(24px);
+    border-top: solid rem(12px) $dark;
+
+    @include respond-above('md') {
+      display: block;
+    }
+
+    @include respond-above('lg') {
+      padding-left: rem(32px);
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    @include respond-above('md') {
+      font-size: rem(22px);
+    }
+  }
+
+  &__content {
+    padding: rem(20px);
+    margin: 0;
+
+    font-size: rem(14px);
+    font-weight: 200;
+
+    @include respond-above('sm') {
+      padding: rem(24px 28px);
+      font-size: rem(16px);
+    }
+
+    @include respond-above('md') {
+      padding: rem(32px 36px);
+    }
+
+    @include respond-above('lg') {
+      padding: rem(32px 48px);
+      font-size: rem(18px);
+    }
+
+    @include respond-above('xl') {
+      padding: rem(36px 48px);
+      font-size: rem(20px);
+    }
+  }
+}

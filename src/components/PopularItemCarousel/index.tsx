@@ -9,33 +9,43 @@ import {
 } from 'pure-react-carousel'
 import CarouselItem from './Item'
 
+interface PopularItem {
+  caption: string
+}
+
 const PopularItemCarousel = () => {
+  // TODO: Remove this sample and use data from backend instead
+  const carouselItemList: Array<PopularItem> = [
+    { caption: '1st slide' },
+    { caption: '2nd slide' },
+    { caption: '3rd slide' },
+    { caption: '4th slide' },
+    { caption: '5th slide' }
+  ]
+
+  const renderCarouselSlide = () => {
+    return carouselItemList?.map((item, index) => {
+      const { caption } = item
+
+      return (
+        <Slide index={index}>
+          <CarouselItem caption={caption} />
+        </Slide>
+      )
+    })
+  }
+
   return (
     <CarouselProvider
+      className="carousel carousel--popular-item"
       visibleSlides={3}
       naturalSlideWidth={400}
       naturalSlideHeight={500}
       totalSlides={5}
-      infinite={true}>
-      <Slider>
-        <Slide index={0}>
-          <CarouselItem caption={"1st slide"} />
-        </Slide>
-        <Slide index={1}>
-          <CarouselItem caption={"2nd slide"} />
-        </Slide>
-        <Slide index={2}>
-          <CarouselItem caption={"3rd slide"} />
-        </Slide>
-        <Slide index={4}>
-          <CarouselItem caption={"4th slide"} />
-        </Slide>
-        <Slide index={5}>
-          <CarouselItem caption={"5th slide"} />
-        </Slide>
-      </Slider>
-      <ButtonBack className="buttonBack">{'<'}</ButtonBack>
-      <ButtonNext className="buttonNext">{'>'}</ButtonNext>
+      infinite>
+      <Slider>{renderCarouselSlide()}</Slider>
+      <ButtonBack className="buttonBack buttonBack--uplift">{'<'}</ButtonBack>
+      <ButtonNext className="buttonNext buttonBack--uplift">{'>'}</ButtonNext>
       <DotGroup className="dotGroup" />
     </CarouselProvider>
   )

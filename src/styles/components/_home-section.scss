@@ -1,9 +1,9 @@
 @import '../abstracts/_abstracts-dir';
 
 .home-section {
+  box-sizing: border-box;
   height: auto;
   padding: rem(16px) 0;
-  box-sizing: border-box;
 
   @include respond-above('md') {
     padding: rem(24px) 0;

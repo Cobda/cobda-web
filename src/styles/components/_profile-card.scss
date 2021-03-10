@@ -1,0 +1,111 @@
+@import '../abstracts/_abstracts-dir';
+
+.profile-card {
+  display: flex;
+  justify-content: flex-end;
+
+  @include respond-above('md') {
+    width: 30%;
+  }
+
+  &--background-image {
+    background: {
+      image: url('/images/product-card-background.png');
+      repeat: no-repeat;
+      size: contain;
+      position: center;
+    }
+  }
+
+  &__body {
+    flex-direction: column;
+    box-sizing: border-box;
+    box-shadow: 0 0 rem(20px) 0 box-shadow-opacity(0.16);
+    padding: rem(12px 12px 18px);
+    margin: rem(24px) 0;
+    background-color: $light;
+
+    @include flex-center();
+
+    @include respond-above('sm') {
+      padding: rem(16px 16px 24px);
+    }
+
+    @include respond-above('lg') {
+      padding: rem(20px 20px 28px);
+    }
+
+    @include respond-above('xl') {
+      padding: rem(24px 24px 32px);
+    }
+  }
+
+  &__image-wrapper {
+    margin-bottom: rem(12px);
+  }
+
+  &__image {
+    width: rem(120px);
+    height: rem(120px);
+
+    @include respond-above('sm') {
+      width: rem(140px);
+      height: rem(140px);
+    }
+
+    @include respond-above('md') {
+      width: rem(160px);
+      height: rem(160px);
+    }
+
+    @include respond-above('lg') {
+      width: rem(200px);
+      height: rem(200px);
+    }
+
+    @include respond-above('xl') {
+      width: rem(230px);
+      height: rem(230px);
+    }
+  }
+
+  &__label {
+    &:not(:last-child) {
+      margin-bottom: rem(4px);
+
+      @include respond-above('md') {
+        margin-bottom: rem(8px);
+      }
+    }
+
+    &--primary {
+      font-size: rem(10px);
+      font-weight: bold;
+
+      @include respond-above('sm') {
+        font-size: rem(14px);
+      }
+
+      @include respond-above('md') {
+        font-size: rem(16px);
+      }
+
+      @include respond-above('xl') {
+        font-size: rem(20px);
+      }
+    }
+
+    &--secondary {
+      font-size: rem(8px);
+      font-style: italic;
+
+      @include respond-above('sm') {
+        font-size: rem(12px);
+      }
+
+      @include respond-above('xl') {
+        font-size: rem(16px);
+      }
+    }
+  }
+}
