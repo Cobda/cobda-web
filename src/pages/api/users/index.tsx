@@ -3,8 +3,8 @@ import { NextApiRequest, NextApiResponse } from 'next'
 const userHandler = (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req
 
-  const handleGet = () => {
-    return { worlds: "Many worlds"}
+  const handlePatch = () => {
+    return { worlds: "Patching many worlds"}
   }
 
   const handlePost = () => {
@@ -12,12 +12,12 @@ const userHandler = (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   switch (method) {
-    case 'GET':
-      return res.json(handleGet())
     case 'POST':
       return res.json(handlePost())
+    case 'PATCH':
+      return res.json(handlePatch())
     default:
-      res.setHeader('Allow', ['GET', 'POST'])
+      res.setHeader('Allow', ['POST', 'PATCH'])
       res.status(405).end(`Method ${method} Not Allowed`)
   }
 }
