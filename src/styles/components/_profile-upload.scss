@@ -1,0 +1,51 @@
+@import '../abstracts/_abstracts-dir';
+
+.profile-upload {
+  box-sizing: border-box;
+  width: 100%;
+
+  // TODO: Remove this when merging to the form
+  background-color: $light;
+
+  @include flex-center;
+
+  &__image-container {
+    flex-direction: column;
+
+    @include flex-center;
+  }
+
+  &__button {
+    cursor: pointer;
+    margin-bottom: rem(16px);
+
+    &--selected {
+      padding: rem(8px 12px);
+      border: solid 1px $mercury;
+      border-radius: rem(10px);
+    }
+  }
+
+  &__input {
+    display: none;
+    visibility: hidden;
+  }
+
+  &__image {
+    width: rem(120px);
+    height: rem(120px);
+
+    @include respond-above('lg') {
+      width: rem(160px);
+      height: rem(160px);
+    }
+  }
+
+  &__caption {
+    color: #333333;
+
+    font-size: rem(7px);
+    font-style: italic;
+    line-height: 1.14;
+  }
+}
