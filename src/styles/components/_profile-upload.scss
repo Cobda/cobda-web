@@ -1,28 +1,30 @@
 @import '../abstracts/_abstracts-dir';
 
 .profile-upload {
+  flex-direction: column;
   box-sizing: border-box;
-  width: 100%;
 
   // TODO: Remove this when merging to the form
   background-color: $light;
 
   @include flex-center;
 
-  &__image-container {
-    flex-direction: column;
-
-    @include flex-center;
-  }
-
   &__button {
     cursor: pointer;
     margin-bottom: rem(16px);
+
+    @include respond-above('lg') {
+      margin-bottom: rem(24px);
+    }
 
     &--selected {
       padding: rem(8px 12px);
       border: solid 1px $mercury;
       border-radius: rem(10px);
+
+      @include respond-above('lg') {
+        padding: rem(12px 16px);
+      }
     }
   }
 
@@ -39,13 +41,31 @@
       width: rem(160px);
       height: rem(160px);
     }
+
+    @include respond-above('xl') {
+      width: rem(200px);
+      height: rem(200px);
+    }
+
+    &--selected {
+      box-shadow: 0 rem(3px 6px) 0 box-shadow-opacity(0.16);
+      border-radius: 50%;
+    }
   }
 
   &__caption {
     color: #333333;
 
-    font-size: rem(7px);
+    font-size: rem(8px);
     font-style: italic;
     line-height: 1.14;
+
+    @include respond-above('lg') {
+      font-size: rem(12px);
+    }
+
+    @include respond-above('xl') {
+      font-size: rem(14px);
+    }
   }
 }
