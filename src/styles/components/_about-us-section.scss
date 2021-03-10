@@ -40,9 +40,15 @@
     margin: 0;
   }
 
-  &--light {
+  &__light {
+    background-color: $light;
+  }
+
+  // TODO: This is just mocking, remove this when implementing Goal section
+  &--goal {
     height: rem(200px);
-    background-color: teal;
+
+    background-color: $picton-blue;
 
     @include respond-above('md') {
       height: rem(500px);
@@ -55,9 +61,5 @@
     @include respond-above('xl') {
       height: rem(800px);
     }
-  }
-
-  &--quote {
-    height: auto;
   }
 }
