@@ -18,7 +18,12 @@
   }
 
   @include respond-above('xl') {
+    grid-template-columns: 1fr minmax(rem(1104px), rem(1440px)) 1fr;
     grid-template-rows: map-get($header-height, 'xl') 1fr map-get($footer-height, 'xl');
+    grid-template-areas:
+    'header header header'
+    '. main .'
+    'footer footer footer';
   }
 
   & > header {
@@ -40,6 +45,13 @@
 
     @include respond-above('lg') {
       padding: 5% 10%;
+    }
+
+    background: {
+      image: url('/images/sign-up-background.jpg');
+      repeat: no-repeat;
+      size: cover;
+      position: top 10% center;
     }
   }
 
