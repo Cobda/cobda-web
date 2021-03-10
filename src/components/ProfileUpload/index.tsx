@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Image from 'next/image'
 
 const ProfileUpload = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -6,6 +7,7 @@ const ProfileUpload = () => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target
+
     if (files) {
       setSelectedFile(files[0])
       setFileSelected(true)
@@ -21,11 +23,18 @@ const ProfileUpload = () => {
       />
     ) : (
       // TODO: Use selected file instead
-      <img
-        className="profile-upload__image profile-upload__image--selected"
-        src="/images/yeezy-380.jpg"
-        alt="Change Profile Image"
-      />
+      <>
+        <img
+          className="profile-upload__image profile-upload__image--selected"
+          src="/images/yeezy-380.jpg"
+          alt="Change Profile Image"
+        />
+        <img
+          className="profile-upload__icon"
+          src="/icons/pencil.svg"
+          alt="Edit Profile Image"
+        />
+      </>
     )
   }
 
@@ -38,8 +47,8 @@ const ProfileUpload = () => {
       <label className={buttonClassName}>
         <input
           className="profile-upload__input"
-          type="file"
           accept="image/png, image/jpeg"
+          type="file"
           onChange={handleInputChange}
         />
         {renderProfileImage()}
