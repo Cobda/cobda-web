@@ -1,25 +1,15 @@
-import React from 'react'
-import ProfileCard from '../ProfileCard'
-import QuoteBox from '../QuoteBox'
+import React, { ReactNode } from 'react'
 
 interface CarouselItem {
-  readonly imagePath: string
-  readonly alternate: string
-  readonly name: string
-  readonly role: string
-  readonly quote: string
+  readonly profileCard: ReactNode
+  readonly quoteBox: ReactNode
 }
 
-const CarouselItem = ({ imagePath, alternate, name, role, quote }: CarouselItem) => {
+const CarouselItem = ({ profileCard, quoteBox }: CarouselItem) => {
   return (
     <div className="carousel-item carousel-item--quote">
-      <ProfileCard
-        imagePath={imagePath}
-        alternate={alternate}
-        name={name}
-        role={role}
-      />
-      <QuoteBox quote={quote} />
+      {profileCard}
+      {quoteBox}
     </div>
   )
 }

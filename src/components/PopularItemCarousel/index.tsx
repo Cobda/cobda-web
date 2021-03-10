@@ -20,7 +20,7 @@ const PopularItemCarousel = () => {
     { caption: '2nd slide' },
     { caption: '3rd slide' },
     { caption: '4th slide' },
-    { caption: '5th slide' },
+    { caption: '5th slide' }
   ]
 
   const renderCarouselSlide = () => {

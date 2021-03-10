@@ -40,10 +40,13 @@
     }
   }
 
+  &__image-wrapper {
+    margin-bottom: rem(12px);
+  }
+
   &__image {
     width: rem(120px);
     height: rem(120px);
-    margin-bottom: rem(12px);
 
     @include respond-above('sm') {
       width: rem(140px);

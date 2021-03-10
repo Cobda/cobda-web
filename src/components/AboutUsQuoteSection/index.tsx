@@ -6,7 +6,7 @@ const AboutUsQuoteSection = () => {
   const { t } = useTranslation('about-us')
 
   return (
-    <section className="about-us-section about-us-section--light">
+    <section className="about-us-section">
       <header className="about-us-section__header about-us-section__header--quote">
         <h1 className="about-us-section__title">{t('quoteSectionHeader')}</h1>
       </header>

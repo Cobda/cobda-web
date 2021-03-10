@@ -40,10 +40,6 @@
     margin: 0;
   }
 
-  &__light {
-    background-color: $light;
-  }
-
   // TODO: This is just mocking, remove this when implementing Goal section
   &--goal {
     height: rem(200px);

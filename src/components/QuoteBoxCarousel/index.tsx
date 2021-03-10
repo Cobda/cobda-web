@@ -8,6 +8,8 @@ import {
 } from 'pure-react-carousel'
 import CarouselItem from './Item'
 import useTranslation from 'next-translate/useTranslation'
+import ProfileCard from '../ProfileCard'
+import QuoteBox from '../QuoteBox'
 
 interface QuoteBoxItem {
   imagePath: string
@@ -26,22 +28,25 @@ const QuoteBoxCarousel = () => {
     alternate: 'Adidas fashion sportswear',
     name: t('name'),
     role: t('role'),
-    quote: t('quoteSectionContent'),
+    quote: t('quoteSectionContent')
   })
 
   const renderCarouselSlide = () => {
     return carouselItemList?.map((item, index) => {
       const { imagePath, alternate, name, role, quote } = item
+      const profileCard = (
+        <ProfileCard
+          imagePath={imagePath}
+          alternate={alternate}
+          name={name}
+          role={role}
+        />
+      )
+      const quoteBox = <QuoteBox quote={quote} />
 
       return (
         <Slide index={index}>
-          <CarouselItem
-            imagePath={imagePath}
-            alternate={alternate}
-            name={name}
-            role={role}
-            quote={quote}
-          />
+          <CarouselItem profileCard={profileCard} quoteBox={quoteBox} />
         </Slide>
       )
     })
