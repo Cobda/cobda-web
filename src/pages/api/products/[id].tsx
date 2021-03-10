@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-const userHandler = (req: NextApiRequest, res: NextApiResponse) => {
+const productHandler = (req: NextApiRequest, res: NextApiResponse) => {
   const { method, query: { id } } = req
 
   const handlePatch = () => {
@@ -28,4 +28,4 @@ const userHandler = (req: NextApiRequest, res: NextApiResponse) => {
   }
 }
 
-export default userHandler
+export default productHandler
