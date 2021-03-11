@@ -176,8 +176,8 @@
   }
 
   &__flag {
-    display: none;
     position: relative;
+    display: none;
     cursor: pointer;
 
     @include respond-above('md') {
