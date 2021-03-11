@@ -4,11 +4,11 @@
 
   user-select: none;
 
-  & span {
+  > span {
     position: relative;
     display: block;
-    width: rem(33px);
-    height: rem(4px);
+    width: rem(24px);
+    height: rem(3px);
     margin-bottom: rem(5px);
 
     background: $dark;
@@ -27,18 +27,19 @@
   }
 
   & span:nth-child(3) {
-    width: rem(22px)
+    width: rem(16px);
   }
 
   & span:nth-last-child(2) {
+    margin: 0;
     transform-origin: 0% 100%;
   }
 
   &__input {
     position: absolute;
     display: block;
-    width: 30px;
-    height: 24px;
+    width: 24px;
+    height: 100%;
     margin: 0;
     opacity: 0;
 
@@ -48,13 +49,19 @@
 
     -webkit-touch-callout: none;
 
+    &:checked {
+      width: 20px;
+      height: 100%;
+    }
+
     &:checked ~ .hamburger__menu {
       transform: none;
+      width: 100%;
     }
 
     &:checked ~ span {
       opacity: 1;
-      transform: rotate(45deg) translate(-2px, -1px);
+      transform: rotate(45deg) translate(0, -1px);
     }
 
     &:checked ~ span:nth-last-child(3) {
@@ -63,7 +70,7 @@
     }
 
     &:checked ~ span:nth-last-child(2) {
-      transform: rotate(-45deg) translate(0, -1px);
+      transform: rotate(-45deg) translate(3.5px, -1px);
     }
   }
 
@@ -71,26 +78,27 @@
     position: absolute;
     display: block;
     box-sizing: border-box;
+    box-shadow: 0 rem(2px 2px) 0 box-shadow-opacity(0.16);
     width: 100%;
+    padding: rem(20px 60px) rem(32px);
     margin: rem(12px) 0 0 rem(-16px);
-    padding: rem(20px 60px) rem(40px);
 
-    background: $light;
+    background-color: $light;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */
 
     transform-origin: 0% 0%;
-    transform: translate(0%, -126%);
-    
-    
+    transform: translate(0%, -130%);
+
     // transition: opacity 5s ease-in;
-    transition:transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
   }
 
   &__menu-list {
-    padding: rem(10px) 0;
-    border-bottom: rem(1px) solid $silver;
+    z-index: 0;
+    padding: rem(16px) 0;
+    border-bottom: 1px solid $silver;
     font-size: rem(16px);
   }
 }

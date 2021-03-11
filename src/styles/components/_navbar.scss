@@ -2,14 +2,17 @@
 
 .navbar {
   position: fixed;
+  z-index: 3;
   display: flex;
   justify-content: center;
+  align-items: center;
   box-sizing: border-box;
+  box-shadow: 0 rem(4px 16px) 0 box-shadow-opacity(0.16);
   width: 100%;
   max-width: $navbar-max-width;
   padding: rem(16px);
   background-color: $light;
-  
+
   @include respond-above('md') {
     justify-content: space-between;
     padding: rem(24px);
@@ -39,7 +42,6 @@
   }
 
   &__logo {
-    z-index: 1;
     text-align: left;
     text-decoration: none;
     color: $dark;
