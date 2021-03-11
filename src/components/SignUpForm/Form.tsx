@@ -39,7 +39,7 @@ const Form = () => {
         <label className="form__input-label">Confirm Password</label>
         <input type="text" className="form__input" />
       </div>
-      <div className="form__reCAPTCHA">
+      <div className="form__recaptcha">
         <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
       </div>
       <div className="form__actionable">
