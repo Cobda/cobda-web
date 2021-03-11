@@ -2,6 +2,12 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import nextConnect from 'next-connect'
 import multer from 'multer'
 
+export const config = {
+  api: {
+    bodyParser: false, // Disable body parsing, consume the body as a stream to upload the file.
+  },
+}
+
 const upload = multer({
   storage: multer.diskStorage({
     destination: './public/uploads',
@@ -27,9 +33,3 @@ apiRoute.post((req: NextApiRequest, res: NextApiResponse) => {
 })
 
 export default apiRoute
-
-export const config = {
-  api: {
-    bodyParser: false, // Disallow body parsing, consume as stream
-  },
-}

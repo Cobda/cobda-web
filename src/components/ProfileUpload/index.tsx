@@ -5,9 +5,7 @@ const ProfileUpload = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null)
   const [isImageSelected, setImageSelected] = useState<boolean>(false)
 
-  const handleInputChange = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files, name } = event.target
 
     if (files) {
@@ -16,12 +14,7 @@ const ProfileUpload = () => {
       }
       const formData = new FormData()
       formData.append(name, files[0])
-
-      console.log('Form data: ', formData)
-
-      const response = await axios.post('/api/uploads', formData, config)
-      console.log('Response: ', response.data)
-
+      await axios.post('/api/uploads', formData, config)
       setSelectedImage(files[0])
       setImageSelected(true)
     }
@@ -35,11 +28,10 @@ const ProfileUpload = () => {
         alt="Change Profile Image"
       />
     ) : (
-      // TODO: Use selected file instead
       <>
         <img
           className="profile-upload__image profile-upload__image--selected"
-          src="/images/yeezy-380.jpg"
+          src={`/uploads/${selectedImage?.name}`}
           alt="Change Profile Image"
         />
         <img
@@ -62,6 +54,7 @@ const ProfileUpload = () => {
           className="profile-upload__input"
           accept="image/png, image/jpeg"
           type="file"
+          name="fileInput"
           onChange={handleInputChange}
         />
         {renderProfileImage()}
