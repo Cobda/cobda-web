@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 const productHandler = (req: NextApiRequest, res: NextApiResponse) => {
   const { method, query: { id } } = req
 
+  // TODO: Handle the function properly
   const handlePatch = () => {
     return {
       message: `This is a PATCH request, it should patch id: ${id}. Currently in progress...`,
@@ -10,6 +11,7 @@ const productHandler = (req: NextApiRequest, res: NextApiResponse) => {
     }
   }
 
+  // TODO: Handle the function properly
   const handleDelete = () => {
     return {
       message: `This is a DELETE request, it should DELETE id: ${id}. Currently in progress...`,
