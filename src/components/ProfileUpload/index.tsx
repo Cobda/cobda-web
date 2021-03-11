@@ -5,33 +5,46 @@ const ProfileUpload = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null)
   const [isImageSelected, setImageSelected] = useState<boolean>(false)
 
-  const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const uploadImage = async (name: string, file: File) => {
+    const formData = new FormData()
+    formData.append(name, file)
+    const config = {
+      headers: { 'content-type': 'multipart/form-data' }
+    }
+
+    return await axios.post('/api/uploads', formData, config)
+  }
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files, name } = event.target
 
     if (files) {
-      const config = {
-        headers: { 'content-type': 'multipart/form-data' },
-      }
-      const formData = new FormData()
-      formData.append(name, files[0])
-      await axios.post('/api/uploads', formData, config)
-      setSelectedImage(files[0])
-      setImageSelected(true)
+      const selectedFile = files[0]
+      uploadImage(name, selectedFile).then(() => {
+        setSelectedImage(selectedFile)
+        setImageSelected(true)
+      })
     }
   }
 
   const renderProfileImage = () => {
-    return !isImageSelected ? (
+    const selectedImageSrc = selectedImage
+      ? `/uploads/${selectedImage.name}`
+      : '/images/broken-image.png'
+
+    const defaultProfileImage = (
       <img
         className="profile-upload__image"
-        src="images/default-profile-image.png"
+        src="/images/default-profile-image.png"
         alt="Change Profile Image"
       />
-    ) : (
+    )
+
+    const selectedProfileImage = (
       <>
         <img
           className="profile-upload__image profile-upload__image--selected"
-          src={`/uploads/${selectedImage?.name}`}
+          src={selectedImageSrc}
           alt="Change Profile Image"
         />
         <img
@@ -41,9 +54,11 @@ const ProfileUpload = () => {
         />
       </>
     )
+
+    return isImageSelected ? selectedProfileImage : defaultProfileImage
   }
 
-  const renderProfileButton = () => {
+  const renderProfileUpload = () => {
     const labelClassName = !isImageSelected
       ? 'profile-upload__label'
       : 'profile-upload__label profile-upload__label--selected'
@@ -64,7 +79,7 @@ const ProfileUpload = () => {
 
   return (
     <figure className="profile-upload">
-      {renderProfileButton()}
+      {renderProfileUpload()}
       <figcaption className="profile-upload__caption">
         <span>{'Maximum file size 1.5 MB'}</span>
         {'JPG & PNG only'}
