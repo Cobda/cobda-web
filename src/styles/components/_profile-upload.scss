@@ -9,9 +9,9 @@
 
   @include flex-center;
 
-  &__button {
+  &__label {
     margin-bottom: rem(16px);
-    
+
     cursor: pointer;
 
     @include respond-above('lg') {
@@ -94,6 +94,16 @@
 
     @include respond-above('xl') {
       font-size: rem(14px);
+    }
+
+    & > span {
+      &:first-child {
+        margin-right: rem(24px);
+
+        @include respond-above('lg') {
+          margin-right: rem(32px);
+        }
+      }
     }
   }
 }

@@ -1,21 +1,34 @@
 import React, { useState } from 'react'
-import Image from 'next/image'
+import axios from 'axios'
 
 const ProfileUpload = () => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null)
-  const [isFileSelected, setFileSelected] = useState<boolean>(false)
+  const [selectedImage, setSelectedImage] = useState<File | null>(null)
+  const [isImageSelected, setImageSelected] = useState<boolean>(false)
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = event.target
+  const handleInputChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { files, name } = event.target
 
     if (files) {
-      setSelectedFile(files[0])
-      setFileSelected(true)
+      const config = {
+        headers: { 'content-type': 'multipart/form-data' },
+      }
+      const formData = new FormData()
+      formData.append(name, files[0])
+
+      console.log('Form data: ', formData)
+
+      const response = await axios.post('/api/uploads', formData, config)
+      console.log('Response: ', response.data)
+
+      setSelectedImage(files[0])
+      setImageSelected(true)
     }
   }
 
   const renderProfileImage = () => {
-    return !isFileSelected ? (
+    return !isImageSelected ? (
       <img
         className="profile-upload__image"
         src="images/default-profile-image.png"
@@ -39,12 +52,12 @@ const ProfileUpload = () => {
   }
 
   const renderProfileButton = () => {
-    const buttonClassName = !isFileSelected
-      ? 'profile-upload__button'
-      : 'profile-upload__button profile-upload__button--selected'
+    const labelClassName = !isImageSelected
+      ? 'profile-upload__label'
+      : 'profile-upload__label profile-upload__label--selected'
 
     return (
-      <label className={buttonClassName}>
+      <label className={labelClassName}>
         <input
           className="profile-upload__input"
           accept="image/png, image/jpeg"
@@ -60,7 +73,8 @@ const ProfileUpload = () => {
     <figure className="profile-upload">
       {renderProfileButton()}
       <figcaption className="profile-upload__caption">
-        {'Maximum file size 1.5 MB'}&nbsp;&nbsp;&nbsp;&nbsp;{'JPG & PNG only'}
+        <span>{'Maximum file size 1.5 MB'}</span>
+        {'JPG & PNG only'}
       </figcaption>
     </figure>
   )
