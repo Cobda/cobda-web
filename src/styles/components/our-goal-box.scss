@@ -12,7 +12,7 @@
 
     @include respond-above('md') {
       display: block;
-      padding: rem(32px) 0 rem(18px);
+      padding: rem(32px) 0 rem(16px);
       margin: 0;
       font-size: rem(28px);
       font-weight: bold;
@@ -35,7 +35,7 @@
 
     @include respond-above('md') {
       height: auto;
-      padding: 0 rem(28px 16px 28px);
+      padding: 0 rem(28px 20px 28px);
       font-size: rem(16px);
     }
 

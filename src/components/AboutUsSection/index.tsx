@@ -1,13 +1,13 @@
 import React from 'react'
 import AboutUsIntroduction from '../AboutUsIntroduction'
 import AboutUsQuoteSection from '../AboutUsQuoteSection'
-import AboutUsGoalSection from '../AboutUsGoalSection'
+import AboutUsOurGoalSection from '../AboutUsOurGoalSection'
 
 const AboutUsSection = () => {
   return (
     <>
       <AboutUsIntroduction />
-      <AboutUsGoalSection />
+      <AboutUsOurGoalSection />
       <AboutUsQuoteSection />
     </>
   )
