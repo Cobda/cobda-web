@@ -25,13 +25,13 @@
   }
 
   &__description {
+    box-sizing: border-box;
     padding: rem(16px 28px);
     margin: auto;
     font-size: rem(14px);
     font-weight: 200;
     text-align: center;
     line-height: 1.53;
-    box-sizing: border-box;
 
     @include respond-above('md') {
       height: auto;
