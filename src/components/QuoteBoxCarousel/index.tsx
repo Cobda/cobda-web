@@ -60,7 +60,7 @@ const QuoteBoxCarousel = () => {
       naturalSlideHeight={1}
       totalSlides={4}
       infinite
-      isPlaying={false}
+      isPlaying
       isIntrinsicHeight
       lockOnWindowScroll>
       <Slider>{renderCarouselSlide()}</Slider>

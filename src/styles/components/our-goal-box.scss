@@ -4,22 +4,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid 1px #acacac;
+  border: solid 1px $silver-chalice;
+  background-color: transparent;
 
   &__title {
     display: none;
 
     @include respond-above('md') {
       display: block;
-      padding: rem(32px) 0 rem(18px) 0;
+      padding: rem(32px) 0 rem(18px);
       margin: 0;
-      font-size: rem(36px);
+      font-size: rem(28px);
       font-weight: bold;
       line-height: 1.22;
     }
+
+    @include respond-above('lg') {
+      font-size: rem(36px);
+    }
   }
 
-  &__content {
+  &__description {
     padding: rem(16px 28px);
     margin: auto;
     font-size: rem(14px);
@@ -30,15 +35,11 @@
 
     @include respond-above('md') {
       height: auto;
-      padding: 0 rem(36px) rem(24px) rem(36px);
+      padding: 0 rem(28px 16px 28px);
       font-size: rem(16px);
     }
 
     @include respond-above('lg') {
-      padding: 0 rem(180px 56px 80px);
-    }
-
-    @include respond-above('xl') {
       padding: 0 rem(180px 56px 80px);
     }
   }

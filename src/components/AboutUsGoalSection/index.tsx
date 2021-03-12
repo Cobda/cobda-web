@@ -11,7 +11,7 @@ const AboutUsGoalSection = () => {
       </header>
       <div className="our-goal-box">
         <h1 className="our-goal-box__title">{t('goalSectionTitle')}</h1>
-        <p className="our-goal-box__content">{t('goalSectionContent')}</p>
+        <p className="our-goal-box__description">{t('goalSectionDescription')}</p>
       </div>
     </section>
   )
