@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 import axios from 'axios'
 
 const ProfileUpload = () => {
@@ -6,9 +6,9 @@ const ProfileUpload = () => {
   const [isImageSelected, setImageSelected] = useState<boolean>(false)
 
   const uploadImage = async (name: string, file: File) => {
-    const formData = new FormData()
+    const formData: FormData = new FormData()
     formData.append(name, file)
-    const config = {
+    const config: Object = {
       headers: { 'content-type': 'multipart/form-data' }
     }
 
@@ -19,7 +19,7 @@ const ProfileUpload = () => {
     const { files, name } = event.target
 
     if (files) {
-      const selectedFile = files[0]
+      const selectedFile: File = files[0]
       uploadImage(name, selectedFile).then(() => {
         setSelectedImage(selectedFile)
         setImageSelected(true)
@@ -28,11 +28,11 @@ const ProfileUpload = () => {
   }
 
   const renderProfileImage = () => {
-    const selectedImageSrc = selectedImage
+    const selectedImageSrc: string = selectedImage
       ? `/uploads/${selectedImage.name}`
       : '/images/broken-image.png'
 
-    const defaultProfileImage = (
+    const defaultProfileImage: ReactNode = (
       <img
         className="profile-upload__image"
         src="/images/default-profile-image.png"
@@ -40,7 +40,7 @@ const ProfileUpload = () => {
       />
     )
 
-    const selectedProfileImage = (
+    const selectedProfileImage: ReactNode = (
       <>
         <img
           className="profile-upload__image profile-upload__image--selected"
@@ -59,7 +59,7 @@ const ProfileUpload = () => {
   }
 
   const renderProfileUpload = () => {
-    const labelClassName = !isImageSelected
+    const labelClassName: string = !isImageSelected
       ? 'profile-upload__label'
       : 'profile-upload__label profile-upload__label--selected'
 
