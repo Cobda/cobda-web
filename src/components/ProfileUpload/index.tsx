@@ -1,9 +1,8 @@
-import React, { ReactNode, useEffect, useState } from 'react'
+import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import axios from 'axios'
 
 const ProfileUpload = () => {
-  const [selectedImage, setSelectedImage] = useState<File | null>(null)
+  const [selectedImageUrl, setSelectedImageUrl] = useState<string>('')
   const router = useRouter()
 
   useEffect(() => {
@@ -11,14 +10,14 @@ const ProfileUpload = () => {
       'You have unsaved changes - are you sure you wish to leave this page?'
 
     const handleWindowClose = (event: BeforeUnloadEvent) => {
-      if (!selectedImage) return
+      if (!selectedImageUrl) return
       event.preventDefault()
 
       return (event.returnValue = warningText)
     }
 
     const handleBrowseAway = () => {
-      if (!selectedImage) return
+      if (!selectedImageUrl) return
       if (window.confirm(warningText)) return
 
       router.events.emit('routeChangeError')
@@ -32,35 +31,18 @@ const ProfileUpload = () => {
       window.removeEventListener('beforeunload', handleWindowClose)
       router.events.off('routeChangeStart', handleBrowseAway)
     }
-  }, [selectedImage])
-
-  const uploadImage = async (name: string, file: File) => {
-    const formData: FormData = new FormData()
-    formData.append(name, file)
-    const config: Object = {
-      headers: { 'content-type': 'multipart/form-data' },
-    }
-
-    return await axios.post('/api/uploads', formData, config)
-  }
+  }, [selectedImageUrl])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files, name } = event.target
     const hasSingleFile = files?.length === 1
 
     if (files && hasSingleFile) {
-      const selectedFile: File = files[0]
-      uploadImage(name, selectedFile).then(() => {
-        setSelectedImage(selectedFile)
-      })
+      setSelectedImageUrl(URL.createObjectURL(files[0]))
     }
   }
 
   const renderProfileImage = () => {
-    const selectedImageSrc: string = selectedImage
-      ? `/uploads/${selectedImage.name}`
-      : '/images/broken-image.png'
-
     const defaultProfileImage: ReactNode = (
       <img
         className="profile-upload__image"
@@ -68,12 +50,11 @@ const ProfileUpload = () => {
         alt="Profile Upload Image"
       />
     )
-
     const selectedProfileImage: ReactNode = (
       <>
         <img
           className="profile-upload__image profile-upload__image--selected"
-          src={selectedImageSrc}
+          src={selectedImageUrl}
           alt="Profile Upload Image"
         />
         <img
@@ -84,11 +65,11 @@ const ProfileUpload = () => {
       </>
     )
 
-    return selectedImage ? selectedProfileImage : defaultProfileImage
+    return selectedImageUrl ? selectedProfileImage : defaultProfileImage
   }
 
   const renderProfileUpload = () => {
-    const labelClassName: string = selectedImage
+    const labelClassName: string = selectedImageUrl
       ? 'profile-upload__label profile-upload__label--selected'
       : 'profile-upload__label'
 

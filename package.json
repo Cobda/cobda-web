@@ -8,10 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "multer": "^1.4.2",
     "next": "^10.0.5",
-    "next-connect": "^0.10.0",
     "next-translate": "^1.0.2",
     "pure-react-carousel": "^1.27.6",
     "react": "^17.0.1",
