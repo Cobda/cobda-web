@@ -7,7 +7,7 @@ const AboutUsOurGoalSection = () => {
 
   return (
     <section className="about-us-section">
-      <header className="about-us-section__header about-us-section__header--goal">
+      <header className="about-us-section__header about-us-section__header--spacious">
         <h1 className="about-us-section__title">{t('goalSectionTitle')}</h1>
       </header>
       <OurGoalBox />

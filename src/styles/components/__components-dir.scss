@@ -1,32 +1,47 @@
+// Footer section
 @import './footer';
+
+// Navbar section
 @import './navbar';
-@import './sidebar';
-@import './home-section';
-@import './home-search-box';
-@import './sign-up-form';
-@import './sign-up-success-form';
-@import './form';
+@import './dropdown';
+@import './logo';
+
+// Product section
 @import './product-list';
 @import './product-media';
 @import './product-content';
 @import './product-information';
 @import './product-detail';
 @import './product-card';
+@import './product-review';
+@import './sidebar';
+
+// Form section
+@import './form';
+@import './sign-up-form';
 @import './sign-in-form';
+@import './sign-up-success-form';
+
+// Home section
+@import './home-section';
+@import './home-search';
+@import './home-search-box';
+@import './home-category';
+@import './new-release-banner';
+
+// Account section
 @import './account-content';
 @import './account-information';
 @import './account-product';
-@import './product-review';
+
+// Carousel section
+@import './profile-card';
 @import './carousel';
 @import './carousel-item';
 @import 'pure-react-carousel/dist/react-carousel.es.css';
-@import './home-category';
-@import './dropdown';
-@import './home-search';
-@import './logo';
+
+// About-us section
+@import './our-goal';
 @import './about-us-introduction';
 @import './about-us-section';
-@import './our-goal-box';
-@import './new-release-banner';
-@import './profile-card';
 @import './quote-box';

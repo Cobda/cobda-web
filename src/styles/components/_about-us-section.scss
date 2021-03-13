@@ -20,14 +20,11 @@
     display: flex;
     justify-content: center;
 
-    &--quote,
-    &--goal {
-      @include respond-above('md') {
-        display: none;
-      }
+    @include respond-above('md') {
+      display: none;
     }
 
-    &--goal {
+    &--spacious {
       margin-bottom: rem(16px);
     }
   }
