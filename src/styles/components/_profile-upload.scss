@@ -96,13 +96,11 @@
       font-size: rem(14px);
     }
 
-    & > span {
-      &:first-child {
-        margin-right: rem(24px);
+    & > span:first-child {
+      margin-right: rem(24px);
 
-        @include respond-above('lg') {
-          margin-right: rem(32px);
-        }
+      @include respond-above('lg') {
+        margin-right: rem(32px);
       }
     }
   }
