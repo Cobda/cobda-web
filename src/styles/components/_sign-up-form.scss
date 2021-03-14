@@ -3,6 +3,9 @@
 .sign-up-form {
   display: flex;
   flex-direction: column;
+  max-width: $sign-up-form-max-width;
+  margin: auto;
+
   background-color: $silver;
 
   &__header {
