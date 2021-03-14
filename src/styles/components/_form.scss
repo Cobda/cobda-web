@@ -5,7 +5,7 @@
   flex-direction: column;
   box-sizing: border-box;
   width: 100%;
-  padding: 0 rem(16px);
+  padding: 0 rem(32px);
 
   @include respond-above('md') {
     padding: 0 5%;
@@ -17,8 +17,8 @@
 
   &__header,
   &__input-group,
-  &__actionable,
-  &__recaptcha {
+  &__recaptcha,
+  &__actionable {
     &:not(:last-child) {
       margin-bottom: rem(24px);
     }
@@ -29,17 +29,33 @@
     justify-content: center;
   }
 
+  &__devide {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > div {
+      flex: 50%;
+    }
+  }
+
   &__title {
     margin: 0;
   }
 
   &__input-label {
     display: block;
-    margin-bottom: rem(12px);
+    margin-bottom: rem(16px);
+    font-size: rem(20px);
+    font-weight: 600;
+    line-height: 1.2;
   }
 
   &__input-group {
     width: 100%;
+
+    &:last-child {
+      max-width: 50%;
+    }
   }
 
   &__actionable,
@@ -49,9 +65,13 @@
   }
 
   &__input {
-    width: 100%;
+    outline: 0;
+    width: 85%;
     box-sizing: border-box;
-    padding: rem(4px 12px);
+    border-width: 0 0 2px;
+    border-color: $havelock-blue;
+    padding: 0 0 rem(8px);
+    font-size: rem(20px);
   }
 
   &__button {
@@ -65,5 +85,13 @@
     &:hover {
       background-color: darken($silver, 8%);
     }
+  }
+
+  &__password-icon {
+    position: absolute;
+    top: rem(20px);
+    right: rem(5px);
+    cursor: pointer;
+    margin-right: rem(16px);
   }
 }
