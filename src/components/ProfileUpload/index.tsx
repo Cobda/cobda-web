@@ -1,24 +1,26 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
+import Trans from 'next-translate/Trans'
 
 const ProfileUpload = () => {
   const [selectedImageUrl, setSelectedImageUrl] = useState<string>('')
   const router = useRouter()
+  const { t } = useTranslation('sign-up')
 
   useEffect(() => {
-    const warningText: string =
-      'You have unsaved changes - are you sure you wish to leave this page?'
-
+    // Trigger when refreshing page
     const handleWindowClose = (event: BeforeUnloadEvent) => {
       if (!selectedImageUrl) return
       event.preventDefault()
 
-      return (event.returnValue = warningText)
+      return (event.returnValue = t('warningText'))
     }
 
+    // Trigger when routing to other page
     const handleBrowseAway = () => {
       if (!selectedImageUrl) return
-      if (window.confirm(warningText)) return
+      if (window.confirm(t('warningText'))) return
 
       router.events.emit('routeChangeError')
       throw 'routeChange aborted.'
@@ -34,11 +36,12 @@ const ProfileUpload = () => {
   }, [selectedImageUrl])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { files, name } = event.target
-    const hasSingleFile = files?.length === 1
+    const { files } = event.target
+    const hasSingleFile: boolean = files?.length === 1
 
     if (files && hasSingleFile) {
-      setSelectedImageUrl(URL.createObjectURL(files[0]))
+      const imageUrl: string = URL.createObjectURL(files[0])
+      setSelectedImageUrl(imageUrl)
     }
   }
 
@@ -91,8 +94,7 @@ const ProfileUpload = () => {
     <figure className="profile-upload">
       {renderProfileUpload()}
       <figcaption className="profile-upload__caption">
-        <span>{'Maximum file size 1.5 MB'}</span>
-        {'JPG & PNG only'}
+        <Trans i18nKey={t('profileImageCaution')} components={[<span />]} />
       </figcaption>
     </figure>
   )
