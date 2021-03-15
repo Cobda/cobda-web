@@ -9,7 +9,6 @@ const ProfileUpload = () => {
   const { t } = useTranslation('sign-up')
 
   useEffect(() => {
-    // Trigger when refreshing page
     const handleWindowClose = (event: BeforeUnloadEvent) => {
       if (!selectedImageUrl) return
       event.preventDefault()
@@ -17,13 +16,14 @@ const ProfileUpload = () => {
       return (event.returnValue = t('warningText'))
     }
 
-    // Trigger when routing to other page
     const handleBrowseAway = () => {
       if (!selectedImageUrl) return
-      if (window.confirm(t('warningText'))) return
+      const isConfirmed: boolean = window.confirm(t('warningText'))
 
-      router.events.emit('routeChangeError')
-      throw 'routeChange aborted.'
+      if (!isConfirmed) {
+        router.events.emit('routeChangeError')
+        throw 'routeChange aborted.'
+      }
     }
 
     window.addEventListener('beforeunload', handleWindowClose)
@@ -50,7 +50,7 @@ const ProfileUpload = () => {
       <img
         className="profile-upload__image"
         src="/images/default-profile-image.png"
-        alt="Profile Upload Image"
+        alt="Sign-up Profile Upload Image"
       />
     )
     const selectedProfileImage: ReactNode = (
@@ -58,12 +58,12 @@ const ProfileUpload = () => {
         <img
           className="profile-upload__image profile-upload__image--selected"
           src={selectedImageUrl}
-          alt="Profile Upload Image"
+          alt="Uploaded Profile Image"
         />
         <img
           className="profile-upload__icon"
           src="/icons/pencil.svg"
-          alt="Profile Upload Icon"
+          alt="Profile Image Edit Icon"
         />
       </>
     )
@@ -82,7 +82,6 @@ const ProfileUpload = () => {
           className="profile-upload__input"
           accept="image/png, image/jpeg"
           type="file"
-          name="fileInput"
           onChange={handleInputChange}
         />
         {renderProfileImage()}

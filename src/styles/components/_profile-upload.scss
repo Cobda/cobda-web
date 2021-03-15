@@ -53,6 +53,7 @@
     &--selected {
       box-shadow: 0 rem(3px 6px) 0 box-shadow-opacity(0.16);
       border-radius: 50%;
+      object-fit: cover;
     }
   }
 
@@ -82,7 +83,7 @@
   }
 
   &__caption {
-    color: #333333;
+    color: $dark-charcoal;
 
     font-size: rem(8px);
     font-style: italic;
@@ -96,7 +97,7 @@
       font-size: rem(14px);
     }
 
-    & > span:first-child {
+    & > span {
       margin-right: rem(24px);
 
       @include respond-above('lg') {
