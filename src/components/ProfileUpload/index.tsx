@@ -35,17 +35,19 @@ const ProfileUpload = () => {
     }
   }, [selectedImageUrl])
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (setProfileImage: (image: string) => void) => (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const { files } = event.target
     const hasSingleFile: boolean = files?.length === 1
 
     if (files && hasSingleFile) {
       const imageUrl: string = URL.createObjectURL(files[0])
-      setSelectedImageUrl(imageUrl)
+      setProfileImage(imageUrl)
     }
   }
 
-  const renderProfileImage = () => {
+  const renderProfileImage = (imageUrl: string) => {
     const defaultProfileImage: ReactNode = (
       <img
         className="profile-upload__image"
@@ -57,7 +59,7 @@ const ProfileUpload = () => {
       <>
         <img
           className="profile-upload__image profile-upload__image--selected"
-          src={selectedImageUrl}
+          src={imageUrl}
           alt="Uploaded Profile Image"
         />
         <img
@@ -71,7 +73,7 @@ const ProfileUpload = () => {
     return selectedImageUrl ? selectedProfileImage : defaultProfileImage
   }
 
-  const renderProfileUpload = () => {
+  const renderProfileUpload = (selectedImageUrl: string, profileImage: ReactNode) => {
     const labelClassName: string = selectedImageUrl
       ? 'profile-upload__label profile-upload__label--selected'
       : 'profile-upload__label'
@@ -82,16 +84,16 @@ const ProfileUpload = () => {
           className="profile-upload__input"
           accept="image/png, image/jpeg"
           type="file"
-          onChange={handleInputChange}
+          onChange={handleInputChange(setSelectedImageUrl)}
         />
-        {renderProfileImage()}
+        {profileImage}
       </label>
     )
   }
 
   return (
     <figure className="profile-upload">
-      {renderProfileUpload()}
+      {renderProfileUpload(selectedImageUrl, renderProfileImage(selectedImageUrl))}
       <figcaption className="profile-upload__caption">
         <Trans i18nKey={t('profileImageCaution')} components={[<span />]} />
       </figcaption>
