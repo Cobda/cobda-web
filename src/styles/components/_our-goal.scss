@@ -1,0 +1,65 @@
+@import '../abstracts/_abstracts-dir';
+
+.our-goal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: rem(16px 28px);
+  border: solid 1px $silver-chalice;
+
+  @include respond-above('sm') {
+    padding: rem(24px 48px);
+  }
+
+  @include respond-above('md') {
+    padding: rem(32px 68px);
+  }
+
+  @include respond-above('lg') {
+    padding: rem(44px 88px);
+  }
+
+  @include respond-above('xl') {
+    padding: rem(52px 108px);
+  }
+
+  &__title {
+    display: none;
+
+    @include respond-above('md') {
+      display: block;
+      margin: 0 0 rem(16px);
+
+      font-size: rem(28px);
+      font-weight: bold;
+      line-height: 1.22;
+    }
+
+    @include respond-above('lg') {
+      margin-bottom: rem(24px);
+      font-size: rem(36px);
+    }
+  }
+
+  &__description {
+    margin: 0;
+
+    font-size: rem(14px);
+    font-weight: 200;
+    line-height: 1.53;
+    text-align: center;
+
+    @include respond-above('sm') {
+      font-size: rem(16px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(18px);
+    }
+
+    @include respond-above('xl') {
+      font-size: rem(20px);
+    }
+  }
+}

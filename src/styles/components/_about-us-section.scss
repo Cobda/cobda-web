@@ -20,10 +20,12 @@
     display: flex;
     justify-content: center;
 
-    &--quote {
-      @include respond-above('md') {
-        display: none;
-      }
+    @include respond-above('md') {
+      display: none;
+    }
+
+    &--spacious {
+      margin-bottom: rem(16px);
     }
   }
 
@@ -38,24 +40,5 @@
 
   &__description {
     margin: 0;
-  }
-
-  // TODO: This is just mocking, remove this when implementing Goal section
-  &--goal {
-    height: rem(200px);
-
-    background-color: $picton-blue;
-
-    @include respond-above('md') {
-      height: rem(500px);
-    }
-
-    @include respond-above('lg') {
-      height: rem(650px);
-    }
-
-    @include respond-above('xl') {
-      height: rem(800px);
-    }
   }
 }

@@ -7,7 +7,7 @@ const AboutUsQuoteSection = () => {
 
   return (
     <section className="about-us-section">
-      <header className="about-us-section__header about-us-section__header--quote">
+      <header className="about-us-section__header">
         <h1 className="about-us-section__title">{t('quoteSectionHeader')}</h1>
       </header>
       <QuoteBoxCarousel />
