@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import ReCAPTCHA from 'react-google-recaptcha'
+import ProfileUpload from '../ProfileUpload'
 
 const Form = () => {
   const router = useRouter()
@@ -15,6 +16,7 @@ const Form = () => {
       <header className="form__header">
         <h2 className="form__title">Sign up</h2>
       </header>
+      <ProfileUpload />
       <div className="form__input-group">
         <label className="form__input-label">First Name</label>
         <input type="text" className="form__input" />
@@ -40,7 +42,7 @@ const Form = () => {
         <input type="text" className="form__input" />
       </div>
       <div className="form__recaptcha">
-        <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!} />
+        <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} />
       </div>
       <div className="form__actionable">
         <button className="form__button" onClick={handleSubmitClick}>

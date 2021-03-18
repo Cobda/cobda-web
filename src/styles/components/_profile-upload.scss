@@ -1,0 +1,120 @@
+@import '../abstracts/_abstracts-dir';
+
+.profile-upload {
+  flex-direction: column;
+  margin: 0;
+
+  // TODO: Remove this when merging to the form
+  background-color: $light;
+
+  @include flex-center;
+
+  &__label {
+    margin-bottom: rem(16px);
+
+    cursor: pointer;
+
+    @include respond-above('lg') {
+      margin-bottom: rem(24px);
+    }
+
+    &--selected {
+      position: relative;
+
+      padding: rem(7.5px 9px);
+      border: solid 1px $mercury;
+      border-radius: rem(10px);
+
+      @include respond-above('lg') {
+        padding: rem(10.5px 12px);
+      }
+    }
+  }
+
+  &__input {
+    display: none;
+    visibility: hidden;
+  }
+
+  &__image {
+    width: rem(120px);
+    height: rem(120px);
+
+    @include respond-above('lg') {
+      width: rem(160px);
+      height: rem(160px);
+    }
+
+    @include respond-above('xl') {
+      width: rem(200px);
+      height: rem(200px);
+    }
+
+    &--selected {
+      box-shadow: 0 rem(3px 6px) 0 box-shadow-opacity(0.16);
+      width: rem(100px);
+      height: rem(100px);
+      border-radius: 50%;
+      object-fit: cover;
+
+      @include respond-above('lg') {
+        width: rem(134px);
+        height: rem(134px);
+      }
+
+      @include respond-above('xl') {
+        width: rem(174px);
+        height: rem(174px);
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    bottom: rem(7px);
+    right: rem(7px);
+
+    width: rem(14px);
+    height: rem(14px);
+
+    @include respond-above('lg') {
+      bottom: rem(10px);
+      right: rem(10px);
+
+      width: rem(20px);
+      height: rem(20px);
+    }
+
+    @include respond-above('xl') {
+      bottom: rem(12px);
+      right: rem(12px);
+
+      width: rem(24px);
+      height: rem(24px);
+    }
+  }
+
+  &__caption {
+    color: $dark-charcoal;
+
+    font-size: rem(8px);
+    font-style: italic;
+    line-height: 1.14;
+
+    @include respond-above('lg') {
+      font-size: rem(12px);
+    }
+
+    @include respond-above('xl') {
+      font-size: rem(14px);
+    }
+
+    & > span {
+      margin-right: rem(24px);
+
+      @include respond-above('lg') {
+        margin-right: rem(32px);
+      }
+    }
+  }
+}
