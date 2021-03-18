@@ -17,7 +17,8 @@
 
   &__header,
   &__input-group,
-  &__actionable {
+  &__actionable,
+  &__recaptcha {
     &:not(:last-child) {
       margin-bottom: rem(24px);
     }
@@ -41,7 +42,8 @@
     width: 100%;
   }
 
-  &__actionable {
+  &__actionable,
+  &__recaptcha {
     display: flex;
     justify-content: center;
   }
