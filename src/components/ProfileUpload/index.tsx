@@ -12,7 +12,7 @@ const ProfileUpload = () => {
     const handleWindowClose = (event: BeforeUnloadEvent) => {
       if (selectedImageUrl) {
         event.preventDefault()
-        return (event.returnValue = t('warningText'))
+        event.returnValue = t('warningText')
       }
     }
 
@@ -71,10 +71,7 @@ const ProfileUpload = () => {
     return selectedImageUrl ? selectedProfileImage : defaultProfileImage
   }
 
-  const renderProfileUpload = (
-    selectedImageUrl: string,
-    profileImage: ReactNode
-  ) => {
+  const renderProfileUpload = (selectedImageUrl: string, profileImage: ReactNode) => {
     const labelClassName: string = selectedImageUrl
       ? 'profile-upload__label profile-upload__label--selected'
       : 'profile-upload__label'
@@ -94,10 +91,7 @@ const ProfileUpload = () => {
 
   return (
     <figure className="profile-upload">
-      {renderProfileUpload(
-        selectedImageUrl,
-        renderProfileImage(selectedImageUrl)
-      )}
+      {renderProfileUpload(selectedImageUrl, renderProfileImage(selectedImageUrl))}
       <figcaption className="profile-upload__caption">
         <Trans i18nKey={t('profileImageCaution')} components={[<span />]} />
       </figcaption>
