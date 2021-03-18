@@ -2,7 +2,6 @@
 
 .profile-upload {
   flex-direction: column;
-  box-sizing: border-box;
   margin: 0;
 
   // TODO: Remove this when merging to the form
@@ -22,12 +21,12 @@
     &--selected {
       position: relative;
 
-      padding: rem(8px);
+      padding: rem(7.5px 9px);
       border: solid 1px $mercury;
       border-radius: rem(10px);
 
       @include respond-above('lg') {
-        padding: rem(12px);
+        padding: rem(10.5px 12px);
       }
     }
   }

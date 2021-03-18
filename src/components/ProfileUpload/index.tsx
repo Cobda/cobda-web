@@ -10,17 +10,14 @@ const ProfileUpload = () => {
 
   useEffect(() => {
     const handleWindowClose = (event: BeforeUnloadEvent) => {
-      if (!selectedImageUrl) return
-      event.preventDefault()
-
-      return (event.returnValue = t('warningText'))
+      if (selectedImageUrl) {
+        event.preventDefault()
+        return (event.returnValue = t('warningText'))
+      }
     }
 
     const handleBrowseAway = () => {
-      if (!selectedImageUrl) return
-      const isConfirmed: boolean = window.confirm(t('warningText'))
-
-      if (!isConfirmed) {
+      if (selectedImageUrl && !window.confirm(t('warningText'))) {
         router.events.emit('routeChangeError')
         throw 'routeChange aborted.'
       }
@@ -42,7 +39,8 @@ const ProfileUpload = () => {
     const hasSingleFile: boolean = files?.length === 1
 
     if (files && hasSingleFile) {
-      const imageUrl: string = URL.createObjectURL(files[0])
+      const [selectedFile] = files
+      const imageUrl: string = URL.createObjectURL(selectedFile)
       setProfileImage(imageUrl)
     }
   }
@@ -73,7 +71,10 @@ const ProfileUpload = () => {
     return selectedImageUrl ? selectedProfileImage : defaultProfileImage
   }
 
-  const renderProfileUpload = (selectedImageUrl: string, profileImage: ReactNode) => {
+  const renderProfileUpload = (
+    selectedImageUrl: string,
+    profileImage: ReactNode
+  ) => {
     const labelClassName: string = selectedImageUrl
       ? 'profile-upload__label profile-upload__label--selected'
       : 'profile-upload__label'
@@ -93,7 +94,10 @@ const ProfileUpload = () => {
 
   return (
     <figure className="profile-upload">
-      {renderProfileUpload(selectedImageUrl, renderProfileImage(selectedImageUrl))}
+      {renderProfileUpload(
+        selectedImageUrl,
+        renderProfileImage(selectedImageUrl)
+      )}
       <figcaption className="profile-upload__caption">
         <Trans i18nKey={t('profileImageCaution')} components={[<span />]} />
       </figcaption>
