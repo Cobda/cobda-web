@@ -18,6 +18,7 @@
   &__header,
   &__input-group,
   &__recaptcha,
+  &__group,
   &__actionable {
     &:not(:last-child) {
       margin-bottom: rem(24px);
@@ -29,12 +30,17 @@
     justify-content: center;
   }
 
-  &__devide {
+  &__divide {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
 
-    & > div {
-      flex: 50%;
+    @include respond-above('md') {
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      & > div {
+        flex: 50%;
+      }
     }
   }
 
@@ -44,17 +50,31 @@
 
   &__input-label {
     display: block;
-    margin-bottom: rem(16px);
-    font-size: rem(20px);
+    margin-bottom: rem(12px);
+
+    font-size: rem(16px);
     font-weight: 600;
     line-height: 1.2;
   }
 
-  &__input-group {
+  &__group {
     width: 100%;
 
-    &:last-child {
-      max-width: 50%;
+    @include respond-above('md') {
+      &:last-child {
+        max-width: 50%;
+      }
+    }
+  }
+
+  &__input-group {
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    margin-bottom: rem(6px);
+
+    @include respond-above('md') {
+      padding-right: rem(80px);
     }
   }
 
@@ -65,33 +85,49 @@
   }
 
   &__input {
-    outline: 0;
-    width: 85%;
+    display: block;
     box-sizing: border-box;
-    border-width: 0 0 2px;
+    width: 100%;
+    border-width: 0 0 rem(2px);
     border-color: $havelock-blue;
+    outline: 0;
     padding: 0 0 rem(8px);
-    font-size: rem(20px);
-  }
 
+    font-size: rem(16px);
+
+    &--invalid {
+      border-color: $coral-red;
+    }
+
+  }
+  
   &__button {
+    margin: 0;
+    border-radius: rem(3px);
+    padding: rem(5px 10px);
+
+    background-color: $shuttle-gray;
     color: $light;
     text-decoration: none;
-    margin: 0;
-    padding: rem(5px 10px);
-    border-radius: rem(3px);
-    background-color: $shuttle-gray;
-
+    
     &:hover {
       background-color: darken($silver, 8%);
     }
   }
+  
+  &__error {
+    color: $coral-red;
+    font-size: rem(14px);
+  }
 
-  &__password-icon {
+  &__eye-icon {
     position: absolute;
-    top: rem(20px);
-    right: rem(5px);
+    right: 0;
+    display: flex;
     cursor: pointer;
-    margin-right: rem(16px);
+    
+    @include respond-above('md') {
+      padding-right: rem(86px);
+    }
   }
 }
