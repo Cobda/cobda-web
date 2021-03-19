@@ -5,6 +5,7 @@ import ProfileUpload from '../ProfileUpload'
 import TextField from '../InputField/TextField'
 import PasswordField from '../InputField/PasswordField'
 import useTranslation from 'next-translate/useTranslation'
+import ProfileUpload from '../ProfileUpload'
 
 interface FormInput {
   readonly firstName: string
@@ -31,6 +32,12 @@ const Form = () => {
     event.preventDefault()
     router.push('/sign-up-success')
   }
+
+  const renderProfileUpload = () => (
+    <div className="form__profile">
+      <ProfileUpload />
+    </div>
+  )
 
   const renderUpperInput = () => (
     <div className="form__input-stack form__input-stack--upper">
@@ -75,6 +82,7 @@ const Form = () => {
 
   return (
     <form className="form">
+      {renderProfileUpload()}
       {/* TODO: Change these inputs according to the design */}
       {renderUpperInput()}
       {renderLowerInput()}

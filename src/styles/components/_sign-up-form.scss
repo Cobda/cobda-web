@@ -3,8 +3,8 @@
 .sign-up-form {
   display: flex;
   flex-direction: column;
-  max-width: $sign-up-form-max-width;
-  margin: auto;
+
+  background-color: $light;
 
   @include respond-above('md') {
     box-shadow: rem(5px 10px 20px) 0 box-shadow-opacity(0.16);
@@ -19,6 +19,7 @@
   }
 
   @include respond-above('xl') {
+    max-width: $sign-up-form-max-width;
     padding: rem(70px 120px 36px);
     border-radius: rem(100px);
   }
@@ -54,28 +55,7 @@
     padding: 0 rem(32px 32px);
 
     @include respond-above('md') {
-      padding: 0 rem(8px 32px);
-    }
-  }
-
-  &__profile {
-    width: 100%;
-    height: rem(140px);
-    margin-bottom: rem(32px);
-
-    // TODO: Change this color
-    background-color: chocolate;
-
-    @include respond-above('md') {
-      height: rem(160px);
-    }
-
-    @include respond-above('lg') {
-      height: rem(180px);
-    }
-
-    @include respond-above('xl') {
-      height: rem(200px);
+      padding: 0 rem(8px 24px);
     }
   }
 
@@ -86,7 +66,7 @@
 
   &__footer-item > * {
     color: $dark-charcoal;
-    font-size: rem(16px);
+    font-size: rem(12px);
     font-weight: 500;
     font-style: italic;
     line-height: 1.5;

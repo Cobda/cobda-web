@@ -29,6 +29,10 @@
     margin: 0;
   }
 
+  &__profile {
+    margin-bottom: rem(32px);
+  }
+
   &__input-label {
     display: block;
     margin-bottom: rem(12px);
@@ -74,13 +78,10 @@
     }
   }
 
-  // TODO: Remove this when reCAPTCHA is available
   &__recaptcha {
     width: 100%;
-    height: rem(105px);
+    height: 100%;
     margin-bottom: rem(32px);
-
-    background-color: cadetblue;
   }
 
   &__button {

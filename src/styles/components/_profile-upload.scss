@@ -4,9 +4,6 @@
   flex-direction: column;
   margin: 0;
 
-  // TODO: Remove this when merging to the form
-  background-color: $light;
-
   @include flex-center;
 
   &__label {
@@ -45,11 +42,6 @@
       height: rem(160px);
     }
 
-    @include respond-above('xl') {
-      width: rem(200px);
-      height: rem(200px);
-    }
-
     &--selected {
       box-shadow: 0 rem(3px 6px) 0 box-shadow-opacity(0.16);
       width: rem(100px);
@@ -60,11 +52,6 @@
       @include respond-above('lg') {
         width: rem(134px);
         height: rem(134px);
-      }
-
-      @include respond-above('xl') {
-        width: rem(174px);
-        height: rem(174px);
       }
     }
   }
@@ -84,14 +71,6 @@
       width: rem(20px);
       height: rem(20px);
     }
-
-    @include respond-above('xl') {
-      bottom: rem(12px);
-      right: rem(12px);
-
-      width: rem(24px);
-      height: rem(24px);
-    }
   }
 
   &__caption {
@@ -103,10 +82,6 @@
 
     @include respond-above('lg') {
       font-size: rem(12px);
-    }
-
-    @include respond-above('xl') {
-      font-size: rem(14px);
     }
 
     & > span {

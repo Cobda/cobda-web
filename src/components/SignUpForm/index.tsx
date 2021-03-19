@@ -15,7 +15,6 @@ const SignUpForm = () => {
 
   const renderFormBody = () => (
     <div className="sign-up-form__body">
-      <div className="sign-up-form__profile"></div>
       <Form />
     </div>
   )
