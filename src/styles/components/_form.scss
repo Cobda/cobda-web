@@ -25,6 +25,13 @@
     }
   }
 
+  &__input,
+  &__input-group {
+    @include respond-above('md') {
+      padding-right: rem(80px);
+    }
+  }
+
   &__header {
     display: flex;
     justify-content: center;
@@ -72,10 +79,6 @@
     display: flex;
     box-sizing: border-box;
     margin-bottom: rem(6px);
-
-    @include respond-above('md') {
-      padding-right: rem(80px);
-    }
   }
 
   &__actionable,
@@ -98,9 +101,8 @@
     &--invalid {
       border-color: $coral-red;
     }
-
   }
-  
+
   &__button {
     margin: 0;
     border-radius: rem(3px);
@@ -109,12 +111,12 @@
     background-color: $shuttle-gray;
     color: $light;
     text-decoration: none;
-    
+
     &:hover {
       background-color: darken($silver, 8%);
     }
   }
-  
+
   &__error {
     color: $coral-red;
     font-size: rem(14px);
@@ -125,7 +127,7 @@
     right: 0;
     display: flex;
     cursor: pointer;
-    
+
     @include respond-above('md') {
       padding-right: rem(86px);
     }

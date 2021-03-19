@@ -4,9 +4,10 @@ import Image from 'next/image'
 interface PasswordField {
   readonly label: String
   readonly isValid?: boolean
+  readonly errorInput: String
 }
 
-const PasswordField = ({ label, isValid }: PasswordField) => {
+const PasswordField = ({ label, isValid, errorInput }: PasswordField) => {
   const [passwordShown, setPasswordShown] = useState(false)
 
   const togglePasswordVisiblity = () => {
@@ -14,13 +15,13 @@ const PasswordField = ({ label, isValid }: PasswordField) => {
   }
 
   const handleValid = () => (
-    <>
+    <div className="form__input-group">
       <input
         placeholder="Enter your password"
         type={passwordShown ? 'text' : 'password'}
         className="form__input"
       />
-    </>
+    </div>
   )
 
   const handleInvalid = () => (
@@ -39,15 +40,9 @@ const PasswordField = ({ label, isValid }: PasswordField) => {
           />
         </div>
       </div>
-      <div className="form__error">{handleErrorValidation(label)}</div>
+      <div className="form__error">{errorInput}</div>
     </>
   )
-
-  const handleErrorValidation = (label: String) => {
-    if (label == 'Password') {
-      return 'Password should be at least 8 characters.'
-    }
-  }
 
   return (
     <>

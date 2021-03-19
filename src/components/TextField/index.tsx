@@ -4,17 +4,18 @@ interface CommonField {
   readonly label: String
   readonly inputType: any
   readonly isValid?: boolean
+  readonly errorInput: String
 }
 
-const CommonField = ({ label, inputType, isValid }: CommonField) => {
+const CommonField = ({ label, inputType, isValid, errorInput }: CommonField) => {
   const handleValid = () => (
-    <>
+    <div className="form__input-group">
       <input
         placeholder="Enter your first name"
         type={inputType}
         className="form__input"
       />
-    </>
+    </div>
   )
 
   const handleInvalid = () => (
@@ -22,19 +23,9 @@ const CommonField = ({ label, inputType, isValid }: CommonField) => {
       <div className="form__input-group">
         <input type={inputType} className="form__input form__input--invalid" />
       </div>
-      <div className="form__error">{handleErrorValidation(label)}</div>
+      <div className="form__error">{errorInput}</div>
     </>
   )
-
-  const handleErrorValidation = (label: String) => {
-    if (label == 'Username') {
-      return 'Your username is being use.'
-    } else if (label == 'Email') {
-      return 'Email is incorrect.'
-    } else {
-      return 'Invalid input type.'
-    }
-  }
 
   return (
     <div className="form__group">

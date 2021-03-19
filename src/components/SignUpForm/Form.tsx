@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useRouter } from 'next/router'
 import ReCAPTCHA from 'react-google-recaptcha'
 import ProfileUpload from '../ProfileUpload'
@@ -19,11 +19,11 @@ const Form = () => {
         <h2 className="form__title">Sign up</h2>
       </header>
       <div className="form__divide">
-        <CommonField label="Username" inputType="text" isValid={false} />
-        <CommonField label="Email" inputType="email" isValid={false} />
-        <PasswordField label="Password" isValid={false}/>
-        <CommonField label="First Name" inputType="text" isValid={false} />
-        <CommonField label="Surname" inputType="text" isValid={false} />
+        <CommonField label="Username" inputType="text" isValid={false} errorInput="sample" />
+        <CommonField label="Email" inputType="email" isValid={false} errorInput="sample" />
+        <PasswordField label="Password" isValid={false} errorInput="sample" />
+        <CommonField label="First Name" inputType="text" isValid={false} errorInput="sample" />
+        <CommonField label="Surname" inputType="text" isValid={false} errorInput="sample" />
       </div>
       <div className="form__recaptcha">
         <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} />
