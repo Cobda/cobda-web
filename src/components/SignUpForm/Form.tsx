@@ -8,27 +8,19 @@ import useTranslation from 'next-translate/useTranslation'
 import ProfileUpload from '../ProfileUpload'
 import { useForm } from 'react-hook-form'
 
-interface FormInputs {
-  readonly email: string
-  readonly firstName: string
-  readonly lastname: string
-  readonly username: string
-  readonly password: string
-}
-
 interface FormInput {
+  readonly email: string
   readonly firstName: string
   readonly lastName: string
-  readonly email: string
   readonly username: string
   readonly password: string
 }
 
-const initialInputValue: FormInput = {
-  username: '',
+const initialInputValue = {
   email: '',
   firstName: '',
   lastName: '',
+  username: '',
   password: '',
 }
 
@@ -39,13 +31,22 @@ const Form = () => {
   const { t } = useTranslation('sign-up')
   const { register, handleSubmit, errors } = useForm()
 
-  const handleFormSubmit = (value: FormInputs) => {
-    console.log('Value: ', value)
-    // router.push('/sign-up-success')
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target
+
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    })
   }
 
   const handleRecaptchaChange = () => {
     setRecaptchaVerified(true)
+  }
+
+  const handleFormSubmit = (value: FormInput) => {
+    console.log('Value: ', inputValue)
+    // router.push('/sign-up-success')
   }
 
   const renderProfileUpload = () => (
@@ -62,15 +63,19 @@ const Form = () => {
           name="firstName"
           type="text"
           className="form__input"
+          value={inputValue.firstName}
+          onChange={handleInputChange}
           ref={register({ required: true })}
         />
       </div>
       <div className="form__input-group">
-        <label className="form__input-label">{t('surname')}</label>
+        <label className="form__input-label">{t('lastName')}</label>
         <input
           name="lastName"
           type="text"
           className="form__input"
+          value={inputValue.lastName}
+          onChange={handleInputChange}
           ref={register({ required: true })}
         />
       </div>
@@ -85,6 +90,8 @@ const Form = () => {
           name="username"
           type="text"
           className="form__input"
+          value={inputValue.username}
+          onChange={handleInputChange}
           ref={register({ required: true })}
         />
       </div>
@@ -94,6 +101,8 @@ const Form = () => {
           name="email"
           type="text"
           className="form__input"
+          value={inputValue.email}
+          onChange={handleInputChange}
           ref={register({ required: true })}
         />
       </div>
@@ -103,6 +112,8 @@ const Form = () => {
           name="password"
           type="text"
           className="form__input"
+          value={inputValue.password}
+          onChange={handleInputChange}
           ref={register({ required: true })}
         />
       </div>
