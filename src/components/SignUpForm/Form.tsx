@@ -6,6 +6,15 @@ import TextField from '../InputField/TextField'
 import PasswordField from '../InputField/PasswordField'
 import useTranslation from 'next-translate/useTranslation'
 import ProfileUpload from '../ProfileUpload'
+import { useForm } from 'react-hook-form'
+
+interface FormInputs {
+  readonly email: string
+  readonly firstName: string
+  readonly lastname: string
+  readonly username: string
+  readonly password: string
+}
 
 interface FormInput {
   readonly firstName: string
@@ -25,12 +34,18 @@ const initialInputValue: FormInput = {
 
 const Form = () => {
   const [inputValue, setInputValue] = useState<FormInput>(initialInputValue)
+  const [isRecaptchaVerified, setRecaptchaVerified] = useState<boolean>(false)
   const router = useRouter()
   const { t } = useTranslation('sign-up')
+  const { register, handleSubmit, errors } = useForm()
 
-  const handleSubmitClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault()
-    router.push('/sign-up-success')
+  const handleFormSubmit = (value: FormInputs) => {
+    console.log('Value: ', value)
+    // router.push('/sign-up-success')
+  }
+
+  const handleRecaptchaChange = () => {
+    setRecaptchaVerified(true)
   }
 
   const renderProfileUpload = () => (
@@ -43,11 +58,21 @@ const Form = () => {
     <div className="form__input-stack form__input-stack--upper">
       <div className="form__input-group">
         <label className="form__input-label">{t('firstName')}</label>
-        <input type="text" className="form__input" />
+        <input
+          name="firstName"
+          type="text"
+          className="form__input"
+          ref={register({ required: true })}
+        />
       </div>
       <div className="form__input-group">
         <label className="form__input-label">{t('surname')}</label>
-        <input type="text" className="form__input" />
+        <input
+          name="lastName"
+          type="text"
+          className="form__input"
+          ref={register({ required: true })}
+        />
       </div>
     </div>
   )
@@ -56,15 +81,30 @@ const Form = () => {
     <div className="form__input-stack form__input-stack--lower">
       <div className="form__input-group">
         <label className="form__input-label">{t('username')}</label>
-        <input type="text" className="form__input" />
+        <input
+          name="username"
+          type="text"
+          className="form__input"
+          ref={register({ required: true })}
+        />
       </div>
       <div className="form__input-group">
         <label className="form__input-label">{t('email')}</label>
-        <input type="text" className="form__input" />
+        <input
+          name="email"
+          type="text"
+          className="form__input"
+          ref={register({ required: true })}
+        />
       </div>
       <div className="form__input-group">
         <label className="form__input-label">{t('password')}</label>
-        <input type="text" className="form__input" />
+        <input
+          name="password"
+          type="text"
+          className="form__input"
+          ref={register({ required: true })}
+        />
       </div>
     </div>
   )
@@ -72,16 +112,22 @@ const Form = () => {
   const renderFormActionable = () => (
     <div className="form__actionable">
       <div className="form__recaptcha">
-        <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} />
+        <ReCAPTCHA
+          sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!}
+          onChange={handleRecaptchaChange}
+        />
       </div>
-      <a className="form__button" onClick={handleSubmitClick}>
-        {t('register')}
-      </a>
+      <input
+        type="submit"
+        className="form__button"
+        value={t('register')}
+        ref={register({ required: true })}
+      />
     </div>
   )
 
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit(handleFormSubmit)}>
       {renderProfileUpload()}
       {/* TODO: Change these inputs according to the design */}
       {renderUpperInput()}
