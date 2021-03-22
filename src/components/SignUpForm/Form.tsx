@@ -18,6 +18,7 @@ const Form = () => {
       <header className="form__header">
         <h2 className="form__title">Sign up</h2>
       </header>
+      <ProfileUpload />
       <CommonField label="Username" inputType="text" isValueValid={true} />
       <CommonField label="Email" inputType="email" isValueValid={true} />
       <PasswordField label="Password" isValueValid={true} />

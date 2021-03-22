@@ -38,14 +38,14 @@ const PasswordField = ({ label, isValueValid }: PasswordField) => {
   )
 
   const renderEyeIcon = () => (
-    <div className="form__eye-icon">
+    <i className="form__eye-icon">
       <Image
         src={passwordShown ? '/icons/eye.svg' : '/icons/invisible.svg'}
         height={17}
         width={21}
         onClick={togglePasswordVisiblity}
       />
-    </div>
+    </i>
   )
 
   return (

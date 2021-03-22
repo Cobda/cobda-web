@@ -16,7 +16,6 @@
   }
 
   &__header,
-  &__input-group,
   &__recaptcha,
   &__group,
   &__actionable {
@@ -25,14 +24,9 @@
     }
   }
 
-  &__input,
-  &__input-group {
-    @include respond-above('md') {
-      padding-right: rem(80px);
-    }
-  }
-
-  &__header {
+  &__header,
+  &__actionable,
+  &__recaptcha {
     display: flex;
     justify-content: center;
   }
@@ -64,13 +58,10 @@
     position: relative;
     display: flex;
     box-sizing: border-box;
-    margin-bottom: rem(6px);
-  }
 
-  &__actionable,
-  &__recaptcha {
-    display: flex;
-    justify-content: center;
+    @include respond-above('md') {
+      padding-right: rem(80px);
+    }
   }
 
   &__input {
@@ -90,9 +81,9 @@
   }
 
   &__button {
-    margin: 0;
-    border-radius: rem(3px);
     padding: rem(5px 10px);
+    border-radius: rem(3px);
+    margin: 0;
 
     background-color: $shuttle-gray;
     color: $light;
@@ -106,6 +97,7 @@
   &__error {
     color: $coral-red;
     font-size: rem(14px);
+    margin-top: rem(6px);
   }
 
   &__eye-icon {
