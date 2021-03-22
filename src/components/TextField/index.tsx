@@ -1,36 +1,35 @@
 import React from 'react'
 
 interface CommonField {
-  readonly label: String
+  readonly label: string
   readonly inputType: any
-  readonly isValid?: boolean
-  readonly errorInput: String
+  readonly isValueValid?: boolean
 }
 
-const CommonField = ({ label, inputType, isValid, errorInput }: CommonField) => {
-  const handleValid = () => (
+const CommonField = ({ label, inputType, isValueValid }: CommonField) => {
+  const renderValidInput = () => (
     <div className="form__input-group">
       <input
-        placeholder="Enter your first name"
+        placeholder={`Enter your ${label}`}
         type={inputType}
         className="form__input"
       />
     </div>
   )
 
-  const handleInvalid = () => (
+  const renderInvalidInput = () => (
     <>
       <div className="form__input-group">
         <input type={inputType} className="form__input form__input--invalid" />
       </div>
-      <div className="form__error">{errorInput}</div>
+      <div className="form__error">sample</div>
     </>
   )
 
   return (
     <div className="form__group">
       <label className="form__input-label">{label}</label>
-      {isValid ? handleValid() : handleInvalid()}
+      {isValueValid ? renderValidInput() : renderInvalidInput()}
     </div>
   )
 }

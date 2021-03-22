@@ -37,20 +37,6 @@
     justify-content: center;
   }
 
-  &__divide {
-    display: flex;
-    flex-direction: column;
-
-    @include respond-above('md') {
-      flex-direction: row;
-      flex-wrap: wrap;
-
-      & > div {
-        flex: 50%;
-      }
-    }
-  }
-
   &__title {
     margin: 0;
   }
@@ -124,12 +110,12 @@
 
   &__eye-icon {
     position: absolute;
-    right: 0;
-    display: flex;
+    right: 2%;
+    top: 0;
     cursor: pointer;
 
     @include respond-above('md') {
-      padding-right: rem(86px);
+      right: 15%;
     }
   }
 }
