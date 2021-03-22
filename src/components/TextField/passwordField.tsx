@@ -2,48 +2,47 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 
 interface PasswordField {
-  readonly label: String
-  readonly isValueValid?: boolean
+  readonly name: string
+  readonly label: string
+  readonly placeholder: string
+  readonly errorInput: string
 }
 
-const PasswordField = ({ label, isValueValid }: PasswordField) => {
-  const [passwordShown, setPasswordShown] = useState(false)
+const PasswordField = ({ label, placeholder, errorInput }: PasswordField) => {
+  const [isPasswordShown, setPasswordShown] = useState(false)
 
-  const togglePasswordVisiblity = () => {
-    setPasswordShown(!passwordShown)
+  const handlePasswordVisiblity = () => {
+    setPasswordShown(!isPasswordShown)
   }
 
   const renderValidInput = () => (
-    <div className="form__input-group">
+    <>
       <input
-        placeholder="Enter your Password"
-        type={passwordShown ? 'text' : 'password'}
         className="form__input"
+        type={isPasswordShown ? 'text' : 'password'}
+        placeholder={placeholder}
       />
       {renderEyeIcon()}
-    </div>
+    </>
   )
 
   const renderInvalidInput = () => (
     <>
-      <div className="form__input-group">
-        <input
-          type={passwordShown ? 'text' : 'password'}
-          className="form__input form__input--invalid"
-        />
-        {renderEyeIcon()}
-      </div>
-      <div className="form__error">sample</div>
+      <input
+        className="form__input form__input--invalid"
+        type={isPasswordShown ? 'text' : 'password'}
+      />
+      {renderEyeIcon()}
+      <div className="form__error">{errorInput}</div>
     </>
   )
 
   const renderEyeIcon = () => (
     <i className="form__eye-icon">
-      <Image
-        src={passwordShown ? '/icons/eye.svg' : '/icons/invisible.svg'}
+      <Image src={isPasswordShown ? '/icons/eye-icon.svg' : '/icons/invisible-eye-icon.svg'}
         height={17}
         width={21}
-        onClick={togglePasswordVisiblity}
+        onClick={handlePasswordVisiblity}
       />
     </i>
   )
@@ -52,7 +51,9 @@ const PasswordField = ({ label, isValueValid }: PasswordField) => {
     <>
       <div className="form__group">
         <label className="form__input-label">{label}</label>
-        {isValueValid ? renderValidInput() : renderInvalidInput()}
+        <div className="form__input-password">
+          {!errorInput ? renderValidInput() : renderInvalidInput()}
+        </div>
       </div>
     </>
   )

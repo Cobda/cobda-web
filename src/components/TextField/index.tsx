@@ -1,37 +1,31 @@
 import React from 'react'
 
-interface CommonField {
+interface TextField {
+  readonly name: string
   readonly label: string
-  readonly inputType: any
-  readonly isValueValid?: boolean
+  readonly placeholder: string
+  readonly inputType: string
+  readonly errorInput: string
 }
 
-const CommonField = ({ label, inputType, isValueValid }: CommonField) => {
+const TextField = ({ label, placeholder, inputType, errorInput }: TextField) => {
   const renderValidInput = () => (
-    <div className="form__input-group">
-      <input
-        placeholder={`Enter your ${label}`}
-        type={inputType}
-        className="form__input"
-      />
-    </div>
+    <input className="form__input" type={inputType} placeholder={placeholder} />
   )
 
   const renderInvalidInput = () => (
     <>
-      <div className="form__input-group">
-        <input type={inputType} className="form__input form__input--invalid" />
-      </div>
-      <div className="form__error">sample</div>
+      <input className="form__input form__input--invalid" type={inputType} />
+      <div className="form__error">{errorInput}</div>
     </>
   )
 
   return (
     <div className="form__group">
       <label className="form__input-label">{label}</label>
-      {isValueValid ? renderValidInput() : renderInvalidInput()}
+        {errorInput ? renderValidInput() : renderInvalidInput()}
     </div>
   )
 }
 
-export default CommonField
+export default TextField

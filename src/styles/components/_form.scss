@@ -46,22 +46,13 @@
 
   &__group {
     width: 100%;
-
-    @include respond-above('md') {
-      &:last-child {
-        max-width: 50%;
-      }
-    }
   }
 
-  &__input-group {
+  &__input-password {
     position: relative;
     display: flex;
+    flex-direction: column;
     box-sizing: border-box;
-
-    @include respond-above('md') {
-      padding-right: rem(80px);
-    }
   }
 
   &__input {
@@ -95,19 +86,15 @@
   }
 
   &__error {
+    margin-top: rem(6px);
     color: $coral-red;
     font-size: rem(14px);
-    margin-top: rem(6px);
   }
 
   &__eye-icon {
     position: absolute;
-    right: 2%;
+    right: rem(16px);
     top: 0;
     cursor: pointer;
-
-    @include respond-above('md') {
-      right: 15%;
-    }
   }
 }

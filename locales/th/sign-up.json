@@ -1,4 +1,18 @@
 {
   "warningText": "แก้ไข - คุณแน่ใจหรือว่าต้องการออกจากหน้านี้",
-  "profileImageCaution": "<0>ขนาดห้ามเกิน 1.5 MB</0>รองรับประเภทไฟล์ JPG & PNG เท่านั้น"
+  "profileImageCaution": "<0>ขนาดห้ามเกิน 1.5 MB</0>รองรับประเภทไฟล์ JPG & PNG เท่านั้น",
+  "usernameLabel": "ชื่อผู้ใช้",
+  "emailLabel": "อีเมล",
+  "passwordLabel": "รหัสผ่าน",
+  "firstNameLabel": "ชื่อจริง",
+  "lastNameLabel": "นามสกุล",
+  "usernamePlaceholder": "ป้อนชื่อผู้ใช้ของคุณ",
+  "emailPlaceholder": "ป้อนอีเมลของคุณ",
+  "passwordPlaceholder": "ป้อนรหัสผ่านของคุณ",
+  "firstNamePlaceholder": "ป้อนชื่อจริงของคุณ",
+  "lastNamePlaceholder": "ป้อนนามสกุลของคุณ",
+  "usernameErrorMessage": "ยูสเซอร์ชื่อนี้ถูกใช้ไปแล้ว",
+  "emailErrorMessage": "เมลของคุณไม่ถูกต้อง",
+  "passwordErrorMessage": "รหัสผ่านอย่างน้องต้องมี 8 ตัวอักษา",
+  "nameErrorMessage": "ไม่สามารถใส่ค่านี้ได้"
 }

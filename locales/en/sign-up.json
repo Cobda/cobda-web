@@ -1,4 +1,18 @@
 {
   "warningText": "You have unsaved changes - are you sure you want to leave this page?",
-  "profileImageCaution": "<0>Maximum file size 1.5 MB</0>JPG & PNG only"
+  "profileImageCaution": "<0>Maximum file size 1.5 MB</0>JPG & PNG only",
+  "usernameLabel": "Username",
+  "emailLabel": "Email",
+  "passwordLabel": "Password",
+  "firstNameLabel": "First Name",
+  "lastNameLabel": "Last Name",
+  "usernamePlaceholder": "Enter your username",
+  "emailPlaceholder": "Enter your email",
+  "passwordPlaceholder": "Enter your password",
+  "firstNamePlaceholder": "Enter your first name",
+  "lastNamePlaceholder": "Enter your last name",
+  "usernameErrorMessage": "Your username has already been used.",
+  "emailErrorMessage": "Email is incorrect.",
+  "passwordErrorMessage": "Password should be at least 8 characters.",
+  "nameErrorMessage": "Invalid input type."
 }
