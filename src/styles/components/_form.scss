@@ -17,7 +17,7 @@
 
   &__header,
   &__recaptcha,
-  &__group,
+  &__input-group,
   &__actionable {
     &:not(:last-child) {
       margin-bottom: rem(24px);
@@ -42,9 +42,13 @@
     font-size: rem(16px);
     font-weight: 600;
     line-height: 1.2;
+
+    @include respond-above('lg') {
+      font-size: rem(20px);
+    }
   }
 
-  &__group {
+  &__input-group {
     width: 100%;
   }
 
@@ -59,10 +63,10 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
-    border-width: 0 0 rem(2px);
-    border-color: $havelock-blue;
-    outline: 0;
     padding: 0 0 rem(8px);
+    border-color: $havelock-blue;
+    border-width: 0 0 rem(2px);
+    outline: 0;
 
     font-size: rem(16px);
 
@@ -85,10 +89,15 @@
     }
   }
 
-  &__error {
-    margin-top: rem(6px);
-    color: $coral-red;
-    font-size: rem(14px);
+  &__help {
+    display: none;
+    
+    &--visible {
+      display: block;
+      margin-top: rem(6px);
+      color: $coral-red;
+      font-size: rem(14px);
+    }
   }
 
   &__eye-icon {

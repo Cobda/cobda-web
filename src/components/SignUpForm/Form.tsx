@@ -2,8 +2,8 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import ReCAPTCHA from 'react-google-recaptcha'
 import ProfileUpload from '../ProfileUpload'
-import TextField from '../TextField'
-import PasswordField from '../TextField/passwordField'
+import TextField from '../InputField/TextField'
+import PasswordField from '../InputField/PasswordField'
 import useTranslation from 'next-translate/useTranslation'
 
 const Form = () => {
@@ -23,42 +23,40 @@ const Form = () => {
       <ProfileUpload />
       <TextField
         name="username"
-        label={t('usernameLabel')}
+        label={t('username')}
         placeholder={t('usernamePlaceholder')}
         inputType="text"
-        errorInput={t('usernameErrorMessage')}
+        errorMessage={t('usernameAlreadyUsed')}
       />
       <TextField
         name="email"
-        label={t('emailLabel')}
+        label={t('email')}
         placeholder={t('emailPlaceholder')}
         inputType="email"
-        errorInput={t('emailErrorMessage')}
+        errorMessage={t('emailIncorrectFormat')}
       />
       <PasswordField
         name="password"
-        label={t('passwordLabel')}
+        label={t('password')}
         placeholder={t('passwordPlaceholder')}
-        errorInput={t('passwordErrorMessage')}
+        errorMessage={t('passwordDefaultRequired')}
       />
       <TextField
         name="firstName"
-        label={t('firstNameLabel')}
+        label={t('firstName')}
         placeholder={t('firstNamePlaceholder')}
         inputType="text"
-        errorInput={t('nameErrorMessage')}
+        errorMessage={t('inputFieldBlank')}
       />
       <TextField
         name="lastName"
-        label={t('lastNameLabel')}
+        label={t('lastName')}
         placeholder={t('lastNamePlaceholder')}
         inputType="text"
-        errorInput={t('nameErrorMessage')}
+        errorMessage={t('inputFieldBlank')}
       />
       <div className="form__recaptcha">
-        <ReCAPTCHA
-          sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!}
-        />
+        <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} />
       </div>
       <div className="form__actionable">
         <button className="form__button" onClick={handleSubmitClick}>
