@@ -54,12 +54,10 @@ const PasswordField = ({ label, placeholder, errorMessage }: PasswordField) => {
   )
 
   return (
-    <>
       <div className="form__input-group">
         <label className="form__input-label">{label}</label>
         <div className="form__input-password">{renderInput()}</div>
       </div>
-    </>
   )
 }
 

@@ -46,14 +46,14 @@ const Form = () => {
         label={t('firstName')}
         placeholder={t('firstNamePlaceholder')}
         inputType="text"
-        errorMessage={t('inputFieldBlank')}
+        errorMessage={t('inputImproperName')}
       />
       <TextField
         name="lastName"
         label={t('lastName')}
         placeholder={t('lastNamePlaceholder')}
         inputType="text"
-        errorMessage={t('inputFieldBlank')}
+        errorMessage={t('inputImproperName')}
       />
       <div className="form__recaptcha">
         <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} />

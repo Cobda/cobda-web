@@ -11,7 +11,7 @@
   "passwordPlaceholder": "Enter your password",
   "firstNamePlaceholder": "Enter your first name",
   "lastNamePlaceholder": "Enter your last name",
-  "inputFieldBlank": "This is a required field.",
+  "inputImproperName": "Please use proper name.",
   "usernameAlreadyUsed": "Your username has already been used. Please use a different one.",
   "emailIncorrectFormat": "Your email is incorrect. Please recheck the email format or use a different one.",
   "passwordContainLessCharacter": "Password must contain at least 8 characters.",
