@@ -6,6 +6,7 @@
     "/": ["home"],
     "/about-us": ["about-us"],
     "/products": ["products"],
+    "/products/[id]": ["product-view"],
     "/sign-up": ["sign-up"],
     "/sign-up-success": ["sign-up-success"]
   }

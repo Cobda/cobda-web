@@ -1,6 +1,9 @@
 import React from 'react'
+import useTranslation from 'next-translate/useTranslation'
 
 const ProductInformation = () => {
+  const { t } = useTranslation('product-view')
+
   const renderHeaderSection = () => (
     <header className="product-information__header">
       <img
@@ -8,15 +11,16 @@ const ProductInformation = () => {
         src="/images/product-details-prepend.png"
         alt="Product Details Prepend"
       />
-      <h2 className="product-information__title">Product Details</h2>
+      <h2 className="product-information__title">{t('productDetail')}</h2>
     </header>
   )
 
   const renderBodySection = () => (
     <div className="product-information__body">
       <div className="product-information__subheader">
+        {/* TODO: Remove these mocking contents and fetch data instead */}
         <h3 className="product-information__subtitle">
-          This is a sample description
+          This is the sample product title
         </h3>
       </div>
       <p className="product-information__description">
