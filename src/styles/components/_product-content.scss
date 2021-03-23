@@ -15,6 +15,13 @@
       'information information';
   }
 
+  & > div {
+    border-radius: rem(9px);
+    margin-bottom: rem(16rem);
+
+    background-color: $light;
+  }
+
   & > .product-content__media {
     grid-area: media;
 
@@ -29,7 +36,5 @@
 
   & > .product-content__information {
     grid-area: information;
-
-    background-color: powderblue;
   }
 }

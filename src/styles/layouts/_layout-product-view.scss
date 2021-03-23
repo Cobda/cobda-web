@@ -31,11 +31,12 @@
 
   & > main {
     grid-area: main;
-    
-    padding: rem(24px 16px);
 
+    background-color: $alabaster;
+    
     @include respond-above('md') {
       padding: 4.5% 6%;
+      background-color: $light;
     }
 
     @include respond-above('lg') {
