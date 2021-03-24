@@ -9,26 +9,26 @@ interface TextField {
 }
 
 const TextField = ({ label, placeholder, inputType, errorMessage }: TextField) => {
-  const placeholderDisplay: string = errorMessage && placeholder
-  const inputClassName: string = errorMessage
-    ? 'form__input'
-    : 'form__input form__input--invalid'
+  const renderInput = () => {
+    const placeholderText: string = errorMessage ? placeholder : ''
+    const inputClassName: string = errorMessage
+      ? 'form__input'
+      : 'form__input form__input--invalid'
 
+    const renderErrorMessage = () =>
+      errorMessage ? <span className="form__help">{errorMessage}</span> : <></>
 
-  const helpClassName: string = errorMessage
-    ? 'form__help'
-    : 'form__help form__help--visible'
-
-  const renderInput = () => (
-    <>
-      <input
-        className={inputClassName}
-        type={inputType}
-        placeholder={placeholderDisplay}
-      />
-      <div className={helpClassName}>{errorMessage}</div>
-    </>
-  )
+    return (
+      <>
+        <input
+          className={inputClassName}
+          type={inputType}
+          placeholder={placeholderText}
+        />
+        {renderErrorMessage()}
+      </>
+    )
+  }
 
   return (
     <div className="form__input-group">

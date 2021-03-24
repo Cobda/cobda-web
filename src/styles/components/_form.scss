@@ -90,14 +90,10 @@
   }
 
   &__help {
-    display: none;
-    
-    &--visible {
-      display: block;
-      margin-top: rem(6px);
-      color: $coral-red;
-      font-size: rem(14px);
-    }
+    display: inline-block;
+    margin-top: rem(6px);
+    color: $coral-red;
+    font-size: rem(14px);
   }
 
   &__eye-icon {
