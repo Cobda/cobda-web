@@ -55,7 +55,8 @@
     padding: 0 rem(32px 32px);
 
     @include respond-above('md') {
-      padding: 0 rem(8px 32px);
+      padding: 0 rem(8px);
+      margin-bottom: rem(24px);
     }
   }
 

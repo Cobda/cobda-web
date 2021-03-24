@@ -16,11 +16,31 @@
 
   &__input-stack {
     display: flex;
-    justify-content: center;
-    
+    flex-direction: column;
+    gap: 10%;
+
     @include respond-above('md') {
-      &:not(:last-child) {
-        margin-bottom: rem(24px);
+      flex-direction: row;
+    }
+
+    &--upper {
+      padding-bottom: rem(32px);
+      border-bottom: solid 1px $silver;
+      margin-bottom: rem(32px);
+
+      @include respond-above('md') {
+        padding-bottom: 0;
+        border: none;
+        margin-bottom: 0;
+      }
+    }
+
+    &--lower {
+      flex-wrap: wrap;
+      margin-bottom: rem(32px);
+
+      @include respond-above('md') {
+        margin-bottom: rem(24px)
       }
     }
   }
@@ -81,7 +101,7 @@
   &__recaptcha {
     width: 100%;
     height: 100%;
-    margin-bottom: rem(32px);
+    margin-bottom: rem(24px);
   }
 
   &__button {

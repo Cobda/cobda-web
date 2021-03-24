@@ -5,7 +5,6 @@ import ProfileUpload from '../ProfileUpload'
 import TextField from '../InputField/TextField'
 import PasswordField from '../InputField/PasswordField'
 import useTranslation from 'next-translate/useTranslation'
-import ProfileUpload from '../ProfileUpload'
 import { useForm } from 'react-hook-form'
 
 interface FormInput {
@@ -27,9 +26,9 @@ const initialInputValue = {
 const Form = () => {
   const [inputValue, setInputValue] = useState<FormInput>(initialInputValue)
   const [isRecaptchaVerified, setRecaptchaVerified] = useState<boolean>(false)
+  const { register, handleSubmit, errors } = useForm<FormInput>()
   const router = useRouter()
   const { t } = useTranslation('sign-up')
-  const { register, handleSubmit, errors } = useForm()
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
@@ -45,8 +44,7 @@ const Form = () => {
   }
 
   const handleFormSubmit = (value: FormInput) => {
-    console.log('Value: ', inputValue)
-    // router.push('/sign-up-success')
+    router.push('/sign-up-success')
   }
 
   const renderProfileUpload = () => (
@@ -92,7 +90,17 @@ const Form = () => {
           className="form__input"
           value={inputValue.username}
           onChange={handleInputChange}
-          ref={register({ required: true })}
+          ref={register({
+            required: true,
+            minLength: {
+              value: 8,
+              message: 'Username must be 8-20 characters long',
+            },
+            maxLength: {
+              value: 20,
+              message: 'Username must be 8-20 characters long',
+            },
+          })}
         />
       </div>
       <div className="form__input-group">
@@ -103,7 +111,13 @@ const Form = () => {
           className="form__input"
           value={inputValue.email}
           onChange={handleInputChange}
-          ref={register({ required: true })}
+          ref={register({
+            required: true,
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: 'Entered value does not match email format',
+            },
+          })}
         />
       </div>
       <div className="form__input-group">
@@ -114,28 +128,38 @@ const Form = () => {
           className="form__input"
           value={inputValue.password}
           onChange={handleInputChange}
-          ref={register({ required: true })}
+          ref={register({
+            required: true,
+            minLength: {
+              value: 8,
+              message: 'Password must have at least 8 characters',
+            },
+          })}
         />
       </div>
     </div>
   )
 
-  const renderFormActionable = () => (
-    <div className="form__actionable">
-      <div className="form__recaptcha">
-        <ReCAPTCHA
-          sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!}
-          onChange={handleRecaptchaChange}
+  const renderFormActionable = () => {
+    const isFormIncompleted: boolean = !isRecaptchaVerified
+
+    return (
+      <div className="form__actionable">
+        <div className="form__recaptcha">
+          <ReCAPTCHA
+            sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!}
+            onChange={handleRecaptchaChange}
+          />
+        </div>
+        <input
+          disabled={isFormIncompleted}
+          type="submit"
+          className="form__button"
+          value={t('register')}
         />
       </div>
-      <input
-        type="submit"
-        className="form__button"
-        value={t('register')}
-        ref={register({ required: true })}
-      />
-    </div>
-  )
+    )
+  }
 
   return (
     <form className="form" onSubmit={handleSubmit(handleFormSubmit)}>
