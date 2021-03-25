@@ -2,28 +2,55 @@
 
 .navbar {
   position: fixed;
-  z-index: 3;
   display: flex;
+  z-index: 3;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  box-shadow: 0 rem(4px 16px) 0 box-shadow-opacity(0.16);
+  box-shadow: 0 rem(4px 20px) 0 box-shadow-opacity(0.16);
   width: 100%;
-  max-width: $navbar-max-width;
-  padding: rem(16px);
+  height: rem(56px);
+  max-width: 100%;
   background-color: $light;
 
   @include respond-above('md') {
-    justify-content: space-between;
-    padding: rem(24px);
+    height: rem(80px);
   }
 
   @include respond-above('lg') {
-    padding: rem(32px);
+    height: rem(96px);
   }
 
   @include respond-above('xl') {
-    padding: rem(48px);
+    height: rem(120px);
+  }
+
+  &__container {
+    position: fixed;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: $navbar-max-width;
+    padding: 0 rem(16px);
+    background-color: $light;
+
+    @include respond-above('md') {
+      justify-content: space-between;
+      height: 0 rem(24px);
+    }
+  
+    @include respond-above('lg') {
+      padding: 0 rem(32px);
+      height: rem(96px);
+    }
+    
+    @include respond-above('xl') {
+      padding: 0 rem(48px);
+      height: rem(120px);
+    }
   }
 
   &__menu-item,

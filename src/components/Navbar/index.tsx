@@ -7,12 +7,12 @@ import Hamburger from './Hamburger'
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <div className="navbar__hamburger-container">
+      <div className="navbar__container">
         <Hamburger />
+        <NavbarLogo />
+        <NavbarMenu />
+        <NavbarTool />
       </div>
-      <NavbarLogo />
-      <NavbarMenu />
-      <NavbarTool />
     </nav>
   )
 }

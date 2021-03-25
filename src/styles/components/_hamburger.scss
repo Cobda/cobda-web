@@ -99,4 +99,9 @@
     border-bottom: 1px solid $silver;
     font-size: rem(16px);
   }
+
+  &__menu-link {
+    color: $dark;
+    text-decoration: none;
+  }
 }
