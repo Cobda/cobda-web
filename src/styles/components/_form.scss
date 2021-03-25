@@ -38,10 +38,6 @@
     &--lower {
       flex-wrap: wrap;
       margin-bottom: rem(32px);
-
-      @include respond-above('md') {
-        margin-bottom: rem(24px)
-      }
     }
   }
 
@@ -101,12 +97,12 @@
   &__recaptcha {
     width: 100%;
     height: 100%;
-    margin-bottom: rem(24px);
+    margin-bottom: rem(32px);
   }
 
   &__button {
     all: unset;
-    
+
     padding: rem(16px 112px);
     border-radius: rem(26px);
     margin: 0;
@@ -125,6 +121,10 @@
 
     &:hover {
       background-color: darken($dodger-blue, 8%);
+    }
+
+    &:disabled {
+      background-color: $silver;
     }
   }
 

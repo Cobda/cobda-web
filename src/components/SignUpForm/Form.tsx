@@ -25,6 +25,7 @@ const initialInputValue = {
 
 const Form = () => {
   const [inputValue, setInputValue] = useState<FormInput>(initialInputValue)
+  const [isProfileUploaded, setProfileUploaded] = useState<boolean>(false)
   const [isRecaptchaVerified, setRecaptchaVerified] = useState<boolean>(false)
   const { register, handleSubmit, errors } = useForm<FormInput>()
   const router = useRouter()
@@ -40,16 +41,17 @@ const Form = () => {
   }
 
   const handleRecaptchaChange = () => {
-    setRecaptchaVerified(true)
+    setRecaptchaVerified(!isRecaptchaVerified)
   }
 
   const handleFormSubmit = (value: FormInput) => {
-    router.push('/sign-up-success')
+    // TODO: Send POST request to backend
+    // router.push('/sign-up-success')
   }
 
   const renderProfileUpload = () => (
     <div className="form__profile">
-      <ProfileUpload />
+      <ProfileUpload onUploaded={setProfileUploaded} />
     </div>
   )
 
@@ -63,7 +65,9 @@ const Form = () => {
           className="form__input"
           value={inputValue.firstName}
           onChange={handleInputChange}
-          ref={register({ required: true })}
+          ref={register({
+            required: true,
+          })}
         />
       </div>
       <div className="form__input-group">
@@ -74,7 +78,9 @@ const Form = () => {
           className="form__input"
           value={inputValue.lastName}
           onChange={handleInputChange}
-          ref={register({ required: true })}
+          ref={register({
+            required: true,
+          })}
         />
       </div>
     </div>
@@ -102,6 +108,7 @@ const Form = () => {
             },
           })}
         />
+        {errors.username && <p>{errors.username.message}</p>}
       </div>
       <div className="form__input-group">
         <label className="form__input-label">{t('email')}</label>
@@ -119,6 +126,7 @@ const Form = () => {
             },
           })}
         />
+        {errors.email && <p>{errors.email.message}</p>}
       </div>
       <div className="form__input-group">
         <label className="form__input-label">{t('password')}</label>
@@ -136,12 +144,18 @@ const Form = () => {
             },
           })}
         />
+        {errors.password && <p>{errors.password.message}</p>}
       </div>
     </div>
   )
 
   const renderFormActionable = () => {
-    const isFormIncompleted: boolean = !isRecaptchaVerified
+    const emptyInputValues: [string, null][] = Object.entries(
+      inputValue
+    ).filter(([key, value]) => !value)
+    const hasEmptyInputValue: boolean = emptyInputValues.length > 0
+    const isFormIncompleted: boolean =
+      !isRecaptchaVerified || !isProfileUploaded || hasEmptyInputValue
 
     return (
       <div className="form__actionable">

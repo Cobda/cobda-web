@@ -3,7 +3,11 @@ import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
 import Trans from 'next-translate/Trans'
 
-const ProfileUpload = () => {
+interface ProfileUpload {
+  readonly onUploaded: (isUploaded: boolean) => void
+}
+
+const ProfileUpload = ({ onUploaded }: ProfileUpload) => {
   const [selectedImageUrl, setSelectedImageUrl] = useState<string>('')
   const router = useRouter()
   const { t } = useTranslation('sign-up')
@@ -32,9 +36,10 @@ const ProfileUpload = () => {
     }
   }, [selectedImageUrl])
 
-  const handleInputChange = (setProfileImage: (image: string) => void) => (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleInputChange = (
+    setProfileImage: (image: string) => void,
+    setProfileUploaded: (isUploaded: boolean) => void
+  ) => (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target
     const hasSingleFile: boolean = files?.length === 1
 
@@ -42,6 +47,7 @@ const ProfileUpload = () => {
       const [selectedFile] = files
       const imageUrl: string = URL.createObjectURL(selectedFile)
       setProfileImage(imageUrl)
+      setProfileUploaded(true)
     }
   }
 
@@ -82,7 +88,7 @@ const ProfileUpload = () => {
           className="profile-upload__input"
           accept="image/png, image/jpeg"
           type="file"
-          onChange={handleInputChange(setSelectedImageUrl)}
+          onChange={handleInputChange(setSelectedImageUrl, onUploaded)}
         />
         {profileImage}
       </label>
