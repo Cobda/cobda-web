@@ -39,7 +39,7 @@ const Form = () => {
         name="password"
         label={t('password')}
         placeholder={t('passwordPlaceholder')}
-        errorMessage={t('passwordDefaultRequired')}
+        errorMessage={t('passwordRequiredFormat')}
       />
       <TextField
         name="firstName"

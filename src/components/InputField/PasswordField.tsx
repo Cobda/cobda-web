@@ -15,18 +15,6 @@ const PasswordField = ({ label, placeholder, errorMessage }: PasswordField) => {
     setPasswordShown(!isPasswordShown)
   }
 
-  const renderEyeIcon = () => {
-    const imageSelected: string = isPasswordShown
-      ? '/icons/visible-eye-icon.svg'
-      : '/icons/invisible-eye-icon.svg'
-
-    return (
-      <div className="form__eye-icon" onClick={handlePasswordToggle}>
-        <Image src={imageSelected} height={17} width={21} />
-      </div>
-    )
-  }
-
   const renderInput = () => {
     const placeholderText: string = errorMessage ? placeholder : ''
     const inputType: string = isPasswordShown ? 'text' : 'password'
@@ -35,7 +23,19 @@ const PasswordField = ({ label, placeholder, errorMessage }: PasswordField) => {
       : 'form__input form__input--invalid'
 
     const renderErrorMessage = () =>
-      errorMessage ? <span className="form__help">{errorMessage}</span> : <></>
+      !errorMessage ? <span className="form__help">{errorMessage}</span> : <></>
+
+    const renderEyeIcon = () => {
+      const imageSelected: string = isPasswordShown
+        ? '/icons/visible-eye-icon.svg'
+        : '/icons/invisible-eye-icon.svg'
+
+      return (
+        <div className="form__eye-icon" onClick={handlePasswordToggle}>
+          <Image src={imageSelected} height={17} width={21} />
+        </div>
+      )
+    }
 
     return (
       <>
@@ -44,8 +44,8 @@ const PasswordField = ({ label, placeholder, errorMessage }: PasswordField) => {
           type={inputType}
           placeholder={placeholderText}
         />
-        {renderEyeIcon()}
         {renderErrorMessage()}
+        {renderEyeIcon()}
       </>
     )
   }

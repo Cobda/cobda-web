@@ -20,7 +20,10 @@
   &__input-group,
   &__actionable {
     &:not(:last-child) {
-      margin-bottom: rem(24px);
+      margin-bottom: rem(12px);
+      @include respond-above('md') {
+        margin-bottom: rem(32px);
+      }
     }
   }
 
@@ -54,9 +57,6 @@
 
   &__input-password {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
   }
 
   &__input {
@@ -69,6 +69,7 @@
     outline: 0;
 
     font-size: rem(16px);
+    text-overflow: ellipsis;
 
     &--invalid {
       border-color: $coral-red;
@@ -91,9 +92,13 @@
 
   &__help {
     display: inline-block;
-    margin-top: rem(6px);
+    margin-top: rem(8px);
     color: $coral-red;
     font-size: rem(14px);
+
+    @include respond-above('md') {
+      position: absolute;
+    }
   }
 
   &__eye-icon {

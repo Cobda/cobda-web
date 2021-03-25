@@ -14,7 +14,7 @@
   "inputImproperName": "Please use proper name.",
   "usernameAlreadyUsed": "Your username has already been used. Please use a different one.",
   "emailIncorrectFormat": "Your email is incorrect. Please recheck the email format or use a different one.",
-  "passwordContainLessCharacter": "Password must contain at least 8 characters.",
+  "passwordCharactersMinimum": "Password must contain at least 8 characters.",
   "passwordSimilarToUsername": "Password must be different from Username.",
-  "passwordDefaultRequired": "Password must contain at least 1 lowercase, 1 uppercase character and 1 number."
+  "passwordRequiredFormat": "Password must contain at least 1 lowercase, 1 uppercase character and 1 number."
 }

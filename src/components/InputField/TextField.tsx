@@ -16,7 +16,7 @@ const TextField = ({ label, placeholder, inputType, errorMessage }: TextField) =
       : 'form__input form__input--invalid'
 
     const renderErrorMessage = () =>
-      errorMessage ? <span className="form__help">{errorMessage}</span> : <></>
+      !errorMessage ? <span className="form__help">{errorMessage}</span> : <></>
 
     return (
       <>
