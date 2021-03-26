@@ -32,14 +32,11 @@ const Form = () => {
     router.push('/sign-up-success')
   }
 
-  const handleInputChange = (setInputValue: (inputValue: FormInput) => void) => (
+  const handleInputChange = (inputValue: FormInput) => (
     event: React.ChangeEvent<HTMLInputElement>
-    ) => {
+  ) => {
     const { name, value } = event.target
-    setInputValue({
-      ...inputValue,
-      [name]: value,
-    })
+    setInputValue({ ...inputValue, [name]: value })
   }
 
   return (
@@ -55,7 +52,7 @@ const Form = () => {
         inputValue={inputValue.username}
         placeholder={t('usernamePlaceholder')}
         errorMessage={t('usernameAlreadyUsed')}
-        onChange={handleInputChange(setInputValue)}
+        onChange={handleInputChange(inputValue)}
       />
       <TextField
         name="email"
@@ -64,7 +61,7 @@ const Form = () => {
         inputValue={inputValue.email}
         placeholder={t('emailPlaceholder')}
         errorMessage={t('emailIncorrectFormat')}
-        onChange={handleInputChange(setInputValue)}
+        onChange={handleInputChange(inputValue)}
       />
       <PasswordField
         name="password"
@@ -72,7 +69,7 @@ const Form = () => {
         inputValue={inputValue.password}
         placeholder={t('passwordPlaceholder')}
         errorMessage={t('passwordRequiredFormat')}
-        onChange={handleInputChange(setInputValue)}
+        onChange={handleInputChange(inputValue)}
       />
       <TextField
         name="firstName"
@@ -81,7 +78,7 @@ const Form = () => {
         inputValue={inputValue.firstName}
         placeholder={t('firstNamePlaceholder')}
         errorMessage={t('inputImproperName')}
-        onChange={handleInputChange(setInputValue)}
+        onChange={handleInputChange(inputValue)}
       />
       <TextField
         name="lastName"
@@ -90,7 +87,7 @@ const Form = () => {
         inputValue={inputValue.lastName}
         placeholder={t('lastNamePlaceholder')}
         errorMessage={t('inputImproperName')}
-        onChange={handleInputChange(setInputValue)}
+        onChange={handleInputChange(inputValue)}
       />
       <div className="form__recaptcha">
         <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} />

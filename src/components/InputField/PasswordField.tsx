@@ -18,14 +18,13 @@ const PasswordField = ({ name, label, placeholder, errorMessage, inputValue, onC
   }
 
   const renderInput = (errorMessage: string, isPasswordShown: boolean) => {
-    const placeholderText: string = errorMessage ? placeholder : ''
     const inputType: string = isPasswordShown ? 'text' : 'password'
     const inputClassName: string = errorMessage
-      ? 'form__input'
-      : 'form__input form__input--invalid'
+      ? 'form__input form__input--invalid'
+      : 'form__input'
 
     const renderErrorMessage = (errorMessage: string) =>
-      !errorMessage ? <span className="form__help">{errorMessage}</span> : <></>
+      errorMessage ? <span className="form__help">{errorMessage}</span> : <></>
 
     const renderEyeIcon = (isPasswordShown: boolean) => {
       const imageSelected: string = isPasswordShown
@@ -46,7 +45,7 @@ const PasswordField = ({ name, label, placeholder, errorMessage, inputValue, onC
           name={name}
           type={inputType}
           value={inputValue}
-          placeholder={placeholderText}
+          placeholder={placeholder}
           onChange={onChange}
         />
         {renderErrorMessage(errorMessage)}
