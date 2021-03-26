@@ -17,17 +17,17 @@ const PasswordField = ({ name, label, placeholder, errorMessage, inputValue, onC
     setPasswordShown(!isPasswordShown)
   }
 
-  const renderInput = () => {
+  const renderInput = (errorMessage: string, isPasswordShown: boolean) => {
     const placeholderText: string = errorMessage ? placeholder : ''
     const inputType: string = isPasswordShown ? 'text' : 'password'
     const inputClassName: string = errorMessage
       ? 'form__input'
       : 'form__input form__input--invalid'
 
-    const renderErrorMessage = () =>
+    const renderErrorMessage = (errorMessage: string) =>
       !errorMessage ? <span className="form__help">{errorMessage}</span> : <></>
 
-    const renderEyeIcon = () => {
+    const renderEyeIcon = (isPasswordShown: boolean) => {
       const imageSelected: string = isPasswordShown
         ? '/icons/visible-eye-icon.svg'
         : '/icons/invisible-eye-icon.svg'
@@ -40,7 +40,7 @@ const PasswordField = ({ name, label, placeholder, errorMessage, inputValue, onC
     }
 
     return (
-      <>
+      <div className="form__input-password">
         <input
           className={inputClassName}
           name={name}
@@ -49,16 +49,16 @@ const PasswordField = ({ name, label, placeholder, errorMessage, inputValue, onC
           placeholder={placeholderText}
           onChange={onChange}
         />
-        {renderErrorMessage()}
-        {renderEyeIcon()}
-      </>
+        {renderErrorMessage(errorMessage)}
+        {renderEyeIcon(isPasswordShown)}
+      </div>
     )
   }
 
   return (
     <div className="form__input-group">
       <label className="form__input-label">{label}</label>
-      <div className="form__input-password">{renderInput()}</div>
+      {renderInput(errorMessage, isPasswordShown)}
     </div>
   )
 }

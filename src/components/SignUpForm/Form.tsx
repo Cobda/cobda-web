@@ -32,7 +32,9 @@ const Form = () => {
     router.push('/sign-up-success')
   }
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (setInputValue: (inputValue: FormInput) => void) => (
+    event: React.ChangeEvent<HTMLInputElement>
+    ) => {
     const { name, value } = event.target
     setInputValue({
       ...inputValue,
@@ -53,7 +55,7 @@ const Form = () => {
         inputValue={inputValue.username}
         placeholder={t('usernamePlaceholder')}
         errorMessage={t('usernameAlreadyUsed')}
-        onChange={handleInputChange}
+        onChange={handleInputChange(setInputValue)}
       />
       <TextField
         name="email"
@@ -62,7 +64,7 @@ const Form = () => {
         inputValue={inputValue.email}
         placeholder={t('emailPlaceholder')}
         errorMessage={t('emailIncorrectFormat')}
-        onChange={handleInputChange}
+        onChange={handleInputChange(setInputValue)}
       />
       <PasswordField
         name="password"
@@ -70,7 +72,7 @@ const Form = () => {
         inputValue={inputValue.password}
         placeholder={t('passwordPlaceholder')}
         errorMessage={t('passwordRequiredFormat')}
-        onChange={handleInputChange}
+        onChange={handleInputChange(setInputValue)}
       />
       <TextField
         name="firstName"
@@ -79,7 +81,7 @@ const Form = () => {
         inputValue={inputValue.firstName}
         placeholder={t('firstNamePlaceholder')}
         errorMessage={t('inputImproperName')}
-        onChange={handleInputChange}
+        onChange={handleInputChange(setInputValue)}
       />
       <TextField
         name="lastName"
@@ -88,7 +90,7 @@ const Form = () => {
         inputValue={inputValue.lastName}
         placeholder={t('lastNamePlaceholder')}
         errorMessage={t('inputImproperName')}
-        onChange={handleInputChange}
+        onChange={handleInputChange(setInputValue)}
       />
       <div className="form__recaptcha">
         <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} />

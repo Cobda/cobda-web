@@ -5,7 +5,7 @@
   flex-direction: column;
   box-sizing: border-box;
   width: 100%;
-  padding: 0 rem(32px);
+  padding: 0 rem(16px);
 
   @include respond-above('md') {
     padding: 0 5%;
@@ -75,9 +75,11 @@
   }
 
   &__button {
+    color: $light;
+    text-decoration: none;
+    margin: 0;
     padding: rem(5px 10px);
     border-radius: rem(3px);
-
     background-color: $shuttle-gray;
 
     &:hover {
