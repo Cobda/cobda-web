@@ -17,21 +17,12 @@
 
   &__header,
   &__recaptcha,
-  &__input-group,
   &__actionable {
-    &:not(:last-child) {
-      margin-bottom: rem(12px);
-      @include respond-above('md') {
-        margin-bottom: rem(32px);
-      }
-    }
-  }
-
-  &__header,
-  &__actionable,
-  &__recaptcha {
     display: flex;
     justify-content: center;
+    @include respond-above('md') {
+      margin-bottom: rem(32px);
+    }
   }
 
   &__title {
@@ -53,6 +44,13 @@
 
   &__input-group {
     width: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: rem(12px);
+      @include respond-above('md') {
+        margin-bottom: rem(32px);
+      }
+    }
   }
 
   &__input-password {
@@ -79,11 +77,8 @@
   &__button {
     padding: rem(5px 10px);
     border-radius: rem(3px);
-    margin: 0;
 
     background-color: $shuttle-gray;
-    color: $light;
-    text-decoration: none;
 
     &:hover {
       background-color: darken($silver, 8%);
