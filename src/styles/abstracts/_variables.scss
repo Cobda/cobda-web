@@ -62,3 +62,15 @@ $header-height: (
 // Components width
 $navbar-max-width: rem(1536px);
 $sign-up-form-max-width: rem(1344px);
+
+// Grid template column
+$account-sidebar-template-column-min-lg: rem(330px);
+$account-sidebar-template-column-max-lg: rem(434px);
+$account-sidebar-template-column-min-xl: rem(402px);
+$account-sidebar-template-column-max-xl: rem(468px);
+$account-main-template-column-min-lg: rem(630px); 
+$account-main-template-column-max-lg: rem(734px);
+$account-main-template-column-min-xl: rem(702px); 
+$account-main-template-column-max-xl: rem(876px);
+$primary-template-column-min-xl: rem(1104px); 
+$primary-template-column-max-xl: rem(1440px);

@@ -9,7 +9,7 @@ const ProductInformation = () => {
       <img
         className="product-information__icon"
         src="/images/product-details-prepend.png"
-        alt="Product Details Prepend"
+        alt="Product Details Prepended Icon"
       />
       <h2 className="product-information__title">{t('productDetail')}</h2>
     </header>
@@ -20,7 +20,7 @@ const ProductInformation = () => {
       <div className="product-information__subheader">
         {/* TODO: Remove these mocking contents and fetch data instead */}
         <h3 className="product-information__subtitle">
-          This is the sample product title
+          Men Running Shoes Black Trainer Sport Sneaker
         </h3>
       </div>
       <p className="product-information__description">
