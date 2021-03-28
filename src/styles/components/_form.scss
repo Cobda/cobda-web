@@ -16,17 +16,16 @@
   }
 
   &__header,
-  &__input-group,
-  &__actionable,
-  &__recaptcha {
-    &:not(:last-child) {
-      margin-bottom: rem(24px);
-    }
-  }
-
-  &__header {
+  &__recaptcha,
+  &__actionable {
     display: flex;
     justify-content: center;
+    
+    @include respond-above('md') {
+      &:not(:last-child) {
+        margin-bottom: rem(24px);
+      }
+    }
   }
 
   &__title {
@@ -36,22 +35,46 @@
   &__input-label {
     display: block;
     margin-bottom: rem(12px);
+
+    font-size: rem(16px);
+    font-weight: 600;
+    line-height: 1.2;
+
+    @include respond-above('lg') {
+      font-size: rem(20px);
+    }
   }
 
   &__input-group {
-    width: 100%;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: rem(8px);
+
+      @include respond-above('md') {
+        margin-bottom: rem(50px);
+      }
+    }
   }
 
-  &__actionable,
-  &__recaptcha {
-    display: flex;
-    justify-content: center;
+  &__input-password {
+    position: relative;
   }
 
   &__input {
-    width: 100%;
     box-sizing: border-box;
-    padding: rem(4px 12px);
+    width: 100%;
+    padding: 0 0 rem(8px);
+    border-color: $havelock-blue;
+    border-width: 0 0 rem(2px);
+    outline: 0;
+
+    font-size: rem(16px);
+    text-overflow: ellipsis;
+
+    &--invalid {
+      border-color: $coral-red;
+    }
   }
 
   &__button {
@@ -65,5 +88,22 @@
     &:hover {
       background-color: darken($silver, 8%);
     }
+  }
+
+  &__help {
+    margin-top: rem(8px);
+    color: $coral-red;
+    font-size: rem(14px);
+
+    @include respond-above('md') {
+      position: absolute;
+    }
+  }
+
+  &__eye-icon {
+    position: absolute;
+    right: rem(16px);
+    top: 0;
+    cursor: pointer;
   }
 }
