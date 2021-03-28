@@ -24,7 +24,7 @@ const PasswordField = ({ name, label, placeholder, errorMessage, inputValue, onC
       : 'form__input'
 
     const renderErrorMessage = (errorMessage: string) =>
-      errorMessage ? <span className="form__help">{errorMessage}</span> : <></>
+      errorMessage ? <div className="form__help">{errorMessage}</div> : <></>
 
     const renderEyeIcon = (isPasswordShown: boolean) => {
       const imageSelected: string = isPasswordShown
