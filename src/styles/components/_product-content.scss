@@ -7,12 +7,31 @@
     'detail'
     'information';
 
-  @include respond-above('lg') {
+  @include respond-above('md') {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-template-areas:
       'media detail'
       'information information';
+  }
+
+  & > .product-content__media,
+  & > .product-content__detail,
+  & > .product-content__information {
+    border-radius: rem(9px);
+    margin-bottom: rem(16px);
+
+    background-color: $light;
+
+    // TODO: Modify these when making other sections in Product View screen
+    @include respond-above('md') {
+      border-radius: unset;
+      margin-bottom: rem(32px);
+    }
+
+    @include respond-above('lg') {
+      margin-bottom: rem(48px);
+    }
   }
 
   & > .product-content__media {
@@ -29,7 +48,5 @@
 
   & > .product-content__information {
     grid-area: information;
-
-    background-color: powderblue;
   }
 }

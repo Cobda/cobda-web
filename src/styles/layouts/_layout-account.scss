@@ -16,7 +16,13 @@
 
   @include respond-above('lg') {
     // TODO: Modify function to accept comma as a parameter 
-    grid-template-columns: minmax(rem(330px), rem(434px)) minmax(rem(630px), rem(734px));
+    grid-template-columns: minmax(
+        $account-sidebar-template-column-min-lg,
+        $account-sidebar-template-column-max-lg
+      ) minmax(
+        $account-main-template-column-min-lg,
+        $account-main-template-column-max-lg
+      );
     grid-template-rows: map-get($header-height, 'lg') 1fr map-get($footer-height, 'lg');
     column-gap: rem(32px);
     grid-template-areas:
@@ -26,7 +32,16 @@
   }
 
   @include respond-above('xl') {
-    grid-template-columns: 1fr minmax(rem(402px), rem(468px)) minmax(rem(702px), rem(876px)) 1fr;
+    grid-template-columns:
+      1fr minmax(
+        $account-sidebar-template-column-min-xl,
+        $account-sidebar-template-column-max-xl
+      )
+      minmax(
+        $account-main-template-column-min-xl,
+        $account-main-template-column-max-xl
+      )
+      1fr;
     grid-template-rows: map-get($header-height, 'xl') 1fr map-get($footer-height, 'xl');
     grid-template-areas:
       'header header header header'
