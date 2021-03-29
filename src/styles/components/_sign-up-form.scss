@@ -8,12 +8,13 @@
 
   @include respond-above('md') {
     box-shadow: rem(5px 10px 20px) 0 box-shadow-opacity(0.16);
-    
+    min-width: rem(500px);
     padding: rem(50px 80px 36px);
     border-radius: rem(80px);
   }
 
   @include respond-above('lg') {
+    min-width: rem(600px);
     padding: rem(60px 100px 36px);
     border-radius: rem(100px);
   }
@@ -52,7 +53,8 @@
   }
 
   &__body {
-    padding: 0 rem(32px 32px);
+    padding: 0 rem(32px);
+    margin-bottom: rem(32px);
 
     @include respond-above('md') {
       padding: 0 rem(8px);

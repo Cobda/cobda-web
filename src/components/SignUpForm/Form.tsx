@@ -15,7 +15,7 @@ interface FormInput {
   readonly password: string
 }
 
-const initialInputValue = {
+const initialInputValue: FormInput = {
   email: '',
   firstName: '',
   lastName: '',
@@ -31,13 +31,11 @@ const Form = () => {
   const router = useRouter()
   const { t } = useTranslation('sign-up')
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (inputValue: FormInput) => (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const { name, value } = event.target
-
-    setInputValue({
-      ...inputValue,
-      [name]: value,
-    })
+    setInputValue({ ...inputValue, [name]: value })
   }
 
   const handleRecaptchaChange = () => {
@@ -57,95 +55,82 @@ const Form = () => {
 
   const renderUpperInput = () => (
     <div className="form__input-stack form__input-stack--upper">
-      <div className="form__input-group">
-        <label className="form__input-label">{t('firstName')}</label>
-        <input
-          name="firstName"
-          type="text"
-          className="form__input"
-          value={inputValue.firstName}
-          onChange={handleInputChange}
-          ref={register({
-            required: true,
-          })}
-        />
-      </div>
-      <div className="form__input-group">
-        <label className="form__input-label">{t('lastName')}</label>
-        <input
-          name="lastName"
-          type="text"
-          className="form__input"
-          value={inputValue.lastName}
-          onChange={handleInputChange}
-          ref={register({
-            required: true,
-          })}
-        />
-      </div>
+      <TextField
+        name="firstName"
+        label={t('firstName')}
+        inputType="text"
+        inputValue={inputValue.firstName}
+        placeholder={t('firstNamePlaceholder')}
+        errorMessage={errors.firstName?.message}
+        onChange={handleInputChange(inputValue)}
+        reference={register({
+          required: true
+        })}
+      />
+      <TextField
+        name="lastName"
+        label={t('lastName')}
+        inputType="text"
+        inputValue={inputValue.lastName}
+        placeholder={t('lastNamePlaceholder')}
+        errorMessage={errors.lastName?.message}
+        onChange={handleInputChange(inputValue)}
+        reference={register({
+          required: true
+        })}
+      />
     </div>
   )
 
   const renderLowerInput = () => (
     <div className="form__input-stack form__input-stack--lower">
-      <div className="form__input-group">
-        <label className="form__input-label">{t('username')}</label>
-        <input
-          name="username"
-          type="text"
-          className="form__input"
-          value={inputValue.username}
-          onChange={handleInputChange}
-          ref={register({
-            required: true,
-            minLength: {
-              value: 8,
-              message: 'Username must be 8-20 characters long',
-            },
-            maxLength: {
-              value: 20,
-              message: 'Username must be 8-20 characters long',
-            },
-          })}
-        />
-        {errors.username && <p>{errors.username.message}</p>}
-      </div>
-      <div className="form__input-group">
-        <label className="form__input-label">{t('email')}</label>
-        <input
-          name="email"
-          type="text"
-          className="form__input"
-          value={inputValue.email}
-          onChange={handleInputChange}
-          ref={register({
-            required: true,
-            pattern: {
-              value: /\S+@\S+\.\S+/,
-              message: 'Entered value does not match email format',
-            },
-          })}
-        />
-        {errors.email && <p>{errors.email.message}</p>}
-      </div>
-      <div className="form__input-group">
-        <label className="form__input-label">{t('password')}</label>
-        <input
-          name="password"
-          type="text"
-          className="form__input"
-          value={inputValue.password}
-          onChange={handleInputChange}
-          ref={register({
-            required: true,
-            minLength: {
-              value: 8,
-              message: 'Password must have at least 8 characters',
-            },
-          })}
-        />
-        {errors.password && <p>{errors.password.message}</p>}
-      </div>
+      <TextField
+        name="username"
+        label={t('username')}
+        inputType="text"
+        inputValue={inputValue.username}
+        placeholder={t('usernamePlaceholder')}
+        errorMessage={''}
+        onChange={handleInputChange(inputValue)}
+        reference={register({
+          required: true,
+        })}
+      />
+      <TextField
+        name="email"
+        label={t('email')}
+        inputType="text"
+        inputValue={inputValue.email}
+        placeholder={t('emailPlaceholder')}
+        errorMessage={errors.email?.message}
+        onChange={handleInputChange(inputValue)}
+        reference={register({
+          required: true,
+          pattern: {
+            value: /\S+@\S+\.\S+/,
+            message: t('emailIncorrectFormat'),
+          },
+        })}
+      />
+      <PasswordField
+        name="password"
+        label={t('password')}
+        inputValue={inputValue.password}
+        placeholder={t('passwordPlaceholder')}
+        errorMessage={errors.password?.message}
+        onChange={handleInputChange(inputValue)}
+        reference={register({
+          required: true,
+          minLength: {
+            value: 8,
+            message: t('passwordCharactersMinimum'),
+          },
+          pattern: {
+            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]/,
+            message: t('passwordRequiredFormat'),
+          },
+        })}
+      />
     </div>
   )
 

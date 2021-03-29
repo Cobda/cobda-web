@@ -6,21 +6,33 @@
   box-sizing: border-box;
   width: 100%;
 
-  &__header,
   &__recaptcha,
   &__actionable {
-    &:not(:last-child) {
-      margin-bottom: rem(24px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__profile {
+    margin-bottom: rem(32px);
+
+    @include respond-above('lg') {
+      margin-bottom: rem(42px);
     }
   }
 
   &__input-stack {
     display: flex;
     flex-direction: column;
-    gap: 10%;
 
     @include respond-above('md') {
       flex-direction: row;
+      gap: 10%;
     }
 
     &--upper {
@@ -41,36 +53,32 @@
     }
   }
 
-  &__title {
-    margin: 0;
-  }
+  &__input-group {
+    position: relative;
 
-  &__profile {
-    margin-bottom: rem(32px);
+    @include respond-above('md') {
+      width: 45%;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: rem(24px);
+
+      @include respond-above('lg') {
+        margin-bottom: rem(32px);
+      }
+    }
   }
 
   &__input-label {
     display: block;
     margin-bottom: rem(12px);
 
-    font-size: rem(16px);
+    font-size: rem(14px);
     font-weight: 600;
     line-height: 1.2;
 
     @include respond-above('lg') {
-      font-size: rem(20px);
-    }
-  }
-
-  &__input-group {
-    position: relative;
-
-    &:not(:last-child) {
-      margin-bottom: rem(8px);
-
-      @include respond-above('md') {
-        margin-bottom: rem(50px);
-      }
+      font-size: rem(16px);
     }
   }
 
@@ -86,12 +94,37 @@
     border-width: 0 0 rem(2px);
     outline: 0;
 
-    font-size: rem(16px);
+    font-size: rem(14px);
     text-overflow: ellipsis;
+
+    @include respond-above('lg') {
+      font-size: rem(16px);
+    }
 
     &--invalid {
       border-color: $coral-red;
     }
+  }
+
+  &__help {
+    margin-top: rem(8px);
+    color: $coral-red;
+    font-size: rem(14px);
+
+    // @include respond-above('md') {
+    //   position: absolute;
+    // }
+
+    @include respond-above('lg') {
+      font-size: rem(16px);
+    }
+  }
+
+  &__eye-icon {
+    position: absolute;
+    right: rem(16px);
+    top: 0;
+    cursor: pointer;
   }
 
   &__recaptcha {
@@ -114,6 +147,8 @@
     font-weight: 500;
     text-decoration: none;
 
+    cursor: pointer;
+
     @include respond-above('md') {
       padding: rem(12px 42px);
       font-size: rem(16px);
@@ -126,22 +161,5 @@
     &:disabled {
       background-color: $silver;
     }
-  }
-
-  &__help {
-    margin-top: rem(8px);
-    color: $coral-red;
-    font-size: rem(14px);
-
-    @include respond-above('md') {
-      position: absolute;
-    }
-  }
-
-  &__eye-icon {
-    position: absolute;
-    right: rem(16px);
-    top: 0;
-    cursor: pointer;
   }
 }
