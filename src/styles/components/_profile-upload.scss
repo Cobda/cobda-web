@@ -37,6 +37,11 @@
     width: rem(120px);
     height: rem(120px);
 
+    @include respond-above('md') {
+      width: rem(140px);
+      height: rem(140px);
+    }
+
     @include respond-above('lg') {
       width: rem(160px);
       height: rem(160px);
@@ -48,6 +53,11 @@
       height: rem(100px);
       border-radius: 50%;
       object-fit: cover;
+
+      @include respond-above('md') {
+        width: rem(120px);
+        height: rem(120px);
+      }
 
       @include respond-above('lg') {
         width: rem(134px);
