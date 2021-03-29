@@ -7,12 +7,11 @@ interface PasswordField {
   readonly inputValue: string
   readonly placeholder: string
   readonly errorMessage: string | undefined
-  // Add type
-  readonly reference?: any
   readonly onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  readonly reference?: (ref: (HTMLInputElement) | null) => void
 }
 
-const PasswordField = ({ name, label, placeholder, errorMessage, inputValue, reference, onChange }: PasswordField) => {
+const PasswordField = ({ name, label, placeholder, errorMessage, inputValue, onChange, reference }: PasswordField) => {
   const [isPasswordShown, setPasswordShown] = useState(false)
 
   const handlePasswordToggle = () => {
