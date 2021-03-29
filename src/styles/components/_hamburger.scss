@@ -1,26 +1,33 @@
 .hamburger {
-  position: relative;
-  display: block;
+  position: absolute;
+  left: rem(16px);
+  width: 100%;
 
-  user-select: none;
-
-  > span {
-    position: relative;
-    z-index: 1;
-    display: block;
-    border-radius: rem(3px);
-    width: rem(24px);
-    height: rem(3px);
-    margin-bottom: rem(5px);
-
-    background: $dark;
-
-    transform-origin: rem(4px 0px);
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-      opacity 0.55s ease;
+  @include respond-above('md') {
+    display: none;
   }
 
-  & span:first-child {
+  &__container {
+    user-select: none;
+
+    > span {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: rem(24px);
+      height: rem(3px);
+      border-radius: rem(3px);
+      margin-bottom: rem(5px);
+
+      background: $dark;
+
+      transform-origin: rem(4px 0px);
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+        opacity 0.55s ease;
+    }
+  }
+
+  & span:nth-child(1) {
     transform-origin: 0% 0%;
   }
 
@@ -28,13 +35,14 @@
     width: rem(16px);
   }
 
-  & span:nth-last-child(2) {
+  & span:nth-child(4) {
     margin: 0;
     transform-origin: 0% 100%;
   }
 
   &__input {
     position: absolute;
+    z-index: 2;
     display: block;
     width: rem(24px);
     height: 100%;
@@ -42,8 +50,6 @@
     opacity: 0;
 
     cursor: pointer;
-
-    z-index: 2; /* and place it over the hamburger */
 
     -webkit-touch-callout: none;
 
@@ -54,7 +60,6 @@
 
     &:checked ~ .hamburger__menu {
       transform: none;
-      width: 100%;
     }
 
     &:checked ~ span {
@@ -62,12 +67,12 @@
       transform: rotate(45deg) translate(0, -1px);
     }
 
-    &:checked ~ span:nth-last-child(3) {
+    &:checked ~ span:nth-child(3) {
       opacity: 0;
       transform: rotate(0deg) scale(0.2, 0.2);
     }
 
-    &:checked ~ span:nth-last-child(2) {
+    &:checked ~ span:nth-child(4) {
       transform: rotate(-45deg) translate(3.5px, -1px);
     }
   }
@@ -88,20 +93,25 @@
 
     transform-origin: 0% 0%;
     transform: translate(0%, -130%);
-
-    // transition: opacity 5s ease-in;
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+
   }
 
   &__menu-list {
     z-index: 0;
     padding: rem(16px) 0;
-    border-bottom: 1px solid $silver;
-    font-size: rem(16px);
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $silver;
+    }
   }
 
   &__menu-link {
     color: $dark;
     text-decoration: none;
+    font-size: rem(16px);
+
+    /* Prevent font scaling in landscape while allowing user zoom */
+    -webkit-text-size-adjust: 100%;
   }
 }

@@ -2,16 +2,13 @@
 
 .navbar {
   position: fixed;
-  display: flex;
   z-index: 3;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
   box-shadow: 0 rem(4px 20px) 0 box-shadow-opacity(0.16);
   width: 100%;
   height: rem(56px);
-  max-width: 100%;
   background-color: $light;
+
+  @include flex-center();
 
   @include respond-above('md') {
     height: rem(80px);
@@ -26,30 +23,24 @@
   }
 
   &__container {
-    position: fixed;
-    z-index: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     box-sizing: border-box;
-    width: 100%;
+    width: inherit;
     max-width: $navbar-max-width;
-    padding: 0 rem(16px);
+    padding: 0 rem(24px);
     background-color: $light;
 
+    @include flex-center();
+  
     @include respond-above('md') {
       justify-content: space-between;
-      height: 0 rem(24px);
     }
   
     @include respond-above('lg') {
       padding: 0 rem(32px);
-      height: rem(96px);
     }
     
     @include respond-above('xl') {
       padding: 0 rem(48px);
-      height: rem(120px);
     }
   }
 
@@ -96,6 +87,7 @@
   &__menu-item {
     position: relative;
     display: none;
+    
     list-style-type: none;
     text-decoration: none;
     font-size: rem(16px);
@@ -209,18 +201,6 @@
 
     @include respond-above('md') {
       display: block;
-    }
-  }
-
-  &__hamburger-container {
-    position: absolute;
-    left: rem(16px);
-    width: 100%;
-
-    display: block;
-
-    @include respond-above('md') {
-      display: none;
     }
   }
 }

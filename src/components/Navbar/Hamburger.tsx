@@ -3,8 +3,8 @@ import Link from 'next/link'
 
 const Hamburger = () => {
   return (
-    <div className="navbar__hamburger-container">
-      <div className="hamburger">
+    <div className="hamburger">
+      <div className="hamburger__container">
         <input type="checkbox" className="hamburger__input" />
         <span></span>
         <span></span>
@@ -16,7 +16,7 @@ const Hamburger = () => {
             </Link>
           </li>
           <li className="hamburger__menu-list">
-            <Link href="/products">
+            <Link href="/about-us">
               <a className="hamburger__menu-link">About Us</a>
             </Link>
           </li>
