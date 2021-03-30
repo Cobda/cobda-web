@@ -44,10 +44,8 @@ const Form = () => {
   }
 
   const handleFormSubmit = (value: FormInput) => {
-    // TODO: Send POST request to backend
-    console.log('Request Body: ', value)
-
-    // router.push('/sign-up-success')
+    // TODO: Send POST request to backend and verify if username is already taken
+    router.push('/sign-up-success')
   }
 
   const canDisableFormSubmit = (
@@ -67,8 +65,19 @@ const Form = () => {
     </div>
   )
 
-  const renderUpperInput = (errors: DeepMap<FormInput, FieldError>) => {
+  const renderUpperInput = (
+    errors: DeepMap<FormInput, FieldError>,
+    handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    handleRegister: Function
+  ) => {
     const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[a-z ,.'-]+$/i)
+    const nameReference: (ref: HTMLInputElement) => void = handleRegister({
+      required: true,
+      pattern: {
+        value: NAME_PATTERN_VALUE,
+        message: t('inputImproperName')
+      }
+    })
 
     return (
       <div className="form__input-stack form__input-stack--upper">
@@ -79,13 +88,7 @@ const Form = () => {
           placeholder={t('firstNamePlaceholder')}
           errorMessage={errors.firstName?.message}
           onChange={handleInputChange}
-          reference={register({
-            required: true,
-            pattern: {
-              value: NAME_PATTERN_VALUE,
-              message: t('inputImproperName')
-            }
-          })}
+          reference={nameReference}
         />
         <TextField
           name="lastName"
@@ -94,22 +97,46 @@ const Form = () => {
           placeholder={t('lastNamePlaceholder')}
           errorMessage={errors.lastName?.message}
           onChange={handleInputChange}
-          reference={register({
-            required: true,
-            pattern: {
-              value: NAME_PATTERN_VALUE,
-              message: t('inputImproperName')
-            }
-          })}
+          reference={nameReference}
         />
       </div>
     )
   }
 
-  const renderLowerInput = (errors: DeepMap<FormInput, FieldError>) => {
+  const renderLowerInput = (
+    errors: DeepMap<FormInput, FieldError>,
+    handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    handleRegister: Function
+  ) => {
     const MINIMUM_PASSWORD_LENGTH: number = 8
     const EMAIL_PATTERN_VALUE: RegExp = new RegExp(/\S+@\S+\.\S+/)
     const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]/)
+    const usernameReference: (ref: HTMLInputElement) => void = handleRegister({
+      required: true
+      // TODO: Handle error when username is already taken
+      // validate: {
+      //   value: value => value,
+      //   message: t('usernameAlreadyUsed')
+      // }
+    })
+    const emailReference: (ref: HTMLInputElement) => void = handleRegister({
+      required: true,
+      pattern: {
+        value: EMAIL_PATTERN_VALUE,
+        message: t('emailIncorrectFormat')
+      }
+    })
+    const passwordReference: (ref: HTMLInputElement) => void = handleRegister({
+      required: true,
+      minLength: {
+        value: MINIMUM_PASSWORD_LENGTH,
+        message: t('passwordCharactersMinimum')
+      },
+      pattern: {
+        value: PASSWORD_PATTERN_VALUE,
+        message: t('passwordRequiredFormat')
+      }
+    })
 
     return (
       <div className="form__input-stack form__input-stack--lower">
@@ -120,14 +147,7 @@ const Form = () => {
           placeholder={t('usernamePlaceholder')}
           errorMessage={errors.username?.message}
           onChange={handleInputChange}
-          reference={register({
-            required: true
-            // TODO: Handle error when username is already taken
-            // validate: {
-            //   value: value => value,
-            //   message: t('usernameAlreadyUsed')
-            // }
-          })}
+          reference={usernameReference}
         />
         <TextField
           name="email"
@@ -136,13 +156,7 @@ const Form = () => {
           placeholder={t('emailPlaceholder')}
           errorMessage={errors.email?.message}
           onChange={handleInputChange}
-          reference={register({
-            required: true,
-            pattern: {
-              value: EMAIL_PATTERN_VALUE,
-              message: t('emailIncorrectFormat')
-            }
-          })}
+          reference={emailReference}
         />
         <PasswordField
           name="password"
@@ -150,17 +164,7 @@ const Form = () => {
           placeholder={t('passwordPlaceholder')}
           errorMessage={errors.password?.message}
           onChange={handleInputChange}
-          reference={register({
-            required: true,
-            minLength: {
-              value: MINIMUM_PASSWORD_LENGTH,
-              message: t('passwordCharactersMinimum')
-            },
-            pattern: {
-              value: PASSWORD_PATTERN_VALUE,
-              message: t('passwordRequiredFormat')
-            }
-          })}
+          reference={passwordReference}
         />
       </div>
     )
@@ -179,8 +183,8 @@ const Form = () => {
     <form className="form" onSubmit={handleSubmit(handleFormSubmit)}>
       {renderProfileUpload(setProfileUploaded)}
       {/* TODO: Change these inputs according to the design */}
-      {renderUpperInput(errors)}
-      {renderLowerInput(errors)}
+      {renderUpperInput(errors, handleInputChange, register)}
+      {renderLowerInput(errors, handleInputChange, register)}
       {renderFormActionable(canDisableFormSubmit(getValues(), isRecaptchaVerified, isProfileUploaded))}
     </form>
   )
