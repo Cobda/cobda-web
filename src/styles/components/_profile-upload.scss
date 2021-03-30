@@ -47,6 +47,10 @@
       height: rem(160px);
     }
 
+    &:hover {
+      opacity: 0.5;
+    }
+
     &--selected {
       box-shadow: 0 rem(3px 6px) 0 box-shadow-opacity(0.16);
       width: rem(100px);

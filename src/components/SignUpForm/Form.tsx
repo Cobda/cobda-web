@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import ReCAPTCHA from 'react-google-recaptcha'
 import ProfileUpload from '../ProfileUpload'
@@ -20,22 +20,23 @@ const initialInputValue: FormInput = {
   firstName: '',
   lastName: '',
   username: '',
-  password: '',
+  password: ''
 }
 
 const Form = () => {
-  const [inputValue, setInputValue] = useState<FormInput>(initialInputValue)
   const [isProfileUploaded, setProfileUploaded] = useState<boolean>(false)
   const [isRecaptchaVerified, setRecaptchaVerified] = useState<boolean>(false)
-  const { register, handleSubmit, errors } = useForm<FormInput>()
+  const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
+    defaultValues: initialInputValue
+  })
   const router = useRouter()
   const { t } = useTranslation('sign-up')
 
-  const handleInputChange = (inputValue: FormInput) => (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  useEffect(watch, [])
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
-    setInputValue({ ...inputValue, [name]: value })
+    setValue(name as keyof FormInput, value)
   }
 
   const handleRecaptchaChange = () => {
@@ -44,13 +45,17 @@ const Form = () => {
 
   const handleFormSubmit = (value: FormInput) => {
     // TODO: Send POST request to backend
+    console.log('Request Body: ', value)
+
     // router.push('/sign-up-success')
   }
 
-  const canDisableFormSubmit = (inputValue: FormInput, isRecaptchaVerified: boolean, isProfileUploaded: boolean ): boolean => {
-    const emptyInputValues: [string, null][] = Object.entries(
-      inputValue
-    ).filter(([key, value]) => !value)
+  const canDisableFormSubmit = (
+    inputValue: FormInput,
+    isRecaptchaVerified: boolean,
+    isProfileUploaded: boolean
+  ): boolean => {
+    const emptyInputValues: [string, null][] = Object.entries(inputValue).filter(([key, value]) => !value)
     const hasEmptyInputValue: boolean = emptyInputValues.length > 0
 
     return hasEmptyInputValue || !isRecaptchaVerified || !isProfileUploaded
@@ -62,37 +67,49 @@ const Form = () => {
     </div>
   )
 
-  const renderUpperInput = (inputValue: FormInput, errors: DeepMap<FormInput, FieldError>) => (
-    <div className="form__input-stack form__input-stack--upper">
-      <TextField
-        name="firstName"
-        label={t('firstName')}
-        inputType="text"
-        inputValue={inputValue.firstName}
-        placeholder={t('firstNamePlaceholder')}
-        errorMessage={errors.firstName?.message}
-        onChange={handleInputChange(inputValue)}
-        reference={register({
-          required: true,
-        })}
-      />
-      <TextField
-        name="lastName"
-        label={t('lastName')}
-        inputType="text"
-        inputValue={inputValue.lastName}
-        placeholder={t('lastNamePlaceholder')}
-        errorMessage={errors.lastName?.message}
-        onChange={handleInputChange(inputValue)}
-        reference={register({
-          required: true,
-        })}
-      />
-    </div>
-  )
+  const renderUpperInput = (errors: DeepMap<FormInput, FieldError>) => {
+    const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[a-z ,.'-]+$/i)
 
-  const renderLowerInput = (inputValue: FormInput, errors: DeepMap<FormInput, FieldError>) => {
-    const MINIMUM_INPUT_LENGTH: number = 8
+    return (
+      <div className="form__input-stack form__input-stack--upper">
+        <TextField
+          name="firstName"
+          label={t('firstName')}
+          inputType="text"
+          placeholder={t('firstNamePlaceholder')}
+          errorMessage={errors.firstName?.message}
+          onChange={handleInputChange}
+          reference={register({
+            required: true,
+            pattern: {
+              value: NAME_PATTERN_VALUE,
+              message: t('inputImproperName')
+            }
+          })}
+        />
+        <TextField
+          name="lastName"
+          label={t('lastName')}
+          inputType="text"
+          placeholder={t('lastNamePlaceholder')}
+          errorMessage={errors.lastName?.message}
+          onChange={handleInputChange}
+          reference={register({
+            required: true,
+            pattern: {
+              value: NAME_PATTERN_VALUE,
+              message: t('inputImproperName')
+            }
+          })}
+        />
+      </div>
+    )
+  }
+
+  const renderLowerInput = (errors: DeepMap<FormInput, FieldError>) => {
+    const MINIMUM_PASSWORD_LENGTH: number = 8
+    const EMAIL_PATTERN_VALUE: RegExp = new RegExp(/\S+@\S+\.\S+/)
+    const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]/)
 
     return (
       <div className="form__input-stack form__input-stack--lower">
@@ -100,48 +117,49 @@ const Form = () => {
           name="username"
           label={t('username')}
           inputType="text"
-          inputValue={inputValue.username}
           placeholder={t('usernamePlaceholder')}
-          // TODO: Handle error when username is already taken
-          errorMessage={''}
-          onChange={handleInputChange(inputValue)}
+          errorMessage={errors.username?.message}
+          onChange={handleInputChange}
           reference={register({
-            required: true,
+            required: true
+            // TODO: Handle error when username is already taken
+            // validate: {
+            //   value: value => value,
+            //   message: t('usernameAlreadyUsed')
+            // }
           })}
         />
         <TextField
           name="email"
           label={t('email')}
           inputType="text"
-          inputValue={inputValue.email}
           placeholder={t('emailPlaceholder')}
           errorMessage={errors.email?.message}
-          onChange={handleInputChange(inputValue)}
+          onChange={handleInputChange}
           reference={register({
             required: true,
             pattern: {
-              value: /\S+@\S+\.\S+/,
-              message: t('emailIncorrectFormat'),
-            },
+              value: EMAIL_PATTERN_VALUE,
+              message: t('emailIncorrectFormat')
+            }
           })}
         />
         <PasswordField
           name="password"
           label={t('password')}
-          inputValue={inputValue.password}
           placeholder={t('passwordPlaceholder')}
           errorMessage={errors.password?.message}
-          onChange={handleInputChange(inputValue)}
+          onChange={handleInputChange}
           reference={register({
             required: true,
             minLength: {
-              value: MINIMUM_INPUT_LENGTH,
-              message: t('passwordCharactersMinimum'),
+              value: MINIMUM_PASSWORD_LENGTH,
+              message: t('passwordCharactersMinimum')
             },
             pattern: {
-              value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]/,
-              message: t('passwordRequiredFormat'),
-            },
+              value: PASSWORD_PATTERN_VALUE,
+              message: t('passwordRequiredFormat')
+            }
           })}
         />
       </div>
@@ -151,28 +169,19 @@ const Form = () => {
   const renderFormActionable = (canDisableFormSubmit: boolean) => (
     <div className="form__actionable">
       <div className="form__recaptcha">
-        <ReCAPTCHA
-          sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!}
-          onChange={handleRecaptchaChange}
-        />
+        <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} onChange={handleRecaptchaChange} />
       </div>
-      <input
-        disabled={canDisableFormSubmit}
-        type="submit"
-        className="form__button"
-        value={t('register')}
-      />
+      <input className="form__button" type="submit" value={t('register')} disabled={canDisableFormSubmit} />
     </div>
   )
-  
 
   return (
     <form className="form" onSubmit={handleSubmit(handleFormSubmit)}>
       {renderProfileUpload(setProfileUploaded)}
       {/* TODO: Change these inputs according to the design */}
-      {renderUpperInput(inputValue, errors)}
-      {renderLowerInput(inputValue, errors)}
-      {renderFormActionable(canDisableFormSubmit(inputValue, isRecaptchaVerified, isProfileUploaded))}
+      {renderUpperInput(errors)}
+      {renderLowerInput(errors)}
+      {renderFormActionable(canDisableFormSubmit(getValues(), isRecaptchaVerified, isProfileUploaded))}
     </form>
   )
 }

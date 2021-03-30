@@ -4,14 +4,13 @@ import Image from 'next/image'
 interface PasswordField {
   readonly name: string
   readonly label: string
-  readonly inputValue: string
   readonly placeholder: string
   readonly errorMessage: string | undefined
   readonly onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  readonly reference?: (ref: (HTMLInputElement) | null) => void
+  readonly reference: (ref: (HTMLInputElement) | null) => void
 }
 
-const PasswordField = ({ name, label, placeholder, errorMessage, inputValue, onChange, reference }: PasswordField) => {
+const PasswordField = ({ name, label, placeholder, errorMessage, onChange, reference }: PasswordField) => {
   const [isPasswordShown, setPasswordShown] = useState(false)
 
   const handlePasswordToggle = () => {
@@ -45,10 +44,9 @@ const PasswordField = ({ name, label, placeholder, errorMessage, inputValue, onC
           className={inputClassName}
           name={name}
           type={inputType}
-          value={inputValue}
           placeholder={placeholder}
-          ref={reference}
           onChange={onChange}
+          ref={reference}
         />
         {renderErrorMessage(errorMessage)}
         {renderEyeIcon(isPasswordShown)}

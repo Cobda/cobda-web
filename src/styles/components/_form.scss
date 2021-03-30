@@ -130,8 +130,9 @@
 
   &__eye-icon {
     position: absolute;
-    right: rem(16px);
     top: 0;
+    right: rem(16px);
+
     cursor: pointer;
   }
 
@@ -173,6 +174,8 @@
 
     &:disabled {
       background-color: $silver;
+      
+      cursor: auto;
     }
   }
 }
