@@ -22,7 +22,11 @@
     margin-bottom: rem(32px);
 
     @include respond-above('md') {
-      margin-bottom: rem(60px);
+      margin-bottom: rem(48px);
+    }
+
+    @include respond-above('lg') {
+      margin-bottom: rem(64px);
     }
   }
 
@@ -52,7 +56,11 @@
       margin-bottom: rem(32px);
 
       @include respond-above('md') {
-        margin-bottom: rem(60px);
+        margin-bottom: rem(48px);
+      }
+
+      @include respond-above('lg') {
+        margin-bottom: rem(64px);
       }
     }
   }
@@ -68,11 +76,11 @@
       margin-bottom: rem(24px);
 
       @include respond-above('md') {
-        margin-bottom: rem(36px);
+        margin-bottom: rem(42px);
       }
 
       @include respond-above('lg') {
-        margin-bottom: rem(42px);
+        margin-bottom: rem(48px);
       }
     }
   }

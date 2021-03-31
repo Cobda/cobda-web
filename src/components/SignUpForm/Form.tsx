@@ -68,9 +68,9 @@ const Form = () => {
   const renderUpperInput = (
     errors: DeepMap<FormInput, FieldError>,
     handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-    handleRegister: Function
+    handleRegister: (validator: Object) => (ref: HTMLInputElement) => void
   ) => {
-    const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[a-z ,.'-]+$/i)
+    const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
     const nameReference: (ref: HTMLInputElement) => void = handleRegister({
       required: true,
       pattern: {
@@ -106,18 +106,26 @@ const Form = () => {
   const renderLowerInput = (
     errors: DeepMap<FormInput, FieldError>,
     handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-    handleRegister: Function
+    handleRegister: (validator: Object) => (ref: HTMLInputElement) => void
   ) => {
+    const MINIMUM_USERNAME_LENGTH: number = 6
     const MINIMUM_PASSWORD_LENGTH: number = 8
+    const USERNAME_PATTERN_VALUE: RegExp = new RegExp(/(?![_.])(?!.*[_.]{2})[\u0E00-\u0E7Fa-zA-Z0-9._]+(?<![_.])$/)
     const EMAIL_PATTERN_VALUE: RegExp = new RegExp(/\S+@\S+\.\S+/)
     const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]/)
     const usernameReference: (ref: HTMLInputElement) => void = handleRegister({
-      required: true
-      // TODO: Handle error when username is already taken
+      required: true,
+      minLength: {
+        value: MINIMUM_USERNAME_LENGTH,
+        message: t('usernameCharactersMinimum')
+      },
+      pattern: {
+        value: USERNAME_PATTERN_VALUE,
+        message: t('inputImproperName')
+      }
       // validate: {
-      //   value: value => value,
-      //   message: t('usernameAlreadyUsed')
-      // }
+      //   TODO: Handle error when username is already taken
+      // } 
     })
     const emailReference: (ref: HTMLInputElement) => void = handleRegister({
       required: true,

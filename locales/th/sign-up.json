@@ -16,9 +16,9 @@
   "firstNamePlaceholder": "ป้อนชื่อจริงของคุณ",
   "lastNamePlaceholder": "ป้อนนามสกุลของคุณ",
   "inputImproperName": "กรุณากรอกข้อมูลลงในช่องว่างให้ถูกต้อง",
+  "usernameCharactersMinimum": "ชื่อผู้ใช้งานอย่างน้อยต้องมี 8 ตัวอักษร",
   "usernameAlreadyUsed": "บัญชีชื่อนี้ถูกใช้ไปแล้ว กรุณาใช้ชื่ออื่น",
   "emailIncorrectFormat": "อีเมลของคุณไม่ถูกต้อง กรุณาตรวจสอบและป้อนข้อมูลใหม่",
   "passwordCharactersMinimum": "รหัสผ่านอย่างน้อยต้องมี 8 ตัวอักษร",
-  "passwordSimilarToUsername": "ไม่สามารถใช้รหัสผ่านชื่อเดียวกับบัญชีผู้ใช้งานได้",
   "passwordRequiredFormat": "รหัสผ่านต้องมีตัวพิมพ์เล็ก, ตัวพิมพ์ใหญ่, หมายเลข อย่างน้อยอย่างละ 1 ตัว"
 }
