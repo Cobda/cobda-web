@@ -12,7 +12,6 @@
 
     > span {
       position: relative;
-      z-index: 1;
       display: block;
       width: rem(24px);
       height: rem(3px);
@@ -22,8 +21,7 @@
       background: $dark;
 
       transform-origin: rem(4px 0px);
-      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-        opacity 0.55s ease;
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
     }
   }
 
@@ -42,7 +40,7 @@
 
   &__input {
     position: absolute;
-    z-index: 2;
+    z-index: $zindex-hamburger-input;
     display: block;
     width: rem(24px);
     height: 100%;
@@ -59,7 +57,7 @@
     }
 
     &:checked ~ .hamburger__menu {
-      transform: none;
+      opacity: 1;
     }
 
     &:checked ~ span {
@@ -83,22 +81,20 @@
     box-sizing: border-box;
     box-shadow: 0 rem(2px 2px) 0 box-shadow-opacity(0.16);
     width: 100%;
-    padding: rem(20px 60px) rem(32px);
+    padding: rem(16px 60px) rem(32px);
     margin: rem(12px) 0 0 rem(-16px);
+    opacity: 0;
 
     background-color: $light;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */
 
-    transform-origin: 0% 0%;
-    transform: translate(0%, -130%);
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-
+    -webkit-transition: opacity 0.25s ease-in-out;
   }
 
   &__menu-list {
-    z-index: 0;
+    box-sizing: border-box;
     padding: rem(16px) 0;
 
     &:not(:last-child) {

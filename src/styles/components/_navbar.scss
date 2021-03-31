@@ -2,7 +2,7 @@
 
 .navbar {
   position: fixed;
-  z-index: 3;
+  z-index: $zindex-navbar;
   box-shadow: 0 rem(4px 20px) 0 box-shadow-opacity(0.16);
   width: 100%;
   height: rem(56px);
@@ -27,7 +27,6 @@
     width: inherit;
     max-width: $navbar-max-width;
     padding: 0 rem(24px);
-    background-color: $light;
 
     @include flex-center();
   
