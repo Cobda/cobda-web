@@ -1,5 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import React, { ReactNode, useState } from 'react'
 import useTranslation from 'next-translate/useTranslation'
 import Trans from 'next-translate/Trans'
 
@@ -9,32 +8,7 @@ interface ProfileUpload {
 
 const ProfileUpload = ({ onUploaded }: ProfileUpload) => {
   const [selectedImageUrl, setSelectedImageUrl] = useState<string>('')
-  const router = useRouter()
   const { t } = useTranslation('sign-up')
-
-  useEffect(() => {
-    const handleWindowClose = (event: BeforeUnloadEvent) => {
-      if (selectedImageUrl) {
-        event.preventDefault()
-        event.returnValue = t('warningText')
-      }
-    }
-
-    const handleBrowseAway = () => {
-      if (selectedImageUrl && !window.confirm(t('warningText'))) {
-        router.events.emit('routeChangeError')
-        throw 'routeChange aborted.'
-      }
-    }
-
-    window.addEventListener('beforeunload', handleWindowClose)
-    router.events.on('routeChangeStart', handleBrowseAway)
-
-    return () => {
-      window.removeEventListener('beforeunload', handleWindowClose)
-      router.events.off('routeChangeStart', handleBrowseAway)
-    }
-  }, [selectedImageUrl])
 
   const handleInputChange = (
     setProfileImage: (image: string) => void,

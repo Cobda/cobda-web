@@ -32,7 +32,30 @@ const Form = () => {
   const router = useRouter()
   const { t } = useTranslation('sign-up')
 
-  useEffect(watch, [])
+  useEffect(() => {
+    const handleWindowClose = (event: BeforeUnloadEvent) => {
+      if (isProfileUploaded) {
+        event.preventDefault()
+        event.returnValue = t('warningText')
+      }
+    }
+
+    const handleBrowseAway = () => {
+      if (isProfileUploaded && !window.confirm(t('warningText'))) {
+        router.events.emit('routeChangeError')
+        throw 'routeChange aborted.'
+      }
+    }
+
+    watch()
+    window.addEventListener('beforeunload', handleWindowClose)
+    router.events.on('routeChangeStart', handleBrowseAway)
+
+    return () => {
+      window.removeEventListener('beforeunload', handleWindowClose)
+      router.events.off('routeChangeStart', handleBrowseAway)
+    }
+  }, [isProfileUploaded])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
@@ -43,8 +66,9 @@ const Form = () => {
     setRecaptchaVerified((previousState) => !previousState)
   }
 
-  const handleFormSubmit = (value: FormInput) => {
+  const handleFormSubmit = (setProfileUploaded: (isUploaded: boolean) => void) => (value: FormInput) => {
     // TODO: Send POST request to backend and verify if username is already taken
+    setProfileUploaded(false)
     router.push('/sign-up-success')
   }
 
@@ -71,7 +95,8 @@ const Form = () => {
     handleRegister: (validator: Object) => (ref: HTMLInputElement) => void
   ) => {
     const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
-    const nameReference: (ref: HTMLInputElement) => void = handleRegister({
+
+    const handleNameReference: (ref: HTMLInputElement) => void = handleRegister({
       required: true,
       pattern: {
         value: NAME_PATTERN_VALUE,
@@ -88,7 +113,7 @@ const Form = () => {
           placeholder={t('firstNamePlaceholder')}
           errorMessage={errors.firstName?.message}
           onChange={handleInputChange}
-          reference={nameReference}
+          reference={handleNameReference}
         />
         <TextField
           name="lastName"
@@ -97,7 +122,7 @@ const Form = () => {
           placeholder={t('lastNamePlaceholder')}
           errorMessage={errors.lastName?.message}
           onChange={handleInputChange}
-          reference={nameReference}
+          reference={handleNameReference}
         />
       </div>
     )
@@ -112,8 +137,9 @@ const Form = () => {
     const MINIMUM_PASSWORD_LENGTH: number = 8
     const USERNAME_PATTERN_VALUE: RegExp = new RegExp(/(?![_.])(?!.*[_.]{2})[\u0E00-\u0E7Fa-zA-Z0-9._]+(?<![_.])$/)
     const EMAIL_PATTERN_VALUE: RegExp = new RegExp(/\S+@\S+\.\S+/)
-    const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]/)
-    const usernameReference: (ref: HTMLInputElement) => void = handleRegister({
+    const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[\u0E00-\u0E7FA-Z])/)
+
+    const handleUsernameReference: (ref: HTMLInputElement) => void = handleRegister({
       required: true,
       minLength: {
         value: MINIMUM_USERNAME_LENGTH,
@@ -127,14 +153,16 @@ const Form = () => {
       //   TODO: Handle error when username is already taken
       // }
     })
-    const emailReference: (ref: HTMLInputElement) => void = handleRegister({
+
+    const handleEmailReference: (ref: HTMLInputElement) => void = handleRegister({
       required: true,
       pattern: {
         value: EMAIL_PATTERN_VALUE,
         message: t('emailIncorrectFormat')
       }
     })
-    const passwordReference: (ref: HTMLInputElement) => void = handleRegister({
+
+    const handlePasswordReference: (ref: HTMLInputElement) => void = handleRegister({
       required: true,
       minLength: {
         value: MINIMUM_PASSWORD_LENGTH,
@@ -155,7 +183,7 @@ const Form = () => {
           placeholder={t('usernamePlaceholder')}
           errorMessage={errors.username?.message}
           onChange={handleInputChange}
-          reference={usernameReference}
+          reference={handleUsernameReference}
         />
         <TextField
           name="email"
@@ -164,7 +192,7 @@ const Form = () => {
           placeholder={t('emailPlaceholder')}
           errorMessage={errors.email?.message}
           onChange={handleInputChange}
-          reference={emailReference}
+          reference={handleEmailReference}
         />
         <PasswordField
           name="password"
@@ -172,7 +200,7 @@ const Form = () => {
           placeholder={t('passwordPlaceholder')}
           errorMessage={errors.password?.message}
           onChange={handleInputChange}
-          reference={passwordReference}
+          reference={handlePasswordReference}
         />
       </div>
     )
@@ -188,7 +216,7 @@ const Form = () => {
   )
 
   return (
-    <form className="form" onSubmit={handleSubmit(handleFormSubmit)}>
+    <form className="form" onSubmit={handleSubmit(handleFormSubmit(setProfileUploaded))}>
       {renderProfileUpload(setProfileUploaded)}
       {renderUpperInput(errors, handleInputChange, register)}
       {renderLowerInput(errors, handleInputChange, register)}
