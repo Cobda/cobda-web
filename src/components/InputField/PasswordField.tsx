@@ -19,17 +19,13 @@ const PasswordField = ({ name, label, placeholder, errorMessage, onChange, refer
 
   const renderInput = (errorMessage: string | undefined, isPasswordShown: boolean) => {
     const inputType: string = isPasswordShown ? 'text' : 'password'
-    const inputClassName: string = errorMessage
-      ? 'form__input form__input--invalid'
-      : 'form__input'
+    const inputClassName: string = errorMessage ? 'form__input form__input--invalid' : 'form__input'
 
     const renderErrorMessage = (errorMessage: string | undefined) =>
       errorMessage ? <div className="form__help">{errorMessage}</div> : <></>
 
     const renderEyeIcon = (isPasswordShown: boolean) => {
-      const imageSelected: string = isPasswordShown
-        ? '/icons/visible-eye-icon.svg'
-        : '/icons/invisible-eye-icon.svg'
+      const imageSelected: string = isPasswordShown ? '/icons/visible-eye-icon.svg' : '/icons/invisible-eye-icon.svg'
 
       return (
         <div className="form__eye-icon" onClick={handlePasswordToggle}>

@@ -53,8 +53,8 @@ const Form = () => {
     isRecaptchaVerified: boolean,
     isProfileUploaded: boolean
   ): boolean => {
-    const emptyInputValues: [string, null][] = Object.entries(inputValue).filter(([key, value]) => !value)
-    const hasEmptyInputValue: boolean = emptyInputValues.length > 0
+    const emptyInputValue: [string, null][] = Object.entries(inputValue).filter(([key, value]) => !value)
+    const hasEmptyInputValue: boolean = emptyInputValue.length > 0
 
     return hasEmptyInputValue || !isRecaptchaVerified || !isProfileUploaded
   }
@@ -125,7 +125,7 @@ const Form = () => {
       }
       // validate: {
       //   TODO: Handle error when username is already taken
-      // } 
+      // }
     })
     const emailReference: (ref: HTMLInputElement) => void = handleRegister({
       required: true,
@@ -178,7 +178,7 @@ const Form = () => {
     )
   }
 
-  const renderFormActionable = (canDisableFormSubmit: boolean) => (
+  const renderFormActionable = (handleRecaptchaChange: () => void, canDisableFormSubmit: boolean) => (
     <div className="form__actionable">
       <div className="form__recaptcha">
         <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} onChange={handleRecaptchaChange} />
@@ -190,10 +190,12 @@ const Form = () => {
   return (
     <form className="form" onSubmit={handleSubmit(handleFormSubmit)}>
       {renderProfileUpload(setProfileUploaded)}
-      {/* TODO: Change these inputs according to the design */}
       {renderUpperInput(errors, handleInputChange, register)}
       {renderLowerInput(errors, handleInputChange, register)}
-      {renderFormActionable(canDisableFormSubmit(getValues(), isRecaptchaVerified, isProfileUploaded))}
+      {renderFormActionable(
+        handleRecaptchaChange,
+        canDisableFormSubmit(getValues(), isRecaptchaVerified, isProfileUploaded)
+      )}
     </form>
   )
 }
