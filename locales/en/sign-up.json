@@ -15,6 +15,7 @@
   "passwordPlaceholder": "Enter your password",
   "firstNamePlaceholder": "Enter your first name",
   "lastNamePlaceholder": "Enter your last name",
+  "inputValueRequired": "This field is required.",
   "inputImproperName": "Please use proper name.",
   "usernameCharactersMinimum": "Username must contain at least 6 characters.",
   "usernameAlreadyUsed": "Your username has already been used. Please use a different one.",

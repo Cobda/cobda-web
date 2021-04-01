@@ -27,6 +27,7 @@ const Form = () => {
   const [isProfileUploaded, setProfileUploaded] = useState<boolean>(false)
   const [isRecaptchaVerified, setRecaptchaVerified] = useState<boolean>(false)
   const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
+    mode: 'onChange',
     defaultValues: initialInputValue
   })
   const router = useRouter()
@@ -73,14 +74,13 @@ const Form = () => {
   }
 
   const canDisableFormSubmit = (
-    inputValue: FormInput,
+    error: DeepMap<FormInput, FieldError>,
     isRecaptchaVerified: boolean,
     isProfileUploaded: boolean
   ): boolean => {
-    const emptyInputValue: [string, null][] = Object.entries(inputValue).filter(([key, value]) => !value)
-    const hasEmptyInputValue: boolean = emptyInputValue.length > 0
+    const hasInputError: boolean = Object.keys(errors).length !== 0
 
-    return hasEmptyInputValue || !isRecaptchaVerified || !isProfileUploaded
+    return hasInputError || !isRecaptchaVerified || !isProfileUploaded
   }
 
   const renderProfileUpload = (handleProfileUpload: (isUploaded: boolean) => void) => (
@@ -97,7 +97,10 @@ const Form = () => {
     const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
 
     const handleNameReference: (ref: HTMLInputElement) => void = handleRegister({
-      required: true,
+      required: {
+        value: true,
+        message: t('inputValueRequired')
+      },
       pattern: {
         value: NAME_PATTERN_VALUE,
         message: t('inputImproperName')
@@ -135,12 +138,15 @@ const Form = () => {
   ) => {
     const MINIMUM_USERNAME_LENGTH: number = 6
     const MINIMUM_PASSWORD_LENGTH: number = 8
-    const USERNAME_PATTERN_VALUE: RegExp = new RegExp(/(?![_.])(?!.*[_.]{2})[\u0E00-\u0E7Fa-zA-Z0-9._]+(?<![_.])$/)
+    const USERNAME_PATTERN_VALUE: RegExp = new RegExp(/^(?![_.])(?!.*[_.]{2})[\u0E00-\u0E7Fa-zA-Z0-9._]+(?<![_.])$/)
     const EMAIL_PATTERN_VALUE: RegExp = new RegExp(/\S+@\S+\.\S+/)
-    const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[\u0E00-\u0E7FA-Z])/)
+    const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z])/)
 
     const handleUsernameReference: (ref: HTMLInputElement) => void = handleRegister({
-      required: true,
+      required: {
+        value: true,
+        message: t('inputValueRequired')
+      },
       minLength: {
         value: MINIMUM_USERNAME_LENGTH,
         message: t('usernameCharactersMinimum')
@@ -155,7 +161,10 @@ const Form = () => {
     })
 
     const handleEmailReference: (ref: HTMLInputElement) => void = handleRegister({
-      required: true,
+      required: {
+        value: true,
+        message: t('inputValueRequired')
+      },
       pattern: {
         value: EMAIL_PATTERN_VALUE,
         message: t('emailIncorrectFormat')
@@ -163,7 +172,10 @@ const Form = () => {
     })
 
     const handlePasswordReference: (ref: HTMLInputElement) => void = handleRegister({
-      required: true,
+      required: {
+        value: true,
+        message: t('inputValueRequired')
+      },
       minLength: {
         value: MINIMUM_PASSWORD_LENGTH,
         message: t('passwordCharactersMinimum')
@@ -222,7 +234,7 @@ const Form = () => {
       {renderLowerInput(errors, handleInputChange, register)}
       {renderFormActionable(
         handleRecaptchaChange,
-        canDisableFormSubmit(getValues(), isRecaptchaVerified, isProfileUploaded)
+        canDisableFormSubmit(errors, isRecaptchaVerified, isProfileUploaded)
       )}
     </form>
   )
