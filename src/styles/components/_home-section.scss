@@ -61,5 +61,13 @@
 
   &--light {
     background-color: $light;
+
+    & > *:not(:last-child) {
+      margin-bottom: rem(16px);
+
+      @include respond-above('lg') {
+        margin-bottom: rem(30px);
+      }
+    }
   }
 }
