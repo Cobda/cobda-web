@@ -26,7 +26,7 @@ const initialInputValue: FormInput = {
 const Form = () => {
   const [isProfileUploaded, setProfileUploaded] = useState<boolean>(false)
   const [isRecaptchaVerified, setRecaptchaVerified] = useState<boolean>(false)
-  const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
+  const { register, handleSubmit, setValue, watch, errors } = useForm<FormInput>({
     mode: 'onChange',
     defaultValues: initialInputValue
   })
@@ -74,7 +74,7 @@ const Form = () => {
   }
 
   const canDisableFormSubmit = (
-    error: DeepMap<FormInput, FieldError>,
+    errors: DeepMap<FormInput, FieldError>,
     isRecaptchaVerified: boolean,
     isProfileUploaded: boolean
   ): boolean => {
