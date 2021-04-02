@@ -85,7 +85,7 @@ const Form = () => {
 
   const renderProfileUpload = (handleProfileUpload: (isUploaded: boolean) => void) => (
     <div className="form__profile">
-      <ProfileUpload onUploaded={handleProfileUpload} />
+      <ProfileUpload onUpload={handleProfileUpload} />
     </div>
   )
 
@@ -116,7 +116,7 @@ const Form = () => {
           placeholder={t('firstNamePlaceholder')}
           errorMessage={errors.firstName?.message}
           onChange={handleInputChange}
-          reference={handleNameReference}
+          inputRef={handleNameReference}
         />
         <TextField
           name="lastName"
@@ -125,7 +125,7 @@ const Form = () => {
           placeholder={t('lastNamePlaceholder')}
           errorMessage={errors.lastName?.message}
           onChange={handleInputChange}
-          reference={handleNameReference}
+          inputRef={handleNameReference}
         />
       </div>
     )
@@ -195,7 +195,7 @@ const Form = () => {
           placeholder={t('usernamePlaceholder')}
           errorMessage={errors.username?.message}
           onChange={handleInputChange}
-          reference={handleUsernameReference}
+          inputRef={handleUsernameReference}
         />
         <TextField
           name="email"
@@ -204,7 +204,7 @@ const Form = () => {
           placeholder={t('emailPlaceholder')}
           errorMessage={errors.email?.message}
           onChange={handleInputChange}
-          reference={handleEmailReference}
+          inputRef={handleEmailReference}
         />
         <PasswordField
           name="password"
@@ -212,7 +212,7 @@ const Form = () => {
           placeholder={t('passwordPlaceholder')}
           errorMessage={errors.password?.message}
           onChange={handleInputChange}
-          reference={handlePasswordReference}
+          inputRef={handlePasswordReference}
         />
       </div>
     )

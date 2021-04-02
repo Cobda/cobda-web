@@ -3,10 +3,10 @@ import useTranslation from 'next-translate/useTranslation'
 import Trans from 'next-translate/Trans'
 
 interface ProfileUpload {
-  readonly onUploaded: (isUploaded: boolean) => void
+  readonly onUpload: (isUploaded: boolean) => void
 }
 
-const ProfileUpload = ({ onUploaded }: ProfileUpload) => {
+const ProfileUpload = ({ onUpload }: ProfileUpload) => {
   const [selectedImageUrl, setSelectedImageUrl] = useState<string>('')
   const { t } = useTranslation('sign-up')
 
@@ -62,7 +62,7 @@ const ProfileUpload = ({ onUploaded }: ProfileUpload) => {
           className="profile-upload__input"
           accept="image/png, image/jpeg"
           type="file"
-          onChange={handleInputChange(setSelectedImageUrl, onUploaded)}
+          onChange={handleInputChange(setSelectedImageUrl, onUpload)}
         />
         {profileImage}
       </label>
