@@ -5,7 +5,7 @@ interface PasswordField {
   readonly name: string
   readonly label: string
   readonly placeholder: string
-  readonly errorMessage: string | undefined
+  readonly errorMessage: string
   readonly onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   readonly inputRef: (ref: HTMLInputElement) => void
 }
@@ -17,11 +17,11 @@ const PasswordField = ({ name, label, placeholder, errorMessage, onChange, input
     setPasswordShown(!isPasswordShown)
   }
 
-  const renderInput = (errorMessage: string | undefined, isPasswordShown: boolean) => {
+  const renderInput = (errorMessage: string, isPasswordShown: boolean) => {
     const inputType: string = isPasswordShown ? 'text' : 'password'
     const inputClassName: string = errorMessage ? 'form__input form__input--invalid' : 'form__input'
 
-    const renderErrorMessage = (errorMessage: string | undefined) =>
+    const renderErrorMessage = (errorMessage: string) =>
       errorMessage ? <div className="form__help">{errorMessage}</div> : <></>
 
     const renderEyeIcon = (isPasswordShown: boolean) => {

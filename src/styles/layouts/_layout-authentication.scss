@@ -37,7 +37,6 @@
     @include respond-above('md') {
       display: flex;
       justify-content: center;
-      align-items: center;
       padding: rem(48px) 0;
 
       background: {

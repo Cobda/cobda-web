@@ -21,5 +21,5 @@
   "usernameAlreadyUsed": "Your username has already been used. Please use a different one.",
   "emailIncorrectFormat": "Your email is incorrect. Please recheck the email format or use a different one.",
   "passwordCharactersMinimum": "Password must contain at least 8 characters.",
-  "passwordRequiredFormat": "Password must contain at least 1 uppercase, 1 special character and 1 number."
+  "passwordRequiredFormat": "Require 1 uppercase, 1 special character and 1 number."
 }

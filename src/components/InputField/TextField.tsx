@@ -5,16 +5,16 @@ interface TextField {
   readonly label: string
   readonly inputType: string
   readonly placeholder: string
-  readonly errorMessage: string | undefined
+  readonly errorMessage: string
   readonly onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   readonly inputRef: (ref: HTMLInputElement) => void
 }
 
 const TextField = ({ name, label, placeholder, inputType, errorMessage, onChange, inputRef }: TextField) => {
-  const renderInput = (errorMessage: string | undefined) => {
+  const renderInput = (errorMessage: string) => {
     const inputClassName: string = errorMessage ? 'form__input form__input--invalid' : 'form__input'
 
-    const renderErrorMessage = (errorMessage: string | undefined) =>
+    const renderErrorMessage = (errorMessage: string) =>
       errorMessage ? <div className="form__help">{errorMessage}</div> : <></>
 
     return (

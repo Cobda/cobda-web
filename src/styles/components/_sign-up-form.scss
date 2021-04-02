@@ -22,7 +22,6 @@
   @include respond-above('xl') {
     max-width: $sign-up-form-max-width-xl;
     padding: rem(70px 120px 36px);
-    border-radius: rem(100px);
   }
 
   &__header {

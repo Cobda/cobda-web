@@ -73,14 +73,19 @@ const Form = () => {
     router.push('/sign-up-success')
   }
 
-  const canDisableFormSubmit = (
-    errors: DeepMap<FormInput, FieldError>,
-    isRecaptchaVerified: boolean,
-    isProfileUploaded: boolean
-  ): boolean => {
-    const hasInputError: boolean = Object.keys(errors).length !== 0
+  const getErrorMessage = (errors: DeepMap<FormInput, FieldError>, inputKey: keyof FormInput): string => {
+    const errorMessage: string | undefined = errors[inputKey]?.message
+    return errorMessage ? errorMessage : ''
+  }
 
-    return hasInputError || !isRecaptchaVerified || !isProfileUploaded
+  const canDisableFormSubmit = (
+    isRecaptchaVerified: boolean,
+    isProfileUploaded: boolean,
+    errors: DeepMap<FormInput, FieldError>
+  ): boolean => {
+    const hasInputError: boolean = Object.keys(errors).length > 0
+
+    return !isRecaptchaVerified || !isProfileUploaded || hasInputError
   }
 
   const renderProfileUpload = (handleProfileUpload: (isUploaded: boolean) => void) => (
@@ -90,13 +95,13 @@ const Form = () => {
   )
 
   const renderUpperInput = (
-    errors: DeepMap<FormInput, FieldError>,
+    handleRegister: (validator: Object) => (ref: HTMLInputElement) => void,
     handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-    handleRegister: (validator: Object) => (ref: HTMLInputElement) => void
+    errors: DeepMap<FormInput, FieldError>
   ) => {
     const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
 
-    const handleNameReference: (ref: HTMLInputElement) => void = handleRegister({
+    const getNameReference: (ref: HTMLInputElement) => void = handleRegister({
       required: {
         value: true,
         message: t('inputValueRequired')
@@ -114,27 +119,27 @@ const Form = () => {
           label={t('firstName')}
           inputType="text"
           placeholder={t('firstNamePlaceholder')}
-          errorMessage={errors.firstName?.message}
+          errorMessage={getErrorMessage(errors, 'firstName')}
           onChange={handleInputChange}
-          inputRef={handleNameReference}
+          inputRef={getNameReference}
         />
         <TextField
           name="lastName"
           label={t('lastName')}
           inputType="text"
           placeholder={t('lastNamePlaceholder')}
-          errorMessage={errors.lastName?.message}
+          errorMessage={getErrorMessage(errors, 'lastName')}
           onChange={handleInputChange}
-          inputRef={handleNameReference}
+          inputRef={getNameReference}
         />
       </div>
     )
   }
 
   const renderLowerInput = (
-    errors: DeepMap<FormInput, FieldError>,
+    handleRegister: (validator: Object) => (ref: HTMLInputElement) => void,
     handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-    handleRegister: (validator: Object) => (ref: HTMLInputElement) => void
+    errors: DeepMap<FormInput, FieldError>
   ) => {
     const MINIMUM_USERNAME_LENGTH: number = 6
     const MINIMUM_PASSWORD_LENGTH: number = 8
@@ -142,7 +147,7 @@ const Form = () => {
     const EMAIL_PATTERN_VALUE: RegExp = new RegExp(/\S+@\S+\.\S+/)
     const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z])/)
 
-    const handleUsernameReference: (ref: HTMLInputElement) => void = handleRegister({
+    const getUsernameReference: (ref: HTMLInputElement) => void = handleRegister({
       required: {
         value: true,
         message: t('inputValueRequired')
@@ -160,7 +165,7 @@ const Form = () => {
       // }
     })
 
-    const handleEmailReference: (ref: HTMLInputElement) => void = handleRegister({
+    const getEmailReference: (ref: HTMLInputElement) => void = handleRegister({
       required: {
         value: true,
         message: t('inputValueRequired')
@@ -171,7 +176,7 @@ const Form = () => {
       }
     })
 
-    const handlePasswordReference: (ref: HTMLInputElement) => void = handleRegister({
+    const getPasswordReference: (ref: HTMLInputElement) => void = handleRegister({
       required: {
         value: true,
         message: t('inputValueRequired')
@@ -193,32 +198,32 @@ const Form = () => {
           label={t('username')}
           inputType="text"
           placeholder={t('usernamePlaceholder')}
-          errorMessage={errors.username?.message}
+          errorMessage={getErrorMessage(errors, 'username')}
           onChange={handleInputChange}
-          inputRef={handleUsernameReference}
+          inputRef={getUsernameReference}
         />
         <TextField
           name="email"
           label={t('email')}
           inputType="text"
           placeholder={t('emailPlaceholder')}
-          errorMessage={errors.email?.message}
+          errorMessage={getErrorMessage(errors, 'email')}
           onChange={handleInputChange}
-          inputRef={handleEmailReference}
+          inputRef={getEmailReference}
         />
         <PasswordField
           name="password"
           label={t('password')}
           placeholder={t('passwordPlaceholder')}
-          errorMessage={errors.password?.message}
+          errorMessage={getErrorMessage(errors, 'password')}
           onChange={handleInputChange}
-          inputRef={handlePasswordReference}
+          inputRef={getPasswordReference}
         />
       </div>
     )
   }
 
-  const renderFormActionable = (handleRecaptchaChange: () => void, canDisableFormSubmit: boolean) => (
+  const renderActionable = (handleRecaptchaChange: () => void, canDisableFormSubmit: boolean) => (
     <div className="form__actionable">
       <div className="form__recaptcha">
         <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} onChange={handleRecaptchaChange} />
@@ -230,12 +235,9 @@ const Form = () => {
   return (
     <form className="form" onSubmit={handleSubmit(handleFormSubmit(setProfileUploaded))}>
       {renderProfileUpload(setProfileUploaded)}
-      {renderUpperInput(errors, handleInputChange, register)}
-      {renderLowerInput(errors, handleInputChange, register)}
-      {renderFormActionable(
-        handleRecaptchaChange,
-        canDisableFormSubmit(errors, isRecaptchaVerified, isProfileUploaded)
-      )}
+      {renderUpperInput(register, handleInputChange, errors)}
+      {renderLowerInput(register, handleInputChange, errors)}
+      {renderActionable(handleRecaptchaChange, canDisableFormSubmit(isRecaptchaVerified, isProfileUploaded, errors))}
     </form>
   )
 }
