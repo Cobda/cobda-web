@@ -28,7 +28,7 @@ const PasswordField = ({ name, label, placeholder, errorMessage, onChange, input
       const imageSelected: string = isPasswordShown ? '/icons/visible-eye-icon.svg' : '/icons/invisible-eye-icon.svg'
 
       return (
-        <div className="form__eye-icon" onClick={handlePasswordToggle}>
+        <div className="form__icon-eye" onClick={handlePasswordToggle}>
           <Image src={imageSelected} height={17} width={21} />
         </div>
       )

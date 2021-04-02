@@ -136,9 +136,9 @@
     }
   }
 
-  &__eye-icon {
+  &__icon-eye {
     position: absolute;
-    top: 0;
+    top: rem(8px);
     right: rem(16px);
 
     cursor: pointer;
