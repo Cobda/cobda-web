@@ -14,6 +14,17 @@
     align-items: center;
   }
 
+  &__input-full-name,
+  &__input-credential {
+    display: flex;
+    flex-direction: column;
+
+    @include respond-above('md') {
+      flex-direction: row;
+      gap: 10%;
+    }
+  }
+
   &__title {
     margin: 0;
   }
@@ -30,38 +41,28 @@
     }
   }
 
-  &__input-stack {
-    display: flex;
-    flex-direction: column;
+  &__input-full-name {
+    padding-bottom: rem(32px);
+    border-bottom: solid 1px $silver;
+    margin-bottom: rem(32px);
 
     @include respond-above('md') {
-      flex-direction: row;
-      gap: 10%;
+      padding-bottom: 0;
+      border: none;
+      margin-bottom: 0;
+    }
+  }
+
+  &__input-credential {
+    flex-wrap: wrap;
+    margin-bottom: rem(32px);
+
+    @include respond-above('md') {
+      margin-bottom: rem(48px);
     }
 
-    &--upper {
-      padding-bottom: rem(32px);
-      border-bottom: solid 1px $silver;
-      margin-bottom: rem(32px);
-
-      @include respond-above('md') {
-        padding-bottom: 0;
-        border: none;
-        margin-bottom: 0;
-      }
-    }
-
-    &--lower {
-      flex-wrap: wrap;
-      margin-bottom: rem(32px);
-
-      @include respond-above('md') {
-        margin-bottom: rem(48px);
-      }
-
-      @include respond-above('lg') {
-        margin-bottom: rem(64px);
-      }
+    @include respond-above('lg') {
+      margin-bottom: rem(64px);
     }
   }
 

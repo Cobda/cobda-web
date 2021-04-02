@@ -113,7 +113,7 @@ const Form = () => {
     })
 
     return (
-      <div className="form__input-stack form__input-stack--upper">
+      <div className="form__input-full-name">
         <TextField
           name="firstName"
           label={t('firstName')}
@@ -192,7 +192,7 @@ const Form = () => {
     })
 
     return (
-      <div className="form__input-stack form__input-stack--lower">
+      <div className="form__input-credential">
         <TextField
           name="username"
           label={t('username')}
