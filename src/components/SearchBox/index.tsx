@@ -11,7 +11,7 @@ const SearchBox = () => {
   const [isShow, setIsShow] = useState(false)
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const suggestions : string[] = ['Alabama','Alaska','American Samoa'];
+    const suggestions : string[] = ['Alabama','Alaska','American Samoa', 'Bubble Holmes', 'Contra Hits', 'Amazon'];
     const searchValue = event.currentTarget.value
     const newFilteredSuggestions = suggestions.filter(
       (suggestion: string) =>
@@ -28,6 +28,7 @@ const SearchBox = () => {
     setFiltered([])
     setIsShow(false)
     setSearchValue(event.currentTarget.innerText)
+    handleSearchClick()
   }
 
   const handleSearchClick = () => {
@@ -54,7 +55,7 @@ const SearchBox = () => {
     if (isShow && searchValue) {
       if (filtered.length) {
         return (
-          <ul className="home-search-suggestion__autocomplete">
+          <ul className="home-search__box__autocomplete">
             {filtered.map((suggestion, index) => {
               let className
               if (index === active) {
@@ -70,7 +71,7 @@ const SearchBox = () => {
         )
       } else {
         return (
-          <div className="home-search-suggestion__no-autocomplete">
+          <div className="home-search__box__autocomplete__not-found">
             <em>Not found</em>
           </div>
         )
@@ -80,7 +81,7 @@ const SearchBox = () => {
   }
 
   return (
-    <>
+    <div className="home-search__box">
     <div className="home-search-box">
       <input
         type="search"
@@ -94,10 +95,8 @@ const SearchBox = () => {
       />
       <button onClick={handleSearchClick} className="home-search-box__button" />
     </div>
-    <div className="home-search-suggestion">
-      {renderAutocomplete()}
+    {renderAutocomplete()}
     </div>
-    </>
   )
 }
 
