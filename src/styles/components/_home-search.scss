@@ -86,7 +86,6 @@
     top: 0%;
 
     width: 100%;
-    height: rem(500px);
 
     @include flex-center();
 
@@ -99,7 +98,7 @@
     &__autocomplete,
     &__autocomplete__not-found {
       position: absolute;
-      top: 53%;
+      top: 105%;
       left: 10%;
 
       width: 80%;
@@ -119,12 +118,7 @@
       text-overflow: ellipsis;
       line-height: 1.23;
 
-      @include respond-above('sm') {
-        top: 54.5%;
-      }
-
       @include respond-above('md') {
-        top: 57%;
         left: 5%;
 
         width: 90%;
@@ -132,15 +126,12 @@
       }
 
       @include respond-above('lg') {
-        top: 61%;
-
         max-height: rem(250px);
       }
 
       &__not-found {
         height: 10px;
         padding: 10px 0px;
-        padding-block-end: 0px;
 
         color: $secondary;
 
@@ -156,6 +147,7 @@
         @include respond-above('md') {
           height: rem(20px);
           padding: rem(15px) 0px;
+          padding-block-end: 0px;
 
           font-size: rem(16px);
         }
