@@ -29,19 +29,20 @@ $breakpoints: (
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px,
+  xl: 1200px
 );
 
 // Z-index
 $zindex-dropdown: 1000 !default;
 $zindex-sticky: 1020 !default;
 $zindex-fixed: 1030 !default;
-$zindex-modal-backdrop: 1040 !default;
-$zindex-modal: 1050 !default;
-$zindex-popover: 1060 !default;
-$zindex-tooltip: 1070 !default;
-$zindex-hamburger-input: 1080 !default;
-$zindex-navbar: 1090 !default;
+$zindex-logo: 1040 !default;
+$zindex-hamburger-input: 1040 !default;
+$zindex-navbar: 1040 !default;
+$zindex-modal-backdrop: 1050 !default;
+$zindex-modal: 1060 !default;
+$zindex-popover: 1070 !default;
+$zindex-tooltip: 1080 !default;
 
 // Shadows
 $popular-item-shadow: hsla(0, 0%, 27%, 0.03);
@@ -51,14 +52,14 @@ $footer-height: (
   sm: rem(200px),
   md: rem(200px),
   lg: rem(300px),
-  xl: rem(350px),
+  xl: rem(350px)
 );
 
 $header-height: (
   sm: rem(56px),
   md: rem(80px),
   lg: rem(96px),
-  xl: rem(120px),
+  xl: rem(120px)
 );
 
 // Components width
@@ -70,9 +71,9 @@ $account-sidebar-template-column-min-lg: rem(330px);
 $account-sidebar-template-column-max-lg: rem(434px);
 $account-sidebar-template-column-min-xl: rem(402px);
 $account-sidebar-template-column-max-xl: rem(468px);
-$account-main-template-column-min-lg: rem(630px); 
+$account-main-template-column-min-lg: rem(630px);
 $account-main-template-column-max-lg: rem(734px);
-$account-main-template-column-min-xl: rem(702px); 
+$account-main-template-column-min-xl: rem(702px);
 $account-main-template-column-max-xl: rem(876px);
-$primary-template-column-min-xl: rem(1104px); 
+$primary-template-column-min-xl: rem(1104px);
 $primary-template-column-max-xl: rem(1440px);

@@ -10,7 +10,7 @@ const NavbarMenu = () => {
   const pathNames = ['home', 'product', 'aboutUs']
   const { t } = useTranslation('common')
 
-  const menuItems = (routerPath: string) =>
+  const renderMenuItems = (routerPath: string) =>
     paths.map((path, index) => {
       const linkClassName: string =
         path === routerPath
@@ -25,7 +25,7 @@ const NavbarMenu = () => {
     })
 
   return pathname ? (
-    <ul className="navbar__menu">{menuItems(pathname)}</ul>
+    <ul className="navbar__menu">{renderMenuItems(pathname)}</ul>
   ) : (
     <></>
   )

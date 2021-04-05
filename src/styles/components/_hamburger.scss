@@ -21,10 +21,12 @@
       background: $dark;
 
       transform-origin: rem(4px 0px);
-      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+
+      @include transition(transform, 0.55s, ease);
+      @include transition(cubic-bezier(0.77, 0.2, 0.05, 1) opacity, 0.5s, ease);
     }
   }
-  
+
   & span:nth-child(3) {
     width: rem(16px);
   }
@@ -88,7 +90,7 @@
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */
 
-    -webkit-transition: opacity 0.25s ease-in-out;
+    @include transition(opacity, 0.25s, ease-in-out);
   }
 
   &__menu-list {

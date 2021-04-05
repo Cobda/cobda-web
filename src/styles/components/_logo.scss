@@ -1,4 +1,5 @@
 .logo {
+  z-index: $zindex-logo;
   color: $dark;
   font-size: rem(24px);
   font-weight: bold;
