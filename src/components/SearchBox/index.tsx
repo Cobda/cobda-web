@@ -44,11 +44,7 @@ const SearchBox = () => {
       setIsShow(false)
       setSearchValue(filtered[active])
       handleSearchClick()
-    } else if (event.key === 'Up') {
-      return active === 0 ? null : setActive(active - 1)
-    } else if (event.key === 'Down') {
-      return active - 1 === filtered.length ? null : setActive(active + 1)
-    }
+    } 
   }
 
   const renderAutocomplete = () => {
@@ -87,8 +83,7 @@ const SearchBox = () => {
         type="search"
         value={searchValue}
         onChange={handleInputChange}
-        onKeyUp={handleKeyPress}
-        onKeyDown={handleKeyPress}
+        onKeyPress={handleKeyPress}
         placeholder={t('searchPlaceholder')}
         name="search"
         className="home-search-box__input"
