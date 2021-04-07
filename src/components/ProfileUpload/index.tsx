@@ -10,22 +10,19 @@ const ProfileUpload = ({ onUpload }: ProfileUpload) => {
   const [selectedImageUrl, setSelectedImageUrl] = useState<string>('')
   const { t } = useTranslation('sign-up')
 
-  const handleInputChange = (
-    setProfileImage: (image: string) => void,
-    setProfileUploaded: (isUploaded: boolean) => void
-  ) => (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target
     const hasSingleFile: boolean = files?.length === 1
 
     if (files && hasSingleFile) {
       const [selectedFile] = files
       const imageUrl: string = URL.createObjectURL(selectedFile)
-      setProfileImage(imageUrl)
-      setProfileUploaded(true)
+      setSelectedImageUrl(imageUrl)
+      onUpload(true)
     }
   }
 
-  const renderProfileImage = (imageUrl: string) => {
+  const renderProfileImage = () => {
     const defaultProfileImage: ReactNode = (
       <img
         className="profile-upload__image"
@@ -37,21 +34,17 @@ const ProfileUpload = ({ onUpload }: ProfileUpload) => {
       <>
         <img
           className="profile-upload__image profile-upload__image--selected"
-          src={imageUrl}
+          src={selectedImageUrl}
           alt="Uploaded Profile Image"
         />
-        <img
-          className="profile-upload__icon"
-          src="/icons/pencil.svg"
-          alt="Profile Image Edit Icon"
-        />
+        <img className="profile-upload__icon" src="/icons/pencil.svg" alt="Profile Image Edit Icon" />
       </>
     )
 
     return selectedImageUrl ? selectedProfileImage : defaultProfileImage
   }
 
-  const renderProfileUpload = (selectedImageUrl: string, profileImage: ReactNode) => {
+  const renderProfileUpload = () => {
     const labelClassName: string = selectedImageUrl
       ? 'profile-upload__label profile-upload__label--selected'
       : 'profile-upload__label'
@@ -62,16 +55,16 @@ const ProfileUpload = ({ onUpload }: ProfileUpload) => {
           className="profile-upload__input"
           accept="image/png, image/jpeg"
           type="file"
-          onChange={handleInputChange(setSelectedImageUrl, onUpload)}
+          onChange={handleInputChange}
         />
-        {profileImage}
+        {renderProfileImage()}
       </label>
     )
   }
 
   return (
     <figure className="profile-upload">
-      {renderProfileUpload(selectedImageUrl, renderProfileImage(selectedImageUrl))}
+      {renderProfileUpload()}
       <figcaption className="profile-upload__caption">
         <Trans i18nKey={t('profileImageCaution')} components={[<span />]} />
       </figcaption>

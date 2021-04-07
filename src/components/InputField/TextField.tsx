@@ -11,11 +11,10 @@ interface TextField {
 }
 
 const TextField = ({ name, label, placeholder, inputType, errorMessage, onChange, inputRef }: TextField) => {
-  const renderInput = (errorMessage: string) => {
+  const renderInput = () => {
     const inputClassName: string = errorMessage ? 'form__input form__input--invalid' : 'form__input'
 
-    const renderErrorMessage = (errorMessage: string) =>
-      errorMessage ? <div className="form__help">{errorMessage}</div> : <></>
+    const renderErrorMessage = () => (errorMessage ? <div className="form__help">{errorMessage}</div> : <></>)
 
     return (
       <>
@@ -27,7 +26,7 @@ const TextField = ({ name, label, placeholder, inputType, errorMessage, onChange
           onChange={onChange}
           ref={inputRef}
         />
-        {renderErrorMessage(errorMessage)}
+        {renderErrorMessage()}
       </>
     )
   }
@@ -35,7 +34,7 @@ const TextField = ({ name, label, placeholder, inputType, errorMessage, onChange
   return (
     <div className="form__input-group">
       <label className="form__input-label">{label}</label>
-      {renderInput(errorMessage)}
+      {renderInput()}
     </div>
   )
 }
