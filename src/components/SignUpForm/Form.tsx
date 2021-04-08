@@ -26,7 +26,7 @@ const initialInputValue: FormInput = {
 const Form = () => {
   const [isProfileUploaded, setProfileUploaded] = useState<boolean>(false)
   const [isRecaptchaVerified, setRecaptchaVerified] = useState<boolean>(false)
-  const { register, handleSubmit, setValue, watch, errors } = useForm<FormInput>({
+  const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
     mode: 'onChange',
     defaultValues: initialInputValue
   })
@@ -69,9 +69,11 @@ const Form = () => {
     router.push('/sign-up-success')
   }
 
-  const getErrorMessage = (inputKey: keyof FormInput): string => {
+  const getErrorMessage = (inputKey: keyof FormInput, startValidationIndex: number): string => {
     const errorMessage: string | undefined = errors[inputKey]?.message
-    return errorMessage ? errorMessage : ''
+    const isErrorDisplayed: boolean | undefined = getValues()[inputKey]?.length >= startValidationIndex
+
+    return errorMessage && isErrorDisplayed ? errorMessage : ''
   }
 
   const renderProfileUpload = () => (
@@ -81,6 +83,7 @@ const Form = () => {
   )
 
   const renderFullNameInput = () => {
+    const NAME_VALIDATION_INDEX = 1
     const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
 
     const getNameReference: (ref: HTMLInputElement) => void = register({
@@ -101,7 +104,7 @@ const Form = () => {
           label={t('firstName')}
           inputType="text"
           placeholder={t('firstNamePlaceholder')}
-          errorMessage={getErrorMessage('firstName')}
+          errorMessage={getErrorMessage('firstName', NAME_VALIDATION_INDEX)}
           onChange={handleInputChange}
           inputRef={getNameReference}
         />
@@ -110,7 +113,7 @@ const Form = () => {
           label={t('lastName')}
           inputType="text"
           placeholder={t('lastNamePlaceholder')}
-          errorMessage={getErrorMessage('lastName')}
+          errorMessage={getErrorMessage('lastName', NAME_VALIDATION_INDEX)}
           onChange={handleInputChange}
           inputRef={getNameReference}
         />
@@ -121,6 +124,7 @@ const Form = () => {
   const renderCredentialInput = () => {
     const MINIMUM_USERNAME_LENGTH: number = 6
     const MINIMUM_PASSWORD_LENGTH: number = 8
+    const CREDENTIAL_VALIDATION_INDEX: number = 4
     const USERNAME_PATTERN_VALUE: RegExp = new RegExp(/^(?![_.])(?!.*[_.]{2})[\u0E00-\u0E7Fa-zA-Z0-9._]+(?<![_.])$/)
     const EMAIL_PATTERN_VALUE: RegExp = new RegExp(/\S+@\S+\.\S+/)
     const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z])/)
@@ -176,7 +180,7 @@ const Form = () => {
           label={t('username')}
           inputType="text"
           placeholder={t('usernamePlaceholder')}
-          errorMessage={getErrorMessage('username')}
+          errorMessage={getErrorMessage('username', CREDENTIAL_VALIDATION_INDEX)}
           onChange={handleInputChange}
           inputRef={getUsernameReference}
         />
@@ -185,7 +189,7 @@ const Form = () => {
           label={t('email')}
           inputType="text"
           placeholder={t('emailPlaceholder')}
-          errorMessage={getErrorMessage('email')}
+          errorMessage={getErrorMessage('email', CREDENTIAL_VALIDATION_INDEX)}
           onChange={handleInputChange}
           inputRef={getEmailReference}
         />
@@ -193,7 +197,7 @@ const Form = () => {
           name="password"
           label={t('password')}
           placeholder={t('passwordPlaceholder')}
-          errorMessage={getErrorMessage('password')}
+          errorMessage={getErrorMessage('password', CREDENTIAL_VALIDATION_INDEX)}
           onChange={handleInputChange}
           inputRef={getPasswordReference}
         />
@@ -203,7 +207,7 @@ const Form = () => {
 
   const renderActionable = () => {
     const hasInputError: boolean = Object.keys(errors).length > 0
-    const isFormSubmitDisabled = !isRecaptchaVerified || !isProfileUploaded || hasInputError
+    const isFormSubmitDisabled: boolean = !isRecaptchaVerified || !isProfileUploaded || hasInputError
 
     const handleRecaptchaChange = () => {
       setRecaptchaVerified((previousState) => !previousState)

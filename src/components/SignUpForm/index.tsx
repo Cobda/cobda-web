@@ -6,20 +6,20 @@ import useTranslation from 'next-translate/useTranslation'
 const SignUpForm = () => {
   const { t } = useTranslation('sign-up')
 
-  const renderFormHeader = () => (
+  const renderHeader = () => (
     <header className="sign-up-form__header">
       <h3 className="sign-up-form__title">{t('register')}</h3>
       <h4 className="sign-up-form__subtitle">{t('personalDetails')}</h4>
     </header>
   )
 
-  const renderFormBody = () => (
+  const renderBody = () => (
     <div className="sign-up-form__body">
       <Form />
     </div>
   )
 
-  const renderFormFooter = () => (
+  const renderFooter = () => (
     <footer className="sign-up-form__footer">
       <div className="sign-up-form__footer-item">
         <p className="sign-up-form__description">{t('alreadyHaveAccount')}</p>
@@ -32,9 +32,9 @@ const SignUpForm = () => {
 
   return (
     <section className="sign-up-form">
-      {renderFormHeader()}
-      {renderFormBody()}
-      {renderFormFooter()}
+      {renderHeader()}
+      {renderBody()}
+      {renderFooter()}
     </section>
   )
 }
