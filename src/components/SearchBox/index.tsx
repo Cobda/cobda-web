@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
 
@@ -8,32 +8,44 @@ const SearchBox = () => {
   const [searchValue, setSearchValue] = useState<string>('')
   const [active, setActive] = useState(0)
   const [filtered, setFiltered] = useState<string[]>([])
-  const [isShow, setIsShow] = useState(false)
+  const [isShown, setIsShown] = useState(false)
+  const node = React.createRef<HTMLDivElement>()
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const suggestions : string[] = ['Alabama','Alaska','American Samoa', 'Bubble Holmes', 'Contra Hits', 'Amazon'];
-    const searchValue = event.currentTarget.value
+    //TODO: This below data should be obtained from database
+    const suggestions: string[] = [
+      'Alabama',
+      'Alaska',
+      'American Samoa',
+      'Bubble Holmes',
+      'Contra Hits',
+      'Amazon',
+    ]
+    const {
+      currentTarget: { value },
+    } = event
     const newFilteredSuggestions = suggestions.filter(
       (suggestion: string) =>
-        suggestion.toLowerCase().indexOf(searchValue.toLowerCase()) > -1
+        suggestion.toLowerCase().indexOf(value.toLowerCase()) > -1
     )
+
     setActive(0)
     setFiltered(newFilteredSuggestions)
-    setIsShow(true)
-    setSearchValue(event.currentTarget.value)
+    setIsShown(true)
+    setSearchValue(value)
   }
 
   const handleListClick = (event: React.MouseEvent<HTMLLIElement>) => {
     setActive(0)
     setFiltered([])
-    setIsShow(false)
+    setIsShown(false)
     setSearchValue(event.currentTarget.innerText)
     handleSearchClick()
   }
 
   const handleSearchClick = () => {
     if (searchValue) {
-      router.push('products/${searchValue}')
+      router.push(`products/${searchValue}`)
       setSearchValue('')
     }
   }
@@ -41,57 +53,57 @@ const SearchBox = () => {
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       setActive(0)
-      setIsShow(false)
+      setIsShown(false)
       setSearchValue(filtered[active])
       handleSearchClick()
-    } 
+    }
   }
 
   const renderAutocomplete = () => {
-    if (isShow && searchValue) {
-      if (filtered.length) {
-        return (
-          <ul className="home-search__box__autocomplete">
-            {filtered.map((suggestion, index) => {
-              let className
-              if (index === active) {
-                className = 'active'
-              }
-              return (
-                <li className={className} key={suggestion} onClick={handleListClick}>
-                  {suggestion}
-                </li>
-              )
-            })}
-          </ul>
-        )
-      } else {
-        return (
-          <div className="home-search__box__autocomplete__not-found">
-            <em>Not found</em>
-          </div>
-        )
-      }
+    if (!isShown) {
+      return <></>
     }
-    return <></>
+
+    const filterResults = filtered.map((suggestion, index) => {
+      let className = index === active ? 'active' : ''
+
+      return (
+        <li className={className} key={suggestion} onClick={handleListClick}>
+          {suggestion}
+        </li>
+      )
+    })
+
+    return filtered.length ? (
+      <ul className="home-search-suggestion__autocomplete">{filterResults}</ul>
+    ) : (
+      <div className="home-search-suggestion__not-found">
+        <em>Not found</em>
+      </div>
+    )
   }
 
   return (
-    <div className="home-search__box">
-    <div className="home-search-box">
-      <input
-        type="search"
-        value={searchValue}
-        onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
-        placeholder={t('searchPlaceholder')}
-        name="search"
-        className="home-search-box__input"
-      />
-      <button onClick={handleSearchClick} className="home-search-box__button" />
-    </div>
-    {renderAutocomplete()}
-    </div>
+    <>
+      <div className="home-search-box">
+        <input
+          type="search"
+          value={searchValue}
+          onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
+          placeholder={t('searchPlaceholder')}
+          name="search"
+          className="home-search-box__input"
+        />
+        <button
+          onClick={handleSearchClick}
+          className="home-search-box__button"
+        />
+      </div>
+      <div className="home-search-suggestion" ref={node}>
+        {renderAutocomplete()}
+      </div>
+    </>
   )
 }
 
