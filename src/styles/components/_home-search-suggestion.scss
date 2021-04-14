@@ -1,0 +1,128 @@
+.home-search-suggestion {
+  &__autocomplete,
+  &__not-found {
+    all: unset;
+    position: absolute;
+    top: 105%;
+    left: 10%;
+
+    width: 80%;
+    max-height: rem(120px);
+    padding-block-end: 1rem;
+    overflow-y: auto;
+
+    box-shadow: rem(5px 10px 20px) 0 box-shadow-opacity(0.16);
+    background-color: $light;
+
+    font-size: rem(14px);
+    list-style: none;
+    text-overflow: ellipsis;
+    line-height: 1.23;
+
+    @include respond-above('md') {
+      left: 5%;
+
+      width: 90%;
+      max-height: rem(150px);
+    }
+
+    @include respond-above('lg') {
+      max-height: rem(250px);
+    }
+  }
+
+  &__not-found {
+    height: 10px;
+    padding: 10px 0px;
+
+    color: $secondary;
+
+    font-size: rem(10px);
+
+    @include respond-above('sm') {
+      height: rem(15px);
+      padding: rem(10px) 0px;
+
+      font-size: rem(12px);
+    }
+
+    @include respond-above('md') {
+      height: rem(20px);
+      padding: rem(15px) 0px;
+
+      font-size: rem(16px);
+    }
+
+    @include respond-above('lg') {
+      padding: rem(20px) 0px;
+
+      font-size: rem(20px);
+    }
+  }
+
+  &__not-found > em {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    margin-left: rem(10px);
+
+    @include respond-above('sm') {
+      margin-left: rem(20px);
+    }
+    @include respond-above('md') {
+      margin-left: rem(40px);
+    }
+
+    @include respond-above('lg') {
+      margin-left: rem(60px);
+    }
+  }
+
+  &__autocomplete > li {
+    padding: rem(5px 10px);
+
+    @include respond-above('sm') {
+      padding: rem(6px 20px);
+
+      font-size: rem(16px);
+    }
+
+    @include respond-above('md') {
+      padding: rem(12px 40px);
+
+      font-size: rem(20px);
+    }
+
+    @include respond-above('lg') {
+      padding: rem(20px 60px);
+
+      font-size: rem(24px);
+    }
+  }
+
+  &__autocomplete > li:first-child {
+    padding-top: rem(10px);
+
+    @include respond-above('sm') {
+      padding-top: rem(20px);
+    }
+
+    @include respond-above('md') {
+      padding-top: rem(25px);
+    }
+
+    @include respond-above('lg') {
+      padding-top: rem(30px);
+    }
+  }
+
+  &__autocomplete > active,
+  &__autocomplete > li:hover {
+    cursor: pointer;
+
+    font-weight: 300;
+
+    background-color: $primary;
+  }
+}
