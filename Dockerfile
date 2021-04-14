@@ -39,7 +39,10 @@ FROM node:current-alpine AS runner
 WORKDIR /app
 
 # Copy files from build stage to production stage
-COPY --from=builder /build/package*.json /build/node_modules /build/.next /build/public ./
+COPY --from=builder /build/node_modules ./node_modules
+COPY --from=builder /build/package*.json ./
+COPY --from=builder /build/.next ./.next
+COPY --from=builder /build/public ./public
 
 # Expose the listening port
 EXPOSE 3000
