@@ -1,16 +1,22 @@
 .logo {
   z-index: $zindex-logo;
+  padding-left: rem(24px);
   color: $dark;
-  font-size: rem(24px);
   font-weight: bold;
   letter-spacing: rem(4px);
   text-decoration: none;
 
   @include respond-above('md') {
+    padding-left: rem(24px);
     font-size: rem(32px);
   }
 
   @include respond-above('lg') {
+    padding-left: rem(32px);
     font-size: rem(36px);
+  }
+  
+  @include respond-above('xl') {
+    padding-left: rem(48px);
   }
 }

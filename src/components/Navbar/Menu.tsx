@@ -6,8 +6,8 @@ import useTranslation from 'next-translate/useTranslation'
 const NavbarMenu = () => {
   const router = useRouter()
   const { pathname } = router
-  const paths = ['/', '/products', '/about-us']
-  const pathNames = ['home', 'product', 'aboutUs']
+  const paths: string[] = ['/', '/products', '/about-us']
+  const pathNames: string[] = ['home', 'product', 'aboutUs']
   const { t } = useTranslation('common')
 
   const renderMenuItems = (routerPath: string) =>

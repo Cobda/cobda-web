@@ -2,17 +2,15 @@ import React from 'react'
 import NavbarLogo from '../Logo'
 import NavbarMenu from './Menu'
 import NavbarTool from './Tool'
-import Hamburger from './Hamburger'
+import NavbarHamburger from './Hamburger'
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <div className="navbar__container">
-        <Hamburger />
+        <NavbarHamburger />
         <NavbarLogo />
         <NavbarMenu />
         <NavbarTool />
-      </div>
     </nav>
   )
 }

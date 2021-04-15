@@ -1,6 +1,6 @@
 .hamburger {
   position: absolute;
-  left: rem(16px);
+  // left: rem(16px);
   width: 100%;
 
   @include respond-above('md') {
@@ -8,6 +8,7 @@
   }
 
   &__container {
+    padding-left: rem(16px);
     user-select: none;
 
     > span {
@@ -40,7 +41,6 @@
     position: absolute;
     z-index: $zindex-hamburger-input;
 
-    display: block;
     width: rem(24px);
     height: 100%;
     margin: 0;
@@ -57,6 +57,10 @@
 
     &:checked ~ .hamburger__menu {
       opacity: 1;
+      // display: block;
+      > li > a {
+        pointer-events: visible;
+      }
     }
 
     &:checked ~ span {
@@ -76,24 +80,30 @@
 
   &__menu {
     position: absolute;
+    // display: none;
 
-    display: block;
     box-sizing: border-box;
     box-shadow: 0 rem(2px 2px) 0 box-shadow-opacity(0.16);
     width: 100%;
     padding: rem(32px) rem(60px);
     margin: 0 0 0 rem(-16px);
     opacity: 0;
+    overflow: hidden;
 
     background-color: $light;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
+    -webkit-touch-callout: none;
     /* to stop flickering of text in safari */
+
+    > li > a {
+      pointer-events: none;
+    }
 
     @include transition(opacity, 0.25s, ease-in-out);
   }
 
-  &__menu-list {
+  &__menu-item {
     box-sizing: border-box;
     padding: rem(16px) 0;
 
@@ -102,10 +112,10 @@
     }
   }
 
-  &__menu-link {
+  &__link {
     color: $dark;
-    text-decoration: none;
     font-size: rem(16px);
+    text-decoration: none;
 
     /* Prevent font scaling in landscape while allowing user zoom */
     -webkit-text-size-adjust: 100%;

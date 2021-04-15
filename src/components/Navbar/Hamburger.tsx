@@ -2,10 +2,10 @@ import React from 'react'
 import Link from 'next/link'
 import useTranslation from 'next-translate/useTranslation'
 
-const Hamburger = () => {
-  const paths = ['/products', '/about-us', '/sign-in', '/']
-  // TODO link to sign up page when done modal //
-  const HamburgerMenuItems = ['product', 'aboutUs', 'signIn', 'signUp']
+const NavbarHamburger = () => {
+  const paths: string[] = ['/products', '/about-us', '', '/sign-up']
+  // TODO link to sign-in when done modal //
+  const hamburgerMenuItems: string[] = ['product', 'aboutUs', 'signIn', 'signUp']
   const { t } = useTranslation('common')
 
   const renderHamburgerIcon = () => (
@@ -18,9 +18,9 @@ const Hamburger = () => {
 
   const renderHamburgerMenu = () =>
     paths.map((path, index) => (
-      <li className="hamburger__menu-list">
+      <li className="hamburger__menu-item" key={index}>
         <Link href={path}>
-          <a className="hamburger__menu-link">{t(HamburgerMenuItems[index])}</a>
+          <a className="hamburger__link">{t(hamburgerMenuItems[index])}</a>
         </Link>
       </li>
     ))
@@ -28,7 +28,7 @@ const Hamburger = () => {
   return (
     <div className="hamburger">
       <div className="hamburger__container">
-        <input type="checkbox" className="hamburger__input" />
+        <input className="hamburger__input" type="checkbox" />
         {renderHamburgerIcon()}
         <ul className="hamburger__menu">{renderHamburgerMenu()}</ul>
       </div>
@@ -36,4 +36,4 @@ const Hamburger = () => {
   )
 }
 
-export default Hamburger
+export default NavbarHamburger
