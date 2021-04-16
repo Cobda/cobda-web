@@ -15,7 +15,7 @@
   }
 
   @include respond-above('lg') {
-    grid-template-columns: minmax(250px, 400px) minmax(742px, 1fr);
+    grid-template-columns: minmax(200px, 270px) minmax(742px, 1fr);
     grid-template-rows: map-get($header-height, 'lg') 1fr map-get($footer-height, 'lg');
     grid-template-areas:
     'header header'
@@ -41,6 +41,7 @@
 
   & > main {
     grid-area: main;
+    background-color: $alabaster;
 
     padding: rem(24px 16px);
 
@@ -49,7 +50,7 @@
     }
 
     @include respond-above('lg') {
-      padding: 5% 10%;
+      padding: 5% 3.5%;
     }
   }
 

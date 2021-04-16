@@ -1,12 +1,11 @@
 @import '../abstracts/_abstracts-dir';
 
 .product-list {
-  background-color: $shuttle-gray;
   padding: rem(16px);
   box-sizing: border-box;
 
   @include respond-above('lg') {
-    padding: rem(24px);
+    padding: rem(24px 24px 24px 0);
   }
 
   &__title {
