@@ -1,0 +1,15 @@
+{
+  "registerProduct": "Register Product",
+  "name": "Name",
+  "price": "Price",
+  "color": "Color",
+  "size": "Size",
+  "submit": "SUBMIT",
+  "namePlaceholder": "Enter your product name",
+  "pricePlaceholder": "Enter your product price",
+  "colorPlaceholder": "Enter your product color",
+  "sizePlaceholder": "Enter your product size",
+  "inputValueRequired": "This field is required.",
+  "inputImproperName": "Please use proper name.",
+  "profileImageCaution": "<0>Maximum file size 1.5 MB</0>JPG & PNG only"
+}

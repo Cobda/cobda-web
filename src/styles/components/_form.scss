@@ -68,10 +68,6 @@
   &__input-group {
     position: relative;
 
-    @include respond-above('md') {
-      width: 45%;
-    }
-
     &:not(:last-child) {
       margin-bottom: rem(24px);
 
@@ -81,6 +77,12 @@
 
       @include respond-above('lg') {
         margin-bottom: rem(50px);
+      }
+    }
+
+    &--half {
+      @include respond-above('md') {
+        width: 45%;
       }
     }
   }

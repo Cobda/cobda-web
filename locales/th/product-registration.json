@@ -1,0 +1,15 @@
+{
+  "registerProduct": "ลงทะเบียนสินค้าของคุณ",
+  "name": "ชื่อสินค้า",
+  "price": "ราคาที่เหมาะสม",
+  "color": "สี",
+  "size": "ขนาด",
+  "submit": "ลงขายสินค้า",
+  "namePlaceholder": "ป้อนชื่อสินค้าของคุณ",
+  "pricePlaceholder": "ป้อนราคาสินค้าของคุณ",
+  "colorPlaceholder": "ป้อนสีสินค้าของคุณ",
+  "sizePlaceholder": "ป้อนขนาดสินค้าของคุณ",
+  "inputValueRequired": "กรุณากรอกข้อมูลให้ครบถ้วน",
+  "inputImproperName": "กรุณากรอกข้อมูลลงในช่องว่างให้ถูกต้อง",
+  "profileImageCaution": "<0>ขนาดห้ามเกิน 1.5 MB</0>รองรับประเภทไฟล์ JPG & PNG เท่านั้น"
+}

@@ -8,6 +8,7 @@
     "/products": ["products"],
     "/products/[id]": ["product-view"],
     "/sign-up": ["sign-up"],
-    "/sign-up-success": ["sign-up-success"]
+    "/sign-up-success": ["sign-up-success"],
+    "/product-registration": ["product-registration"]
   }
 }
