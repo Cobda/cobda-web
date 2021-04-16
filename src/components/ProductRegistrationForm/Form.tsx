@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import ProfileUpload from '../ProfileUpload'
+import { useForm } from 'react-hook-form'
 import TextField from '../InputField/TextField'
 import useTranslation from 'next-translate/useTranslation'
-import { useForm } from 'react-hook-form'
+import ImageUpload from '../ImageUpload'
 
 interface FormInput {
   readonly name: string
@@ -20,7 +20,7 @@ const initialInputValue: FormInput = {
 }
 
 const Form = () => {
-  const [isProfileUploaded, setProfileUploaded] = useState<boolean>(false)
+  const [isProductUploaded, setProductUploaded] = useState<boolean>(false)
   const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
     mode: 'onChange',
     defaultValues: initialInputValue
@@ -30,14 +30,14 @@ const Form = () => {
 
   useEffect(() => {
     const handleWindowClose = (event: BeforeUnloadEvent) => {
-      if (isProfileUploaded) {
+      if (isProductUploaded) {
         event.preventDefault()
         event.returnValue = t('warningText')
       }
     }
 
     const handleBrowseAway = () => {
-      if (isProfileUploaded && !window.confirm(t('warningText'))) {
+      if (isProductUploaded && !window.confirm(t('warningText'))) {
         router.events.emit('routeChangeError')
         throw 'routeChange aborted.'
       }
@@ -51,7 +51,7 @@ const Form = () => {
       window.removeEventListener('beforeunload', handleWindowClose)
       router.events.off('routeChangeStart', handleBrowseAway)
     }
-  }, [isProfileUploaded])
+  }, [isProductUploaded])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
@@ -60,12 +60,12 @@ const Form = () => {
 
   const handleFormSubmit = (value: FormInput) => {
     // TODO: Send POST request to backend
-    setProfileUploaded(false)
+    setProductUploaded(false)
   }
 
   const renderProductUpload = () => (
     <div className="form__profile">
-      <ProfileUpload onUpload={setProfileUploaded} />
+      <ImageUpload />
     </div>
   )
 
@@ -135,7 +135,7 @@ const Form = () => {
 
   const renderSubmitButton = () => {
     const hasInputError: boolean = Object.keys(errors).length > 0
-    const isFormSubmitDisabled: boolean = !isProfileUploaded || hasInputError
+    const isFormSubmitDisabled: boolean = !isProductUploaded || hasInputError
 
     return (
       <div className="form__actionable">
