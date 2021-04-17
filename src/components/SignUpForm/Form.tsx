@@ -23,6 +23,15 @@ const initialInputValue: FormInput = {
   password: ''
 }
 
+const NAME_VALIDATION_INDEX = 1
+const CREDENTIAL_VALIDATION_INDEX: number = 4
+const MINIMUM_USERNAME_LENGTH: number = 6
+const MINIMUM_PASSWORD_LENGTH: number = 8
+const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
+const USERNAME_PATTERN_VALUE: RegExp = new RegExp(/^(?![_.])(?!.*[_.]{2})[\u0E00-\u0E7Fa-zA-Z0-9._]+(?<![_.])$/)
+const EMAIL_PATTERN_VALUE: RegExp = new RegExp(/\S+@\S+\.\S+/)
+const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z])/)
+
 const Form = () => {
   const [isProfileUploaded, setProfileUploaded] = useState<boolean>(false)
   const [isRecaptchaVerified, setRecaptchaVerified] = useState<boolean>(false)
@@ -83,9 +92,6 @@ const Form = () => {
   )
 
   const renderFullNameInput = () => {
-    const NAME_VALIDATION_INDEX = 1
-    const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
-
     const getNameReference: (ref: HTMLInputElement) => void = register({
       required: {
         value: true,
@@ -122,13 +128,6 @@ const Form = () => {
   }
 
   const renderCredentialInput = () => {
-    const MINIMUM_USERNAME_LENGTH: number = 6
-    const MINIMUM_PASSWORD_LENGTH: number = 8
-    const CREDENTIAL_VALIDATION_INDEX: number = 4
-    const USERNAME_PATTERN_VALUE: RegExp = new RegExp(/^(?![_.])(?!.*[_.]{2})[\u0E00-\u0E7Fa-zA-Z0-9._]+(?<![_.])$/)
-    const EMAIL_PATTERN_VALUE: RegExp = new RegExp(/\S+@\S+\.\S+/)
-    const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z])/)
-
     const getUsernameReference: (ref: HTMLInputElement) => void = register({
       required: {
         value: true,
