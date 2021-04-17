@@ -1,102 +1,233 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import ReCAPTCHA from 'react-google-recaptcha'
 import ProfileUpload from '../ProfileUpload'
 import TextField from '../InputField/TextField'
 import PasswordField from '../InputField/PasswordField'
 import useTranslation from 'next-translate/useTranslation'
+import { useForm } from 'react-hook-form'
 
 interface FormInput {
+  readonly email: string
   readonly firstName: string
   readonly lastName: string
-  readonly email: string
   readonly username: string
   readonly password: string
 }
 
 const initialInputValue: FormInput = {
-  username: '',
   email: '',
   firstName: '',
   lastName: '',
-  password: '',
+  username: '',
+  password: ''
 }
 
+const NAME_VALIDATION_INDEX = 1
+const CREDENTIAL_VALIDATION_INDEX: number = 4
+const MINIMUM_USERNAME_LENGTH: number = 6
+const MINIMUM_PASSWORD_LENGTH: number = 8
+const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
+const USERNAME_PATTERN_VALUE: RegExp = new RegExp(/^(?![_.])(?!.*[_.]{2})[\u0E00-\u0E7Fa-zA-Z0-9._]+(?<![_.])$/)
+const EMAIL_PATTERN_VALUE: RegExp = new RegExp(/\S+@\S+\.\S+/)
+const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z])/)
+
 const Form = () => {
-  const [inputValue, setInputValue] = useState<FormInput>(initialInputValue)
+  const [isProfileUploaded, setProfileUploaded] = useState<boolean>(false)
+  const [isRecaptchaVerified, setRecaptchaVerified] = useState<boolean>(false)
+  const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
+    mode: 'onChange',
+    defaultValues: initialInputValue
+  })
   const router = useRouter()
   const { t } = useTranslation('sign-up')
 
-  const handleSubmitClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
+  useEffect(() => {
+    const handleWindowClose = (event: BeforeUnloadEvent) => {
+      if (isProfileUploaded) {
+        event.preventDefault()
+        event.returnValue = t('warningText')
+      }
+    }
+
+    const handleBrowseAway = () => {
+      if (isProfileUploaded && !window.confirm(t('warningText'))) {
+        router.events.emit('routeChangeError')
+        throw 'routeChange aborted.'
+      }
+    }
+
+    watch()
+    window.addEventListener('beforeunload', handleWindowClose)
+    router.events.on('routeChangeStart', handleBrowseAway)
+
+    return () => {
+      window.removeEventListener('beforeunload', handleWindowClose)
+      router.events.off('routeChangeStart', handleBrowseAway)
+    }
+  }, [isProfileUploaded])
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target
+    setValue(name as keyof FormInput, value)
+  }
+
+  const handleFormSubmit = (value: FormInput) => {
+    // TODO: Send POST request to backend and verify if username is already taken
+    setProfileUploaded(false)
     router.push('/sign-up-success')
   }
 
-  const handleInputChange = (inputValue: FormInput) => (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const { name, value } = event.target
-    setInputValue({ ...inputValue, [name]: value })
+  const getErrorMessage = (inputKey: keyof FormInput, startValidationIndex: number): string => {
+    const errorMessage: string | undefined = errors[inputKey]?.message
+    const isErrorDisplayed: boolean | undefined = getValues()[inputKey]?.length >= startValidationIndex
+
+    return errorMessage && isErrorDisplayed ? errorMessage : ''
+  }
+
+  const renderProfileUpload = () => (
+    <div className="form__profile">
+      <ProfileUpload onUpload={setProfileUploaded} />
+    </div>
+  )
+
+  const renderFullNameInput = () => {
+    const getNameReference: (ref: HTMLInputElement) => void = register({
+      required: {
+        value: true,
+        message: t('inputValueRequired')
+      },
+      pattern: {
+        value: NAME_PATTERN_VALUE,
+        message: t('inputImproperName')
+      }
+    })
+
+    return (
+      <div className="form__input-full-name">
+        <TextField
+          name="firstName"
+          label={t('firstName')}
+          inputType="text"
+          placeholder={t('firstNamePlaceholder')}
+          errorMessage={getErrorMessage('firstName', NAME_VALIDATION_INDEX)}
+          onChange={handleInputChange}
+          inputRef={getNameReference}
+        />
+        <TextField
+          name="lastName"
+          label={t('lastName')}
+          inputType="text"
+          placeholder={t('lastNamePlaceholder')}
+          errorMessage={getErrorMessage('lastName', NAME_VALIDATION_INDEX)}
+          onChange={handleInputChange}
+          inputRef={getNameReference}
+        />
+      </div>
+    )
+  }
+
+  const renderCredentialInput = () => {
+    const getUsernameReference: (ref: HTMLInputElement) => void = register({
+      required: {
+        value: true,
+        message: t('inputValueRequired')
+      },
+      minLength: {
+        value: MINIMUM_USERNAME_LENGTH,
+        message: t('usernameCharactersMinimum')
+      },
+      pattern: {
+        value: USERNAME_PATTERN_VALUE,
+        message: t('inputImproperName')
+      }
+      // validate: {
+      //   TODO: Handle error when username is already taken
+      // }
+    })
+
+    const getEmailReference: (ref: HTMLInputElement) => void = register({
+      required: {
+        value: true,
+        message: t('inputValueRequired')
+      },
+      pattern: {
+        value: EMAIL_PATTERN_VALUE,
+        message: t('emailIncorrectFormat')
+      }
+    })
+
+    const getPasswordReference: (ref: HTMLInputElement) => void = register({
+      required: {
+        value: true,
+        message: t('inputValueRequired')
+      },
+      minLength: {
+        value: MINIMUM_PASSWORD_LENGTH,
+        message: t('passwordCharactersMinimum')
+      },
+      pattern: {
+        value: PASSWORD_PATTERN_VALUE,
+        message: t('passwordRequiredFormat')
+      }
+    })
+
+    return (
+      <div className="form__input-credential">
+        <TextField
+          name="username"
+          label={t('username')}
+          inputType="text"
+          placeholder={t('usernamePlaceholder')}
+          errorMessage={getErrorMessage('username', CREDENTIAL_VALIDATION_INDEX)}
+          onChange={handleInputChange}
+          inputRef={getUsernameReference}
+        />
+        <TextField
+          name="email"
+          label={t('email')}
+          inputType="text"
+          placeholder={t('emailPlaceholder')}
+          errorMessage={getErrorMessage('email', CREDENTIAL_VALIDATION_INDEX)}
+          onChange={handleInputChange}
+          inputRef={getEmailReference}
+        />
+        <PasswordField
+          name="password"
+          label={t('password')}
+          placeholder={t('passwordPlaceholder')}
+          errorMessage={getErrorMessage('password', CREDENTIAL_VALIDATION_INDEX)}
+          onChange={handleInputChange}
+          inputRef={getPasswordReference}
+        />
+      </div>
+    )
+  }
+
+  const renderActionable = () => {
+    const hasInputError: boolean = Object.keys(errors).length > 0
+    const isFormSubmitDisabled: boolean = !isRecaptchaVerified || !isProfileUploaded || hasInputError
+
+    const handleRecaptchaChange = () => {
+      setRecaptchaVerified((previousState) => !previousState)
+    }
+
+    return (
+      <div className="form__actionable">
+        <div className="form__recaptcha">
+          <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} onChange={handleRecaptchaChange} />
+        </div>
+        <input className="form__button" type="submit" value={t('register')} disabled={isFormSubmitDisabled} />
+      </div>
+    )
   }
 
   return (
-    <form className="form">
-      <header className="form__header">
-        <h2 className="form__title">Sign up</h2>
-      </header>
-      <ProfileUpload />
-      <TextField
-        name="username"
-        label={t('username')}
-        inputType="text"
-        inputValue={inputValue.username}
-        placeholder={t('usernamePlaceholder')}
-        errorMessage={t('usernameAlreadyUsed')}
-        onChange={handleInputChange(inputValue)}
-      />
-      <TextField
-        name="email"
-        label={t('email')}
-        inputType="email"
-        inputValue={inputValue.email}
-        placeholder={t('emailPlaceholder')}
-        errorMessage={t('emailIncorrectFormat')}
-        onChange={handleInputChange(inputValue)}
-      />
-      <PasswordField
-        name="password"
-        label={t('password')}
-        inputValue={inputValue.password}
-        placeholder={t('passwordPlaceholder')}
-        errorMessage={t('passwordRequiredFormat')}
-        onChange={handleInputChange(inputValue)}
-      />
-      <TextField
-        name="firstName"
-        label={t('firstName')}
-        inputType="text"
-        inputValue={inputValue.firstName}
-        placeholder={t('firstNamePlaceholder')}
-        errorMessage={t('inputImproperName')}
-        onChange={handleInputChange(inputValue)}
-      />
-      <TextField
-        name="lastName"
-        label={t('lastName')}
-        inputType="text"
-        inputValue={inputValue.lastName}
-        placeholder={t('lastNamePlaceholder')}
-        errorMessage={t('inputImproperName')}
-        onChange={handleInputChange(inputValue)}
-      />
-      <div className="form__recaptcha">
-        <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} />
-      </div>
-      <div className="form__actionable">
-        <button className="form__button" onClick={handleSubmitClick}>
-          Submit
-        </button>
-      </div>
+    <form className="form" onSubmit={handleSubmit(handleFormSubmit)}>
+      {renderProfileUpload()}
+      {renderFullNameInput()}
+      {renderCredentialInput()}
+      {renderActionable()}
     </form>
   )
 }

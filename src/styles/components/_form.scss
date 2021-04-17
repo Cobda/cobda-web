@@ -5,26 +5,22 @@
   flex-direction: column;
   box-sizing: border-box;
   width: 100%;
-  padding: 0 rem(16px);
 
-  @include respond-above('md') {
-    padding: 0 5%;
-  }
-
-  @include respond-above('lg') {
-    padding: 0 10%;
-  }
-
-  &__header,
   &__recaptcha,
   &__actionable {
     display: flex;
-    justify-content: center;
-    
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__input-full-name,
+  &__input-credential {
+    display: flex;
+    flex-direction: column;
+
     @include respond-above('md') {
-      &:not(:last-child) {
-        margin-bottom: rem(24px);
-      }
+      flex-direction: row;
+      gap: 10%;
     }
   }
 
@@ -32,28 +28,73 @@
     margin: 0;
   }
 
-  &__input-label {
-    display: block;
-    margin-bottom: rem(12px);
+  &__profile {
+    margin-bottom: rem(32px);
 
-    font-size: rem(16px);
-    font-weight: 600;
-    line-height: 1.2;
+    @include respond-above('md') {
+      margin-bottom: rem(48px);
+    }
 
     @include respond-above('lg') {
-      font-size: rem(20px);
+      margin-bottom: rem(64px);
+    }
+  }
+
+  &__input-full-name {
+    padding-bottom: rem(32px);
+    border-bottom: solid 1px $silver;
+    margin-bottom: rem(32px);
+
+    @include respond-above('md') {
+      padding-bottom: 0;
+      border: none;
+      margin-bottom: 0;
+    }
+  }
+
+  &__input-credential {
+    flex-wrap: wrap;
+    margin-bottom: rem(32px);
+
+    @include respond-above('md') {
+      margin-bottom: rem(48px);
+    }
+
+    @include respond-above('lg') {
+      margin-bottom: rem(64px);
     }
   }
 
   &__input-group {
     position: relative;
 
+    @include respond-above('md') {
+      width: 45%;
+    }
+
     &:not(:last-child) {
-      margin-bottom: rem(8px);
+      margin-bottom: rem(24px);
 
       @include respond-above('md') {
+        margin-bottom: rem(46px);
+      }
+
+      @include respond-above('lg') {
         margin-bottom: rem(50px);
       }
+    }
+  }
+
+  &__input-label {
+    display: block;
+    margin-bottom: rem(8px);
+
+    font-size: rem(14px);
+    font-weight: 600;
+    line-height: 1.2;
+
+    @include respond-above('lg') {
+      font-size: rem(16px);
     }
   }
 
@@ -64,46 +105,82 @@
   &__input {
     box-sizing: border-box;
     width: 100%;
-    padding: 0 0 rem(8px);
+    padding: rem(8px) 0;
     border-color: $havelock-blue;
     border-width: 0 0 rem(2px);
     outline: 0;
 
-    font-size: rem(16px);
+    font-size: rem(14px);
     text-overflow: ellipsis;
+
+    @include respond-above('lg') {
+      font-size: rem(16px);
+    }
 
     &--invalid {
       border-color: $coral-red;
     }
   }
 
-  &__button {
-    color: $light;
-    text-decoration: none;
-    margin: 0;
-    padding: rem(5px 10px);
-    border-radius: rem(3px);
-    background-color: $shuttle-gray;
-
-    &:hover {
-      background-color: darken($silver, 8%);
-    }
-  }
-
   &__help {
     margin-top: rem(8px);
     color: $coral-red;
-    font-size: rem(14px);
+    font-size: rem(12px);
 
     @include respond-above('md') {
       position: absolute;
     }
+
+    @include respond-above('lg') {
+      font-size: rem(14px);
+    }
   }
 
-  &__eye-icon {
+  &__icon-eye {
     position: absolute;
+    top: rem(8px);
     right: rem(16px);
-    top: 0;
+
     cursor: pointer;
+  }
+
+  &__recaptcha {
+    margin-bottom: rem(32px);
+  }
+
+  &__button {
+    all: unset;
+
+    padding: rem(16px 112px);
+    border-radius: rem(26px);
+    margin: 0;
+
+    background-color: $dodger-blue;
+    color: $light;
+
+    font-size: rem(18px);
+    font-weight: 500;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    @include respond-above('md') {
+      padding: rem(12px 42px);
+      font-size: rem(16px);
+    }
+
+    @include respond-above('lg') {
+      padding: rem(14px 48px);
+      font-size: rem(18px);
+    }
+
+    &:disabled {
+      background-color: $silver;
+      cursor: auto;
+    }
+
+    &:hover {
+      background-color: darken($dodger-blue, 8%);
+    }
   }
 }

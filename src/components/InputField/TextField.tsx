@@ -4,20 +4,17 @@ interface TextField {
   readonly name: string
   readonly label: string
   readonly inputType: string
-  readonly inputValue: string
   readonly placeholder: string
   readonly errorMessage: string
   readonly onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  readonly inputRef: (ref: HTMLInputElement) => void
 }
 
-const TextField = ({ name, label, placeholder, inputType, inputValue, errorMessage, onChange }: TextField) => {
-  const renderInput = (errorMessage: string) => {
-    const inputClassName: string = errorMessage
-      ? 'form__input form__input--invalid'
-      : 'form__input'
+const TextField = ({ name, label, placeholder, inputType, errorMessage, onChange, inputRef }: TextField) => {
+  const renderInput = () => {
+    const inputClassName: string = errorMessage ? 'form__input form__input--invalid' : 'form__input'
 
-    const renderErrorMessage = (errorMessage: string) =>
-      errorMessage ? <div className="form__help">{errorMessage}</div> : <></>
+    const renderErrorMessage = () => (errorMessage ? <div className="form__help">{errorMessage}</div> : <></>)
 
     return (
       <>
@@ -25,11 +22,11 @@ const TextField = ({ name, label, placeholder, inputType, inputValue, errorMessa
           className={inputClassName}
           name={name}
           type={inputType}
-          value={inputValue}
           placeholder={placeholder}
           onChange={onChange}
+          ref={inputRef}
         />
-        {renderErrorMessage(errorMessage)}
+        {renderErrorMessage()}
       </>
     )
   }
@@ -37,7 +34,7 @@ const TextField = ({ name, label, placeholder, inputType, inputValue, errorMessa
   return (
     <div className="form__input-group">
       <label className="form__input-label">{label}</label>
-      {renderInput(errorMessage)}
+      {renderInput()}
     </div>
   )
 }

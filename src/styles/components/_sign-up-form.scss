@@ -3,37 +3,87 @@
 .sign-up-form {
   display: flex;
   flex-direction: column;
-  max-width: $sign-up-form-max-width;
-  margin: auto;
 
   background-color: $light;
 
+  @include respond-above('md') {
+    box-shadow: rem(5px 10px 20px) 0 box-shadow-opacity(0.16);
+    min-width: $sign-up-form-min-width-md;
+    padding: rem(50px 80px 36px);
+    border-radius: rem(80px);
+  }
+
+  @include respond-above('lg') {
+    min-width: $sign-up-form-min-width-lg;
+    padding: rem(60px 100px 36px);
+    border-radius: rem(100px);
+  }
+
+  @include respond-above('xl') {
+    max-width: $sign-up-form-max-width-xl;
+    padding: rem(70px 120px 36px);
+  }
+
   &__header {
-    display: flex;
-    justify-content: center;
-    background-color: greenyellow;
     margin-bottom: rem(24px);
-    padding: rem(24px) 0;
+
+    @include respond-above('md') {
+      margin-bottom: rem(32px);
+    }
+  }
+
+  &__title {
+    margin: 0 0 rem(32px);
+
+    @include respond-above('lg') {
+      font-size: rem(22px);
+    }
+  }
+
+  &__subtitle {
+    padding-left: rem(8px);
+    margin: 0;
+
+    color: $cat-black;
+
+    @include respond-above('lg') {
+      font-size: rem(18px);
+    }
   }
 
   &__body {
-    margin-bottom: rem(24px);
+    padding: 0 rem(32px);
+    margin-bottom: rem(32px);
+
+    @include respond-above('md') {
+      padding: 0 rem(8px);
+      margin-bottom: rem(24px);
+    }
   }
 
   &__footer {
     display: flex;
     justify-content: center;
-    margin-bottom: rem(24px);
   }
 
   &__footer-item > * {
+    color: $dark-charcoal;
+    font-size: rem(12px);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.5;
+
+    @include respond-above('lg') {
+      font-size: rem(14px);
+    }
+
     &:not(:last-child) {
       margin-right: rem(4px);
     }
   }
 
   &__link {
-    text-decoration-color: none;
+    color: $azure-radiance;
   }
 
   &__description {
