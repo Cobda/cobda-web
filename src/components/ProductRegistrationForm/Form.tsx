@@ -3,24 +3,35 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import TextField from '../InputField/TextField'
 import useTranslation from 'next-translate/useTranslation'
-import ImageUpload from '../ImageUpload'
+import ProductUpload from '../ProductUpload'
+import Dropdown from 'react-dropdown'
 
 interface FormInput {
   readonly name: string
   readonly price: string
   readonly color: string
   readonly size: string
+  readonly description: string
 }
 
 const initialInputValue: FormInput = {
   name: '',
   price: '',
   color: '',
-  size: ''
+  size: '',
+  description: ''
 }
+
+const NAME_VALIDATION_INDEX: number = 1
+const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
+// TODO: Fetch options from database instead
+const CATEGORY_OPTIONS: string[] = ['Footwear', 'Shirts', 'SurfSkates', 'Accessories', 'Other']
+const DELIVERY_OPTIONS: string[] = ['Postal', 'Meet up', 'Other']
 
 const Form = () => {
   const [isProductUploaded, setProductUploaded] = useState<boolean>(false)
+  const [selectedCategory, setSelectedCategory] = useState<string>('')
+  const [selectedDelivery, setSelectedDelivery] = useState<string>('')
   const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
     mode: 'onChange',
     defaultValues: initialInputValue
@@ -65,14 +76,11 @@ const Form = () => {
 
   const renderProductUpload = () => (
     <div className="form__profile">
-      <ImageUpload />
+      <ProductUpload />
     </div>
   )
 
   const renderProductDetailInput = () => {
-    const NAME_VALIDATION_INDEX = 1
-    const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
-
     const getNameReference: (ref: HTMLInputElement) => void = register({
       required: {
         value: true,
@@ -129,6 +137,19 @@ const Form = () => {
           onChange={handleInputChange}
           inputRef={getNameReference}
         />
+        <TextField
+          name="description"
+          label={t('description')}
+          inputType="text"
+          placeholder={t('descriptionPlaceholder')}
+          errorMessage={getErrorMessage('description', NAME_VALIDATION_INDEX)}
+          onChange={handleInputChange}
+          inputRef={getNameReference}
+        />
+        <div className="">
+          <Dropdown options={CATEGORY_OPTIONS} value={selectedCategory} placeholder="Select an option" />
+          <Dropdown options={DELIVERY_OPTIONS} value={selectedDelivery} placeholder="Select an option" />
+        </div>
       </>
     )
   }
@@ -146,8 +167,8 @@ const Form = () => {
 
   return (
     <form className="form" onSubmit={handleSubmit(handleFormSubmit)}>
-      {renderProductUpload()}
       {renderProductDetailInput()}
+      {renderProductUpload()}
       {renderSubmitButton()}
     </form>
   )

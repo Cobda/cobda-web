@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ImageUploading, { ImageListType } from 'react-images-uploading'
 
-const ImageUpload = () => {
+const ProductUpload = () => {
   const [images, setImages] = useState<ImageListType>([])
 
   const handleImageChange = (imageList: ImageListType, addUpdateIndex: number[] | undefined) => {
@@ -11,7 +11,7 @@ const ImageUpload = () => {
   }
 
   return (
-    <div className="App">
+    <div className="product-upload">
       <ImageUploading multiple value={images} onChange={handleImageChange}>
         {({ imageList, onImageUpload, onImageRemoveAll, onImageUpdate, onImageRemove, isDragging, dragProps }) => (
           <div className="upload__image-wrapper">
@@ -36,4 +36,4 @@ const ImageUpload = () => {
   )
 }
 
-export default ImageUpload
+export default ProductUpload
