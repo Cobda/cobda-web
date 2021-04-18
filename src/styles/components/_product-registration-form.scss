@@ -33,8 +33,8 @@
   }
 
   &__title {
-    margin: 0 0 rem(32px);
-
+    margin: 0;
+    
     @include respond-above('lg') {
       font-size: rem(22px);
     }

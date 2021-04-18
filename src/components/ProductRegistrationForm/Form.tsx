@@ -5,6 +5,7 @@ import TextField from '../InputField/TextField'
 import useTranslation from 'next-translate/useTranslation'
 import ProductUpload from '../ProductUpload'
 import Dropdown from 'react-dropdown'
+import TextArea from '../Textarea'
 
 interface FormInput {
   readonly name: string
@@ -24,9 +25,6 @@ const initialInputValue: FormInput = {
 
 const NAME_VALIDATION_INDEX: number = 1
 const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
-// TODO: Fetch options from database instead
-const CATEGORY_OPTIONS: string[] = ['Footwear', 'Shirts', 'SurfSkates', 'Accessories', 'Other']
-const DELIVERY_OPTIONS: string[] = ['Postal', 'Meet up', 'Other']
 
 const Form = () => {
   const [isProductUploaded, setProductUploaded] = useState<boolean>(false)
@@ -38,6 +36,9 @@ const Form = () => {
   })
   const router = useRouter()
   const { t } = useTranslation('product-registration')
+  // TODO: Fetch these options from database instead
+  const categoryOption: string[] = ['footwear', 'shirt', 'accessory'].map((option) => t(option))
+  const deliveryOption: string[] = ['postal', 'meet'].map((option) => t(option))
 
   useEffect(() => {
     const handleWindowClose = (event: BeforeUnloadEvent) => {
@@ -64,7 +65,7 @@ const Form = () => {
     }
   }, [isProductUploaded])
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target
     setValue(name as keyof FormInput, value)
   }
@@ -74,13 +75,21 @@ const Form = () => {
     setProductUploaded(false)
   }
 
+  const getErrorMessage = (inputKey: keyof FormInput, startValidationIndex: number): string => {
+    const errorMessage: string | undefined = errors[inputKey]?.message
+    const isErrorDisplayed: boolean | undefined = getValues()[inputKey]?.length >= startValidationIndex
+
+    return errorMessage && isErrorDisplayed ? errorMessage : ''
+  }
+
   const renderProductUpload = () => (
     <div className="form__profile">
       <ProductUpload />
     </div>
   )
 
-  const renderProductDetailInput = () => {
+  const renderProductTextField = () => {
+    // TODO: Fix name here
     const getNameReference: (ref: HTMLInputElement) => void = register({
       required: {
         value: true,
@@ -92,15 +101,8 @@ const Form = () => {
       }
     })
 
-    const getErrorMessage = (inputKey: keyof FormInput, startValidationIndex: number): string => {
-      const errorMessage: string | undefined = errors[inputKey]?.message
-      const isErrorDisplayed: boolean | undefined = getValues()[inputKey]?.length >= startValidationIndex
-
-      return errorMessage && isErrorDisplayed ? errorMessage : ''
-    }
-
     return (
-      <>
+      <div className="form__input-container">
         <TextField
           name="name"
           label={t('name')}
@@ -137,24 +139,44 @@ const Form = () => {
           onChange={handleInputChange}
           inputRef={getNameReference}
         />
-        <TextField
-          name="description"
-          label={t('description')}
-          inputType="text"
-          placeholder={t('descriptionPlaceholder')}
-          errorMessage={getErrorMessage('description', NAME_VALIDATION_INDEX)}
-          onChange={handleInputChange}
-          inputRef={getNameReference}
-        />
-        <div className="">
-          <Dropdown options={CATEGORY_OPTIONS} value={selectedCategory} placeholder="Select an option" />
-          <Dropdown options={DELIVERY_OPTIONS} value={selectedDelivery} placeholder="Select an option" />
-        </div>
-      </>
+      </div>
     )
   }
 
-  const renderSubmitButton = () => {
+  const renderProductTextarea = () => {
+    const getDescriptionReference: (ref: HTMLTextAreaElement) => void = register({
+      required: {
+        value: true,
+        message: t('inputValueRequired')
+      }
+    })
+
+    return (
+      <TextArea
+        name="description"
+        label={t('description')}
+        errorMessage={getErrorMessage('description', NAME_VALIDATION_INDEX)}
+        onChange={handleInputChange}
+        textareaRef={getDescriptionReference}
+      />
+    )
+  }
+
+  const renderProductDropdown = () => (
+    <div className="form__dropdown-container">
+      {/* TODO: Make a component instead? */}
+      <div className="form__dropdown-group">
+        <label className="form__label">{t('productCategory')}</label>
+        <Dropdown options={categoryOption} value={selectedCategory} placeholder={t('productCategoryPlaceholder')} />
+      </div>
+      <div className="form__dropdown-group">
+        <label className="form__label">{t('deliveryOption')}</label>
+        <Dropdown options={deliveryOption} value={selectedDelivery} placeholder={t('deliveryOptionPlaceholder')} />
+      </div>
+    </div>
+  )
+
+  const renderActionable = () => {
     const hasInputError: boolean = Object.keys(errors).length > 0
     const isFormSubmitDisabled: boolean = !isProductUploaded || hasInputError
 
@@ -167,9 +189,11 @@ const Form = () => {
 
   return (
     <form className="form" onSubmit={handleSubmit(handleFormSubmit)}>
-      {renderProductDetailInput()}
       {renderProductUpload()}
-      {renderSubmitButton()}
+      {renderProductTextField()}
+      {renderProductTextarea()}
+      {renderProductDropdown()}
+      {renderActionable()}
     </form>
   )
 }

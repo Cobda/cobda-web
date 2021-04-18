@@ -33,7 +33,7 @@ const TextField = ({ name, label, placeholder, inputType, errorMessage, onChange
 
   return (
     <div className="form__input-group">
-      <label className="form__input-label">{label}</label>
+      <label className="form__label">{label}</label>
       {renderInput()}
     </div>
   )

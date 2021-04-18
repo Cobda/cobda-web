@@ -23,7 +23,7 @@ const initialInputValue: FormInput = {
   password: ''
 }
 
-const NAME_VALIDATION_INDEX: number = 1
+const NAME_VALIDATION_INDEX = 1
 const CREDENTIAL_VALIDATION_INDEX: number = 4
 const MINIMUM_USERNAME_LENGTH: number = 6
 const MINIMUM_PASSWORD_LENGTH: number = 8

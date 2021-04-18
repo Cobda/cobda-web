@@ -14,13 +14,20 @@
   }
 
   &__input-full-name,
-  &__input-credential {
+  &__input-credential,
+  &__input-container,
+  &__dropdown-container {
     display: flex;
     flex-direction: column;
 
     @include respond-above('md') {
       flex-direction: row;
       gap: 10%;
+
+      & > .form__input-group,
+      & > .form__dropdown-group {
+        width: 45%;
+      }
     }
   }
 
@@ -65,6 +72,15 @@
     }
   }
 
+  &__input-container {
+    flex-wrap: wrap;
+    margin-bottom: rem(24px);
+
+    @include respond-above('md') {
+      margin-bottom: 0;
+    }
+  }
+
   &__input-group {
     position: relative;
 
@@ -79,17 +95,11 @@
         margin-bottom: rem(50px);
       }
     }
-
-    &--half {
-      @include respond-above('md') {
-        width: 45%;
-      }
-    }
   }
 
-  &__input-label {
+  &__label {
     display: block;
-    margin-bottom: rem(8px);
+    margin-bottom: rem(12px);
 
     font-size: rem(14px);
     font-weight: 600;
@@ -121,6 +131,45 @@
 
     &--invalid {
       border-color: $coral-red;
+    }
+  }
+
+  &__textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: rem(160px);
+    padding: rem(12px);
+    border-color: $havelock-blue;
+    border-width: rem(2px);
+    outline: 0;
+
+    font-family: inherit;
+    font-size: rem(14px);
+
+    @include respond-above('lg') {
+      font-size: rem(16px);
+    }
+
+    &--invalid {
+      border-color: $coral-red;
+    }
+  }
+
+  &__dropdown-container {
+    margin-bottom: rem(46px);
+
+    @include respond-above('lg') {
+      margin-bottom: rem(50px);
+    }
+  }
+
+  &__dropdown-group {
+    &:not(:last-child) {
+      margin-bottom: rem(24px);
+
+      @include respond-above('md') {
+        margin-bottom: 0;
+      }
     }
   }
 

@@ -51,7 +51,7 @@ const PasswordField = ({ name, label, placeholder, errorMessage, onChange, input
 
   return (
     <div className="form__input-group">
-      <label className="form__input-label">{label}</label>
+      <label className="form__label">{label}</label>
       {renderInput()}
     </div>
   )
