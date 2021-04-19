@@ -5,18 +5,6 @@
   float: right;
   cursor: pointer;
 
-  @include respond-above('md') {
-    padding-right: rem(24px);
-  }
-
-  @include respond-above('lg') {
-    padding-right: rem(32px);
-  }
-
-  @include respond-above('xl') {
-    padding-right: rem(48px);
-  }
-
   &__toggle {
     display: flex;
     align-items: center;

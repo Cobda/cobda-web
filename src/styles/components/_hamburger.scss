@@ -1,6 +1,5 @@
 .hamburger {
   position: absolute;
-  // left: rem(16px);
   width: 100%;
 
   @include respond-above('md') {
@@ -57,20 +56,21 @@
 
     &:checked ~ .hamburger__menu {
       opacity: 1;
-      // display: block;
+
       > li > a {
         pointer-events: visible;
       }
     }
 
     &:checked ~ span {
+      top: 3px;
       opacity: 1;
       transform: rotate(45deg) translate(0, -1px);
     }
 
     &:checked ~ span:nth-child(3) {
       opacity: 0;
-      transform: rotate(0deg) scale(0.2, 0.2);
+      transform: rotate(0deg) scale(0.4, 0.2);
     }
 
     &:checked ~ span:nth-child(4) {
@@ -80,7 +80,6 @@
 
   &__menu {
     position: absolute;
-    // display: none;
 
     box-sizing: border-box;
     box-shadow: 0 rem(2px 2px) 0 box-shadow-opacity(0.16);
@@ -93,7 +92,6 @@
     background-color: $light;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
-    -webkit-touch-callout: none;
     /* to stop flickering of text in safari */
 
     > li > a {

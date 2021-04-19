@@ -8,6 +8,7 @@
   width: 100%;
   max-width: $navbar-max-width;
   height: rem(56px);
+  box-sizing: border-box;
   background-color: $light;
 
   @include flex-center();
@@ -15,10 +16,12 @@
   @include respond-above('md') {
     justify-content: space-between;
     height: rem(80px);
+    padding: rem(0 24px);
   }
 
   @include respond-above('lg') {
     height: rem(96px);
+    padding: rem(0 48px);
   }
 
   @include respond-above('xl') {

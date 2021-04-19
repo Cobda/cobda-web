@@ -90,7 +90,7 @@ const Form = () => {
         onChange={handleInputChange(inputValue)}
       />
       <div className="form__recaptcha">
-        {/* <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} /> */}
+        <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} />
       </div>
       <div className="form__actionable">
         <button className="form__button" onClick={handleSubmitClick}>
