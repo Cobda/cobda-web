@@ -9,7 +9,7 @@ const ProductRegistrationForm = () => {
   return (
     <section className="product-registration-form">
       <header className="product-registration-form__header">
-        <h3 className="product-registration-form__title">{t('registerProduct')}</h3>
+        <h3 className="product-registration-form__title">{t('register')}</h3>
       </header>
       <div className="product-registration-form__body">
         <Form />

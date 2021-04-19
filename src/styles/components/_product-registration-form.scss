@@ -8,18 +8,21 @@
 
   @include respond-above('md') {
     box-shadow: rem(5px 10px 20px) 0 box-shadow-opacity(0.16);
+    // TODO: Change name to be more meaningful
     min-width: $sign-up-form-min-width-md;
     padding: rem(50px 80px 36px);
     border-radius: rem(80px);
   }
 
   @include respond-above('lg') {
+    // TODO: Change name to be more meaningful
     min-width: $sign-up-form-min-width-lg;
     padding: rem(60px 100px 36px);
     border-radius: rem(100px);
   }
 
   @include respond-above('xl') {
+    // TODO: Change name to be more meaningful
     max-width: $sign-up-form-max-width-xl;
     padding: rem(70px 120px 36px);
   }
@@ -34,7 +37,7 @@
 
   &__title {
     margin: 0;
-    
+
     @include respond-above('lg') {
       font-size: rem(22px);
     }

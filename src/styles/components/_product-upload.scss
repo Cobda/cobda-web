@@ -1,0 +1,92 @@
+@import '../abstracts/_abstracts-dir';
+
+.product-upload {
+  box-sizing: border-box;
+  width: 100%;
+  height: rem(300px);
+  border: solid rem(2px) $havelock-blue;
+  border-radius: rem(4px);
+
+  @include flex-center();
+
+  &--dragging {
+    background-color: $alabaster;
+  }
+
+  &--selected {
+    border: none;
+  }
+
+  &__figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: rem(32px);
+    border-radius: rem(4px);
+    margin: 0;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: $alabaster;
+    }
+  }
+
+  &__caption {
+    color: $dark-charcoal;
+
+    font-size: rem(8px);
+    font-style: italic;
+    line-height: 2;
+
+    @include respond-above('lg') {
+      font-size: rem(12px);
+    }
+  }
+
+  &__image-container {
+    box-sizing: border-box;
+    padding: rem(24px 24px 8px);
+    border: solid rem(2px) $mercury;
+    border-radius: rem(10px);
+
+    &:not(:last-child) {
+      margin-right: rem(24px);
+    }
+  }
+
+  &__image {
+    width: rem(50px);
+    height: rem(50px);
+
+    &--selected {
+      box-shadow: 0 rem(3px 6px) 0 box-shadow-opacity(0.16);
+      width: rem(200px);
+      height: rem(200px);
+      object-fit: cover;
+    }
+  }
+
+  &__icon-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: rem(8px);
+  }
+
+  &__icon {
+    width: rem(24px);
+    height: rem(24px);
+  }
+
+  &__link {
+    padding: rem(8px);
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: $porcelain;
+    }
+  }
+}

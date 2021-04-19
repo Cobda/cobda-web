@@ -38,7 +38,7 @@ const Form = () => {
   const { t } = useTranslation('product-registration')
   // TODO: Fetch these options from database instead
   const categoryOption: string[] = ['footwear', 'shirt', 'accessory'].map((option) => t(option))
-  const deliveryOption: string[] = ['postal', 'meet'].map((option) => t(option))
+  const deliveryOption: string[] = ['postal', 'meetUp', 'both'].map((option) => t(option))
 
   useEffect(() => {
     const handleWindowClose = (event: BeforeUnloadEvent) => {
@@ -76,6 +76,7 @@ const Form = () => {
   }
 
   const getErrorMessage = (inputKey: keyof FormInput, startValidationIndex: number): string => {
+    // TODO: Validate for number input
     const errorMessage: string | undefined = errors[inputKey]?.message
     const isErrorDisplayed: boolean | undefined = getValues()[inputKey]?.length >= startValidationIndex
 
@@ -83,8 +84,9 @@ const Form = () => {
   }
 
   const renderProductUpload = () => (
-    <div className="form__profile">
-      <ProductUpload />
+    <div className="form__upload">
+      <label className="form__label">{t('productImage')}</label>
+      <ProductUpload onUpload={setProductUploaded} />
     </div>
   )
 
@@ -166,8 +168,8 @@ const Form = () => {
     <div className="form__dropdown-container">
       {/* TODO: Make a component instead? */}
       <div className="form__dropdown-group">
-        <label className="form__label">{t('productCategory')}</label>
-        <Dropdown options={categoryOption} value={selectedCategory} placeholder={t('productCategoryPlaceholder')} />
+        <label className="form__label">{t('category')}</label>
+        <Dropdown options={categoryOption} value={selectedCategory} placeholder={t('categoryPlaceholder')} />
       </div>
       <div className="form__dropdown-group">
         <label className="form__label">{t('deliveryOption')}</label>
@@ -176,7 +178,7 @@ const Form = () => {
     </div>
   )
 
-  const renderActionable = () => {
+  const renderSubmitButton = () => {
     const hasInputError: boolean = Object.keys(errors).length > 0
     const isFormSubmitDisabled: boolean = !isProductUploaded || hasInputError
 
@@ -191,9 +193,9 @@ const Form = () => {
     <form className="form" onSubmit={handleSubmit(handleFormSubmit)}>
       {renderProductUpload()}
       {renderProductTextField()}
-      {renderProductTextarea()}
       {renderProductDropdown()}
-      {renderActionable()}
+      {renderProductTextarea()}
+      {renderSubmitButton()}
     </form>
   )
 }

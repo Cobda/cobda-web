@@ -5,6 +5,7 @@ import Meta from '../components/Meta'
 import ProductRegistrationForm from '../components/ProductRegistrationForm'
 
 const ProductRegistration = () => (
+  // TODO: Change name to be more meaningful
   <div className="layout-authentication">
     <Meta title="Product Registration | Cobda" />
     <header>
