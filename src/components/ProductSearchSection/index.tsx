@@ -11,7 +11,15 @@ const ProductSearchSection = () => {
       <div className="product-section__search">
         <SearchBox />
       </div>
-      <div className="product-section__sort-by">sort by </div>
+      <div className="product-section__sort-by">
+        <span>Sorted by:</span>
+        <select className="product-section__dropdown">
+          <option>Best Match</option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+      </div>
 
       <ul className="product-section__breadcrumb">
         <li className="product-section__breadcrumb-item">
