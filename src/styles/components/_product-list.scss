@@ -3,10 +3,7 @@
 .product-list {
   padding: rem(16px);
   box-sizing: border-box;
-
-  @include respond-above('lg') {
-    padding: rem(24px 24px 24px 0);
-  }
+  padding: rem(24px 8px 24px 0);
 
   &__title {
     margin: 0 0 rem(24px) 0;
