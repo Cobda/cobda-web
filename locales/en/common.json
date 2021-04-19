@@ -10,5 +10,6 @@
   "privacyPolicy": "Privacy Policy",
   "helpline": "Helpline",
   "about": "About",
-  "contactUs": "Contact Us"
+  "contactUs": "Contact Us",
+  "searchPlaceholder": "What are you looking for?"
 }
