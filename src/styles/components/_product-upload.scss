@@ -52,7 +52,7 @@
     border-radius: rem(10px);
 
     &:not(:last-child) {
-      margin-right: rem(24px);
+      margin-right: rem(18px);
     }
   }
 
@@ -62,8 +62,8 @@
 
     &--selected {
       box-shadow: 0 rem(3px 6px) 0 box-shadow-opacity(0.16);
-      width: rem(200px);
-      height: rem(200px);
+      width: rem(160px);
+      height: rem(160px);
       object-fit: cover;
     }
   }
@@ -74,12 +74,7 @@
     margin-top: rem(8px);
   }
 
-  &__icon {
-    width: rem(24px);
-    height: rem(24px);
-  }
-
-  &__link {
+  &__icon-wrapper {
     padding: rem(8px);
     border-radius: 50%;
 
@@ -88,5 +83,10 @@
     &:hover {
       background-color: $porcelain;
     }
+  }
+
+  &__icon {
+    width: rem(24px);
+    height: rem(24px);
   }
 }

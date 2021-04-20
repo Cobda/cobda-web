@@ -31,24 +31,24 @@
     }
   }
 
+  &__product,
+  &__dropdown-container {
+    margin-bottom: rem(24px);
+
+    @include respond-above('md') {
+      margin-bottom: rem(46px);
+    }
+
+    @include respond-above('lg') {
+      margin-bottom: rem(50px);
+    }
+  }
+
   &__title {
     margin: 0;
   }
 
   &__profile {
-    margin-bottom: rem(32px);
-
-    @include respond-above('md') {
-      margin-bottom: rem(48px);
-    }
-
-    @include respond-above('lg') {
-      margin-bottom: rem(64px);
-    }
-  }
-
-  // TODO: Change name here
-  &__upload {
     margin-bottom: rem(32px);
 
     @include respond-above('md') {
@@ -168,14 +168,6 @@
     }
   }
 
-  &__dropdown-container {
-    margin-bottom: rem(46px);
-
-    @include respond-above('lg') {
-      margin-bottom: rem(50px);
-    }
-  }
-
   &__dropdown-group {
     &:not(:last-child) {
       margin-bottom: rem(24px);
@@ -238,13 +230,13 @@
       font-size: rem(18px);
     }
 
+    &:hover {
+      background-color: darken($dodger-blue, 8%);
+    }
+
     &:disabled {
       background-color: $silver;
       cursor: auto;
-    }
-
-    &:hover {
-      background-color: darken($dodger-blue, 8%);
     }
   }
 }

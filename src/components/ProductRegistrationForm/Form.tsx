@@ -3,8 +3,9 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import TextField from '../InputField/TextField'
 import useTranslation from 'next-translate/useTranslation'
+import { ImageListType } from 'react-images-uploading'
 import ProductUpload from '../ProductUpload'
-import Dropdown from 'react-dropdown'
+import Dropdown, { Option } from 'react-dropdown'
 import TextArea from '../Textarea'
 
 interface FormInput {
@@ -23,11 +24,12 @@ const initialInputValue: FormInput = {
   description: ''
 }
 
-const NAME_VALIDATION_INDEX: number = 1
+// TODO: Fix name here
+const NAME_VALIDATION_INDEX: number = 2
 const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
 
 const Form = () => {
-  const [isProductUploaded, setProductUploaded] = useState<boolean>(false)
+  const [selectedProductImage, setSelectedProductImage] = useState<ImageListType>([])
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [selectedDelivery, setSelectedDelivery] = useState<string>('')
   const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
@@ -39,17 +41,18 @@ const Form = () => {
   // TODO: Fetch these options from database instead
   const categoryOption: string[] = ['footwear', 'shirt', 'accessory'].map((option) => t(option))
   const deliveryOption: string[] = ['postal', 'meetUp', 'both'].map((option) => t(option))
+  const hasProductImage: boolean = selectedProductImage.length > 0
 
   useEffect(() => {
     const handleWindowClose = (event: BeforeUnloadEvent) => {
-      if (isProductUploaded) {
+      if (hasProductImage) {
         event.preventDefault()
         event.returnValue = t('warningText')
       }
     }
 
     const handleBrowseAway = () => {
-      if (isProductUploaded && !window.confirm(t('warningText'))) {
+      if (hasProductImage && !window.confirm(t('warningText'))) {
         router.events.emit('routeChangeError')
         throw 'routeChange aborted.'
       }
@@ -63,7 +66,7 @@ const Form = () => {
       window.removeEventListener('beforeunload', handleWindowClose)
       router.events.off('routeChangeStart', handleBrowseAway)
     }
-  }, [isProductUploaded])
+  }, [selectedProductImage])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target
@@ -72,7 +75,7 @@ const Form = () => {
 
   const handleFormSubmit = (value: FormInput) => {
     // TODO: Send POST request to backend
-    setProductUploaded(false)
+    setSelectedProductImage([])
   }
 
   const getErrorMessage = (inputKey: keyof FormInput, startValidationIndex: number): string => {
@@ -84,15 +87,15 @@ const Form = () => {
   }
 
   const renderProductUpload = () => (
-    <div className="form__upload">
+    <div className="form__product">
       <label className="form__label">{t('productImage')}</label>
-      <ProductUpload onUpload={setProductUploaded} />
+      <ProductUpload onUpload={setSelectedProductImage} />
     </div>
   )
 
   const renderProductTextField = () => {
     // TODO: Fix name here
-    const getNameReference: (ref: HTMLInputElement) => void = register({
+    const getInputReference: (ref: HTMLInputElement) => void = register({
       required: {
         value: true,
         message: t('inputValueRequired')
@@ -112,7 +115,7 @@ const Form = () => {
           placeholder={t('namePlaceholder')}
           errorMessage={getErrorMessage('name', NAME_VALIDATION_INDEX)}
           onChange={handleInputChange}
-          inputRef={getNameReference}
+          inputRef={getInputReference}
         />
         <TextField
           name="price"
@@ -121,7 +124,7 @@ const Form = () => {
           placeholder={t('pricePlaceholder')}
           errorMessage={getErrorMessage('price', NAME_VALIDATION_INDEX)}
           onChange={handleInputChange}
-          inputRef={getNameReference}
+          inputRef={getInputReference}
         />
         <TextField
           name="color"
@@ -130,7 +133,7 @@ const Form = () => {
           placeholder={t('colorPlaceholder')}
           errorMessage={getErrorMessage('color', NAME_VALIDATION_INDEX)}
           onChange={handleInputChange}
-          inputRef={getNameReference}
+          inputRef={getInputReference}
         />
         <TextField
           name="size"
@@ -139,14 +142,14 @@ const Form = () => {
           placeholder={t('sizePlaceholder')}
           errorMessage={getErrorMessage('size', NAME_VALIDATION_INDEX)}
           onChange={handleInputChange}
-          inputRef={getNameReference}
+          inputRef={getInputReference}
         />
       </div>
     )
   }
 
   const renderProductTextarea = () => {
-    const getDescriptionReference: (ref: HTMLTextAreaElement) => void = register({
+    const getTextareaReference: (ref: HTMLTextAreaElement) => void = register({
       required: {
         value: true,
         message: t('inputValueRequired')
@@ -159,28 +162,44 @@ const Form = () => {
         label={t('description')}
         errorMessage={getErrorMessage('description', NAME_VALIDATION_INDEX)}
         onChange={handleInputChange}
-        textareaRef={getDescriptionReference}
+        textareaRef={getTextareaReference}
       />
     )
   }
 
-  const renderProductDropdown = () => (
-    <div className="form__dropdown-container">
-      {/* TODO: Make a component instead? */}
-      <div className="form__dropdown-group">
-        <label className="form__label">{t('category')}</label>
-        <Dropdown options={categoryOption} value={selectedCategory} placeholder={t('categoryPlaceholder')} />
+  const renderProductDropdown = () => {
+    const handleDropdownChange = (setOption: (option: string) => void) => (selectedOption: Option) => {
+      setOption(selectedOption.value)
+    }
+
+    return (
+      <div className="form__dropdown-container">
+        {/* TODO: Make a component instead? */}
+        <div className="form__dropdown-group">
+          <label className="form__label">{t('category')}</label>
+          <Dropdown
+            options={categoryOption}
+            value={selectedCategory}
+            placeholder={t('categoryPlaceholder')}
+            onChange={handleDropdownChange(setSelectedCategory)}
+          />
+        </div>
+        <div className="form__dropdown-group">
+          <label className="form__label">{t('deliveryOption')}</label>
+          <Dropdown
+            options={deliveryOption}
+            value={selectedDelivery}
+            placeholder={t('deliveryOptionPlaceholder')}
+            onChange={handleDropdownChange(setSelectedDelivery)}
+          />
+        </div>
       </div>
-      <div className="form__dropdown-group">
-        <label className="form__label">{t('deliveryOption')}</label>
-        <Dropdown options={deliveryOption} value={selectedDelivery} placeholder={t('deliveryOptionPlaceholder')} />
-      </div>
-    </div>
-  )
+    )
+  }
 
   const renderSubmitButton = () => {
     const hasInputError: boolean = Object.keys(errors).length > 0
-    const isFormSubmitDisabled: boolean = !isProductUploaded || hasInputError
+    const isFormSubmitDisabled: boolean = !hasProductImage || hasInputError || !selectedCategory || !selectedDelivery
 
     return (
       <div className="form__actionable">

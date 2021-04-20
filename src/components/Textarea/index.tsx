@@ -4,7 +4,7 @@ interface Textarea {
   readonly name: string
   readonly label: string
   readonly placeholder?: string
-  readonly errorMessage: string
+  readonly errorMessage?: string
   readonly onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
   readonly textareaRef: (ref: HTMLTextAreaElement) => void
 }

@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation'
 import ImageUploading, { ImageType, ImageListType } from 'react-images-uploading'
 
 interface ProductUpload {
-  readonly onUpload: (isUploaded: boolean) => void
+  readonly onUpload: (imageList: ImageListType) => void
 }
 
 const ProductUpload = ({ onUpload }: ProductUpload) => {
@@ -11,9 +11,8 @@ const ProductUpload = ({ onUpload }: ProductUpload) => {
   const { t } = useTranslation('product-registration')
 
   const handleImageChange = (imageList: ImageListType) => {
-    const hasImageList: boolean = imageList.length > 0
     setImages(imageList)
-    onUpload(hasImageList)
+    onUpload(imageList)
   }
 
   return (
@@ -31,29 +30,28 @@ const ProductUpload = ({ onUpload }: ProductUpload) => {
               <figcaption className="product-upload__caption">{t('addThreeImages')}</figcaption>
             </figure>
           )
-          const selectedProductImage: ReactNode = () =>
-            imageList.map((image: ImageType, index: number) => {
-              const handleImageUpdate = () => onImageUpdate(index)
-              const handleImageRemove = () => onImageRemove(index)
+          const selectedProductImage: ReactNode = imageList.map((image: ImageType, index: number) => {
+            const handleImageUpdate = () => onImageUpdate(index)
+            const handleImageRemove = () => onImageRemove(index)
 
-              return (
-                <div key={index} className="product-upload__image-container">
-                  <img
-                    className="product-upload__image product-upload__image--selected"
-                    src={image.dataURL}
-                    alt="Uploaded Profile Image"
-                  />
-                  <div className="product-upload__icon-container">
-                    <a className="product-upload__link" onClick={handleImageUpdate}>
-                      <img className="product-upload__icon" src="/icons/reupload.svg" alt="Reupload Image Icon" />
-                    </a>
-                    <a className="product-upload__link" onClick={handleImageRemove}>
-                      <img className="product-upload__icon" src="/icons/remove.svg" alt="Remove Image Icon" />
-                    </a>
+            return (
+              <div key={index} className="product-upload__image-container">
+                <img
+                  className="product-upload__image product-upload__image--selected"
+                  src={image.dataURL}
+                  alt="Uploaded Profile Image"
+                />
+                <div className="product-upload__icon-container">
+                  <div className="product-upload__icon-wrapper" onClick={handleImageUpdate}>
+                    <img className="product-upload__icon" src="/icons/reupload.svg" alt="Reupload Image Icon" />
+                  </div>
+                  <div className="product-upload__icon-wrapper" onClick={handleImageRemove}>
+                    <img className="product-upload__icon" src="/icons/remove.svg" alt="Remove Image Icon" />
                   </div>
                 </div>
-              )
-            })
+              </div>
+            )
+          })
 
           return hasImageList ? selectedProductImage : defaultProductImage
         }
