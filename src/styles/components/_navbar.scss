@@ -3,8 +3,9 @@
 .navbar {
   width: 100%;
   max-width: $navbar-max-width;
-  height: rem(56px);
   box-sizing: border-box;
+  height: rem(56px);
+
   background-color: $light;
 
   @include flex-center();
@@ -12,17 +13,17 @@
   @include respond-above('md') {
     justify-content: space-between;
     height: rem(80px);
-    padding: rem(0 24px);
+    padding: 0 rem(24px);
   }
 
   @include respond-above('lg') {
     height: rem(96px);
-    padding: rem(0 32px);
+    padding: 0 rem(32px);
   }
   
   @include respond-above('xl') {
     height: rem(120px);
-    padding: rem(0 48px);
+    padding: 0 rem(48px);
   }
 
   &__menu-item,
