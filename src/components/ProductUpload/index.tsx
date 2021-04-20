@@ -1,27 +1,42 @@
 import React, { ReactNode, useState } from 'react'
 import useTranslation from 'next-translate/useTranslation'
-import ImageUploading, { ImageType, ImageListType } from 'react-images-uploading'
+import ImageUploading, { ImageType, ImageListType, ErrorsType } from 'react-images-uploading'
 
 interface ProductUpload {
+  readonly images: ImageListType
+  readonly maxNumber?: number
+  readonly acceptType?: string[]
   readonly onUpload: (imageList: ImageListType) => void
 }
 
-const ProductUpload = ({ onUpload }: ProductUpload) => {
-  const [images, setImages] = useState<ImageListType>([])
+const ProductUpload = ({ images, maxNumber, acceptType, onUpload }: ProductUpload) => {
   const { t } = useTranslation('product-registration')
 
   const handleImageChange = (imageList: ImageListType) => {
-    setImages(imageList)
     onUpload(imageList)
   }
 
+  const handleErrorUpload = (errors: ErrorsType, files?: ImageListType | undefined) => {
+    // TODO: Handle error from backend
+    console.log('Upload Errors: ', errors, ' with files: ', files)
+  }
+
   return (
-    <ImageUploading multiple value={images} onChange={handleImageChange} maxNumber={3} acceptType={['jpg', 'png']}>
+    <ImageUploading
+      multiple
+      value={images}
+      maxNumber={maxNumber}
+      acceptType={acceptType}
+      onChange={handleImageChange}
+      onError={handleErrorUpload}>
       {({ imageList, onImageUpload, onImageUpdate, onImageRemove, isDragging, dragProps }) => {
         const hasImageList: boolean = imageList.length > 0
-        // TODO: Fix naming here
-        const dragDivClassName: string = isDragging ? 'product-upload product-upload--dragging' : 'product-upload'
-        const divClassName: string = hasImageList ? 'product-upload product-upload--selected' : dragDivClassName
+        const classNameWithDraggingModifier: string = isDragging
+          ? 'product-upload product-upload--dragging'
+          : 'product-upload'
+        const classNameWithSelectedModifier: string = hasImageList
+          ? 'product-upload product-upload--selected'
+          : classNameWithDraggingModifier
 
         const renderProductImage = () => {
           const defaultProductImage: ReactNode = (
@@ -57,7 +72,7 @@ const ProductUpload = ({ onUpload }: ProductUpload) => {
         }
 
         return (
-          <div className={divClassName} {...dragProps}>
+          <div className={classNameWithSelectedModifier} {...dragProps}>
             {renderProductImage()}
           </div>
         )

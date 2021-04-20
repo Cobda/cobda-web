@@ -24,5 +24,7 @@
   "categoryPlaceholder": "เลือกหมวดหมู่ของคุณ",
   "deliveryOptionPlaceholder": "เลือกช่องทางการจัดส่งของคุณ",
   "inputValueRequired": "กรุณากรอกข้อมูลให้ครบถ้วน",
-  "inputImproperName": "กรุณากรอกข้อมูลลงในช่องว่างให้ถูกต้อง"
+  "inputNameExample": "เช่น Nike Air Max, Adidas Ultraboost",
+  "inputColorExample": "เช่น White, Black, Grey, Red, Blue",
+  "inputSizeExample": "เช่น 7US 10UK หรือ S, M, L, XL, XXL"
 }

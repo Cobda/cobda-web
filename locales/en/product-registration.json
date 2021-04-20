@@ -24,5 +24,7 @@
   "categoryPlaceholder": "Select your category",
   "deliveryOptionPlaceholder": "Select your option",
   "inputValueRequired": "This field is required.",
-  "inputImproperName": "Please use proper name."
+  "inputNameExample": "E.g. Nike Air Max, Adidas Ultraboost",
+  "inputColorExample": "E.g. White, Black, Grey, Red, Blue",
+  "inputSizeExample": "E.g. 7US 10UK or S, M, L, XL, XXL"
 }

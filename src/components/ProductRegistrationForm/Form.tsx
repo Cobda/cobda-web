@@ -24,24 +24,25 @@ const initialInputValue: FormInput = {
   description: ''
 }
 
-// TODO: Fix name here
-const NAME_VALIDATION_INDEX: number = 2
-const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
+const INPUT_TEXT_VALIDATION_INDEX: number = 2
+const INPUT_NUMBER_VALIDATION_INDEX: number = 1
+const TEXT_ONLY_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
+const TEXT_AND_NUMBER_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z0-9' ,.'-]+$/i)
 
 const Form = () => {
-  const [selectedProductImage, setSelectedProductImage] = useState<ImageListType>([])
+  const [productImages, setProductImages] = useState<ImageListType>([])
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [selectedDelivery, setSelectedDelivery] = useState<string>('')
+  const router = useRouter()
+  const { t } = useTranslation('product-registration')
   const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
     mode: 'onChange',
     defaultValues: initialInputValue
   })
-  const router = useRouter()
-  const { t } = useTranslation('product-registration')
   // TODO: Fetch these options from database instead
   const categoryOption: string[] = ['footwear', 'shirt', 'accessory'].map((option) => t(option))
   const deliveryOption: string[] = ['postal', 'meetUp', 'both'].map((option) => t(option))
-  const hasProductImage: boolean = selectedProductImage.length > 0
+  const hasProductImage: boolean = productImages.length > 0
 
   useEffect(() => {
     const handleWindowClose = (event: BeforeUnloadEvent) => {
@@ -66,7 +67,7 @@ const Form = () => {
       window.removeEventListener('beforeunload', handleWindowClose)
       router.events.off('routeChangeStart', handleBrowseAway)
     }
-  }, [selectedProductImage])
+  }, [productImages])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target
@@ -75,34 +76,58 @@ const Form = () => {
 
   const handleFormSubmit = (value: FormInput) => {
     // TODO: Send POST request to backend
-    setSelectedProductImage([])
+    setProductImages([])
   }
 
   const getErrorMessage = (inputKey: keyof FormInput, startValidationIndex: number): string => {
-    // TODO: Validate for number input
-    const errorMessage: string | undefined = errors[inputKey]?.message
-    const isErrorDisplayed: boolean | undefined = getValues()[inputKey]?.length >= startValidationIndex
+    const errorMessage: string = errors[inputKey]?.message || ''
+    const isErrorDisplayed: boolean = getValues()[inputKey]?.length >= startValidationIndex
 
-    return errorMessage && isErrorDisplayed ? errorMessage : ''
+    return errorMessage || isErrorDisplayed ? errorMessage : ''
   }
 
   const renderProductUpload = () => (
     <div className="form__product">
       <label className="form__label">{t('productImage')}</label>
-      <ProductUpload onUpload={setSelectedProductImage} />
+      <ProductUpload images={productImages} maxNumber={3} acceptType={['jpg', 'png']} onUpload={setProductImages} />
     </div>
   )
 
   const renderProductTextField = () => {
-    // TODO: Fix name here
-    const getInputReference: (ref: HTMLInputElement) => void = register({
+    const getNameReference: (ref: HTMLInputElement) => void = register({
       required: {
         value: true,
         message: t('inputValueRequired')
       },
       pattern: {
-        value: NAME_PATTERN_VALUE,
-        message: t('inputImproperName')
+        value: TEXT_AND_NUMBER_PATTERN_VALUE,
+        message: t('inputNameExample')
+      }
+    })
+    const getPriceReference: (ref: HTMLInputElement) => void = register({
+      required: {
+        value: true,
+        message: t('inputValueRequired')
+      }
+    })
+    const getColorReference: (ref: HTMLInputElement) => void = register({
+      required: {
+        value: true,
+        message: t('inputValueRequired')
+      },
+      pattern: {
+        value: TEXT_ONLY_PATTERN_VALUE,
+        message: t('inputColorExample')
+      }
+    })
+    const getSizeReference: (ref: HTMLInputElement) => void = register({
+      required: {
+        value: true,
+        message: t('inputValueRequired')
+      },
+      pattern: {
+        value: TEXT_AND_NUMBER_PATTERN_VALUE,
+        message: t('inputSizeExample')
       }
     })
 
@@ -113,36 +138,36 @@ const Form = () => {
           label={t('name')}
           inputType="text"
           placeholder={t('namePlaceholder')}
-          errorMessage={getErrorMessage('name', NAME_VALIDATION_INDEX)}
+          errorMessage={getErrorMessage('name', INPUT_TEXT_VALIDATION_INDEX)}
           onChange={handleInputChange}
-          inputRef={getInputReference}
+          inputRef={getNameReference}
         />
         <TextField
           name="price"
           label={t('price')}
           inputType="number"
           placeholder={t('pricePlaceholder')}
-          errorMessage={getErrorMessage('price', NAME_VALIDATION_INDEX)}
+          errorMessage={getErrorMessage('price', INPUT_NUMBER_VALIDATION_INDEX)}
           onChange={handleInputChange}
-          inputRef={getInputReference}
+          inputRef={getPriceReference}
         />
         <TextField
           name="color"
           label={t('color')}
           inputType="text"
           placeholder={t('colorPlaceholder')}
-          errorMessage={getErrorMessage('color', NAME_VALIDATION_INDEX)}
+          errorMessage={getErrorMessage('color', INPUT_TEXT_VALIDATION_INDEX)}
           onChange={handleInputChange}
-          inputRef={getInputReference}
+          inputRef={getColorReference}
         />
         <TextField
           name="size"
           label={t('size')}
           inputType="text"
           placeholder={t('sizePlaceholder')}
-          errorMessage={getErrorMessage('size', NAME_VALIDATION_INDEX)}
+          errorMessage={getErrorMessage('size', INPUT_TEXT_VALIDATION_INDEX)}
           onChange={handleInputChange}
-          inputRef={getInputReference}
+          inputRef={getSizeReference}
         />
       </div>
     )
@@ -160,7 +185,7 @@ const Form = () => {
       <TextArea
         name="description"
         label={t('description')}
-        errorMessage={getErrorMessage('description', NAME_VALIDATION_INDEX)}
+        errorMessage={getErrorMessage('description', INPUT_TEXT_VALIDATION_INDEX)}
         onChange={handleInputChange}
         textareaRef={getTextareaReference}
       />
@@ -174,7 +199,6 @@ const Form = () => {
 
     return (
       <div className="form__dropdown-container">
-        {/* TODO: Make a component instead? */}
         <div className="form__dropdown-group">
           <label className="form__label">{t('category')}</label>
           <Dropdown
