@@ -63,7 +63,7 @@
     }
 
     &:checked ~ span {
-      top: 3px;
+      top: rem(3px);
       opacity: 1;
       transform: rotate(45deg) translate(0, -1px);
     }

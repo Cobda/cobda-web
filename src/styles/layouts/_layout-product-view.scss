@@ -7,7 +7,7 @@
     'main'
     'footer';
 
-  height: 100vh;
+  height: 100%;
 
   @include respond-above('md') {
     grid-template-rows: map-get($header-height, 'md') 1fr map-get($footer-height, 'md');
@@ -29,9 +29,13 @@
 
   & > header {
     grid-area: header;
+    position: sticky;
+    z-index: $zindex-header;
+    top: 0;
 
     display: flex;
     justify-content: center;
+    box-shadow: 0 rem(4px 20px) 0 box-shadow-opacity(0.16);
     background-color: $light;
   }
 

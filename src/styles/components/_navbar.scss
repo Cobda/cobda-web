@@ -1,10 +1,6 @@
 @import '../abstracts/_abstracts-dir';
 
 .navbar {
-  position: fixed;
-  z-index: $zindex-navbar;
-
-  box-shadow: 0 rem(4px 20px) 0 box-shadow-opacity(0.16);
   width: 100%;
   max-width: $navbar-max-width;
   height: rem(56px);
@@ -21,11 +17,12 @@
 
   @include respond-above('lg') {
     height: rem(96px);
-    padding: rem(0 48px);
+    padding: rem(0 32px);
   }
-
+  
   @include respond-above('xl') {
     height: rem(120px);
+    padding: rem(0 48px);
   }
 
   &__menu-item,
