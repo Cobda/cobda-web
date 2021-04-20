@@ -3,8 +3,7 @@ import Link from 'next/link'
 import useTranslation from 'next-translate/useTranslation'
 
 const NavbarHamburger = () => {
-  const paths: string[] = ['/products', '/about-us', '', '/sign-up']
-  // TODO link to sign-in when done modal //
+  const paths: string[] = ['/products', '/about-us', '/sign-in', '/sign-up']
   const hamburgerMenuItems: string[] = ['product', 'aboutUs', 'signIn', 'signUp']
   const { t } = useTranslation('common')
 
@@ -27,11 +26,9 @@ const NavbarHamburger = () => {
 
   return (
     <div className="hamburger">
-      <div className="hamburger__container">
-        <input className="hamburger__input" type="checkbox" />
-        {renderHamburgerIcon()}
-        <ul className="hamburger__menu">{renderHamburgerMenu()}</ul>
-      </div>
+      <input className="hamburger__input" type="checkbox" />
+      {renderHamburgerIcon()}
+      <ul className="hamburger__menu">{renderHamburgerMenu()}</ul>
     </div>
   )
 }
