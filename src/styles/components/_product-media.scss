@@ -1,49 +1,46 @@
 .product-media {
-  display: flex;
+  @include flex-center();
   flex-direction: column;
-  align-items: center;
   box-sizing: border-box;
+  height: 450px;
   padding: rem(16px);
   border-radius: 15%;
-  height: 600px;
+
+  @include respond-above('sm') {
+    height: 600px;
+  }
 
   @include respond-above('md') {
     height: 430px;
 
-    background: $light;
-
     border-radius: 15%;
+
+    background: $light;
   }
+
   @include respond-above('lg') {
     height: 560px;
   }
+
   @include respond-above('xl') {
     height: 650px;
   }
 
   &__image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center();
+
     height: 500px;
 
     @include respond-above('md') {
       height: 320px;
     }
+
     @include respond-above('lg') {
       height: 420px;
     }
+
     @include respond-above('xl') {
       height: 500px;
-    }
-  }
-
-  &__image-selector {
-    @include respond-above('md') {
-    }
-    @include respond-above('lg') {
-    }
-    @include respond-above('xl') {
     }
   }
 
@@ -54,12 +51,8 @@
   }
 
   &__image.smooth {
-    -webkit-transition-property: opacity;
-    transition-property: opacity;
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
-    -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0.4, 1);
-    transition-timing-function: cubic-bezier(0.3, 0, 0.4, 1);
+    @include transition($what: opacity, $time: 0.2s, $how: cubic-bezier(0.3, 0, 0.4, 1));
+
     opacity: 0.5;
   }
 
@@ -68,25 +61,26 @@
   }
 
   &__button {
-    background-size: contain;
-    border: none;
     width: rem(80px);
     height: rem(80px);
+    border: none;
     border-radius: 10%;
     margin-right: rem(5px);
+
+    background-size: contain;
 
     @include respond-above('md') {
       width: rem(60px);
       height: rem(60px);
     }
+
     @include respond-above('lg') {
       width: rem(80px);
       height: rem(80px);
     }
+  }
 
-    .active {
-      border: rem(2px);
-      border-color: $havelock-blue;
-    }
+  &__button.active {
+    border: rem(2px) solid $havelock-blue;
   }
 }
