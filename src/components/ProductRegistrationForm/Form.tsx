@@ -91,14 +91,10 @@ const Form = () => {
   const renderProductUpload = () => {
     const renderErrorMessage = () => {
       let errorMessage: string = ''
-      
-      if (ImageError?.maxNumber && ImageError.maxFileSize) {
-        errorMessage = t('maxFilenNumberAndSizeExceed')
-      } else if (ImageError?.maxNumber) {
-        errorMessage = t('maxFileNumberExceed')
-      } else if (ImageError?.maxFileSize) {
-        errorMessage = t('maxFileSizeExceed')
-      }
+
+      if (ImageError?.maxNumber && ImageError.maxFileSize) errorMessage = t('maxFilenNumberAndSizeExceed')
+      else if (ImageError?.maxNumber) errorMessage = t('maxFileNumberExceed')
+      else if (ImageError?.maxFileSize) errorMessage = t('maxFileSizeExceed')
 
       return errorMessage ? <div className="form__help">{errorMessage}</div> : <></>
     }
@@ -228,7 +224,7 @@ const Form = () => {
     }
 
     return (
-      <div className="form__dropdown-container">
+      <div className="form__dropdown">
         <div className="form__dropdown-group">
           <label className="form__label">{t('category')}</label>
           <Dropdown
@@ -252,12 +248,16 @@ const Form = () => {
   }
 
   const renderSubmitButton = () => {
+    const hasEmptyInputValue: boolean = Object.values(getValues()).includes('')
     const hasInputError: boolean = Object.keys(errors).length > 0
-    const isFormSubmitDisabled: boolean = !hasProductImage || hasInputError || !selectedCategory || !selectedDelivery
+    const isFormSubmitDisabled: boolean =
+      !hasProductImage || hasEmptyInputValue || hasInputError || !selectedCategory || !selectedDelivery
 
     return (
       <div className="form__actionable">
-        <input className="form__button" type="submit" value={t('submit')} disabled={isFormSubmitDisabled} />
+        <button className="form__button" disabled={isFormSubmitDisabled}>
+          {t('submit')}
+        </button>
       </div>
     )
   }
