@@ -3,7 +3,6 @@
 
 // Navbar section
 @import './navbar';
-@import './dropdown';
 @import './logo';
 @import './hamburger';
 
@@ -22,10 +21,9 @@
 @import './sign-up-form';
 @import './sign-in-form';
 @import './sign-up-success-form';
-@import 'react-dropdown/style.css';
-@import './product-registration-form';
 @import './profile-upload';
 @import './product-upload';
+@import './product-registration-form';
 
 // Home section
 @import './home-section';
@@ -50,3 +48,7 @@
 @import './about-us-introduction';
 @import './about-us-section';
 @import './quote-box';
+
+// Dropdown section
+@import './dropdown';
+@import 'react-dropdown/style.css';

@@ -35,13 +35,13 @@ const ProductUpload = ({
       onChange={handleImageChange}>
       {({ imageList, onImageUpload, onImageUpdate, onImageRemove, isDragging, dragProps, errors }) => {
         onError(errors)
-        const hasImageList: boolean = imageList.length > 0
-        const classNameWithDraggingModifier: string = isDragging
+        const isImageSelected: boolean = imageList.length > 0
+        const draggingModifierClassName: string = isDragging
           ? 'product-upload product-upload--dragging'
           : 'product-upload'
-        const classNameWithSelectedModifier: string = hasImageList
+        const productUploadClassName: string = isImageSelected
           ? 'product-upload product-upload--selected'
-          : classNameWithDraggingModifier
+          : draggingModifierClassName
 
         const renderProductImage = () => {
           const defaultProductImage: ReactNode = (
@@ -59,7 +59,7 @@ const ProductUpload = ({
                 <img
                   className="product-upload__image product-upload__image--selected"
                   src={image.dataURL}
-                  alt="Uploaded Profile Image"
+                  alt="Uploaded Product Image"
                 />
                 <div className="product-upload__icon-container">
                   <div className="product-upload__icon-wrapper" onClick={handleImageUpdate}>
@@ -73,7 +73,7 @@ const ProductUpload = ({
             )
           })
 
-          return hasImageList ? selectedProductImage : defaultProductImage
+          return isImageSelected ? selectedProductImage : defaultProductImage
         }
 
         const renderAddMoreButton = () => {
@@ -89,7 +89,7 @@ const ProductUpload = ({
 
         return (
           <>
-            <div className={classNameWithSelectedModifier} {...dragProps}>
+            <div className={productUploadClassName} {...dragProps}>
               {renderProductImage()}
               {renderAddMoreButton()}
             </div>

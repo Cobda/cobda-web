@@ -16,7 +16,7 @@
   &__input-full-name,
   &__input-credential,
   &__input-container,
-  &__dropdown-container {
+  &__dropdown {
     display: flex;
     flex-direction: column;
 
@@ -32,7 +32,7 @@
   }
 
   &__product,
-  &__dropdown-container {
+  &__dropdown {
     margin-bottom: rem(24px);
 
     @include respond-above('md') {
@@ -209,14 +209,12 @@
 
     padding: rem(16px 112px);
     border-radius: rem(26px);
-    margin: 0;
-
+    
     background-color: $dodger-blue;
     color: $light;
 
     font-size: rem(18px);
     font-weight: 500;
-    text-decoration: none;
 
     cursor: pointer;
 

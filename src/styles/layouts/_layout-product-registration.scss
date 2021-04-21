@@ -1,0 +1,62 @@
+.layout-product-registration {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: map-get($header-height, 'sm') 1fr 1fr;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+
+  height: 100vh;
+
+  @include respond-above('md') {
+    grid-template-rows: map-get($header-height, 'md') 1fr map-get($footer-height, 'md');
+  }
+
+  @include respond-above('lg') {
+    grid-template-rows: map-get($header-height, 'lg') 1fr map-get($footer-height, 'lg');
+  }
+
+  @include respond-above('xl') {
+    grid-template-rows: map-get($header-height, 'xl') 1fr map-get($footer-height, 'xl');
+  }
+
+  & > header {
+    grid-area: header;
+
+    display: flex;
+    justify-content: center;
+    background-color: $silver;
+  }
+
+  & > main {
+    grid-area: main;
+
+    padding: rem(32px 24px);
+
+    @include respond-above('md') {
+      display: flex;
+      justify-content: center;
+      padding: rem(48px) 0;
+
+      background: {
+        image: url('/images/form-background.jpg');
+        repeat: no-repeat;
+        size: cover;
+        position: top 10% center;
+      }
+    }
+
+    @include respond-above('lg') {
+      padding: rem(64px) 0;
+    }
+  }
+
+  & > footer {
+    grid-area: footer;
+
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 rem(20px) 0 box-shadow-opacity(0.16);
+  }
+}
