@@ -14,7 +14,13 @@
   }
 
   &--selected {
+    flex-direction: column;
+    height: 100%;
     border: none;
+
+    @include respond-above('md') {
+      flex-direction: row;
+    }
   }
 
   &__figure {
@@ -47,12 +53,24 @@
 
   &__image-container {
     box-sizing: border-box;
-    padding: rem(24px 24px 8px);
+    padding: rem(20px 20px 8px);
     border: solid rem(2px) $mercury;
     border-radius: rem(10px);
 
+    @include respond-above('lg') {
+      padding: rem(24px 24px 8px);
+    }
+
     &:not(:last-child) {
-      margin-right: rem(18px);
+      margin-bottom: rem(16px);
+
+      @include respond-above('md') {
+        margin: 0 rem(16px) 0 0;
+      }
+
+      @include respond-above('lg') {
+        margin-right: rem(18px);
+      }
     }
   }
 
@@ -62,9 +80,14 @@
 
     &--selected {
       box-shadow: 0 rem(3px 6px) 0 box-shadow-opacity(0.16);
-      width: rem(160px);
-      height: rem(160px);
+      width: rem(140px);
+      height: rem(140px);
       object-fit: cover;
+
+      @include respond-above('lg') {
+        width: rem(160px);
+        height: rem(160px);
+      }
     }
   }
 
@@ -75,12 +98,17 @@
   }
 
   &__icon-wrapper {
-    width: rem(24px);
-    height: rem(24px);
+    width: rem(20px);
+    height: rem(20px);
     padding: rem(8px);
     border-radius: rem(12px);
 
     cursor: pointer;
+
+    @include respond-above('lg') {
+      width: rem(24px);
+      height: rem(24px);
+    }
 
     &:hover {
       background-color: $porcelain;

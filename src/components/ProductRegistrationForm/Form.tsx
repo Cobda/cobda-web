@@ -26,6 +26,7 @@ const initialInputValue: FormInput = {
 
 const INPUT_TEXT_VALIDATION_INDEX: number = 2
 const INPUT_NUMBER_VALIDATION_INDEX: number = 1
+const NUMBER_ONLY_PATTERN_VALUE = new RegExp(/^(?:[1-9]\d*|0)$/)
 const TEXT_ONLY_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
 const TEXT_AND_NUMBER_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z0-9' ,.'-]+$/i)
 
@@ -90,6 +91,7 @@ const Form = () => {
   const renderProductUpload = () => {
     const renderErrorMessage = () => {
       let errorMessage: string = ''
+      
       if (ImageError?.maxNumber && ImageError.maxFileSize) {
         errorMessage = t('maxFilenNumberAndSizeExceed')
       } else if (ImageError?.maxNumber) {
@@ -125,13 +127,17 @@ const Form = () => {
       },
       pattern: {
         value: TEXT_AND_NUMBER_PATTERN_VALUE,
-        message: t('inputNameExample')
+        message: t('inputNameInvalid')
       }
     })
     const getPriceReference: (ref: HTMLInputElement) => void = register({
       required: {
         value: true,
         message: t('inputValueRequired')
+      },
+      pattern: {
+        value: NUMBER_ONLY_PATTERN_VALUE,
+        message: t('inputPriceInvalid')
       }
     })
     const getColorReference: (ref: HTMLInputElement) => void = register({
@@ -141,7 +147,7 @@ const Form = () => {
       },
       pattern: {
         value: TEXT_ONLY_PATTERN_VALUE,
-        message: t('inputColorExample')
+        message: t('inputColorInvalid')
       }
     })
     const getSizeReference: (ref: HTMLInputElement) => void = register({
@@ -151,7 +157,7 @@ const Form = () => {
       },
       pattern: {
         value: TEXT_AND_NUMBER_PATTERN_VALUE,
-        message: t('inputSizeExample')
+        message: t('inputSizeInvalid')
       }
     })
 
