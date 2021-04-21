@@ -75,18 +75,25 @@
   }
 
   &__icon-wrapper {
+    width: rem(24px);
+    height: rem(24px);
     padding: rem(8px);
-    border-radius: 50%;
+    border-radius: rem(12px);
 
     cursor: pointer;
 
     &:hover {
       background-color: $porcelain;
     }
+
+    &--large {
+      width: rem(32px);
+      height: rem(32px);
+      padding: rem(16px);
+    }
   }
 
   &__icon {
-    width: rem(24px);
-    height: rem(24px);
+    height: 100%;
   }
 }

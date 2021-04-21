@@ -26,5 +26,8 @@
   "inputValueRequired": "กรุณากรอกข้อมูลให้ครบถ้วน",
   "inputNameExample": "เช่น Nike Air Max, Adidas Ultraboost",
   "inputColorExample": "เช่น White, Black, Grey, Red, Blue",
-  "inputSizeExample": "เช่น 7US 10UK หรือ S, M, L, XL, XXL"
+  "inputSizeExample": "เช่น 7US 10UK หรือ S, M, L, XL, XXL",
+  "maxFilenNumberAndSizeExceed": "กรุณาเลือกจำนวนรูปไม่เกิน 3 รูปและขนาดไฟล์ห้ามเกิน 1.5 MB",
+  "maxFileNumberExceed": "กรุณาเลือกจำนวนรูปไม่เกิน 3 รูป",
+  "maxFileSizeExceed": "กรุณาเลือกไฟล์ที่มีขนาดไม่เกิน 1.5 MB"
 }

@@ -1,24 +1,28 @@
-import React, { ReactNode, useState } from 'react'
-import useTranslation from 'next-translate/useTranslation'
+import React, { ReactNode } from 'react'
 import ImageUploading, { ImageType, ImageListType, ErrorsType } from 'react-images-uploading'
 
 interface ProductUpload {
   readonly images: ImageListType
   readonly maxNumber?: number
   readonly acceptType?: string[]
+  readonly maxFileSize?: number
+  readonly imageCaption?: string
   readonly onUpload: (imageList: ImageListType) => void
+  readonly onError: (errors: ErrorsType) => void
 }
 
-const ProductUpload = ({ images, maxNumber, acceptType, onUpload }: ProductUpload) => {
-  const { t } = useTranslation('product-registration')
-
+const ProductUpload = ({
+  images,
+  maxNumber,
+  acceptType,
+  maxFileSize,
+  imageCaption,
+  onUpload,
+  onError
+}: ProductUpload) => {
   const handleImageChange = (imageList: ImageListType) => {
+    // TODO: Handle validation from backend
     onUpload(imageList)
-  }
-
-  const handleErrorUpload = (errors: ErrorsType, files?: ImageListType | undefined) => {
-    // TODO: Handle error from backend
-    console.log('Upload Errors: ', errors, ' with files: ', files)
   }
 
   return (
@@ -27,9 +31,10 @@ const ProductUpload = ({ images, maxNumber, acceptType, onUpload }: ProductUploa
       value={images}
       maxNumber={maxNumber}
       acceptType={acceptType}
-      onChange={handleImageChange}
-      onError={handleErrorUpload}>
-      {({ imageList, onImageUpload, onImageUpdate, onImageRemove, isDragging, dragProps }) => {
+      maxFileSize={maxFileSize}
+      onChange={handleImageChange}>
+      {({ imageList, onImageUpload, onImageUpdate, onImageRemove, isDragging, dragProps, errors }) => {
+        onError(errors)
         const hasImageList: boolean = imageList.length > 0
         const classNameWithDraggingModifier: string = isDragging
           ? 'product-upload product-upload--dragging'
@@ -42,7 +47,7 @@ const ProductUpload = ({ images, maxNumber, acceptType, onUpload }: ProductUploa
           const defaultProductImage: ReactNode = (
             <figure className="product-upload__figure" onClick={onImageUpload}>
               <img className="product-upload__image" src="/icons/upload-image.svg" alt="Uploaded Profile Image" />
-              <figcaption className="product-upload__caption">{t('addThreeImages')}</figcaption>
+              <figcaption className="product-upload__caption">{imageCaption}</figcaption>
             </figure>
           )
           const selectedProductImage: ReactNode = imageList.map((image: ImageType, index: number) => {
@@ -71,10 +76,24 @@ const ProductUpload = ({ images, maxNumber, acceptType, onUpload }: ProductUploa
           return hasImageList ? selectedProductImage : defaultProductImage
         }
 
+        const renderAddMoreButton = () => {
+          const isImageAddable: boolean = imageList.length > 0 && imageList.length < 3
+          const addMoreButton: ReactNode = (
+            <div className="product-upload__icon-wrapper product-upload__icon-wrapper--large" onClick={onImageUpload}>
+              <img className="product-upload__icon" src="/icons/plus.svg" alt="Add Image Icon" />
+            </div>
+          )
+
+          return isImageAddable ? addMoreButton : <></>
+        }
+
         return (
-          <div className={classNameWithSelectedModifier} {...dragProps}>
-            {renderProductImage()}
-          </div>
+          <>
+            <div className={classNameWithSelectedModifier} {...dragProps}>
+              {renderProductImage()}
+              {renderAddMoreButton()}
+            </div>
+          </>
         )
       }}
     </ImageUploading>

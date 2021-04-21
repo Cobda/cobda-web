@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import TextField from '../InputField/TextField'
 import useTranslation from 'next-translate/useTranslation'
-import { ImageListType } from 'react-images-uploading'
+import { ErrorsType, ImageListType } from 'react-images-uploading'
 import ProductUpload from '../ProductUpload'
 import Dropdown, { Option } from 'react-dropdown'
 import TextArea from '../Textarea'
@@ -31,6 +31,7 @@ const TEXT_AND_NUMBER_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z0
 
 const Form = () => {
   const [productImages, setProductImages] = useState<ImageListType>([])
+  const [ImageError, setImageError] = useState<ErrorsType>({})
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [selectedDelivery, setSelectedDelivery] = useState<string>('')
   const router = useRouter()
@@ -86,12 +87,35 @@ const Form = () => {
     return errorMessage || isErrorDisplayed ? errorMessage : ''
   }
 
-  const renderProductUpload = () => (
-    <div className="form__product">
-      <label className="form__label">{t('productImage')}</label>
-      <ProductUpload images={productImages} maxNumber={3} acceptType={['jpg', 'png']} onUpload={setProductImages} />
-    </div>
-  )
+  const renderProductUpload = () => {
+    const renderErrorMessage = () => {
+      let errorMessage: string = ''
+      if (ImageError?.maxNumber && ImageError.maxFileSize) {
+        errorMessage = t('maxFilenNumberAndSizeExceed')
+      } else if (ImageError?.maxNumber) {
+        errorMessage = t('maxFileNumberExceed')
+      } else if (ImageError?.maxFileSize) {
+        errorMessage = t('maxFileSizeExceed')
+      }
+
+      return errorMessage ? <div className="form__help">{errorMessage}</div> : <></>
+    }
+
+    return (
+      <div className="form__product">
+        <label className="form__label">{t('productImage')}</label>
+        <ProductUpload
+          images={productImages}
+          maxNumber={3}
+          acceptType={['jpg', 'png']}
+          imageCaption={t('addThreeImages')}
+          onUpload={setProductImages}
+          onError={setImageError}
+        />
+        {renderErrorMessage()}
+      </div>
+    )
+  }
 
   const renderProductTextField = () => {
     const getNameReference: (ref: HTMLInputElement) => void = register({
