@@ -8,11 +8,11 @@ const NavbarHamburger = () => {
   const { t } = useTranslation('common')
 
   const renderHamburgerIcon = () => (
-    <>
+    <div className="hamburger__icon">
       <span></span>
       <span></span>
       <span></span>
-    </>
+    </div>
   )
 
   const renderHamburgerMenu = () =>

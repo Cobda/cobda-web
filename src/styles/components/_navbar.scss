@@ -1,9 +1,9 @@
 @import '../abstracts/_abstracts-dir';
 
 .navbar {
+  box-sizing: border-box;
   width: 100%;
   max-width: $navbar-max-width;
-  box-sizing: border-box;
   height: rem(56px);
 
   background-color: $light;
