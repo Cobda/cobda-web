@@ -213,7 +213,7 @@
   &__button {
     all: unset;
 
-    padding: rem(16px 96px);
+    padding: rem(16px 112px);
     border-radius: rem(26px);
 
     background-color: $dodger-blue;
@@ -221,6 +221,7 @@
 
     font-size: rem(18px);
     font-weight: 500;
+    white-space: nowrap;
 
     cursor: pointer;
 

@@ -105,7 +105,7 @@ const Form = () => {
         <ProductUpload
           images={productImages}
           maxNumber={3}
-          acceptType={['jpg', 'png']}
+          acceptType={['jpg', 'jpeg', 'png']}
           imageCaption={t('addThreeImages')}
           onUpload={setProductImages}
           onError={setImageError}
