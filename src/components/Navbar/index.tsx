@@ -1,16 +1,17 @@
 import React from 'react'
-import Logo from '../Logo'
+import NavbarLogo from '../Logo'
 import NavbarMenu from './Menu'
 import NavbarTool from './Tool'
+import NavbarHamburger from './Hamburger'
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <Logo />
-      <NavbarMenu />
-      <NavbarTool />
+        <NavbarHamburger />
+        <NavbarLogo />
+        <NavbarMenu />
+        <NavbarTool />
     </nav>
   )
 }
-
 export default Navbar

@@ -29,10 +29,15 @@
 
   & > header {
     grid-area: header;
+    position: fixed;
+    z-index: $zindex-header;
+    top: 0;
 
     display: flex;
     justify-content: center;
-    background-color: $silver;
+    box-shadow: 0 rem(4px 20px) 0 box-shadow-opacity(0.16);
+    width: 100%;
+    background-color: $light;
   }
 
   & > main {
@@ -40,7 +45,7 @@
 
     padding: 0 rem(16px);
     background-color: $alabaster;
-    
+
     @include respond-above('md') {
       padding: 0 rem(24px);
       background-color: $light;

@@ -1,0 +1,124 @@
+.hamburger {
+  position: absolute;
+  width: 100%;
+
+  @include respond-above('md') {
+    display: none;
+  }
+
+  & span:nth-child(1) {
+    transform-origin: left center;
+  }
+
+  & span:nth-child(2) {
+    width: rem(16px);
+    transform-origin: left center;
+  }
+
+  & span:nth-child(3) {
+    margin: 0;
+    transform-origin: left center;
+  }
+
+  &__icon {
+    box-sizing: border-box;
+    padding-left: rem(16px);
+
+    > span {
+      position: relative;
+      display: block;
+      width: rem(24px);
+      height: rem(3px);
+      border-radius: rem(3px);
+      opacity: 1;
+      margin-bottom: rem(5px);
+
+      background: $dark;
+      transform: rotate(0deg);
+
+      @include transition(transform, 0.25s, ease-in-out);
+    }
+  }
+
+  &__input {
+    position: absolute;
+    z-index: $zindex-hamburger-input;
+    left: rem(16px);
+
+    width: rem(24px);
+    height: 100%;
+    opacity: 0;
+    margin: 0;
+
+    cursor: pointer;
+    transform: rotate(0deg);
+
+    @include transition(transform, 0.55s, ease-in-out);
+
+    &:checked {
+      width: rem(19px);
+      height: 100%;
+    }
+
+    &:checked ~ .hamburger__menu {
+      opacity: 1;
+      pointer-events: visible;
+    }
+
+    &:checked ~ .hamburger__icon > span {
+      opacity: 1;
+    }
+
+    &:checked ~ .hamburger__icon > span:nth-child(1) {
+      top: -1px;
+      left: 1px;
+      transform: rotate(45deg);
+    }
+
+    &:checked ~ .hamburger__icon > span:nth-child(2) {
+      opacity: 0;
+      transform: rotate(0deg);
+    }
+
+    &:checked ~ .hamburger__icon > span:nth-child(3) {
+      top: 0;
+      left: 1px;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__menu {
+    position: absolute;
+
+    box-sizing: border-box;
+    box-shadow: 0 rem(2px 2px) 0 box-shadow-opacity(0.16);
+    width: 100%;
+    padding: rem(32px 60px);
+    opacity: 0;
+    margin: 0;
+
+    background-color: $light;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    pointer-events: none;
+
+    @include transition(opacity, 0.25s, ease-in-out);
+  }
+
+  &__menu-item {
+    box-sizing: border-box;
+    padding: rem(16px) 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $silver;
+    }
+  }
+
+  &__link {
+    color: $dark;
+    font-size: rem(16px);
+    text-decoration: none;
+
+    -webkit-text-size-adjust: 100%;
+  }
+}

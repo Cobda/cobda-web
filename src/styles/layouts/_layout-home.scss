@@ -22,17 +22,22 @@
     grid-template-rows: map-get($header-height, 'xl') 1fr map-get($footer-height, 'xl');
     column-gap: rem(48px);
     grid-template-areas:
-    'header header header'
-    '. main .'
-    'footer footer footer';
+      'header header header'
+      '. main .'
+      'footer footer footer';
   }
 
   & > header {
     grid-area: header;
+    position: fixed;
+    z-index: $zindex-header;
+    top: 0;
 
     display: flex;
     justify-content: center;
-    background-color: $silver;
+    box-shadow: 0 rem(4px 20px) 0 box-shadow-opacity(0.16);
+    width: 100%;
+    background-color: $light;
   }
 
   & > main {

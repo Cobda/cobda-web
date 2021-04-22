@@ -6,11 +6,11 @@ import useTranslation from 'next-translate/useTranslation'
 const NavbarMenu = () => {
   const router = useRouter()
   const { pathname } = router
-  const paths = ['/', '/products', '/about-us']
-  const pathNames = ['home', 'product', 'aboutUs']
+  const paths: string[] = ['/', '/products', '/about-us', '/product-registration']
+  const pathNames: string[] = ['home', 'product', 'aboutUs', 'sell']
   const { t } = useTranslation('common')
 
-  const menuItems = (routerPath: string) =>
+  const renderMenuItems = (routerPath: string) =>
     paths.map((path, index) => {
       const linkClassName: string =
         path === routerPath
@@ -25,7 +25,7 @@ const NavbarMenu = () => {
     })
 
   return pathname ? (
-    <ul className="navbar__menu">{menuItems(pathname)}</ul>
+    <ul className="navbar__menu">{renderMenuItems(pathname)}</ul>
   ) : (
     <></>
   )
