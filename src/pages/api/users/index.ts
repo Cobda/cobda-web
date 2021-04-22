@@ -1,49 +1,24 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { Role } from '../../../enum/role'
-import { user, product } from '../../../entity/entities'
+import { PrismaClient, Prisma } from '@prisma/client'
 
-const userHandler = (req: NextApiRequest, res: NextApiResponse) => {
+const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req
-
-  // TODO: Handle the function properly
-  const handlePatch = () => {
-    return {
-      message: 'This is a PATCH request, currently in progress...',
-      context: body
-    }
-  }
-
-  // TODO: Handle the function properly
-  const handlePost = () => {
-    return {
-      users: mockUsers(),
-      context: body
-    }
-  }
-
-  const mockUsers = () => {
-    const userNames: string[] = ['mocking-bird', 'wood-pecker', 'black-crow']
-    const products: Array<ReturnType<typeof product>> = [product('shoe1', 1), product('shoe2', 1), product('shoe3', 1)]
-    const histories: Array<ReturnType<typeof product>> = products.reverse()
-    const users: Array<ReturnType<typeof user>> = userNames.map(name => {
-      const password: string = [...name].reverse().join('')
-      const splitName: string[] = name.split('-')
-
-      return user(name, password, splitName[0], splitName[1], '0', Role.User, products, histories)
-    })
-
-    return users
-  }
+  const prisma = new PrismaClient()
 
   switch (method) {
+    case 'GET':
+      return res.json(await prisma.user.findMany())
     case 'POST':
-      return res.json(handlePost())
-    case 'PATCH':
-      return res.json(handlePatch())
+      const user: Prisma.UserCreateInput = { ...body }
+      const result = await prisma.user.create({ data: user }).catch(error => error)
+
+      return !result.code ? res.status(201).json(result) : res.status(400).json(result)
     default:
-      res.setHeader('Allow', ['POST', 'PATCH'])
+      res.setHeader('Allow', ['GET', 'POST'])
       res.status(405).end(`Method ${method} Not Allowed`)
   }
+
+  await prisma.$disconnect()
 }
 
 export default userHandler

@@ -11,6 +11,7 @@ const Form = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const { t } = useTranslation('sign-in')
   const router = useRouter()
+  // const [session, loading] = useSession()
 
   useEffect(() => {
     console.log('Router: ', router)
