@@ -1,7 +1,6 @@
 .hamburger {
   position: absolute;
   width: 100%;
-  user-select: none;
 
   @include respond-above('md') {
     display: none;

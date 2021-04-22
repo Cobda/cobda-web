@@ -3,8 +3,7 @@ import Link from 'next/link'
 import useTranslation from 'next-translate/useTranslation'
 
 const NavbarHamburger = () => {
-  const paths: string[] = ['/products', '/about-us', '/', '/sign-in', '/sign-up']
-  // TODO: Put the link to sell products later
+  const paths: string[] = ['/products', '/about-us', '/product-registration', '/sign-in', '/sign-up']
   const hamburgerMenuItems: string[] = ['product', 'aboutUs', 'sell', 'signIn', 'signUp']
   const { t } = useTranslation('common')
 
