@@ -15,19 +15,40 @@
 
   &__input-full-name,
   &__input-credential,
-  &__input-container,
+  &__input-product,
   &__dropdown {
     display: flex;
     flex-direction: column;
 
     @include respond-above('md') {
       flex-direction: row;
-      // gap: 10%;
+    }
+  }
 
-      & > .form__input-group,
-      & > .form__dropdown-group {
-        width: 45%;
-        
+  &__input-group,
+  &__dropdown-group {
+    @include respond-above('md') {
+      width: 45%;
+
+      &:nth-child(odd) {
+        margin-right: 10%;
+      }
+    }
+  }
+
+  &__input-group,
+  &__textarea-group {
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: rem(24px);
+
+      @include respond-above('md') {
+        margin-bottom: rem(46px);
+      }
+
+      @include respond-above('lg') {
+        margin-bottom: rem(50px);
       }
     }
   }
@@ -47,6 +68,19 @@
 
   &__title {
     margin: 0;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: rem(12px);
+
+    font-size: rem(14px);
+    font-weight: 600;
+    line-height: 1.2;
+
+    @include respond-above('lg') {
+      font-size: rem(16px);
+    }
   }
 
   &__profile {
@@ -86,41 +120,12 @@
     }
   }
 
-  &__input-container {
+  &__input-product {
     flex-wrap: wrap;
     margin-bottom: rem(24px);
 
     @include respond-above('md') {
       margin-bottom: 0;
-    }
-  }
-
-  &__input-group {
-    position: relative;
-
-    &:not(:last-child) {
-      margin-bottom: rem(24px);
-
-      @include respond-above('md') {
-        margin-bottom: rem(46px);
-      }
-
-      @include respond-above('lg') {
-        margin-bottom: rem(50px);
-      }
-    }
-  }
-
-  &__label {
-    display: block;
-    margin-bottom: rem(12px);
-
-    font-size: rem(14px);
-    font-weight: 600;
-    line-height: 1.2;
-
-    @include respond-above('lg') {
-      font-size: rem(16px);
     }
   }
 
@@ -210,7 +215,7 @@
 
     padding: rem(16px 96px);
     border-radius: rem(26px);
-    
+
     background-color: $dodger-blue;
     color: $light;
 

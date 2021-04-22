@@ -30,7 +30,7 @@ const Textarea = ({ name, label, placeholder, errorMessage, onChange, textareaRe
   }
 
   return (
-    <div className="form__input-group">
+    <div className="form__textarea-group">
       <label className="form__label">{label}</label>
       {renderTextarea()}
     </div>

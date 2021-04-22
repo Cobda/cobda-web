@@ -116,41 +116,35 @@ const Form = () => {
   }
 
   const renderProductTextField = () => {
-    const getNameReference: (ref: HTMLInputElement) => void = register({
+    const requiredProperty: Object = {
       required: {
         value: true,
         message: t('inputValueRequired')
-      },
+      }
+    }
+    const getNameReference: (ref: HTMLInputElement) => void = register({
+      ...requiredProperty,
       pattern: {
         value: TEXT_AND_NUMBER_PATTERN_VALUE,
         message: t('inputNameInvalid')
       }
     })
     const getPriceReference: (ref: HTMLInputElement) => void = register({
-      required: {
-        value: true,
-        message: t('inputValueRequired')
-      },
+      ...requiredProperty,
       pattern: {
         value: NUMBER_ONLY_PATTERN_VALUE,
         message: t('inputPriceInvalid')
       }
     })
     const getColorReference: (ref: HTMLInputElement) => void = register({
-      required: {
-        value: true,
-        message: t('inputValueRequired')
-      },
+      ...requiredProperty,
       pattern: {
         value: TEXT_ONLY_PATTERN_VALUE,
         message: t('inputColorInvalid')
       }
     })
     const getSizeReference: (ref: HTMLInputElement) => void = register({
-      required: {
-        value: true,
-        message: t('inputValueRequired')
-      },
+      ...requiredProperty,
       pattern: {
         value: TEXT_AND_NUMBER_PATTERN_VALUE,
         message: t('inputSizeInvalid')
@@ -158,7 +152,7 @@ const Form = () => {
     })
 
     return (
-      <div className="form__input-container">
+      <div className="form__input-product">
         <TextField
           name="name"
           label={t('name')}
