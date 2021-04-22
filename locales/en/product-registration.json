@@ -21,8 +21,6 @@
   "colorPlaceholder": "E.g. White, Black, Grey, Red, Blue",
   "sizePlaceholder": "E.g. 38, 42, 7US, 10UK, S, M, L",
   "descriptionPlaceholder": "Enter your product description",
-  "categoryPlaceholder": "Select your category",
-  "deliveryOptionPlaceholder": "Select your option",
   "inputValueRequired": "This field is required.",
   "inputNameInvalid": "This name is invalid.",
   "inputPriceInvalid": "This price is invalid.",

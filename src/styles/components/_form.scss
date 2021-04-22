@@ -22,11 +22,12 @@
 
     @include respond-above('md') {
       flex-direction: row;
-      gap: 10%;
+      // gap: 10%;
 
       & > .form__input-group,
       & > .form__dropdown-group {
         width: 45%;
+        
       }
     }
   }
@@ -207,7 +208,7 @@
   &__button {
     all: unset;
 
-    padding: rem(16px 112px);
+    padding: rem(16px 96px);
     border-radius: rem(26px);
     
     background-color: $dodger-blue;

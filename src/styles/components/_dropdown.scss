@@ -24,6 +24,14 @@
     }
   }
 
+  &__option-menu {
+    font-size: 14px;
+
+    @include respond-above('lg') {
+      font-size: rem(16px);
+    }
+  }
+
   &__menu {
     position: absolute;
     z-index: $zindex-dropdown;

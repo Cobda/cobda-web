@@ -228,18 +228,20 @@ const Form = () => {
         <div className="form__dropdown-group">
           <label className="form__label">{t('category')}</label>
           <Dropdown
+            menuClassName="dropdown__option-menu"
             options={categoryOption}
             value={selectedCategory}
-            placeholder={t('categoryPlaceholder')}
+            placeholder="-"
             onChange={handleDropdownChange(setSelectedCategory)}
           />
         </div>
         <div className="form__dropdown-group">
           <label className="form__label">{t('deliveryOption')}</label>
           <Dropdown
+            menuClassName="dropdown__option-menu"
             options={deliveryOption}
             value={selectedDelivery}
-            placeholder={t('deliveryOptionPlaceholder')}
+            placeholder="-"
             onChange={handleDropdownChange(setSelectedDelivery)}
           />
         </div>
