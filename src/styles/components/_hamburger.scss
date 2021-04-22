@@ -7,21 +7,6 @@
     display: none;
   }
 
-  > div > span {
-    position: relative;
-    display: block;
-    width: rem(24px);
-    height: rem(3px);
-    border-radius: rem(3px);
-    opacity: 1;
-    margin-bottom: rem(5px);
-
-    background: $dark;
-    transform: rotate(0deg);
-
-    @include transition(transform, 0.25s, ease-in-out);
-  }
-
   & span:nth-child(1) {
     transform-origin: left center;
   }
@@ -39,6 +24,21 @@
   &__icon {
     box-sizing: border-box;
     padding-left: rem(16px);
+
+    > span {
+      position: relative;
+      display: block;
+      width: rem(24px);
+      height: rem(3px);
+      border-radius: rem(3px);
+      opacity: 1;
+      margin-bottom: rem(5px);
+
+      background: $dark;
+      transform: rotate(0deg);
+
+      @include transition(transform, 0.25s, ease-in-out);
+    }
   }
 
   &__input {
@@ -56,7 +56,6 @@
 
     @include transition(transform, 0.55s, ease-in-out);
 
-
     &:checked {
       width: rem(19px);
       height: 100%;
@@ -67,22 +66,22 @@
       pointer-events: visible;
     }
 
-    &:checked ~ div > span {
+    &:checked ~ .hamburger__icon > span {
       opacity: 1;
     }
 
-    &:checked ~ div > span:nth-child(1) {
+    &:checked ~ .hamburger__icon > span:nth-child(1) {
       top: -1px;
       left: 1px;
       transform: rotate(45deg);
     }
 
-    &:checked ~ div > span:nth-child(2) {
+    &:checked ~ .hamburger__icon > span:nth-child(2) {
       opacity: 0;
       transform: rotate(0deg);
     }
 
-    &:checked ~ div > span:nth-child(3) {
+    &:checked ~ .hamburger__icon > span:nth-child(3) {
       top: 0;
       left: 1px;
       transform: rotate(-45deg);
@@ -92,7 +91,6 @@
   &__menu {
     position: absolute;
 
-    overflow: hidden;
     box-sizing: border-box;
     box-shadow: 0 rem(2px 2px) 0 box-shadow-opacity(0.16);
     width: 100%;
@@ -104,7 +102,6 @@
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     pointer-events: none;
-    /* to stop flickering of text in safari */
 
     @include transition(opacity, 0.25s, ease-in-out);
   }
@@ -123,7 +120,6 @@
     font-size: rem(16px);
     text-decoration: none;
 
-    /* Prevent font scaling in landscape while allowing user zoom */
     -webkit-text-size-adjust: 100%;
   }
 }
