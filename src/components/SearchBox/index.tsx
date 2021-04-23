@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
 
 const HomeSearchBox = () => {
   const [searchValue, setSearchValue] = useState<string>('')
-  const [active, setActive] = useState(0)
-  const [filteredSuggestion, setFilteredSuggestion] = useState<string[]>([])
+  const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([])
   const [isSuggestionShown, setSuggestionShown] = useState(false)
   const { t } = useTranslation('home')
   const router = useRouter()
+  const searchBoxRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleMouseClick = (event: MouseEvent) => {
-      setSuggestionShown(false)
+      const isFocused: boolean | undefined = searchBoxRef.current?.contains(event.target as Node)
+      if (!isFocused) {
+        setSuggestionShown(false)
+      }
     }
 
     document.addEventListener('mousedown', handleMouseClick)
@@ -25,63 +28,58 @@ const HomeSearchBox = () => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     //TODO: This below data should be obtained from database
     const suggestions: string[] = ['Alabama', 'Alaska', 'American Samoa', 'Bubble Holmes', 'Contra Hits', 'Amazon']
-
-    const {
-      currentTarget: { value }
-    } = event
-    const newFilteredSuggestionSuggestions = suggestions.filter(
+    const { value } = event.currentTarget
+    const newFilteredSuggestions = suggestions.filter(
       (suggestion: string) => suggestion.toLowerCase().indexOf(value.toLowerCase()) > -1
     )
-
-    setActive(0)
-    setFilteredSuggestion(newFilteredSuggestionSuggestions)
+    setFilteredSuggestions(newFilteredSuggestions)
     setSuggestionShown(true)
     setSearchValue(value)
   }
 
+  const handleInputClick = () => {
+    if (searchValue) {
+      setSuggestionShown(true)
+    }
+  }
+
   const handleListItemClick = (event: React.MouseEvent<HTMLLIElement>) => {
-    setActive(0)
-    setFilteredSuggestion([])
+    router.push(`products/${event.currentTarget.innerText}`)
+    setFilteredSuggestions([])
     setSuggestionShown(false)
-    setSearchValue(event.currentTarget.innerText)
-    handleSearchClick()
   }
 
   const handleSearchClick = () => {
     if (searchValue) {
       router.push(`products/${searchValue}`)
       setSearchValue('')
+      setSuggestionShown(false)
     }
   }
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (searchValue && event.key === 'Enter') {
-      setActive(0)
-      setSuggestionShown(false)
-      setSearchValue(filteredSuggestion[active])
+    if (event.key === 'Enter') {
       handleSearchClick()
     }
   }
 
   const renderSearchSuggestion = () => {
     if (isSuggestionShown && searchValue) {
-      const filterResults = filteredSuggestion.map((suggestion, index) => {
-        let className = index === active ? 'active' : ''
-
+      const filterResults = filteredSuggestions.map((suggestion) => {
         return (
-          <li className={className} key={suggestion} onClick={handleListItemClick}>
+          <li className="home-search-suggestion__item" key={suggestion} onClick={handleListItemClick}>
             {suggestion}
           </li>
         )
       })
 
-      const hasFilteredSuggestionSuggestion: boolean = filteredSuggestion.length > 0
-      const autoComplete = hasFilteredSuggestionSuggestion ? (
-        <ul className="home-search-suggestion__autocomplete">{filterResults}</ul>
+      const hasFilteredSuggestions: boolean = filteredSuggestions.length > 0
+      const autoComplete = hasFilteredSuggestions ? (
+        <ul className="home-search-suggestion__list">{filterResults}</ul>
       ) : (
-        <div className="home-search-suggestion__not-found">
-          <em>Not found</em>
-        </div>
+        <ul className="home-search-suggestion__list--small">
+          <li className="home-search-suggestion__item--grey">Not found</li>
+        </ul>
       )
 
       return <div className="home-search-suggestion">{autoComplete}</div>
@@ -92,16 +90,18 @@ const HomeSearchBox = () => {
 
   return (
     <>
-      <div className="home-search-box">
+      <div className="home-search-box" ref={searchBoxRef}>
         <input
           className="home-search-box__input"
           name="search"
           value={searchValue}
           placeholder={t('searchPlaceholder')}
+          autoComplete="off"
+          onClick={handleInputClick}
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
         />
-        <button onClick={handleSearchClick} className="home-search-box__button" />
+        <button className="home-search-box__button" onClick={handleSearchClick} />
         {renderSearchSuggestion()}
       </div>
     </>

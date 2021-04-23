@@ -1,14 +1,15 @@
 .home-search-suggestion {
-  &__autocomplete,
-  &__not-found {
+  &__list,
+  &__list--small {
     all: unset;
+
     position: absolute;
     top: 105%;
     left: 10%;
 
     width: 80%;
     max-height: rem(120px);
-    padding-block-end: 1rem;
+    padding-block-end: rem(16px);
     overflow-y: auto;
 
     box-shadow: rem(5px 10px 20px) 0 box-shadow-opacity(0.16);
@@ -16,7 +17,6 @@
 
     font-size: rem(14px);
     list-style: none;
-    text-overflow: ellipsis;
     line-height: 1.23;
 
     @include respond-above('md') {
@@ -31,9 +31,9 @@
     }
   }
 
-  &__not-found {
-    height: 10px;
-    padding: 10px 0px;
+  &__list--small {
+    height: rem(10px);
+    padding: rem(10px) 0;
 
     color: $secondary;
 
@@ -41,30 +41,26 @@
 
     @include respond-above('sm') {
       height: rem(15px);
-      padding: rem(10px) 0px;
+      padding: rem(10px) 0;
 
       font-size: rem(12px);
     }
 
     @include respond-above('md') {
       height: rem(20px);
-      padding: rem(15px) 0px;
+      padding: rem(15px) 0;
 
       font-size: rem(16px);
     }
 
     @include respond-above('lg') {
-      padding: rem(20px) 0px;
+      padding: rem(20px) 0;
 
       font-size: rem(20px);
     }
   }
 
-  &__not-found > em {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
+  &__item--grey {
     margin-left: rem(10px);
 
     @include respond-above('sm') {
@@ -79,7 +75,7 @@
     }
   }
 
-  &__autocomplete > li {
+  &__item {
     padding: rem(5px 10px);
 
     @include respond-above('sm') {
@@ -101,7 +97,7 @@
     }
   }
 
-  &__autocomplete > li:first-child {
+  &__item:first-child {
     padding-top: rem(10px);
 
     @include respond-above('sm') {
@@ -117,8 +113,7 @@
     }
   }
 
-  &__autocomplete > active,
-  &__autocomplete > li:hover {
+  &__item:hover {
     cursor: pointer;
 
     font-weight: 300;
