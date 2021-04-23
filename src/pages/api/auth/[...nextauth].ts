@@ -15,7 +15,7 @@ const providers = {
             password: credentials.password
           }
         }).catch(error => error)
-
+        // TODO: Send useful error message
         return !user.code && user.length ? user[0] : new Error('The email or password is incorrect.')
       }
     })

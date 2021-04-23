@@ -16,6 +16,7 @@ const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             ...body
           }
         }).catch(error => error)
+
         return res.status(updateResponse.code ? 400 : 201).json(updateResponse)
       } catch (err) {
         return res.status(400).json(err.message)
