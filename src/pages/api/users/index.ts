@@ -12,7 +12,7 @@ const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     case 'POST':
       try {
         const user: Prisma.UserCreateInput = { ...body }
-        const postResponse = await prismaClient.user.create({ data: user }).catch(error => error)
+        const postResponse = await prismaClient.user.create({ data: user }).catch(err => err)
 
         return res.status(postResponse.code ? ResponseStatusCode.BadRequest : ResponseStatusCode.Created)
                   .json(postResponse)

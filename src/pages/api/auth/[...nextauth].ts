@@ -4,7 +4,7 @@ import Providers from 'next-auth/providers'
 import prismaClient from '../../../lib/prisma'
 
 const providers = {
-  providers : [
+  providers: [
     Providers.Credentials({
       name: 'Credentials',
       credentials: {},
@@ -14,9 +14,10 @@ const providers = {
             email: credentials.email,
             password: credentials.password
           }
-        }).catch(error => error)
+        }).catch(err => err)
+        const isUserAuthenticated: boolean = !user.code && user.length
         // TODO: Send useful error message
-        return !user.code && user.length ? user[0] : new Error('The email or password is incorrect.')
+        return isUserAuthenticated ? user[0] : new Error('The email or password is incorrect.')
       }
     })
   ]

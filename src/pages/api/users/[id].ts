@@ -12,7 +12,7 @@ const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         const updateResponse = await prismaClient.user.update({
           where: { id: userId },
           data: { ...body }
-        }).catch(error => error)
+        }).catch(err => err)
 
         return res.status(updateResponse.code ? ResponseStatusCode.BadRequest : ResponseStatusCode.Created)
                   .json(updateResponse)
@@ -22,7 +22,7 @@ const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     case 'DELETE':
       const deleteResponse = await prismaClient.user.delete({
         where: { id: userId }
-      }).catch(error => error)
+      }).catch(err => err)
 
       return deleteResponse.code ? res.status(ResponseStatusCode.BadRequest).json(deleteResponse)
                                  : res.status(ResponseStatusCode.NoContent).end()
