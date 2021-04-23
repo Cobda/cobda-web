@@ -3,20 +3,23 @@ import prismaClient from '../../../lib/prisma'
 
 const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, query: { id }, body } = req
-  const userId = id instanceof Array || !id ? 0 : parseInt(id) || 0
+  const userId = id instanceof Array ? 0 : parseInt(id) || 0
 
   switch (method) {
     case 'PATCH':
-      const updateResponse = await prismaClient.user.update({
-        where: {
-          id: userId
-        },
-        data: {
-          ...body
-        }
-      }).catch(error => error)
-
-      return res.status(updateResponse.code ? 400 : 201).json(updateResponse)
+      try {
+        const updateResponse = await prismaClient.user.update({
+          where: {
+            id: userId
+          },
+          data: {
+            ...body
+          }
+        }).catch(error => error)
+        return res.status(updateResponse.code ? 400 : 201).json(updateResponse)
+      } catch (err) {
+        return res.status(400).json(err.message)
+      }
     case 'DELETE':
       const deleteResponse = await prismaClient.user.delete({
         where: {

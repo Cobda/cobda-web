@@ -9,10 +9,14 @@ const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     case 'GET':
       return res.json(await prismaClient.user.findMany())
     case 'POST':
-      const user: Prisma.UserCreateInput = { ...body }
-      const postResponse = await prismaClient.user.create({ data: user }).catch(error => error)
+      try {
+        const user: Prisma.UserCreateInput = { ...body }
+        const postResponse = await prismaClient.user.create({ data: user }).catch(error => error)
 
-      return res.status(postResponse.code ? 400 : 201).json(postResponse)
+        return res.status(postResponse.code ? 400 : 201).json(postResponse)
+      } catch (err) {
+        return res.status(400).json(err.message)
+      }
     default:
       res.setHeader('Allow', ['GET', 'POST'])
       res.status(405).end(`Method ${method} Not Allowed`)
