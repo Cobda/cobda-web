@@ -69,6 +69,9 @@ const Form = () => {
         <button className="form__button" disabled={isFormSubmitDisabled} onClick={handleSubmitClick}>
           {t('signIn')}
         </button>
+        <button className="form__button" onClick={handleSignOut}>
+          Sign out
+        </button>
       </div>
     )
   }
