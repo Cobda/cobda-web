@@ -19,6 +19,7 @@
   &__information {
     border-radius: rem(9px);
     margin-bottom: rem(16px);
+    margin-top: 40px;
 
     background-color: $light;
 
@@ -58,7 +59,8 @@
   &__detail {
     grid-area: detail;
 
-    background-color: royalblue;
+    background-color: $alabaster;
+    border-radius: 50px;
   }
 
   &__information {
