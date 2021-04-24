@@ -9,19 +9,19 @@
   @include respond-above('md') {
     box-shadow: rem(5px 10px 20px) 0 box-shadow-opacity(0.16);
     min-width: $registration-form-min-width-md;
-    padding: rem(50px 80px 36px);
+    padding: rem(50px 80px 60px);
     border-radius: rem(80px);
   }
 
   @include respond-above('lg') {
     min-width: $registration-form-min-width-lg;
-    padding: rem(60px 100px 36px);
+    padding: rem(60px 100px 60px);
     border-radius: rem(100px);
   }
 
   @include respond-above('xl') {
     max-width: $registration-form-max-width-xl;
-    padding: rem(70px 120px 36px);
+    padding: rem(70px 120px 60px);
   }
 
   &__header {
@@ -42,11 +42,9 @@
 
   &__body {
     padding: 0 rem(32px);
-    margin-bottom: rem(32px);
 
     @include respond-above('md') {
       padding: 0 rem(8px);
-      margin-bottom: rem(24px);
     }
   }
 }

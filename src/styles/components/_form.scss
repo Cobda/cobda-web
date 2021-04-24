@@ -6,13 +6,6 @@
   box-sizing: border-box;
   width: 100%;
 
-  &__recaptcha,
-  &__actionable {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   &__input-full-name,
   &__input-credential,
   &__input-product,
@@ -165,6 +158,8 @@
     font-family: inherit;
     font-size: rem(14px);
 
+    resize: none;
+
     @include respond-above('lg') {
       font-size: rem(16px);
     }
@@ -207,7 +202,19 @@
   }
 
   &__recaptcha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: rem(32px);
+  }
+
+  &__actionable {
+    display: flex;
+    flex-direction: column;
+
+    @include respond-above('md') {
+      align-items: center;
+    }
   }
 
   &__button {
@@ -219,8 +226,9 @@
     background-color: $dodger-blue;
     color: $light;
 
-    font-size: rem(18px);
+    font-size: rem(14px);
     font-weight: 500;
+    text-align: center;
     white-space: nowrap;
 
     cursor: pointer;

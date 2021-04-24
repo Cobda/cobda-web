@@ -25,7 +25,7 @@
   "inputNameInvalid": "This name is invalid.",
   "inputPriceInvalid": "This price is invalid.",
   "inputColorInvalid": "This color is invalid.",
-  "inputSizeExample": "This size is invalid.",
+  "inputSizeInvalid": "This size is invalid.",
   "maxFileNumberAndSizeExceed": "The number of selected images exceed 3 and file size exceed 1.5 MB.",
   "maxFileNumberExceed": "The number of selected images cannot exceed 3.",
   "maxFileSizeExceed": "The selected file size cannot exceed 1.5 MB."
