@@ -26,7 +26,7 @@ const initialInputValue: FormInput = {
 
 const INPUT_TEXT_VALIDATION_INDEX: number = 2
 const INPUT_NUMBER_VALIDATION_INDEX: number = 1
-const NUMBER_ONLY_PATTERN_VALUE = new RegExp(/^(?:[1-9]\d*|0)$/)
+const NUMBER_ONLY_PATTERN_VALUE = new RegExp(/^[1-9][0-9]*$/)
 const TEXT_ONLY_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
 const TEXT_AND_NUMBER_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z0-9' ,.'-]+$/i)
 
@@ -90,13 +90,19 @@ const Form = () => {
 
   const renderProductUpload = () => {
     const renderErrorMessage = () => {
-      let errorMessage: string = ''
+      const message = () => {
+        if (ImageError?.maxNumber && ImageError?.maxFileSize) {
+          return t('maxFilenNumberAndSizeExceed')
+        } else if (ImageError?.maxNumber) {
+          return t('maxFileNumberExceed')
+        } else if (ImageError?.maxFileSize) {
+          return t('maxFileSizeExceed')
+        } else {
+          return ''
+        }
+      }
 
-      if (ImageError?.maxNumber && ImageError.maxFileSize) errorMessage = t('maxFilenNumberAndSizeExceed')
-      else if (ImageError?.maxNumber) errorMessage = t('maxFileNumberExceed')
-      else if (ImageError?.maxFileSize) errorMessage = t('maxFileSizeExceed')
-
-      return errorMessage ? <div className="form__help">{errorMessage}</div> : <></>
+      return message() ? <div className="form__help">{message()}</div> : <></>
     }
 
     return (

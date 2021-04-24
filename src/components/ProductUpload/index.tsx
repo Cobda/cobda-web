@@ -88,12 +88,10 @@ const ProductUpload = ({
         }
 
         return (
-          <>
-            <div className={productUploadClassName} {...dragProps}>
-              {renderProductImage()}
-              {renderAddMoreButton()}
-            </div>
-          </>
+          <div className={productUploadClassName} {...dragProps}>
+            {renderProductImage()}
+            {renderAddMoreButton()}
+          </div>
         )
       }}
     </ImageUploading>
