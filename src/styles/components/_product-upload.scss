@@ -1,0 +1,127 @@
+@import '../abstracts/_abstracts-dir';
+
+.product-upload {
+  box-sizing: border-box;
+  width: 100%;
+  height: rem(300px);
+  border: solid rem(2px) $havelock-blue;
+  border-radius: rem(4px);
+
+  @include flex-center();
+
+  &--dragging {
+    background-color: $alabaster;
+  }
+
+  &--selected {
+    flex-direction: column;
+    height: 100%;
+    border: none;
+
+    @include respond-above('md') {
+      flex-direction: row;
+    }
+  }
+
+  &__figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: rem(32px);
+    border-radius: rem(4px);
+    margin: 0;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: $alabaster;
+    }
+  }
+
+  &__caption {
+    color: $dark-charcoal;
+
+    font-size: rem(8px);
+    font-style: italic;
+    line-height: 2;
+
+    @include respond-above('lg') {
+      font-size: rem(12px);
+    }
+  }
+
+  &__image-container {
+    box-sizing: border-box;
+    padding: rem(20px 20px 8px);
+    border: solid rem(2px) $mercury;
+    border-radius: rem(10px);
+
+    @include respond-above('lg') {
+      padding: rem(24px 24px 8px);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: rem(16px);
+
+      @include respond-above('md') {
+        margin: 0 rem(16px) 0 0;
+      }
+
+      @include respond-above('lg') {
+        margin-right: rem(18px);
+      }
+    }
+  }
+
+  &__image {
+    width: rem(50px);
+    height: rem(50px);
+
+    &--selected {
+      box-shadow: 0 rem(3px 6px) 0 box-shadow-opacity(0.16);
+      width: rem(140px);
+      height: rem(140px);
+      object-fit: cover;
+
+      @include respond-above('lg') {
+        width: rem(160px);
+        height: rem(160px);
+      }
+    }
+  }
+
+  &__icon-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: rem(8px);
+  }
+
+  &__icon-wrapper {
+    width: rem(20px);
+    height: rem(20px);
+    padding: rem(8px);
+    border-radius: rem(12px);
+
+    cursor: pointer;
+
+    @include respond-above('lg') {
+      width: rem(24px);
+      height: rem(24px);
+    }
+
+    &:hover {
+      background-color: $porcelain;
+    }
+
+    &--large {
+      width: rem(32px);
+      height: rem(32px);
+      padding: rem(16px);
+    }
+  }
+
+  &__icon {
+    height: 100%;
+  }
+}
