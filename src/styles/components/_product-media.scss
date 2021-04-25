@@ -1,10 +1,11 @@
 .product-media {
-  @include flex-center();
   flex-direction: column;
   box-sizing: border-box;
   height: 450px;
   padding: rem(16px);
   border-radius: 15%;
+
+  @include flex-center();
 
   @include respond-above('sm') {
     height: 600px;
@@ -12,9 +13,7 @@
 
   @include respond-above('md') {
     height: 430px;
-
     border-radius: 15%;
-
     background: $light;
   }
 
@@ -27,9 +26,9 @@
   }
 
   &__image-container {
-    @include flex-center();
-
     height: 500px;
+
+    @include flex-center();
 
     @include respond-above('md') {
       height: 320px;
@@ -41,6 +40,12 @@
 
     @include respond-above('xl') {
       height: 500px;
+    }
+  }
+
+  &__image-selector {
+    & > *:not(:last-child) {
+      margin-right: rem(5px);
     }
   }
 
@@ -56,7 +61,7 @@
     opacity: 0.5;
   }
 
-  &__image.smooth.loaded {
+  &__image.smooth.isLoaded {
     opacity: 1;
   }
 
@@ -65,9 +70,6 @@
     height: rem(80px);
     border: none;
     border-radius: 10%;
-    margin-right: rem(5px);
-
-    background-size: contain;
 
     @include respond-above('md') {
       width: rem(60px);

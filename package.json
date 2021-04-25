@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "classnames": "^2.3.1",
     "next": "^10.0.5",
     "next-translate": "^1.0.2",
     "pure-react-carousel": "^1.27.6",
