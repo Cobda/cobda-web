@@ -4,27 +4,89 @@
   align-items: center;
   box-sizing: border-box;
   padding: rem(16px);
+  border-radius: 15%;
+  height: 600px;
 
-  &__header {
-    margin-bottom: rem(24px);
+  @include respond-above('md') {
+    height: 430px;
+
+    background: $light;
+
+    border-radius: 15%;
   }
-
-  &__title {
-    margin: 0;
+  @include respond-above('lg') {
+    height: 560px;
+  }
+  @include respond-above('xl') {
+    height: 650px;
   }
 
   &__image-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: rem(200px);
-    height: rem(200px);
-    background-color: black;
+    height: 500px;
+
+    @include respond-above('md') {
+      height: 320px;
+    }
+    @include respond-above('lg') {
+      height: 420px;
+    }
+    @include respond-above('xl') {
+      height: 500px;
+    }
+  }
+
+  &__image-selector {
+    @include respond-above('md') {
+    }
+    @include respond-above('lg') {
+    }
+    @include respond-above('xl') {
+    }
   }
 
   &__image {
-    width: 60%;
-    height: 60%;
-    background-color: blueviolet;
+    display: block;
+    max-width: 90%;
+    max-height: 100%;
+  }
+
+  &__image.smooth {
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0.4, 1);
+    transition-timing-function: cubic-bezier(0.3, 0, 0.4, 1);
+    opacity: 0.5;
+  }
+
+  &__image.smooth.loaded {
+    opacity: 1;
+  }
+
+  &__button {
+    background-size: contain;
+    border: none;
+    width: rem(80px);
+    height: rem(80px);
+    border-radius: 10%;
+    margin-right: rem(5px);
+
+    @include respond-above('md') {
+      width: rem(60px);
+      height: rem(60px);
+    }
+    @include respond-above('lg') {
+      width: rem(80px);
+      height: rem(80px);
+    }
+
+    .active {
+      border: rem(2px);
+      border-color: $havelock-blue;
+    }
   }
 }

@@ -1,7 +1,7 @@
 .product-content {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: rem(300px) repeat(2, 1fr);
+  grid-template-rows: rem(620px) repeat(2, 1fr);
   grid-template-areas:
     'media'
     'detail'
@@ -9,35 +9,52 @@
 
   @include respond-above('md') {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: rem(520px) 1fr;
     grid-template-areas:
       'media detail'
       'information information';
   }
+  @include respond-above('lg') {
+    grid-template-rows: rem(670px) 1fr;
+  }
+  @include respond-above('xl') {
+    grid-template-rows: rem(780px) 1fr;
+  }
 
-  & > .product-content__media,
   & > .product-content__detail,
   & > .product-content__information {
     border-radius: rem(9px);
     margin-bottom: rem(16px);
-
     background-color: $light;
 
     // TODO: Modify these when making other sections in Product View screen
     @include respond-above('md') {
       border-radius: unset;
-      margin-bottom: rem(32px);
+      margin-bottom: rem(24px);
     }
-
     @include respond-above('lg') {
-      margin-bottom: rem(48px);
+      margin-bottom: rem(30px);
     }
+  }
+
+  & > .product-content__media,
+  & > .product-content__detail {
+    margin-top: rem(16px);
   }
 
   & > .product-content__media {
     grid-area: media;
 
-    background-color: green;
+    background-color: $light;
+    border-radius: rem(9px);
+    @include respond-above('md') {
+      border-radius: 20%;
+      background-color: $onahau;
+      margin-bottom: rem(24px);
+    }
+    @include respond-above('lg') {
+      margin-bottom: rem(30px);
+    }
   }
 
   & > .product-content__detail {
