@@ -17,7 +17,7 @@
   "description": "รายละเอียดสินค้า",
   "submit": "ลงขายสินค้า",
   "namePlaceholder": "เช่น Nike Air Max, Adidas Ultraboost",
-  "pricePlaceholder": "เช่น 290, 3500.50",
+  "pricePlaceholder": "เช่น 290",
   "colorPlaceholder": "เช่น White, Black, Grey, Red, Blue",
   "sizePlaceholder": "เช่น 38, 42, 7US, 10UK, S, M, L",
   "descriptionPlaceholder": "ป้อนรายละเอียดสินค้าของคุณ",
