@@ -1,0 +1,13 @@
+{
+  "welcome": "Welcome to Cobda",
+  "signIn": "SIGN IN",
+  "email": "Email",
+  "password": "Password",
+  "emailPlaceholder": "Enter your email",
+  "passwordPlaceholder": "Enter your password",
+  "doNotHaveAccount": "Don't have an account?",
+  "createAccount": "Create an account",
+  "forgotPassword": "Forgot you password?",
+  "inputValueRequired": "This field is required.",
+  "emailAlreadyUsed": "Your email has already been used. Please use a different one."
+}
