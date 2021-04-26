@@ -1,5 +1,9 @@
 {
   "productCardTitle": "รองเท้าถุงเท้าสตรีทสำหรับผู้ชายวิ่งระยะไกล",
   "productCardPostal": "ไปรษณีย์",
-  "productCardMeetUp": "นัดรับ"
+  "productCardMeetUp": "นัดรับ",
+  "sortBy": "จัดเรียงตาม:",
+  "filter": "ตัวกรอง",
+  "highestPrice": "ราคาแพงที่สุด",
+  "lowestPrice": "ราคาถูกที่สุด"
 }

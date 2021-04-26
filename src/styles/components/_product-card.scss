@@ -3,10 +3,15 @@
   width: 50%;
   height: rem(336px);
   box-sizing: border-box;
-  padding: rem(14px 12px 14px 0);
-
+  padding: rem(14px) 0;
+  
+  &:not(:nth-child(even)) {
+    padding-right: rem(12px);
+  }
+  
   @include respond-above('lg') {
     width: 33%;
+    padding: rem(14px 12px 14px) 0;
   }
 
   @include respond-above('xl') {
