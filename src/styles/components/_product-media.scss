@@ -1,88 +1,106 @@
 .product-media {
   flex-direction: column;
   box-sizing: border-box;
-  height: 450px;
   padding: rem(16px);
-  border-radius: 15%;
 
   @include flex-center();
 
-  @include respond-above('sm') {
-    height: 600px;
-  }
-
   @include respond-above('md') {
-    height: 430px;
-    border-radius: 15%;
+    padding: rem(24px);
+    border-radius: rem(0 0 48px 48px);
     background: $light;
   }
 
   @include respond-above('lg') {
-    height: 560px;
+    padding: rem(32px);
+    border-radius: rem(0 0 64px 64px);
   }
 
   @include respond-above('xl') {
-    height: 650px;
+    padding: rem(48px);
+    border-radius: rem(0 0 80px 80px);
   }
 
-  &__image-container {
-    height: 500px;
-
-    @include flex-center();
+  &__image-wrapper {
+    margin-bottom: rem(16px);
 
     @include respond-above('md') {
-      height: 320px;
+      margin-bottom: rem(24px);
     }
 
     @include respond-above('lg') {
-      height: 420px;
+      margin-bottom: rem(32px);
     }
 
     @include respond-above('xl') {
-      height: 500px;
-    }
-  }
-
-  &__image-selector {
-    & > *:not(:last-child) {
-      margin-right: rem(5px);
+      margin-bottom: rem(48px);
     }
   }
 
   &__image {
-    display: block;
-    max-width: 90%;
-    max-height: 100%;
-  }
-
-  &__image.smooth {
-    @include transition($what: opacity, $time: 0.2s, $how: cubic-bezier(0.3, 0, 0.4, 1));
-
-    opacity: 0.5;
-  }
-
-  &__image.smooth.isLoaded {
-    opacity: 1;
-  }
-
-  &__button {
-    width: rem(80px);
-    height: rem(80px);
-    border: none;
-    border-radius: 10%;
+    width: rem(250px);
+    height: rem(250px);
+    object-fit: cover;
 
     @include respond-above('md') {
-      width: rem(60px);
-      height: rem(60px);
+      width: rem(350px);
+      height: rem(350px);
     }
 
     @include respond-above('lg') {
-      width: rem(80px);
-      height: rem(80px);
+      width: rem(450px);
+      height: rem(450px);
+    }
+
+    @include respond-above('xl') {
+      width: rem(550px);
+      height: rem(550px);
     }
   }
 
-  &__button.active {
-    border: rem(2px) solid $havelock-blue;
+  &__image-selector {
+    display: flex;
+  }
+
+  &__thumbnail-wrapper {
+    &:not(:last-child) {
+      margin-right: rem(12px);
+
+      @include respond-above('lg') {
+        margin-right: rem(16px);
+      }
+
+      @include respond-above('xl') {
+        margin-right: rem(24px);
+      }
+    }
+  }
+
+  &__thumbnail {
+    width: rem(64px);
+    height: rem(64px);
+    border-radius: rem(12px);
+    object-fit: cover;
+
+    cursor: pointer;
+
+    @include respond-above('md') {
+      width: rem(70px);
+      height: rem(70px);
+    }
+
+    @include respond-above('lg') {
+      width: rem(86px);
+      height: rem(86px);
+    }
+
+    @include respond-above('xl') {
+      width: rem(100px);
+      height: rem(100px);
+    }
+
+    &--active {
+      border: rem(2px) solid $havelock-blue;
+    }
   }
 }

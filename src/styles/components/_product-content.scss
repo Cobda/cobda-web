@@ -1,84 +1,66 @@
 .product-content {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: rem(500px) repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-template-areas:
     'media'
     'detail'
     'information';
 
-  @include respond-above('sm') {
-    grid-template-rows: rem(620px) repeat(2, 1fr);
-  }
-
   @include respond-above('md') {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: rem(520px) 1fr;
+    grid-template-rows: repeat(2, 1fr);
     grid-template-areas:
       'media detail'
       'information information';
   }
 
-  @include respond-above('lg') {
-    grid-template-rows: rem(670px) 1fr;
-  }
-
-  @include respond-above('xl') {
-    grid-template-rows: rem(780px) 1fr;
-  }
-
-  & > .product-content__detail,
-  & > .product-content__information {
-    margin-bottom: rem(16px);
-
+  &__media,
+  &__detail,
+  &__information {
     border-radius: rem(9px);
+    margin-bottom: rem(16px);
 
     background-color: $light;
 
     @include respond-above('md') {
-      margin-bottom: rem(24px);
-
       border-radius: unset;
+      margin-bottom: rem(32px);
     }
 
     @include respond-above('lg') {
-      margin-bottom: rem(30px);
+      margin-bottom: rem(48px);
     }
   }
 
-  & > .product-content__media,
-  & > .product-content__detail {
-    margin-top: rem(16px);
-  }
-
-  & > .product-content__media {
+  &__media {
     grid-area: media;
 
-    border-radius: rem(9px);
-
-    background-color: $light;
-    
-
     @include respond-above('md') {
-      margin-bottom: rem(24px);
+      padding-bottom: rem(64px);
+      border-radius: rem(0 0 48px 48px);
 
-      border-radius: 20%;
-      
       background-color: $onahau;
     }
 
     @include respond-above('lg') {
-      margin-bottom: rem(30px);
+      padding-bottom: rem(80px);
+      border-radius: rem(0 0 64px 64px);
+    }
+
+    @include respond-above('xl') {
+      padding-bottom: rem(96px);
+      border-radius: rem(0 0 80px 80px);
     }
   }
 
-  & > .product-content__detail {
+  &__detail {
     grid-area: detail;
 
     background-color: royalblue;
   }
 
-  & > .product-content__information {
+  &__information {
     grid-area: information;
   }
 }

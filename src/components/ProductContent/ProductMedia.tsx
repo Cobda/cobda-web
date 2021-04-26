@@ -1,54 +1,47 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
-import cx from 'classnames'
+import { useState } from 'react'
 
-//TO DO: Retrieve images from database instead
+//TODO: Retrieve images from database instead
 const imagePaths: string[] = [
   '/images/nike-jordan-off-white.jpg',
   '/images/nike-woman-running-shoe.jpg',
-  '/images/nike-air-vapormax-360-herren.jpg'
+  '/images/yeezy-380.jpg'
 ]
 
-const useImage = ({ src }: any) => {
-  const [isLoaded, setLoaded] = useState(false)
-
-  useEffect(() => {
-    const img = new Image()
-    img.src = src
-    img.onload = () => setLoaded(true)
-  }, [src])
-  return { isLoaded }
-}
-
-const Cover = ({ src }: any) => {
-  const { isLoaded } = useImage({ src })
-  return <img className={cx('product-media__image', 'smooth', { isLoaded })} src={src} />
-}
-
-const useSrc = () => {
-  const [selectedSrc, setSrc] = useState(imagePaths[0])
-  return {
-    imageSelectorButton: imagePaths.map((src) => (
-      <button
-        // TO DO: Change image location
-        style={{ background: `url(${src}) no-repeat; background-size: cover` }}
-        className={cx('product-media__button', { active: src === selectedSrc })}
-        onClick={() => setSrc(src)}
-        key={src}
-      ></button>
-    )),
-    selectedImageCover: imagePaths.map((src) => (src === selectedSrc ? <Cover key={src} src={selectedSrc} /> : null))
-  }
-}
-
 const ProductMedia = () => {
-  const { imageSelectorButton, selectedImageCover } = useSrc()
+  const [selectedImagePath, setSelectedImagePath] = useState<string>(imagePaths[0])
+
+  const renderImage = () => (
+    <div className="product-media__image-wrapper">
+      <img className="product-media__image" src={selectedImagePath} />
+    </div>
+  )
+
+  const renderImageSelector = () => {
+    const images = imagePaths.map((path, index) => {
+      const handleImageClick = (path: string) => () => {
+        setSelectedImagePath(path)
+      }
+
+      const imageClassName: string =
+        path === selectedImagePath
+          ? 'product-media__thumbnail product-media__thumbnail--active'
+          : 'product-media__thumbnail'
+
+      return (
+        <div key={index} className="product-media__thumbnail-wrapper" onClick={handleImageClick(path)}>
+          <img className={imageClassName} src={path} alt="Product Thumbnail" />
+        </div>
+      )
+    })
+
+    return <div className="product-media__image-selector">{images}</div>
+  }
 
   return (
     <div className="product-media">
-      <div className="product-media__image-container">{selectedImageCover}</div>
-      <br />
-      <div className="product-media__image-selector">{imageSelectorButton}</div>
+      {renderImage()}
+      {renderImageSelector()}
     </div>
   )
 }
