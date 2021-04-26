@@ -1,4 +1,4 @@
-.product-section {
+.product-search {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -21,8 +21,7 @@
     }
 
     @include respond-above('md') {
-      width: 72%;
-      margin-bottom: rem(40px);
+      width: 63%;
 
       & > .home-search-box {
         width: 90%;
@@ -35,7 +34,7 @@
     align-items: center;
     margin-left: auto;
 
-    &:not(:last-child) {
+    & > * :not(:last-child) {
       margin-right: rem(16px);
     }
 
@@ -50,7 +49,7 @@
     width: 100%;
 
     @include respond-above('md') {
-      width: 28%;
+      width: 37%;
     }
   }
 
@@ -107,6 +106,7 @@
       color: $dark;
       content: '>\00a0';
     }
+
     @include respond-above('md') {
       display: block;
     }
@@ -123,6 +123,7 @@
     font-weight: 200;
     line-height: 1.5;
     text-decoration: none;
+    color: $dark;
     cursor: pointer;
 
     &:hover {

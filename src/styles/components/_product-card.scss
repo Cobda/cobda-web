@@ -1,16 +1,21 @@
 .product-card {
   display: inline-block;
   width: 50%;
-  height: rem(336px);
+  height: rem(536px);
   box-sizing: border-box;
   padding: rem(14px) 0;
-  
+
   &:not(:nth-child(even)) {
     padding-right: rem(12px);
   }
-  
+
+  @include respond-above('md') {
+    height: rem(446px);
+  }
+
   @include respond-above('lg') {
     width: 33%;
+    height: rem(336px);
     padding: rem(14px 12px 14px) 0;
   }
 
@@ -31,11 +36,20 @@
   }
 
   &__image {
+    object-fit: cover;
     width: fit-content;
     max-width: 100%;
     max-height: 100%;
-    height: rem(200px);
+    height: rem(400px);
     margin-bottom: rem(6px);
+
+    @include respond-above('md') {
+      height: rem(310px);
+    }
+
+    @include respond-above('lg') {
+      height: rem(200px);
+    }
   }
 
   &__content {
@@ -70,15 +84,15 @@
   &__option {
     display: flex;
     width: 100%;
-    
+
     @include respond-above('sm') {
       width: 75%;
     }
-    
+
     @include respond-above('lg') {
       width: 85%;
     }
-    
+
     @include respond-above('xl') {
       width: 100%;
     }
@@ -101,11 +115,11 @@
     line-height: 1.53;
     text-align: center;
     cursor: pointer;
-  
+
     @include respond-above('lg') {
       font-size: rem(10px);
     }
-  
+
     @include respond-above('xl') {
       font-size: rem(12px);
     }

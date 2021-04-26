@@ -5,5 +5,9 @@
   "sortBy": "จัดเรียงตาม:",
   "filter": "ตัวกรอง",
   "highestPrice": "ราคาแพงที่สุด",
-  "lowestPrice": "ราคาถูกที่สุด"
+  "lowestPrice": "ราคาถูกที่สุด",
+  "viewMore": "แสดงเพิ่ม",
+  "allCategory": "ประเภททั้งหมด",
+  "shoeCategory": "ประเภทรองเท้า",
+  "shirtCategory": "ประเภทเสื้อผ้า"
 }
