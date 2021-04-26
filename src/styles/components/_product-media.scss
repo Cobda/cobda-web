@@ -7,18 +7,18 @@
 
   @include respond-above('md') {
     padding: rem(24px);
-    border-radius: rem(0 0 48px 48px);
+    border-radius: 0 0 rem(48px 48px);
     background: $light;
   }
 
   @include respond-above('lg') {
     padding: rem(32px);
-    border-radius: rem(0 0 64px 64px);
+    border-radius: 0 0 rem(64px 64px);
   }
 
   @include respond-above('xl') {
     padding: rem(48px);
-    border-radius: rem(0 0 80px 80px);
+    border-radius: 0 0 rem(80px 80px);
   }
 
   &__image-wrapper {

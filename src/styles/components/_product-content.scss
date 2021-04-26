@@ -1,7 +1,7 @@
 .product-content {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: fit-content() repeat(2, 1fr);
+  grid-template-rows: fit-content();
   grid-template-areas:
     'media'
     'detail'
@@ -9,7 +9,6 @@
 
   @include respond-above('md') {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     grid-template-areas:
       'media detail'
       'information information';
@@ -35,22 +34,24 @@
 
   &__media {
     grid-area: media;
+    margin-top: rem(16px);
 
     @include respond-above('md') {
       padding-bottom: rem(64px);
       border-radius: rem(0 0 48px 48px);
+      margin-top: 0;
 
       background-color: $onahau;
     }
 
     @include respond-above('lg') {
       padding-bottom: rem(80px);
-      border-radius: rem(0 0 64px 64px);
+      border-radius: 0 0 rem(64px 64px);
     }
 
     @include respond-above('xl') {
       padding-bottom: rem(96px);
-      border-radius: rem(0 0 80px 80px);
+      border-radius: 0 0 rem(80px 80px);
     }
   }
 
