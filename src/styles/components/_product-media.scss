@@ -99,8 +99,16 @@
       height: rem(100px);
     }
 
+    &:hover {
+      box-shadow: 0 rem(4px 20px) 0 box-shadow-opacity(0.16);
+    }
+
     &--active {
       border: rem(2px) solid $havelock-blue;
+
+      @include respond-above('lg') {
+        border-width: rem(3px);
+      }
     }
   }
 }
