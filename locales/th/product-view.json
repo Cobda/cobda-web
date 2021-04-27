@@ -1,3 +1,9 @@
 {
+  "baht": "บาท",
+  "price": "ราคา: ",
+  "color": "สี: ",
+  "size": "ขนาด: ",
+  "deliveryOption": "ตัวเลือกการจัดส่ง: ",
+  "contactSeller": "ติดต่อผู้ขาย",
   "productDetail": "รายละเอียดสินค้า"
 }
