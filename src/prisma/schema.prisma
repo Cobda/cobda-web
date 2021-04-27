@@ -12,18 +12,20 @@ model User {
   email String @unique
   username String @unique
   password String
-  firstName String?
-  lastName String?
-  profileImagePath String?
+  firstName String
+  lastName String
+  profileImagePath String
   products Product[]
 }
 
 model Product {
   id Int @id @default(autoincrement())
   name String
-  size Float
-  description String?
   price Int
+  color String
+  size String
+  description String
+  category String
   owner User? @relation(fields: [ownerId], references: [id])
   ownerId Int?
 }

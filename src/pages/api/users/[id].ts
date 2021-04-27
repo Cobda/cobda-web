@@ -7,6 +7,21 @@ const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const userId = id instanceof Array ? 0 : parseInt(id) || 0
 
   switch (method) {
+    case 'GET':
+      try {
+        const getResponse = await prismaClient.user.findFirst({
+          where: { id: userId }
+        }).catch(err => err)
+
+        return res.status(
+          getResponse.code
+            ? ResponseStatusCode.BadRequest
+            : ResponseStatusCode.OK
+          )
+          .json(getResponse)
+      } catch (err) {
+        return res.status(ResponseStatusCode.BadRequest).json(err.message)
+      }
     case 'PATCH':
       try {
         const updateResponse = await prismaClient.user.update({
@@ -14,8 +29,12 @@ const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
           data: { ...body }
         }).catch(err => err)
 
-        return res.status(updateResponse.code ? ResponseStatusCode.BadRequest : ResponseStatusCode.Created)
-                  .json(updateResponse)
+        return res.status(
+          updateResponse.code
+            ? ResponseStatusCode.BadRequest
+            : ResponseStatusCode.Created
+          )
+          .json(updateResponse)
       } catch (err) {
         return res.status(ResponseStatusCode.BadRequest).json(err.message)
       }
@@ -24,10 +43,11 @@ const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         where: { id: userId }
       }).catch(err => err)
 
-      return deleteResponse.code ? res.status(ResponseStatusCode.BadRequest).json(deleteResponse)
-                                 : res.status(ResponseStatusCode.NoContent).end()
+      return deleteResponse.code
+              ? res.status(ResponseStatusCode.BadRequest).json(deleteResponse)
+              : res.status(ResponseStatusCode.NoContent).end()
     default:
-      res.setHeader('Allow', ['PATCH', 'DELETE'])
+      res.setHeader('Allow', ['GET', 'PATCH', 'DELETE'])
       res.status(ResponseStatusCode.MethodNotAllowed).end(`Method ${method} Not Allowed`)
   }
 }
