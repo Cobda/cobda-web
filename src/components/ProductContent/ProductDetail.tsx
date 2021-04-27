@@ -31,23 +31,20 @@ const ProductDetail = () => {
         </div>
         <div className="product-detail__key">Price: {exampleProduct.price} Baht</div>
         <div className="product-detail__key">Color: {exampleProduct.color}</div>
-        {/* Split size with buttons */}
-        <div className="product-detail__key">
-          Size:
-          <div className="product-detail__size-button"></div>
-          {exampleProduct.size}
-        </div>
+        <div className="product-detail__key">Size: {exampleProduct.size}</div>
+        {/* TimeStamp */}
         <div className="product-detail__seller">
-          <div className="product-detail__seller__profile-picture">Picture</div>
-          <div className="product-detail__seller__username">Name</div>
+          <div className="product-detail__seller__profile-picture"></div>
+          <div className="product-detail__seller__username">John Wick</div>
           <div className="product-detail__time-posted">posted this {exampleProduct.time} ago</div>
         </div>
-        <div className="product-detail__delivery-option">
+        <div className="product-detail__key">
           Delivery Options
           <br />
-          <div className="product-detail__delivery-option-dropdown">Drop down</div>
         </div>
+        <div className="product-detail__delivery-option-dropdown">Drop down</div>
       </p>
+      <button className="product-detail__button">Contact Seller</button>
     </div>
   )
 }

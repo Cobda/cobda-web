@@ -1,12 +1,11 @@
 .product-detail {
   display: flex;
   flex-direction: column;
-  // align-items: center;
+  align-items: center;
   box-sizing: border-box;
   padding: rem(16px);
 
   &__header {
-    // margin-bottom: rem(24px);
     padding: 20px;
     padding-bottom: 15px;
 
@@ -26,8 +25,10 @@
   &__description {
     margin: 0;
     text-align: left;
-    padding: 20px;
-    padding-top: 0px;
+    padding: 0px 20px 20px 0px;
+    //1200px,992px,768 width: 0,20,20,20px
+    height: 100%;
+    width: 90%;
   }
 
   &__rating {
@@ -47,7 +48,6 @@
     &__icon {
       height: 30px;
       width: 30px;
-      border: none;
       background: {
         image: url('/icons/star.svg');
         repeat: no-repeat;
@@ -63,7 +63,7 @@
       }
 
       @include respond-above('lg') {
-        width: rem(80px);
+        width: rem(30px);
       }
     }
   }
@@ -78,5 +78,58 @@
     line-height: 1.5;
     text-align: left;
     color: #000000;
+  }
+
+  &__seller {
+    display: flex;
+    width: 350px;
+    height: 60px;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__time-posted,
+  &__seller__username,
+  &__seller__profile-picture {
+    font-size: 17px;
+    color: #acacac;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.53;
+    letter-spacing: normal;
+  }
+
+  &__seller__profile-picture {
+    width: 50px;
+    height: 50px;
+    // margin: 50px 15px 45px 3px;
+    background: {
+      image: url('/images/default-profile-image.png');
+      repeat: no-repeat;
+      size: contain;
+    }
+  }
+
+  &__seller__username {
+    color: $dark;
+  }
+
+  &__button {
+    color: $light;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+
+    width: 453px;
+    height: 61px;
+    // margin: 47px 60.6px 0 11px;
+    padding: 17px 155px 16px 156px;
+    border-radius: 31px;
+    border: none;
+    box-shadow: 0 3px 10px 0 rgba(10, 2, 253, 0.5);
+    background-image: linear-gradient(107deg, #4569f8 0%, #4c37d1 113%);
   }
 }
