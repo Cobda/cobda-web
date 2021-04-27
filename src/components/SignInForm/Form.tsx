@@ -11,6 +11,7 @@ const Form = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const { t } = useTranslation('sign-in')
   const router = useRouter()
+  // const [session, loading] = useSession()
 
   useEffect(() => {
     console.log('Router: ', router)
@@ -67,6 +68,9 @@ const Form = () => {
       <div className="form__actionable">
         <button className="form__button" disabled={isFormSubmitDisabled} onClick={handleSubmitClick}>
           {t('signIn')}
+        </button>
+        <button className="form__button" onClick={handleSignOut}>
+          Sign out
         </button>
       </div>
     )

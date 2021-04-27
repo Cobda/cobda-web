@@ -1,32 +1,54 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import prismaClient from '../../../lib/prisma'
+import { ResponseStatusCode } from '../../../enum/response-status-code'
 
-const userHandler = (req: NextApiRequest, res: NextApiResponse) => {
-  const { method, query: { id } } = req
-
-  // TODO: Handle the function properly
-  const handlePatch = () => {
-    return {
-      message: `This is a PATCH request, it should patch id: ${id}. Currently in progress...`,
-      id: id
-    }
-  }
-
-  // TODO: Handle the function properly
-  const handleDelete = () => {
-    return {
-      message: `This is a DELETE request, it should DELETE id: ${id}. Currently in progress...`,
-      id: id
-    }
-  }
+const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+  const { method, query: { id }, body } = req
+  const userId = id instanceof Array ? 0 : parseInt(id) || 0
 
   switch (method) {
+    case 'GET':
+      try {
+        const getResponse = await prismaClient.user.findFirst({
+          where: { id: userId }
+        }).catch(err => err)
+
+        return res.status(
+          getResponse.code
+            ? ResponseStatusCode.BadRequest
+            : ResponseStatusCode.OK
+          )
+          .json(getResponse)
+      } catch (err) {
+        return res.status(ResponseStatusCode.BadRequest).json(err.message)
+      }
     case 'PATCH':
-      return res.json(handlePatch())
+      try {
+        const updateResponse = await prismaClient.user.update({
+          where: { id: userId },
+          data: { ...body }
+        }).catch(err => err)
+
+        return res.status(
+          updateResponse.code
+            ? ResponseStatusCode.BadRequest
+            : ResponseStatusCode.Created
+          )
+          .json(updateResponse)
+      } catch (err) {
+        return res.status(ResponseStatusCode.BadRequest).json(err.message)
+      }
     case 'DELETE':
-      return res.json(handleDelete())
+      const deleteResponse = await prismaClient.user.delete({
+        where: { id: userId }
+      }).catch(err => err)
+
+      return deleteResponse.code
+              ? res.status(ResponseStatusCode.BadRequest).json(deleteResponse)
+              : res.status(ResponseStatusCode.NoContent).end()
     default:
-      res.setHeader('Allow', ['PATCH', 'DELETE'])
-      res.status(405).end(`Method ${method} Not Allowed`)
+      res.setHeader('Allow', ['GET', 'PATCH', 'DELETE'])
+      res.status(ResponseStatusCode.MethodNotAllowed).end(`Method ${method} Not Allowed`)
   }
 }
 

@@ -6,7 +6,7 @@ import { ComponentType } from '../../enum/component-type'
 const NavbarTool = () => {
   return (
     <div className="navbar__tool">
-      <NavbarAccount isUserSignedIn={false} />
+      <NavbarAccount />
       <LanguageDropdown parent={ComponentType.Header}/>
     </div>
   )
