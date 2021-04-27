@@ -27,6 +27,13 @@
         margin-right: 10%;
       }
     }
+
+    &--expanded {
+      @include respond-above('md') {
+        width: 100%;
+        margin: 0;
+      }
+    }
   }
 
   &__input-group,
@@ -110,6 +117,18 @@
 
     @include respond-above('lg') {
       margin-bottom: rem(64px);
+    }
+  }
+
+  &__input-initial {
+    margin-bottom: rem(32px);
+
+    @include respond-above('md') {
+      margin-bottom: rem(46px);
+    }
+
+    @include respond-above('lg') {
+      margin-bottom: rem(50px);
     }
   }
 

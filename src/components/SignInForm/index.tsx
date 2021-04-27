@@ -8,7 +8,9 @@ const SignInForm = () => {
 
   return (
     <section className="sign-in-form">
-      <header className="sign-in-form__header">{t('welcome')}</header>
+      <header className="sign-in-form__header">
+        <h3 className="sign-in-form__title">{t('welcome')}</h3>
+      </header>
       <div className="sign-in-form__body">
         <Form />
       </div>
