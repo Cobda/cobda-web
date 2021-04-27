@@ -1,7 +1,7 @@
 .layout-products {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: map-get($header-height, 'sm') rem(50px) 1fr 1fr;
+  grid-template-rows: map-get($header-height, 'sm') rem(60px) 1fr 1fr;
   grid-template-areas:
     'header'
     'sidebar'
@@ -11,7 +11,7 @@
   height: 100vh;
 
   @include respond-above('md') {
-    grid-template-rows: map-get($header-height, 'md') rem(100px) 1fr map-get($footer-height, 'md');
+    grid-template-rows: map-get($header-height, 'md') rem(80px) 1fr map-get($footer-height, 'md');
   }
 
   @include respond-above('lg') {

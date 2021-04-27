@@ -2,49 +2,121 @@
 
 .sidebar {
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: rem(44px 32px);
+  align-items: baseline;
+  flex-direction: row;
+  height: auto;
+  padding: rem(13.5px 16px);
   background-color: $light;
 
-  &__filter {
-    width: 100%;
+  @include respond-above('md') {
+    padding: rem(24px 56px);
+  }
 
-    &:not(:last-child) {
-      margin-bottom: rem(16px);
+  @include respond-above('lg') {
+    flex-direction: column;
+    padding: rem(38px 32px);
+  }
+
+  &__filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: fit-content;
+    margin-right: rem(24px);
+
+    @include respond-above('sm') {
+      flex-direction: row;
+    }
+
+    @include respond-above('lg') {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+
+      &:not(:last-child) {
+        margin-bottom: rem(16px);
+      }
     }
   }
 
   &__checkbox {
     cursor: pointer;
+    margin-left: 0;
   }
 
   &__item {
-    padding-left: rem(8px);
+    display: flex;
+    padding-left: rem(16px);
     box-sizing: border-box;
+
+    @include respond-above('sm') {
+      align-items: center;
+    }
+
+    @include respond-above('lg') {
+      flex-direction: column;
+      align-items: baseline;
+    }
   }
 
   &__item-group {
     display: flex;
     align-items: center;
+    margin-right: rem(8px);
+
+    @include respond-above('lg') {
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__dropdown-option {
+    width: rem(160px);
+    font-size: rem(8px);
+    font-weight: 500;
+
+    @include respond-above('md') {
+      width: rem(180px);
+      font-size: rem(14px);
+    }
   }
 
   &__label {
-    font-size: rem(14px);
-    font-weight: 500;
     padding-left: rem(4px);
+    font-size: rem(8px);
+    font-weight: 500;
+
+    @include respond-above('md') {
+      font-size: rem(11px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(13px);
+    }
   }
 
   &__title {
-    font-size: rem(18px);
+    width: max-content;
+    font-size: rem(13px);
     font-weight: 600;
-    line-height: 1.53;
+    line-height: 1.48;
+
+    @include respond-above('md') {
+      font-size: rem(16px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(18px);
+    }
   }
 
   &__item-group,
   &__title {
     &:not(:last-child) {
-      margin-bottom: rem(8px);
+      @include respond-above('lg') {
+        margin-bottom: rem(8px);
+      }
     }
   }
 }

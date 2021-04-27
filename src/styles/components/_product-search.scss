@@ -29,20 +29,6 @@
     }
   }
 
-  &__filter-group {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-
-    & > * :not(:last-child) {
-      margin-right: rem(16px);
-    }
-
-    @include respond-above('md') {
-      display: none;
-    }
-  }
-
   &__dropdown {
     display: flex;
     height: rem(35px);
@@ -58,10 +44,6 @@
     font-size: rem(14px);
     font-weight: 500;
 
-    &::placeholder {
-      color: $azure-radiance;
-    }
-
     @include respond-above('md') {
       width: rem(180px);
       font-size: rem(18px);
@@ -76,12 +58,6 @@
     & > label:not(:last-child) {
       margin-right: rem(16px);
     }
-  }
-
-  &__filter-label {
-    font-size: rem(12px);
-    font-weight: 500;
-    color: $iron;
   }
 
   &__dropdown-label {

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Image from 'next/image'
 import SearchBox from '../SearchBox'
 import Dropdown, { Option } from 'react-dropdown'
 import useTranslation from 'next-translate/useTranslation'
@@ -20,13 +19,6 @@ const ProductListHeader = () => {
       setOption(selectedOption.value)
     }
 
-    const renderFilter = () => (
-      <div className="product-search__filter-group">
-        <Image src="/icons/filter.svg" height={21} width={24} />
-        <label className="product-search__filter-label">{t('filter')}</label>
-      </div>
-    )
-
     return (
       <div className="product-search__dropdown">
         <div className="product-search__dropdown-group">
@@ -38,7 +30,6 @@ const ProductListHeader = () => {
             placeholder="-"
             onChange={handleDropdownChange(setSelectedFilter)}
           />
-          {renderFilter()}
         </div>
       </div>
     )

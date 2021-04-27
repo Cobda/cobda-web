@@ -13,5 +13,8 @@
   "category": "Category",
   "baht": "(THB)",
   "priceRange": " Price Range",
+  "lowestPriceRange": "0 - 5000 (THB)",
+  "middlePriceRange": "5000 - 10,000 (THB)",
+  "highestPriceRange": "10,000 + (THB)",
   "searchResult": "Search Result"
 }
