@@ -5,12 +5,16 @@ interface TextField {
   readonly label: string
   readonly inputType: string
   readonly placeholder: string
-  readonly errorMessage: string
+  readonly errorMessage?: string
+  readonly expanded?: boolean
   readonly onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  readonly inputRef: (ref: HTMLInputElement) => void
+  readonly inputRef?: (ref: HTMLInputElement) => void
+  [props: string]: any
 }
 
-const TextField = ({ name, label, placeholder, inputType, errorMessage, onChange, inputRef }: TextField) => {
+const TextField = ({ name, label, placeholder, inputType, errorMessage, expanded, onChange, inputRef, ...props }: TextField) => {
+  const groupClassName = expanded ? 'form__input-group form__input-group--expanded' : 'form__input-group'
+  
   const renderInput = () => {
     const inputClassName: string = errorMessage ? 'form__input form__input--invalid' : 'form__input'
 
@@ -25,6 +29,7 @@ const TextField = ({ name, label, placeholder, inputType, errorMessage, onChange
           placeholder={placeholder}
           onChange={onChange}
           ref={inputRef}
+          {...props}
         />
         {renderErrorMessage()}
       </>
@@ -32,7 +37,7 @@ const TextField = ({ name, label, placeholder, inputType, errorMessage, onChange
   }
 
   return (
-    <div className="form__input-group">
+    <div className={groupClassName}>
       <label className="form__label">{label}</label>
       {renderInput()}
     </div>

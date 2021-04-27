@@ -7,6 +7,7 @@
     "/about-us": ["about-us"],
     "/products": ["products"],
     "/products/[id]": ["product-view"],
+    "/sign-in": ["sign-in"],
     "/sign-up": ["sign-up"],
     "/sign-up-success": ["sign-up-success"],
     "/product-registration": ["product-registration"]

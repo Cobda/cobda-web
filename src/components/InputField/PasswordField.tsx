@@ -5,13 +5,17 @@ interface PasswordField {
   readonly name: string
   readonly label: string
   readonly placeholder: string
-  readonly errorMessage: string
+  readonly errorMessage?: string
+  readonly expanded?: boolean
   readonly onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  readonly inputRef: (ref: HTMLInputElement) => void
+  readonly inputRef?: (ref: HTMLInputElement) => void
+  [props: string]: any
 }
 
-const PasswordField = ({ name, label, placeholder, errorMessage, onChange, inputRef }: PasswordField) => {
+const PasswordField = ({ name, label, placeholder, errorMessage, expanded, onChange, inputRef, ...props }: PasswordField) => {
   const [isPasswordShown, setPasswordShown] = useState(false)
+
+  const groupClassName = expanded ? 'form__input-group form__input-group--expanded' : 'form__input-group'
 
   const handlePasswordToggle = () => {
     setPasswordShown(!isPasswordShown)
@@ -42,6 +46,7 @@ const PasswordField = ({ name, label, placeholder, errorMessage, onChange, input
           placeholder={placeholder}
           onChange={onChange}
           ref={inputRef}
+          {...props}
         />
         {renderErrorMessage()}
         {renderEyeIcon()}
@@ -50,7 +55,7 @@ const PasswordField = ({ name, label, placeholder, errorMessage, onChange, input
   }
 
   return (
-    <div className="form__input-group">
+    <div className={groupClassName}>
       <label className="form__label">{label}</label>
       {renderInput()}
     </div>
