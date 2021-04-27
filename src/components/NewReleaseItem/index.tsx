@@ -20,7 +20,7 @@ const NewReleaseItem = ({ leftContent }: NewReleaseItem) => {
       <div className="new-release-item__content">
         {renderIntroductionHeader()}
         <h2 className="new-release-item__description">{t('newReleaseItemSectionDescription')}</h2>
-        <h2 className="new-release-item__price">$120.00</h2>
+        <h2 className="new-release-item__price">2000~6000THB</h2>
         <Link href="/products/sample-product-view">
           <a className="new-release-item__product">{t('newReleaseItemSectionProduct')}</a>
         </Link>
@@ -57,7 +57,7 @@ const NewReleaseItem = ({ leftContent }: NewReleaseItem) => {
       <div className="new-release-item__content new-release-item--grey-background">
         {renderIntroductionHeader()}
         <h2 className="new-release-item__description">{t('newReleaseItemSectionDescription')}</h2>
-        <h2 className="new-release-item__price">$120.00</h2>
+        <h2 className="new-release-item__price">2000~6000THB</h2>
         <Link href="/products/sample-product-view">
           <a className="new-release-item__product">{t('newReleaseItemSectionProduct')}</a>
         </Link>

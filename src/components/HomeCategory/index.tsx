@@ -5,8 +5,8 @@ const HomeCategory = () => {
   return (
     <ul className="home-category">
       <HomeCategoryItem
-        imagePath={'/images/yeezy-380.jpg'}
-        alternate={'Adidas Yeezy 380 from Pexels by @ox-street-3848035'}
+        imagePath={'/images/yeezys.jpg'}
+        alternate={'Adidas Yeezys'}
         caption={'Yeezys'}
       />
       <HomeCategoryItem
@@ -15,8 +15,8 @@ const HomeCategory = () => {
         caption={'Jordans'}
       />
       <HomeCategoryItem
-        imagePath={'/images/rolling-stone-shirt.jpg'}
-        alternate={'One of our Authors vintage t-shirt collection'}
+        imagePath={'/images/a-guy-in-black-shirt.jpg'}
+        alternate={'A guy in black t-shirt.'}
         caption={'Vintage'}
       />
       <HomeCategoryItem
