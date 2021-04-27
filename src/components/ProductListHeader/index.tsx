@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import Image from 'next/image'
 import SearchBox from '../SearchBox'
 import Dropdown, { Option } from 'react-dropdown'
 import useTranslation from 'next-translate/useTranslation'
 
-const ProductSearchSection = () => {
+const ProductListHeader = () => {
   const { t } = useTranslation('products')
   const [selectedFilter, setSelectedFilter] = useState<string>('')
   const sortOption: string[] = ['highestPrice', 'lowestPrice'].map((option) => t(option))
@@ -20,13 +19,6 @@ const ProductSearchSection = () => {
       setOption(selectedOption.value)
     }
 
-    const renderFilter = () => (
-      <div className="product-search__filter-group">
-        <Image src="/icons/filter.svg" height={21} width={24} />
-        <label className="product-search__filter-label">{t('filter')}</label>
-      </div>
-    )
-
     return (
       <div className="product-search__dropdown">
         <div className="product-search__dropdown-group">
@@ -38,7 +30,6 @@ const ProductSearchSection = () => {
             placeholder="-"
             onChange={handleDropdownChange(setSelectedFilter)}
           />
-          {renderFilter()}
         </div>
       </div>
     )
@@ -47,13 +38,13 @@ const ProductSearchSection = () => {
   const renderBreadcrumb = () => (
     <ul className="product-search__breadcrumb">
       <li className="product-search__breadcrumb-item">
-        <a className="product-search__link">{t('allCategory')}</a>
+        <a className="product-search__link">{t('home')}</a>
       </li>
       <li className="product-search__breadcrumb-item">
-        <a className="product-search__link">{t('shirtCategory')}</a>
+        <a className="product-search__link">{t('searchResult')}</a>
       </li>
       <li className="product-search__breadcrumb-item">
-        <a className="product-search__link">{t('shoeCategory')}</a>
+        <a className="product-search__link">{t('shoe')}</a>
       </li>
     </ul>
   )
@@ -67,4 +58,4 @@ const ProductSearchSection = () => {
   )
 }
 
-export default ProductSearchSection
+export default ProductListHeader

@@ -1,12 +1,16 @@
 .product-card {
   display: inline-block;
-  width: 50%;
+  width: 100%;
   height: rem(536px);
   box-sizing: border-box;
   padding: rem(14px) 0;
 
-  &:not(:nth-child(even)) {
-    padding-right: rem(12px);
+  @include respond-above('sm') {
+    height: rem(396px);
+    width: 50%;
+    &:not(:nth-child(even)) {
+      padding-right: rem(12px);
+    }
   }
 
   @include respond-above('md') {
@@ -21,6 +25,7 @@
 
   @include respond-above('xl') {
     width: 25%;
+    height: rem(384px);
   }
 
   &__image-container {
@@ -43,12 +48,20 @@
     height: rem(400px);
     margin-bottom: rem(6px);
 
+    @include respond-above('sm') {
+      height: rem(260px);
+    }
+    
     @include respond-above('md') {
       height: rem(310px);
     }
 
     @include respond-above('lg') {
       height: rem(200px);
+    }
+
+    @include respond-above('xl') {
+      height: rem(248px);
     }
   }
 
