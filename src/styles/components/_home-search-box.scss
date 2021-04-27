@@ -2,7 +2,7 @@
 
 .home-search-box {
   display: flex;
-  width: 80%;
+  width: 85%;
   box-shadow: rem(5px 10px 20px) 0 box-shadow-opacity(0.16);
 
   background-color: $light;
@@ -14,7 +14,7 @@
   &__input {
     box-sizing: border-box;
     width: 100%;
-    padding: rem(5px 10px);
+    padding: rem(15px 30px);
     border: none;
 
     color: $dove-gray;
@@ -24,12 +24,11 @@
     line-height: 1.23;
 
     @include respond-above('sm') {
-      padding: rem(10px 20px);
+      padding: rem(20px 40px);
       font-size: rem(16px);
     }
 
     @include respond-above('md') {
-      padding: rem(20px 40px);
       font-size: rem(20px);
     }
 
