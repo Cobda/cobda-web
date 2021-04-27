@@ -10,5 +10,8 @@
   "home": "Home",
   "shoe": "Shoe",
   "shirt": "Shirt",
+  "category": "Category",
+  "baht": "(THB)",
+  "priceRange": " Price Range",
   "searchResult": "Search Result"
 }

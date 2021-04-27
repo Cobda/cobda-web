@@ -2,31 +2,49 @@
 
 .sidebar {
   display: flex;
+  flex-direction: column;
   height: 100%;
   padding: rem(44px 32px);
   background-color: $light;
 
-  &__category {
+  &__filter {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: rem(16px);
+    }
   }
 
   &__checkbox {
-    border: 1px solid #ccc;
-    border-radius: 50%;
     cursor: pointer;
   }
 
-  &__category-title {
-    font-size: rem(16px);
+  &__item {
+    padding-left: rem(8px);
+    box-sizing: border-box;
+  }
+
+  &__item-group {
+    display: flex;
+    align-items: center;
+  }
+
+  &__label {
+    font-size: rem(14px);
+    font-weight: 500;
+    padding-left: rem(4px);
+  }
+
+  &__title {
+    font-size: rem(18px);
     font-weight: 600;
     line-height: 1.53;
   }
 
-  &__color {
-  }
-
-  &__size {
-  }
-
-  &__price-range {
+  &__item-group,
+  &__title {
+    &:not(:last-child) {
+      margin-bottom: rem(8px);
+    }
   }
 }
