@@ -5,21 +5,26 @@
   justify-content: space-between;
   height: rem(162px);
   background-color: $light;
+
   @include respond-above('md') {
     height: rem(300px);
   }
+
   @include respond-above('lg') {
     height: rem(378px);
   }
+
   @include respond-above('xl') {
     height: rem(426px);
   }
+
   &__content {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     width: 45%;
     padding: rem(12px) 0 0 rem(16px);
+
     @include respond-above('md') {
       padding: rem(24px) 0 0 rem(40px);
     }
@@ -30,102 +35,125 @@
       padding: rem(44px) 0 0 rem(52px);
     }
   }
+
   &--grey-background {
     background-color: $alabaster;
   }
+
   &__header {
     margin: 0;
     font-size: rem(16px);
     font-weight: bold;
     line-height: 1.2;
-    padding-bottom: rem(8px);
+    margin-bottom: rem(8px);
     
     @include respond-above('md') {
       line-height: 1.44;
-      padding-bottom: rem(20px);
+      margin-bottom: rem(20px);
       font-size: rem(24px);
     }
+
     @include respond-above('lg') {
-      padding-bottom: rem(24px);
+      margin-bottom: rem(24px);
       font-size: rem(30px);
     }
+
     @include respond-above('xl') {
       font-size: rem(36px);
     }
   }
+
   &__description {
     width: 90%;
-    padding-bottom: rem(8px);
+    margin-bottom: rem(8px);
     margin: 0;
     font-size: rem(6px);
     line-height: 1.44;
     font-weight: 500;
     color: $mine-shaft;
+
     @include respond-above('md') {
       width: 80%;
-      padding-bottom: rem(20px);
+      margin-bottom: rem(20px);
       font-size: rem(12px);
     }
+
     @include respond-above('lg') {
-      padding-bottom: rem(24px);
+      margin-bottom: rem(24px);
       font-size: rem(16px);
     }
+
     @include respond-above('xl') {
       font-size: rem(24px);
     }
   }
+
   &__price {
-    padding-bottom: rem(16px);
+    margin-bottom: rem(16px);
     margin: 0;
     font-size: rem(14px);
     font-weight: bold;
+
     @include respond-above('md') {
-      padding-bottom: rem(40px);
+      margin-bottom: rem(40px);
       font-size: rem(24px);
     }
+
     @include respond-above('lg') {
       font-size: rem(30px);
     }
+
     @include respond-above('xl') {
       font-size: rem(36px);
     }
   }
+
   &__product {
     font-size: rem(6px);
     font-weight: bold;
     color: $azure-radiance;
+
     @include respond-above('md') {
       font-size: rem(12px);
     }
+
     @include respond-above('lg') {
       font-size: rem(20px);
     }
+
     @include respond-above('xl') {
       font-size: rem(28px);
     }
   }
+
   &__media {
     width: 55%;
   }
+
   &__image-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
   }
+
   &__image {
     width: 100%;
-    height: rem(162px);
+    height: 100%;
+
     @include respond-above('md') {
       height: rem(300px);
     }
+
     @include respond-above('lg') {
       height: rem(378px);
     }
+
     @include respond-above('xl') {
       height: rem(426px);
     }
   }
+
   &__link {
     text-decoration: none;
   }

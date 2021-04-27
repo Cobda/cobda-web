@@ -9,27 +9,46 @@ import {
 } from 'pure-react-carousel'
 import CarouselItem from './Item'
 
-interface PopularItem {
-  caption: string
-}
-
 const PopularItemCarousel = () => {
-  // TODO: Remove this sample and use data from backend instead
-  const carouselItemList: Array<PopularItem> = [
-    { caption: '1st slide' },
-    { caption: '2nd slide' },
-    { caption: '3rd slide' },
-    { caption: '4th slide' },
-    { caption: '5th slide' }
-  ]
-
   const renderCarouselSlide = () => {
+    const carouselItemList: Array<CarouselItem> = [
+      {
+        imagePath: '/images/thrasher-sock.jpg',
+        alternative: 'Thrasher sock',
+        caption: 'Thrasher Sock'
+      },
+      {
+        imagePath: '/images/adidas-blue-jacket.jpeg',
+        alternative: 'Adidas blue jacket',
+        caption: 'Adidas Blue Jacket'
+      },
+      {
+        imagePath: '/images/adidas-sweater.jpg',
+        alternative: 'Adidas robotic sweater',
+        caption: 'Adidas Robotic Sweater'
+      },
+      {
+        imagePath: '/images/ck-sport-bra.jpg',
+        alternative: 'Calvin Klein sport bra',
+        caption: 'Calvin Klein Sport Bra'
+      },
+      {
+        imagePath: '/images/air-jordan.jpg',
+        alternative: 'Air jordan',
+        caption: 'Air Jordan'
+      }
+    ]
+
     return carouselItemList?.map((item, index) => {
-      const { caption } = item
+      const { imagePath, alternative, caption } = item
 
       return (
         <Slide index={index}>
-          <CarouselItem caption={caption} />
+          <CarouselItem
+            imagePath={imagePath}
+            alternative={alternative}
+            caption={caption}
+          />
         </Slide>
       )
     })
@@ -37,7 +56,7 @@ const PopularItemCarousel = () => {
 
   return (
     <CarouselProvider
-      className="carousel carousel--popular-item"
+      className="carousel--popular-item"
       visibleSlides={3}
       naturalSlideWidth={400}
       naturalSlideHeight={500}
