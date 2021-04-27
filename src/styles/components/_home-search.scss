@@ -7,8 +7,11 @@
   justify-content: center;
   height: rem(450px);
 
-  @include respond-above('md') {
+  @include respond-above('sm') {
     justify-content: flex-end;
+  }
+
+  @include respond-above('md') {
     height: rem(500px);
     padding: 0;
   }
@@ -40,6 +43,11 @@
   &__title {
     margin: 0;
     font-size: rem(24px);
+    text-align: center;
+
+    @include respond-above('sm') {
+      text-align: left;
+    }
 
     @include respond-above('md') {
       font-size: rem(45px);
@@ -56,15 +64,22 @@
 
   &__description {
     margin: 0;
-    font-size: rem(14px);
+    font-size: rem(16px);
     line-height: 1.3;
-    color: $secondary;
+    -webkit-text-stroke: 0.65px black;
+    color: $light;
+    text-align: center;
+
+    @include respond-above('sm') {
+      text-align: left;
+      -webkit-text-stroke: none;
+      color: $dark;
+    }
 
     @include respond-above('md') {
-      color: $dark;
       padding-bottom: rem(90px);
-      font-size: rem(16px);
       line-height: 1.5;
+      text-align: left;
     }
 
     @include respond-above('lg') {
