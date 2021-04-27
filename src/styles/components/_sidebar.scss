@@ -1,8 +1,32 @@
 @import '../abstracts/_abstracts-dir';
 
 .sidebar {
-  @include flex-center();
-
+  display: flex;
   height: 100%;
-  background-color: $primary;
+  padding: rem(44px 32px);
+  background-color: $light;
+
+  &__category {
+  }
+
+  &__checkbox {
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &__category-title {
+    font-size: rem(16px);
+    font-weight: 600;
+    line-height: 1.53;
+  }
+
+  &__color {
+  }
+
+  &__size {
+  }
+
+  &__price-range {
+  }
 }

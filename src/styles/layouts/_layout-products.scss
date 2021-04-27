@@ -51,11 +51,11 @@
     padding: rem(24px 16px);
 
     @include respond-above('md') {
-      padding: 4.5% 6%;
+      padding: rem(24px 56px);
     }
 
     @include respond-above('lg') {
-      padding: 5% 3.5%;
+      padding: rem(38px 33px);
     }
   }
 

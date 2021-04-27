@@ -114,6 +114,10 @@
 
   &__breadcrumb-item {
     display: inline;
+    &:nth-child(3) > a {
+      font-weight: 500;
+      color: $azure-radiance;
+    }
   }
 
   &__link {
@@ -125,9 +129,5 @@
     text-decoration: none;
     color: $dark;
     cursor: pointer;
-
-    &:hover {
-      color: $azure-radiance;
-    }
   }
 }

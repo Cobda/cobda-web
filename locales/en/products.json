@@ -6,8 +6,9 @@
   "filter": "Filter",
   "highestPrice": "Highest Price",
   "lowestPrice": "Lowest Price",
-  "viewMore": "Load More",
-  "allCategory": "All categories",
-  "shoeCategory": "Shoe Category",
-  "shirtCategory": "Shirt Category"
+  "viewMore": "View More",
+  "home": "Home",
+  "shoe": "Shoe",
+  "shirt": "Shirt",
+  "searchResult": "Search Result"
 }
