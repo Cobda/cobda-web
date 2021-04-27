@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
 
-const HomeSearchBox = () => {
-  const { t } = useTranslation('home')
+const SearchBox = () => {
+  const { t } = useTranslation('common')
   const router = useRouter()
   const [searchValue, setSearchValue] = useState<string>('')
 
@@ -40,4 +40,4 @@ const HomeSearchBox = () => {
   )
 }
 
-export default HomeSearchBox
+export default SearchBox

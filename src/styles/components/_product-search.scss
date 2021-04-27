@@ -1,0 +1,133 @@
+.product-search {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  &__search {
+    width: 100%;
+    margin-bottom: rem(24px);
+
+    & > .home-search-box {
+      width: 100%;
+    }
+
+    & > .home-search-box > input {
+      height: rem(60px);
+      font-size: rem(18px);
+    }
+
+    & > .home-search-box > button {
+      width: rem(50px);
+    }
+
+    @include respond-above('md') {
+      width: 63%;
+
+      & > .home-search-box {
+        width: 90%;
+      }
+    }
+  }
+
+  &__filter-group {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    & > * :not(:last-child) {
+      margin-right: rem(16px);
+    }
+
+    @include respond-above('md') {
+      display: none;
+    }
+  }
+
+  &__dropdown {
+    display: flex;
+    height: rem(35px);
+    width: 100%;
+
+    @include respond-above('md') {
+      width: 37%;
+    }
+  }
+
+  &__dropdown-option {
+    width: rem(160px);
+    font-size: rem(14px);
+    font-weight: 500;
+
+    &::placeholder {
+      color: $azure-radiance;
+    }
+
+    @include respond-above('md') {
+      width: rem(180px);
+      font-size: rem(18px);
+    }
+  }
+
+  &__dropdown-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    & > label:not(:last-child) {
+      margin-right: rem(16px);
+    }
+  }
+
+  &__filter-label {
+    font-size: rem(12px);
+    font-weight: 500;
+    color: $iron;
+  }
+
+  &__dropdown-label {
+    display: none;
+    font-size: rem(18px);
+    font-weight: 200;
+    line-height: 1.5;
+
+    @include respond-above('md') {
+      display: block;
+    }
+  }
+
+  &__breadcrumb {
+    display: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    & > li + li:before {
+      color: $dark;
+      content: '>\00a0';
+    }
+
+    @include respond-above('md') {
+      display: block;
+    }
+  }
+
+  &__breadcrumb-item {
+    display: inline;
+  }
+
+  &__link {
+    box-sizing: border-box;
+    padding-right: rem(8px);
+    font-size: rem(18px);
+    font-weight: 200;
+    line-height: 1.5;
+    text-decoration: none;
+    color: $dark;
+    cursor: pointer;
+
+    &:hover {
+      color: $azure-radiance;
+    }
+  }
+}

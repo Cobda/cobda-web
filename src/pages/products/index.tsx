@@ -3,6 +3,7 @@ import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 import Sidebar from '../../components/Sidebar'
 import ProductList from '../../components/ProductList'
+import ProductSearchSection from '../../components/ProductSearchSection'
 import Meta from '../../components/Meta'
 
 const Products = () => (
@@ -16,6 +17,7 @@ const Products = () => (
       <Sidebar />
     </aside>
     <main>
+      <ProductSearchSection />
       <ProductList />
     </main>
     <footer>

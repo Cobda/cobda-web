@@ -1,12 +1,12 @@
 @import '../abstracts/_abstracts-dir';
 
 .product-list {
-  background-color: $shuttle-gray;
   padding: rem(16px);
   box-sizing: border-box;
-
+  padding: rem(10px) 0;
+  
   @include respond-above('lg') {
-    padding: rem(24px);
+    padding: rem(24px 8px 24px) 0;
   }
 
   &__title {
@@ -15,5 +15,19 @@
 
   &__description {
     margin: 0;
+  }
+
+  &__actionable {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    color: $light;
+    padding: 8px 18px 9px 19px;
+    box-shadow: 0 rem(3px 20px) 0 box-shadow-opacity(0.16);
+    border: solid rem(4px) $light;
+    background-color: $mine-shaft;
+    cursor: pointer;
   }
 }
