@@ -1,7 +1,7 @@
 .product-content {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: rem(300px) repeat(2, 1fr);
+  grid-template-rows: fit-content();
   grid-template-areas:
     'media'
     'detail'
@@ -9,21 +9,19 @@
 
   @include respond-above('md') {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     grid-template-areas:
       'media detail'
       'information information';
   }
 
-  & > .product-content__media,
-  & > .product-content__detail,
-  & > .product-content__information {
+  &__media,
+  &__detail,
+  &__information {
     border-radius: rem(9px);
     margin-bottom: rem(16px);
 
     background-color: $light;
 
-    // TODO: Modify these when making other sections in Product View screen
     @include respond-above('md') {
       border-radius: unset;
       margin-bottom: rem(32px);
@@ -34,19 +32,36 @@
     }
   }
 
-  & > .product-content__media {
+  &__media {
     grid-area: media;
+    margin-top: rem(16px);
 
-    background-color: green;
+    @include respond-above('md') {
+      padding-bottom: rem(64px);
+      border-radius: rem(0 0 48px 48px);
+      margin-top: 0;
+
+      background-color: $onahau;
+    }
+
+    @include respond-above('lg') {
+      padding-bottom: rem(80px);
+      border-radius: 0 0 rem(64px 64px);
+    }
+
+    @include respond-above('xl') {
+      padding-bottom: rem(96px);
+      border-radius: 0 0 rem(80px 80px);
+    }
   }
 
-  & > .product-content__detail {
+  &__detail {
     grid-area: detail;
 
     background-color: royalblue;
   }
 
-  & > .product-content__information {
+  &__information {
     grid-area: information;
   }
 }
