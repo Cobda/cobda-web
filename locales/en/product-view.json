@@ -1,3 +1,9 @@
 {
+  "baht": "Baht",
+  "price": "Price: ",
+  "color": "Color: ",
+  "size": "Size: ",
+  "deliveryOption": "Delivery Option: ",
+  "contactSeller": "Contact Seller",
   "productDetail": "Product Detail"
 }

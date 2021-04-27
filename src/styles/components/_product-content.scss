@@ -12,6 +12,12 @@
     grid-template-areas:
       'media detail'
       'information information';
+
+    margin-top: rem(32px);
+  }
+
+  @include respond-above('lg') {
+    margin-top: rem(48px);
   }
 
   &__media,
@@ -57,8 +63,23 @@
 
   &__detail {
     grid-area: detail;
+    padding: rem(24px 24px 32px);
 
-    background-color: royalblue;
+    @include respond-above('md') {
+      padding: rem(32px 48px) 0;
+      border-radius: rem(48px);
+      background-color: $alabaster;
+    }
+
+    @include respond-above('lg') {
+      padding: rem(40px 56px) 0;
+      border-radius: rem(64px);
+    }
+
+    @include respond-above('xl') {
+      padding: rem(48px 64px) 0;
+      border-radius: rem(80px);
+    }
   }
 
   &__information {
