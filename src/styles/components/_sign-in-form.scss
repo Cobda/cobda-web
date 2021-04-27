@@ -49,11 +49,11 @@
     margin: 0;
 
     @include respond-above('md') {
-      font-size: rem(20px);
+      font-size: rem(22px);
     }
 
     @include respond-above('lg') {
-      font-size: rem(22px);
+      font-size: rem(24px);
     }
   }
 
