@@ -21,6 +21,7 @@
     "react-google-recaptcha": "^2.1.0",
     "react-hook-form": "^6.15.5",
     "react-images-uploading": "^3.1.2",
+    "recoil": "^0.2.0",
     "sass": "^1.32.5",
     "sqlite3": "^5.0.2"
   },
