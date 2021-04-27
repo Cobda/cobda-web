@@ -4,7 +4,7 @@ import SearchBox from '../SearchBox'
 import Dropdown, { Option } from 'react-dropdown'
 import useTranslation from 'next-translate/useTranslation'
 
-const ProductSearchSection = () => {
+const ProductListHeader = () => {
   const { t } = useTranslation('products')
   const [selectedFilter, setSelectedFilter] = useState<string>('')
   const sortOption: string[] = ['highestPrice', 'lowestPrice'].map((option) => t(option))
@@ -47,13 +47,13 @@ const ProductSearchSection = () => {
   const renderBreadcrumb = () => (
     <ul className="product-search__breadcrumb">
       <li className="product-search__breadcrumb-item">
-        <a className="product-search__link">{t('allCategory')}</a>
+        <a className="product-search__link">{t('home')}</a>
       </li>
       <li className="product-search__breadcrumb-item">
-        <a className="product-search__link">{t('shirtCategory')}</a>
+        <a className="product-search__link">{t('searchResult')}</a>
       </li>
       <li className="product-search__breadcrumb-item">
-        <a className="product-search__link">{t('shoeCategory')}</a>
+        <a className="product-search__link">{t('shoe')}</a>
       </li>
     </ul>
   )
@@ -67,4 +67,4 @@ const ProductSearchSection = () => {
   )
 }
 
-export default ProductSearchSection
+export default ProductListHeader

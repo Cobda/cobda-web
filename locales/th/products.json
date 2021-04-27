@@ -7,7 +7,8 @@
   "highestPrice": "ราคาแพงที่สุด",
   "lowestPrice": "ราคาถูกที่สุด",
   "viewMore": "แสดงเพิ่ม",
-  "allCategory": "ประเภททั้งหมด",
-  "shoeCategory": "ประเภทรองเท้า",
-  "shirtCategory": "ประเภทเสื้อผ้า"
+  "home": "หน้าหลัก",
+  "shoe": "ประเภทรองเท้า",
+  "shirt": "ประเภทเสื้อผ้า",
+  "searchResult": "ผลลัพธ์"
 }

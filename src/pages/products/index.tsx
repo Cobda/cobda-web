@@ -2,8 +2,9 @@ import React from 'react'
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 import Sidebar from '../../components/Sidebar'
-import ProductList from '../../components/ProductList'
-import ProductSearchSection from '../../components/ProductSearchSection'
+import ProductListHeader from '../../components/ProductListHeader'
+import ProductListBody from '../../components/ProductListBody'
+import ProductListFooter from '../../components/ProductListFooter'
 import Meta from '../../components/Meta'
 
 const Products = () => (
@@ -17,8 +18,10 @@ const Products = () => (
       <Sidebar />
     </aside>
     <main>
-      <ProductSearchSection />
-      <ProductList />
+      <ProductListHeader />
+      <ProductListBody />
+      {/* TODO: Further implement for view more products */}
+      {/* <ProductListFooter />  */}
     </main>
     <footer>
       <Footer />
