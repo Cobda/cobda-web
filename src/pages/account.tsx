@@ -12,9 +12,10 @@ const Account = () => (
     <header>
       <Navbar />
     </header>
-    <aside>
+    {/* TODO: For further implemetation}
+    {/* <aside>
       <AccountInformation />
-    </aside>
+    </aside> */}
     <main>
       <AccountContent />
     </main>
