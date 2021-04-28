@@ -4,32 +4,30 @@ import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router'
 import TextField from '../InputField/TextField'
 import PasswordField from '../InputField/PasswordField'
+import { signIn, signOut } from 'next-auth/client'
 
 const Form = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [errorMessage, setErrorMessage] = useState('')
-  const { t } = useTranslation('sign-in')
+  const [errorMessage, setErrorMessage] = useState<string>('')
   const router = useRouter()
-  // const [session, loading] = useSession()
+  const { t } = useTranslation('sign-in')
 
   useEffect(() => {
     console.log('Router: ', router)
     // Getting the error details from URL
     if (router.query.error) {
-      // setLoginError(router.query.error) // Shown below the input field in my example
-      // setEmail(router.query.email) // To prefill the email after redirect
+      setErrorMessage('Username is invalid') // Shown below the input field in my example
     }
   }, [router])
 
   const handleSubmitClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    // signIn('credentials', {
-    //   email: email,
-    //   password: password,
-    //   callbackUrl: '/'
-    // })
-    // setErrorMessage('')
+    signIn('credentials', {
+      email: email,
+      password: password,
+      callbackUrl: '/'
+    })
   }
 
   const renderCredentialInput = () => {

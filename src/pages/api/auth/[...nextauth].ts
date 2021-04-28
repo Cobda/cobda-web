@@ -9,15 +9,21 @@ const providers = {
       name: 'Credentials',
       credentials: {},
       authorize: async (credentials) => {
-        const user = await prismaClient.user.findMany({
-          where: {
-            email: credentials.email,
-            password: credentials.password
-          }
-        }).catch(err => err)
+        const user = await prismaClient.user
+          .findMany({
+            where: {
+              email: credentials.email,
+              password: credentials.password
+            }
+          })
+          .catch((err) => err)
         const isUserAuthenticated: boolean = !user.code && user.length
         // TODO: Send useful error message
-        return isUserAuthenticated ? user[0] : new Error('The email or password is incorrect.')
+        if (isUserAuthenticated) {
+          return user[0]
+        } else {
+          throw new Error('The email or password is incorrect.')
+        }
       }
     })
   ]

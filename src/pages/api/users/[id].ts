@@ -11,7 +11,7 @@ const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         const getResponse = await prismaClient.user.findFirst({
           where: { id: userId }
-        }).catch(err => err)
+        }).catch((err: any) => err)
 
         return res.status(
           getResponse.code
@@ -19,15 +19,15 @@ const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             : ResponseStatusCode.OK
           )
           .json(getResponse)
-      } catch (err) {
+      } catch (err: any) {
         return res.status(ResponseStatusCode.BadRequest).json(err.message)
       }
     case 'PATCH':
       try {
-        const updateResponse = await prismaClient.user.update({
+        const updateResponse: any = await prismaClient.user.update({
           where: { id: userId },
           data: { ...body }
-        }).catch(err => err)
+        }).catch((err: any) => err)
 
         return res.status(
           updateResponse.code
@@ -35,13 +35,13 @@ const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             : ResponseStatusCode.Created
           )
           .json(updateResponse)
-      } catch (err) {
+      } catch (err: any) {
         return res.status(ResponseStatusCode.BadRequest).json(err.message)
       }
     case 'DELETE':
       const deleteResponse = await prismaClient.user.delete({
         where: { id: userId }
-      }).catch(err => err)
+      }).catch((err: any) => err)
 
       return deleteResponse.code
               ? res.status(ResponseStatusCode.BadRequest).json(deleteResponse)

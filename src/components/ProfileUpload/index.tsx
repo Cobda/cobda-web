@@ -3,11 +3,11 @@ import useTranslation from 'next-translate/useTranslation'
 import Trans from 'next-translate/Trans'
 
 interface ProfileUpload {
-  readonly onUpload: (isUploaded: boolean) => void
+  readonly imageUrl: string
+  readonly onUpload: (image: string) => void
 }
 
-const ProfileUpload = ({ onUpload }: ProfileUpload) => {
-  const [selectedImageUrl, setSelectedImageUrl] = useState<string>('')
+const ProfileUpload = ({ imageUrl, onUpload }: ProfileUpload) => {
   const { t } = useTranslation('sign-up')
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,8 +17,7 @@ const ProfileUpload = ({ onUpload }: ProfileUpload) => {
     if (files && hasSingleFile) {
       const [selectedFile] = files
       const imageUrl: string = URL.createObjectURL(selectedFile)
-      setSelectedImageUrl(imageUrl)
-      onUpload(true)
+      onUpload(imageUrl)
     }
   }
 
@@ -34,18 +33,18 @@ const ProfileUpload = ({ onUpload }: ProfileUpload) => {
       <>
         <img
           className="profile-upload__image profile-upload__image--selected"
-          src={selectedImageUrl}
+          src={imageUrl}
           alt="Uploaded Profile Image"
         />
         <img className="profile-upload__icon" src="/icons/pencil.svg" alt="Profile Image Edit Icon" />
       </>
     )
 
-    return selectedImageUrl ? selectedProfileImage : defaultProfileImage
+    return imageUrl ? selectedProfileImage : defaultProfileImage
   }
 
   const renderProfileUpload = () => {
-    const labelClassName: string = selectedImageUrl
+    const labelClassName: string = imageUrl
       ? 'profile-upload__label profile-upload__label--selected'
       : 'profile-upload__label'
 

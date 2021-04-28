@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import Form from './Form'
 import useTranslation from 'next-translate/useTranslation'

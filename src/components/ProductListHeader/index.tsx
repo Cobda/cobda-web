@@ -10,7 +10,7 @@ const ProductListHeader = () => {
 
   const renderSearchBox = () => (
     <div className="product-search__search">
-      <SearchBox />
+      <SearchBox placeholder={t('searchPlaceholder')} />
     </div>
   )
 

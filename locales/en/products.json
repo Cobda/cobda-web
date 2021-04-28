@@ -18,5 +18,6 @@
   "searchResult": "Search Result",
   "allCategory": "All categories",
   "shoeCategory": "Shoe Category",
-  "shirtCategory": "Shirt Category"
+  "shirtCategory": "Shirt Category",
+  "searchPlaceholder": "What are you looking for?"
 }

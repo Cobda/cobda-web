@@ -7,20 +7,13 @@ import { productListState } from '../../recoil/atoms/product'
 
 const ProductListBody = () => {
   const productList = useRecoilValue(filteredProductListState)
-  // const articles = new Array(20).fill(<ProductCard />)
+  // const articles = new Array(20).fill(<ProductCard product={{id: 1, name: 'test'}}/>)
 
   const { t } = useTranslation('products')
 
   const renderProductList = () => productList?.map((product) => <ProductCard product={product} />)
 
-  return (
-    <section className="product-list">
-      {renderProductList()}
-      {/* <div className="product-list__actionable">
-        <input className="product-list__button" type="submit" value={t('viewMore')} />
-      </div> */}
-    </section>
-  )
+  return <section className="product-list">{renderProductList()}</section>
 }
 
 export default ProductListBody

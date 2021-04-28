@@ -9,6 +9,7 @@ const ProductCard = (props: any) => {
   const { id, name, price, deliveryOption, productImagePath } = props.product
   const formattedPrice = price.toString().replace(COMMA_REGEX, ',')
   const imagePath = productImagePath || '/images/yeezy-380.jpg'
+  const base64Prefix = 'data:image/jpeg;base64,'
 
   const renderDeliveryOption = () => {
     const option = () => {
@@ -32,9 +33,9 @@ const ProductCard = (props: any) => {
   return (
     <div className="product-card">
       <figure className="product-card__image-container">
-        <Link href={{ pathname: `/products/${name}`, query: { id } }}>
+        <Link href={{ pathname: `/products/${id}`, query: { name } }}>
           <a className="product-card__link">
-            <img className="product-card__image" src={imagePath} alt="product card" />
+            <img className="product-card__image" src={base64Prefix + imagePath} alt="product card" />
           </a>
         </Link>
         <figcaption className="product-card__content">

@@ -12,7 +12,7 @@ const productHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     case 'POST':
       try {
         const product: Prisma.ProductCreateInput = { ...body }
-        const postResponse = await prismaClient.product.create({ data: product }).catch(err => err)
+        const postResponse = await prismaClient.product.create({ data: product }).catch((err: any) => err)
     
         return res.status(
           postResponse.code
@@ -20,7 +20,7 @@ const productHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             : ResponseStatusCode.Created
           )
           .json(postResponse)
-      } catch (err) {
+      } catch (err: any) {
         return res.status(ResponseStatusCode.BadRequest).json(err.message)
       }
     default:

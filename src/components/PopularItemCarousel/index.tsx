@@ -11,7 +11,7 @@ import CarouselItem from './Item'
 
 const PopularItemCarousel = () => {
   const renderCarouselSlide = () => {
-    const carouselItemList: Array<CarouselItem> = [
+    const carouselItemList: any = [
       {
         imagePath: '/images/thrasher-sock.jpg',
         alternative: 'Thrasher sock',
@@ -39,7 +39,7 @@ const PopularItemCarousel = () => {
       }
     ]
 
-    return carouselItemList?.map((item, index) => {
+    return carouselItemList?.map((item: any, index: number) => {
       const { imagePath, alternative, caption } = item
 
       return (
@@ -57,6 +57,7 @@ const PopularItemCarousel = () => {
   return (
     <CarouselProvider
       className="carousel--popular-item"
+      isPlaying
       visibleSlides={3}
       naturalSlideWidth={400}
       naturalSlideHeight={500}

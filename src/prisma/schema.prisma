@@ -27,7 +27,7 @@ model Product {
   description String
   category String
   deliveryOption String
-  productImagePath Json
+  productImagePath String
   owner User? @relation(fields: [ownerId], references: [id])
   ownerId Int?
 }
