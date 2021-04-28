@@ -15,7 +15,7 @@ const AccountProduct = () => {
           <h2 className="account-product__title">John Wick</h2>
           <h2 className="account-product__short-name">JW</h2>
           <div className="account-product__option">
-            <label className="account-product__label">Delivery by:</label>
+            <label className="account-product__label">{t('deliveryOption')}</label>
             <a className="account-product__postal">{t('postal')}</a>
             <a className="account-product__meet-up">{t('meetUp')}</a>
           </div>
