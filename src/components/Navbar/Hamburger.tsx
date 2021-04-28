@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import useTranslation from 'next-translate/useTranslation'
+import LanguageDropdown from '../LanguageDropdown'
+import { ComponentType } from '../../enum/component-type'
 
 const NavbarHamburger = () => {
   const paths: string[] = ['/products', '/about-us', '/product-registration', '/sign-in', '/sign-up']
@@ -27,11 +29,18 @@ const NavbarHamburger = () => {
     return <ul className="hamburger__menu">{menuItems}</ul>
   }
 
+  const renderLocales = () => (
+    <div className="hamburger__locales">
+      <LanguageDropdown parent={ComponentType.Footer} />
+    </div>
+  )
+
   return (
     <div className="hamburger">
       <input className="hamburger__input" type="checkbox" />
       {renderHamburgerIcon()}
       {renderHamburgerMenu()}
+      {renderLocales()}
     </div>
   )
 }
