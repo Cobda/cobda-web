@@ -11,6 +11,7 @@
     "@prisma/client": "^2.21.2",
     "@types/next-auth": "^3.13.0",
     "@types/sqlite3": "^3.1.7",
+    "axios": "^0.21.1",
     "next": "^10.0.5",
     "next-auth": "^3.14.7",
     "next-translate": "^1.0.2",
@@ -21,6 +22,7 @@
     "react-google-recaptcha": "^2.1.0",
     "react-hook-form": "^6.15.5",
     "react-images-uploading": "^3.1.2",
+    "recoil": "^0.2.0",
     "sass": "^1.32.5",
     "sqlite3": "^5.0.2"
   },

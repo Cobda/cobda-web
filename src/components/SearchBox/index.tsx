@@ -2,7 +2,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
 
-const HomeSearchBox = () => {
+interface SearchBox {
+  readonly placeholder?: string
+}
+
+const SearchBox = ({ placeholder }: SearchBox) => {
   const [searchValue, setSearchValue] = useState<string>('')
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([])
   const [isSuggestionShown, setSuggestionShown] = useState(false)
@@ -88,6 +92,8 @@ const HomeSearchBox = () => {
     }
   }
 
+  const inputPlaceholder = placeholder || t('searchPlaceholder')
+
   return (
     <>
       <div className="home-search-box" ref={searchBoxRef}>
@@ -95,7 +101,7 @@ const HomeSearchBox = () => {
           className="home-search-box__input"
           name="search"
           value={searchValue}
-          placeholder={t('searchPlaceholder')}
+          placeholder={inputPlaceholder}
           autoComplete="off"
           onClick={handleInputClick}
           onChange={handleInputChange}
@@ -108,4 +114,4 @@ const HomeSearchBox = () => {
   )
 }
 
-export default HomeSearchBox
+export default SearchBox

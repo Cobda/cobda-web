@@ -16,5 +16,8 @@
   "lowestPriceRange": "0 - 5000 (บาท)",
   "middlePriceRange": "5000 - 10,000 (บาท)",
   "highestPriceRange": "10,000 + (บาท)",
-  "searchResult": "ผลลัพธ์"
+  "searchResult": "ผลลัพธ์",
+  "shoeCategory": "ประเภทรองเท้า",
+  "shirtCategory": "ประเภทเสื้อผ้า",
+  "searchPlaceholder": "What are you looking for?"
 }

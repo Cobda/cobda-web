@@ -13,15 +13,10 @@ const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const user: Prisma.UserCreateInput = { ...body }
-    const postResponse = await prismaClient.user.create({ data: user }).catch(err => err)
+    const postResponse = await prismaClient.user.create({ data: user }).catch((err: any) => err)
 
-    res.status(
-      postResponse.code
-        ? ResponseStatusCode.BadRequest
-        : ResponseStatusCode.Created
-      )
-      .json(postResponse)
-  } catch (err) {
+    res.status(postResponse.code ? ResponseStatusCode.BadRequest : ResponseStatusCode.Created).json(postResponse)
+  } catch (err: any) {
     res.status(ResponseStatusCode.BadRequest).json(err.message)
   }
 }

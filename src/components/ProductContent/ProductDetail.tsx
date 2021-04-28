@@ -1,8 +1,9 @@
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
-
+import { useRecoilValue } from 'recoil'
+import { productState } from '../../recoil/atoms/product'
 interface ProductDetail {
-  readonly title: string
+  readonly name: string
   readonly price: number
   readonly color: string
   readonly size: string
@@ -10,7 +11,7 @@ interface ProductDetail {
 }
 
 const exampleProduct: ProductDetail = {
-  title: 'Men Running Shoes Black Trainer Sport Sneaker',
+  name: 'Men Running Shoes Black Trainer Sport Sneaker',
   price: 5600,
   color: 'Blue',
   size: '42',
@@ -21,11 +22,12 @@ const COMMA_REGEX = new RegExp(/\B(?=(\d{3})+(?!\d))/g)
 
 const ProductDetail = () => {
   const { t } = useTranslation('product-view')
-  // TODO: Remove this mock
-  const { title, price, color, size, deliveryOption } = exampleProduct
-  
-  const formattedPrice = price.toString().replace(COMMA_REGEX, ',')
-  const priceLabel: string = t('price') + formattedPrice + ' ' + t('baht')
+  const product: any = useRecoilValue(productState)
+
+  const { name, price, color, size, deliveryOption } = product
+
+  // const formattedPrice = price.toString().replace(COMMA_REGEX, ',')
+  const priceLabel: string = t('price') + price + ' ' + t('baht')
   const colorLabel: string = t('color') + color
   const sizeLabel: string = t('size') + size
   const deliveryOptionLabel: string = t('deliveryOption') + deliveryOption
@@ -36,7 +38,7 @@ const ProductDetail = () => {
   return (
     <div className="product-detail">
       <header className="product-detail__header">
-        <h2 className="product-detail__title">{title}</h2>
+        <h2 className="product-detail__title">{name}</h2>
       </header>
       <div className="product-detail__body">{renderProductLabels()}</div>
       <div className="product-detail__footer">

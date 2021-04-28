@@ -11,7 +11,7 @@ const productHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         const getResponse = await prismaClient.product.findFirst({
           where: { id: productId }
-        }).catch(err => err)
+        }).catch((err: any) => err)
 
         return res.status(
           getResponse.code
@@ -19,7 +19,7 @@ const productHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             : ResponseStatusCode.OK
           )
           .json(getResponse)
-      } catch (err) {
+      } catch (err: any) {
         return res.status(ResponseStatusCode.BadRequest).json(err.message)
       }
     case 'PATCH':
@@ -27,7 +27,7 @@ const productHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         const updateResponse = await prismaClient.product.update({
           where: { id: productId },
           data: { ...body }
-        }).catch(err => err)
+        }).catch((err: any) => err)
 
         return res.status(
           updateResponse.code
@@ -35,13 +35,13 @@ const productHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             : ResponseStatusCode.Created
           )
           .json(updateResponse)
-      } catch (err) {
+      } catch (err: any) {
         return res.status(ResponseStatusCode.BadRequest).json(err.message)
       }
     case 'DELETE':
       const deleteResponse = await prismaClient.product.delete({
         where: { id: productId }
-      }).catch(err => err)
+      }).catch((err: any) => err)
 
       return deleteResponse.code
               ? res.status(ResponseStatusCode.BadRequest).json(deleteResponse)
