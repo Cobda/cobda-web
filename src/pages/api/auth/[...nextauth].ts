@@ -16,7 +16,7 @@ const providers = {
               password: credentials.password
             }
           })
-          .catch((err) => err)
+          .catch((err: any) => err)
         const isUserAuthenticated: boolean = !user.code && user.length
         // TODO: Send useful error message
         if (isUserAuthenticated) {
