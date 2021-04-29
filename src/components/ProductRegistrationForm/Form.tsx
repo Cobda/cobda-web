@@ -3,12 +3,12 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import TextField from '../InputField/TextField'
 import useTranslation from 'next-translate/useTranslation'
-import { ErrorsType, ImageListType } from 'react-images-uploading'
+import { ImageListType } from 'react-images-uploading'
 import ProductUpload from '../ProductUpload'
 import Dropdown, { Option } from 'react-dropdown'
 import TextArea from '../Textarea'
 import axios from 'axios'
-import { baseURL } from '../../constant'
+import { BASE_URL } from '../../constant'
 
 interface FormInput {
   readonly name: string
@@ -80,7 +80,7 @@ const Form = () => {
   }
 
   const handleFormSubmit = async (value: FormInput) => {
-    const imagePath:string = productImages.map(product => product.dataURL).join('?')
+    const imagePath: string = productImages.map((product) => product.dataURL).join('?')
     const body = {
       ...value,
       price: parseInt(value.price),
@@ -89,7 +89,7 @@ const Form = () => {
       deliveryOption: selectedDelivery
     }
 
-    await axios.post(baseURL + '/api/products/', body).then(() => {
+    await axios.post(BASE_URL + '/api/products/', body).then(() => {
       setProductImages([])
       router.push('/products')
     })

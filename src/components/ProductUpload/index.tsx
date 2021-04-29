@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { ReactNode, useEffect, useState } from 'react'
 import ImageUploading, { ImageType, ImageListType, ErrorsType } from 'react-images-uploading'
-import { baseURL } from '../../constant'
+import { BASE_URL } from '../../constant'
 interface ProductUpload {
   readonly images: ImageListType
   readonly maxNumber?: number
@@ -24,38 +24,35 @@ const ProductUpload = ({
   onImageVerified
 }: ProductUpload) => {
   const [isLoading, setLoading] = useState<boolean>(false)
-  const [failedIndexList, setFailedIndexList] = useState<number[]>([])
+  const [nonVerifiedIndexList, setNonVerifiedIndexList] = useState<number[]>([])
 
   useEffect(() => {
-    if (failedIndexList.length > 0) {
+    if (nonVerifiedIndexList.length > 0) {
       onImageVerified(false)
     } else {
       onImageVerified(true)
     }
-  }, [failedIndexList])
+  }, [nonVerifiedIndexList])
 
-  const handleImageChange = (imageList: ImageListType) => {
-    setFailedIndexList([])
+  const handleImageChange = (imageList: ImageListType, addUpdatedIndex: number[] | undefined) => {
+    setNonVerifiedIndexList([])
 
-    if (imageList.length > 0) {
+    if (imageList.length > 0 && !!addUpdatedIndex) {
       setLoading(true)
-      onImageVerified(true)
-
-      imageList.forEach(async (image, index: number) => {
+      imageList.forEach(async (image: ImageType, index: number) => {
         const encodedImage: string | undefined = image.dataURL?.split(',')[1]
-
         await axios
-          .post(baseURL + '/api/images/', {
+          .post(BASE_URL + '/api/images/', {
             base64EncodedImage: encodedImage
           })
           .then((response) => {
             if (!response.data?.isAllowed) {
-              setFailedIndexList((previousState) => [...previousState, index])
+              setNonVerifiedIndexList((previousState) => [...previousState, index])
             }
             setLoading(false)
           })
           .catch(() => {
-            setFailedIndexList((previousState) => [...previousState, index])
+            setNonVerifiedIndexList((previousState) => [...previousState, index])
             setLoading(false)
           })
       })
@@ -93,7 +90,7 @@ const ProductUpload = ({
             const handleImageUpdate = () => onImageUpdate(index)
             const handleImageRemove = () => onImageRemove(index)
 
-            const containerClassName = !failedIndexList.includes(index)
+            const containerClassName = !nonVerifiedIndexList.includes(index)
               ? 'product-upload__image-container'
               : 'product-upload__image-container product-upload__image-container--invalid'
 
