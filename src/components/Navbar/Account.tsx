@@ -27,7 +27,7 @@ const NavbarAccount = () => {
     }
   }, [])
 
-  const imagePath = session?.user.image
+  const imagePath = session?.user.image || '#'
 
   const accountName = session?.user.name || 'John C.'
   console.log('Session: ', session?.user)
