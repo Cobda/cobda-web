@@ -6,6 +6,7 @@ import TextField from '../InputField/TextField'
 import PasswordField from '../InputField/PasswordField'
 import useTranslation from 'next-translate/useTranslation'
 import { useForm } from 'react-hook-form'
+import { BASE_URL } from '../../constant'
 import axios from 'axios'
 
 interface FormInput {
@@ -25,7 +26,7 @@ const initialInputValue: FormInput = {
 }
 
 const NAME_VALIDATION_INDEX = 1
-const CREDENTIAL_VALIDATION_INDEX: number = 4
+const CREDENTIAL_VALIDATION_INDEX: number = 3
 const MINIMUM_USERNAME_LENGTH: number = 6
 const MINIMUM_PASSWORD_LENGTH: number = 8
 const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
@@ -75,29 +76,20 @@ const Form = () => {
   }
 
   const handleFormSubmit = (value: FormInput) => {
-    const postData = async () => {
-      const body = {
-        email: 'shawn@gmail.com',
-        username: 'ShawnUser',
-        password: 'Letmein@123',
-        firstName: 'Shawn',
-        lastName: 'Mentos',
-        profileImagePath: '',
-      }
-      console.log('Mock body', body)
-      console.log('Real body', value)
-      const response = await axios.post(`${basePath}/api/users/`, body)
-      console.log('Response:', response.data)
+    const registerProfile = async () => {
+      const body = { ...value, profileImagePath: profileImageUrl }
+      await axios.post(`${BASE_URL}/api/users/`, body)
     }
 
-    postData()
+    registerProfile()
     setProfileImageUrl('')
     router.push('/')
   }
 
   const getErrorMessage = (inputKey: keyof FormInput, startValidationIndex: number): string => {
     const errorMessage: string | undefined = errors[inputKey]?.message
-    const isErrorDisplayed: boolean | undefined = getValues()[inputKey]?.length >= startValidationIndex
+    const inputLength: number = getValues()[inputKey]?.length
+    const isErrorDisplayed: boolean | undefined = inputLength >= startValidationIndex || inputLength === 0
 
     return errorMessage && isErrorDisplayed ? errorMessage : ''
   }
@@ -145,11 +137,14 @@ const Form = () => {
   }
 
   const renderCredentialInput = () => {
-    const getUsernameReference: (ref: HTMLInputElement) => void = register({
+    const requiredProperty: Object = {
       required: {
         value: true,
         message: t('inputValueRequired')
-      },
+      }
+    }
+    const getUsernameReference: (ref: HTMLInputElement) => void = register({
+      ...requiredProperty,
       minLength: {
         value: MINIMUM_USERNAME_LENGTH,
         message: t('usernameCharactersMinimum')
@@ -164,10 +159,7 @@ const Form = () => {
     })
 
     const getEmailReference: (ref: HTMLInputElement) => void = register({
-      required: {
-        value: true,
-        message: t('inputValueRequired')
-      },
+      ...requiredProperty,
       pattern: {
         value: EMAIL_PATTERN_VALUE,
         message: t('emailIncorrectFormat')
@@ -175,10 +167,7 @@ const Form = () => {
     })
 
     const getPasswordReference: (ref: HTMLInputElement) => void = register({
-      required: {
-        value: true,
-        message: t('inputValueRequired')
-      },
+      ...requiredProperty,
       minLength: {
         value: MINIMUM_PASSWORD_LENGTH,
         message: t('passwordCharactersMinimum')

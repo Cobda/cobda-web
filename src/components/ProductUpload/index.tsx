@@ -34,27 +34,30 @@ const ProductUpload = ({
     }
   }, [nonVerifiedIndexList])
 
-  const handleImageChange = (imageList: ImageListType, addUpdatedIndex: number[] | undefined) => {
+  const handleImageChange = (imageList: ImageListType) => {
+    const validateImage = async (image: ImageType, index: number) => {
+      const encodedImage: string | undefined = image.dataURL?.split(',')[1]
+      await axios
+        .post(BASE_URL + '/api/images/', {
+          base64EncodedImage: encodedImage
+        })
+        .then((response) => {
+          if (!response.data?.isAllowed) {
+            setNonVerifiedIndexList((previousState) => [...previousState, index])
+          }
+        })
+        .catch(() => {
+          setNonVerifiedIndexList((previousState) => [...previousState, index])
+        })
+      setLoading(false)
+    }
+
     setNonVerifiedIndexList([])
 
-    if (imageList.length > 0 && !!addUpdatedIndex) {
+    if (imageList.length > 0) {
       setLoading(true)
-      imageList.forEach(async (image: ImageType, index: number) => {
-        const encodedImage: string | undefined = image.dataURL?.split(',')[1]
-        await axios
-          .post(BASE_URL + '/api/images/', {
-            base64EncodedImage: encodedImage
-          })
-          .then((response) => {
-            if (!response.data?.isAllowed) {
-              setNonVerifiedIndexList((previousState) => [...previousState, index])
-            }
-            setLoading(false)
-          })
-          .catch(() => {
-            setNonVerifiedIndexList((previousState) => [...previousState, index])
-            setLoading(false)
-          })
+      imageList.forEach((image: ImageType, index: number) => {
+        validateImage(image, index)
       })
     }
 

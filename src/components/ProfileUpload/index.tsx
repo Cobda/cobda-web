@@ -16,8 +16,11 @@ const ProfileUpload = ({ imageUrl, onUpload }: ProfileUpload) => {
 
     if (files && hasSingleFile) {
       const [selectedFile] = files
-      const imageUrl: string = URL.createObjectURL(selectedFile)
-      onUpload(imageUrl)
+      let reader: any = new FileReader()
+      reader.readAsDataURL(selectedFile)
+      reader.onload = () => {
+        onUpload(reader.result)
+      }
     }
   }
 

@@ -6,6 +6,7 @@ import ProductContent from '../../components/ProductContent'
 import axios from 'axios'
 import { useSetRecoilState } from 'recoil'
 import { productState } from '../../recoil/atoms/product'
+import { BASE_URL } from '../../constant'
 
 const ProductView = ({ product }: any) => {
   const setProductState = useSetRecoilState(productState)
@@ -33,8 +34,7 @@ const ProductView = ({ product }: any) => {
 
 export const getServerSideProps = async (context: any) => {
   const productId = context.query.id
-  const basePath = 'http://localhost:3000'
-  const rawProduct = await axios.get(`${basePath}/api/products/${productId}`)
+  const rawProduct = await axios.get(`${BASE_URL}/api/products/${productId}`)
 
   if (rawProduct) {
     const product = rawProduct.data
