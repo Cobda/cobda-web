@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
 import { signOut, useSession } from 'next-auth/client'
 import Link from 'next/link'
-import { profileImagePath } from './constant'
 
 const NavbarAccount = () => {
   const [isDropdownMenuOpen, setDropdownMenuOpen] = useState<boolean>(false)
@@ -28,8 +27,7 @@ const NavbarAccount = () => {
     }
   }, [])
 
-  const base64Prefix = 'data:image/jpeg;base64,'
-  const imagePath = base64Prefix + (session?.user.image || profileImagePath)
+  const imagePath = session?.user.image
 
   const accountName = session?.user.name || 'John C.'
   console.log('Session: ', session?.user)

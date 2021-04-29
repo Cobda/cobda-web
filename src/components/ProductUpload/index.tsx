@@ -1,5 +1,8 @@
-import React, { ReactNode } from 'react'
+import axios from 'axios'
+import React, { ReactNode, useState } from 'react'
 import ImageUploading, { ImageType, ImageListType, ErrorsType } from 'react-images-uploading'
+import { baseURL } from '../../constant'
+import { profileImagePath } from '../Navbar/constant'
 
 interface ProductUpload {
   readonly images: ImageListType
@@ -9,6 +12,7 @@ interface ProductUpload {
   readonly imageCaption?: string
   readonly onUpload: (imageList: ImageListType) => void
   readonly onError: (errors: ErrorsType) => void
+  readonly onImageVerified: (isVerified: boolean) => void
 }
 
 const ProductUpload = ({
@@ -18,11 +22,30 @@ const ProductUpload = ({
   maxFileSize,
   imageCaption,
   onUpload,
-  onError
+  onError,
+  onImageVerified
 }: ProductUpload) => {
-  const handleImageChange = (imageList: ImageListType) => {
-    // TODO: Handle validation from backend
-    onUpload(imageList)
+  const handleImageChange = async (imageList: ImageListType) => {
+    if (imageList.length > 0) {
+      onImageVerified(true)
+      const imagePath: string | undefined = imageList[0].dataURL?.split(',')[1]
+
+      await axios
+        .post(baseURL + '/api/images/', {
+          base64EncodedImage: imagePath
+        })
+        .then((response) => {
+          if (response.data?.isAllowed) {
+            onUpload(imageList)
+          } else {
+            onImageVerified(false)
+          }
+        })
+        .catch(() => onImageVerified(false))
+    } else {
+      onUpload(imageList)
+      onImageVerified(false)
+    }
   }
 
   return (

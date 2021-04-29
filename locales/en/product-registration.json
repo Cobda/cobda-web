@@ -28,5 +28,6 @@
   "inputSizeInvalid": "This size is invalid.",
   "maxFileNumberAndSizeExceed": "The number of selected images exceed 3 and file size exceed 1.5 MB.",
   "maxFileNumberExceed": "The number of selected images cannot exceed 3.",
-  "maxFileSizeExceed": "The selected file size cannot exceed 1.5 MB."
+  "maxFileSizeExceed": "The selected file size cannot exceed 1.5 MB.",
+  "nonVerifiedImageError": "Your image(s) may contain inappropriate content"
 }

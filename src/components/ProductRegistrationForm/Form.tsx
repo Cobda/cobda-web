@@ -32,7 +32,8 @@ const TEXT_AND_NUMBER_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z0
 
 const Form = () => {
   const [productImages, setProductImages] = useState<ImageListType>([])
-  const [ImageError, setImageError] = useState<ErrorsType>({})
+  const [isImageVerified, setImageVerified] = useState<boolean>(true)
+  const [ImageError, setImageError] = useState<any>({})
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [selectedDelivery, setSelectedDelivery] = useState<string>('')
   const router = useRouter()
@@ -78,6 +79,7 @@ const Form = () => {
 
   const handleFormSubmit = (value: FormInput) => {
     // TODO: Send POST request to backend
+    console.log(value)
     setProductImages([])
   }
 
@@ -97,6 +99,8 @@ const Form = () => {
           return t('maxFileNumberExceed')
         } else if (ImageError?.maxFileSize) {
           return t('maxFileSizeExceed')
+        } else if (!isImageVerified) {
+          return t('nonVerifiedImageError')
         } else {
           return ''
         }
@@ -115,6 +119,7 @@ const Form = () => {
           imageCaption={t('addThreeImages')}
           onUpload={setProductImages}
           onError={setImageError}
+          onImageVerified={setImageVerified}
         />
         {renderErrorMessage()}
       </div>
