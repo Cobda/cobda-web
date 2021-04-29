@@ -258,7 +258,12 @@ const Form = () => {
     const hasEmptyInputValue: boolean = Object.values(getValues()).includes('')
     const hasInputError: boolean = Object.keys(errors).length > 0
     const isFormSubmitDisabled: boolean =
-      !hasProductImage || hasEmptyInputValue || hasInputError || !selectedCategory || !selectedDelivery
+      hasInputError ||
+      hasEmptyInputValue ||
+      !hasProductImage ||
+      !isImageVerified ||
+      !selectedCategory ||
+      !selectedDelivery
 
     return (
       <div className="form__actionable">

@@ -54,7 +54,7 @@
   &__image-container {
     box-sizing: border-box;
     padding: rem(20px 20px 8px);
-    border: solid rem(2px) $coral-red;
+    border: solid rem(2px) $malachite;
     border-radius: rem(10px);
 
     @include respond-above('lg') {
@@ -73,8 +73,8 @@
       }
     }
 
-    &--verified {
-      border: solid rem(2px) $malachite;
+    &--invalid {
+      border: solid rem(2px) $coral-red;
     }
   }
 

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { ReactNode, useState } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import ImageUploading, { ImageType, ImageListType, ErrorsType } from 'react-images-uploading'
 import { baseURL } from '../../constant'
 interface ProductUpload {
@@ -24,10 +24,18 @@ const ProductUpload = ({
   onImageVerified
 }: ProductUpload) => {
   const [isLoading, setLoading] = useState<boolean>(false)
-  const [verifiedIndexList, setVerifiedIndexList] = useState<number[]>([])
+  const [failedIndexList, setFailedIndexList] = useState<number[]>([])
+
+  useEffect(() => {
+    if (failedIndexList.length > 0) {
+      onImageVerified(false)
+    } else {
+      onImageVerified(true)
+    }
+  }, [failedIndexList])
 
   const handleImageChange = (imageList: ImageListType) => {
-    setVerifiedIndexList([])
+    setFailedIndexList([])
 
     if (imageList.length > 0) {
       setLoading(true)
@@ -41,26 +49,20 @@ const ProductUpload = ({
             base64EncodedImage: encodedImage
           })
           .then((response) => {
-            setLoading(false)
-            if (response.data?.isAllowed) {
-              setVerifiedIndexList((previousState) => [...previousState, index])
-            } else {
-              onImageVerified(false)
+            if (!response.data?.isAllowed) {
+              setFailedIndexList((previousState) => [...previousState, index])
             }
+            setLoading(false)
           })
           .catch(() => {
+            setFailedIndexList((previousState) => [...previousState, index])
             setLoading(false)
-            onImageVerified(false)
           })
       })
-    } else {
-      onImageVerified(false)
     }
 
     onUpload(imageList)
   }
-
-  console.log('indexes: ', verifiedIndexList)
 
   return (
     <ImageUploading
@@ -91,9 +93,9 @@ const ProductUpload = ({
             const handleImageUpdate = () => onImageUpdate(index)
             const handleImageRemove = () => onImageRemove(index)
 
-            const containerClassName = verifiedIndexList.includes(index)
-              ? 'product-upload__image-container product-upload__image-container--verified'
-              : 'product-upload__image-container'
+            const containerClassName = !failedIndexList.includes(index)
+              ? 'product-upload__image-container'
+              : 'product-upload__image-container product-upload__image-container--invalid'
 
             return (
               <div key={index} className={containerClassName}>
