@@ -42,7 +42,7 @@ const Form = () => {
   })
   const router = useRouter()
   const { t } = useTranslation('sign-up')
-  const hasProfileImage: boolean = profileImageUrl !== null
+  const hasProfileImage: boolean = !!profileImageUrl
 
   useEffect(() => {
     const handleWindowClose = (event: BeforeUnloadEvent) => {

@@ -1,51 +1,89 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
-import { useSession } from 'next-auth/client'
+import { signOut, useSession } from 'next-auth/client'
+import Link from 'next/link'
+import { profileImagePath } from './constant'
 
 const NavbarAccount = () => {
+  const [isDropdownMenuOpen, setDropdownMenuOpen] = useState<boolean>(false)
+  const accountRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
   const { t } = useTranslation('common')
   const [session] = useSession()
 
-  const handleSignInClick = () => {
-    router.push('/sign-in')
-  }
+  useEffect(() => {
+    const handleMouseClick = (event: MouseEvent) => {
+      const isFocused: boolean | undefined = accountRef.current?.contains(event.target as Node)
 
-  const handleSignUpClick = () => {
-    router.push('/sign-up')
-  }
+      if (!isFocused) {
+        setDropdownMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleMouseClick)
+
+    return () => {
+      document.removeEventListener('mousedown', handleMouseClick)
+    }
+  }, [])
+
+  const base64Prefix = 'data:image/jpeg;base64,'
+  const imagePath = base64Prefix + (session?.user.image || profileImagePath)
+
+  const accountName = session?.user.name || 'John C.'
+  console.log('Session: ', session?.user)
 
   const handleAvatarClick = () => {
-    // TODO: Expand dropdown or sth
-    router.push('/account')
+    setDropdownMenuOpen((prevState) => !prevState)
+  }
+
+  const renderDropdown = () => {
+    const handleProfileClick = () => {
+      router.push('/account')
+    }
+
+    const handleSignOut = () => {
+      signOut()
+    }
+
+    return isDropdownMenuOpen ? (
+      <ul className="dropdown__menu">
+        <li className="dropdown__menu-item" onClick={handleProfileClick}>
+          <span className="dropdown__label">{t('profile')}</span>
+        </li>
+        <li className="dropdown__menu-item" onClick={handleSignOut}>
+          <span className="dropdown__label">{t('signOut')}</span>
+        </li>
+      </ul>
+    ) : (
+      <></>
+    )
   }
 
   const renderAvatarLink = () => (
-    <a
-      className="navbar__link navbar__link--avatar"
-      onClick={handleAvatarClick}>
-      <img src="#" alt="avatar" />
-    </a>
+    <>
+      <div className="navbar__avatar" onClick={handleAvatarClick}>
+        <img className="navbar__image" src={imagePath} alt="avatar" />
+        <span className="navbar__label">{accountName}</span>
+      </div>
+      {renderDropdown()}
+    </>
   )
 
   const renderAuthenticationLink = () => (
     <>
-      <a
-        className="navbar__link navbar__link--secondary"
-        onClick={handleSignInClick}>
-        {t('signIn')}
-      </a>
-      <a
-        className="navbar__link navbar__link--primary"
-        onClick={handleSignUpClick}>
-        {t('signUp')}
-      </a>
+      <Link href={'/sign-in'}>
+        <a className="navbar__link navbar__link--secondary">{t('signIn')}</a>
+      </Link>
+      <Link href={'/sign-up'}>
+        <a className="navbar__link navbar__link--primary">{t('signUp')}</a>
+      </Link>
     </>
   )
 
   return (
-    <div className="navbar__account">
+    <div className="navbar__account" ref={accountRef}>
       {session ? renderAvatarLink() : renderAuthenticationLink()}
     </div>
   )
