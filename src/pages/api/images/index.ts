@@ -26,21 +26,21 @@ const imagesHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(400).json(response)
   }
 
-  const isFootwear = (): boolean => {
+  const isSteetwear = (): boolean => {
     const isValid = (description: string, score: number) => {
-      const validKeywords = ['footwear', 'shoe', 'sneakers']
-      const validPercent = 0.9
+      const validKeywords = ['footwear', 'shoes', 'sneakers', 'shirt', 't-shirt', 'top']
+      const validPercent = 0.8
       
       return validKeywords.includes(description) && score >= validPercent
     }
 
     const labels = response.responses[0].labelAnnotations
-    const footwear = labels.filter((label: any) => isValid(label.description.toLowerCase(), label.score))
+    const steetwear = labels.filter((label: any) => isValid(label.description.toLowerCase(), label.score))
 
-    return footwear.length
+    return steetwear.length
   }
 
-  if (isFootwear()) {
+  if (isSteetwear()) {
     res.json({ isAllowed: true })
   } else {
     res.status(400).json({ isAllowed: false })

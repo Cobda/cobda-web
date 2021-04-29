@@ -7,6 +7,8 @@ import { ErrorsType, ImageListType } from 'react-images-uploading'
 import ProductUpload from '../ProductUpload'
 import Dropdown, { Option } from 'react-dropdown'
 import TextArea from '../Textarea'
+import axios from 'axios'
+import { baseURL } from '../../constant'
 
 interface FormInput {
   readonly name: string
@@ -77,10 +79,20 @@ const Form = () => {
     setValue(name as keyof FormInput, value)
   }
 
-  const handleFormSubmit = (value: FormInput) => {
-    // TODO: Send POST request to backend
-    console.log(value)
-    setProductImages([])
+  const handleFormSubmit = async (value: FormInput) => {
+    const imagePath:string = productImages.map(product => product.dataURL).join('?')
+    const body = {
+      ...value,
+      price: parseInt(value.price),
+      productImagePath: imagePath,
+      category: selectedCategory,
+      deliveryOption: selectedDelivery
+    }
+
+    await axios.post(baseURL + '/api/products/', body).then(() => {
+      setProductImages([])
+      router.push('/products')
+    })
   }
 
   const getErrorMessage = (inputKey: keyof FormInput, startValidationIndex: number): string => {

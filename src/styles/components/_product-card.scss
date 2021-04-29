@@ -5,6 +5,8 @@
   box-sizing: border-box;
   padding: rem(14px) 0;
 
+  cursor: pointer;
+
   @include respond-above('sm') {
     height: rem(396px);
     width: 50%;
@@ -127,7 +129,6 @@
     font-weight: 600;
     line-height: 1.53;
     text-align: center;
-    cursor: pointer;
 
     @include respond-above('lg') {
       font-size: rem(10px);

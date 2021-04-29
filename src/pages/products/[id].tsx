@@ -36,11 +36,8 @@ export const getServerSideProps = async (context: any) => {
   const basePath = 'http://localhost:3000'
   const rawProduct = await axios.get(`${basePath}/api/products/${productId}`)
 
-  console.log('raw data: ', rawProduct)
-
   if (rawProduct) {
     const product = rawProduct.data
-    console.log(product)
 
     return {
       props: {

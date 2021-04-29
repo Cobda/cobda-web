@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
-
-//TODO: Retrieve images from database instead
-const imagePaths: string[] = [
-  '/images/nike-jordan-off-white.jpg',
-  '/images/nike-woman-running-shoe.jpg',
-  '/images/yeezy-380.jpg'
-]
+import { useRecoilValue } from 'recoil'
+import { productState } from '../../recoil/atoms/product'
 
 const ProductMedia = () => {
-  const [selectedImagePath, setSelectedImagePath] = useState<string>(imagePaths[0])
+  const [selectedImagePath, setSelectedImagePath] = useState('')
+  const [imagePaths, setImagePaths] = useState([])
+  const product: any = useRecoilValue(productState)
+
+  useEffect(() => {
+    const { productImagePath } = product
+    if (productImagePath) {
+      const productImagePaths = productImagePath.split('?')
+
+      setImagePaths(productImagePaths)
+      setSelectedImagePath(productImagePaths[0])
+    }
+  }, [product])
+
+  console.log(selectedImagePath)
 
   const renderImage = () => (
     <div className="product-media__image-wrapper">
@@ -18,7 +27,7 @@ const ProductMedia = () => {
   )
 
   const renderImageSelector = () => {
-    const images = imagePaths.map((path, index) => {
+    const images = imagePaths.map((path: string, index: number) => {
       const handleImageClick = (path: string) => () => {
         setSelectedImagePath(path)
       }
