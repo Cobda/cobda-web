@@ -11,9 +11,9 @@ const NavbarHamburger = () => {
   const [session] = useSession()
   const { t } = useTranslation('common')
   const pathsWithoutSession: string[] = ['/products', '/about-us', '/product-registration', '/sign-in', '/sign-up']
-  const pathsWithSession: string[] = ['/products', '/about-us', '/product-registration', '/']
+  const pathsWithSession: string[] = ['/products', '/about-us', '/product-registration', '/profile', '/']
   const menuItemsWithoutSession: string[] = ['product', 'aboutUs', 'sell', 'signIn', 'signUp']
-  const menuItemsWithSession: string[] = ['product', 'aboutUs', 'sell', 'signOut']
+  const menuItemsWithSession: string[] = ['product', 'aboutUs', 'sell', 'profile', 'signOut']
   const menuItems: string[] = session ? menuItemsWithSession : menuItemsWithoutSession
   const paths: string[] = session ? pathsWithSession : pathsWithoutSession
 

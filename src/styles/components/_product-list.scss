@@ -1,16 +1,21 @@
 @import '../abstracts/_abstracts-dir';
 
 .product-list {
-  padding: rem(16px);
+  display: flex;
+  flex-wrap: wrap;
   box-sizing: border-box;
-  padding: rem(10px) 0;
-  
+  margin: rem(12px) 0 0;
+
+  @include respond-above('sm') {
+    margin-top: rem(28px);
+  }
+
   @include respond-above('lg') {
-    padding: rem(24px 8px 24px) 0;
+    margin-top: rem(24px);
   }
 
   &__title {
-    margin: 0 0 rem(24px) 0;
+    margin-bottom: rem(24px);
   }
 
   &__description {
