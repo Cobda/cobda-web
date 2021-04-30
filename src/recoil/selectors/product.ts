@@ -1,5 +1,15 @@
 import { selector } from 'recoil'
-import { productListState, productCategoryState, priceRangeState } from '../atoms/product'
+import { productListState, priceRangeState, shirtCategoryState, footwearCategoryState } from '../atoms/product'
+
+export const productCategoryState = selector({
+  key: 'productCategoryState',
+  get: ({ get }) => {
+    const footwear = get(footwearCategoryState) ? 'Footwear' : ''
+    const shirt = get(shirtCategoryState) ? 'Shirt' : ''
+    
+    return [footwear, shirt]
+  }
+})
 
 export const filteredProductListState = selector({
   key: 'filteredProductListState',
@@ -7,12 +17,12 @@ export const filteredProductListState = selector({
     const productList = get(productListState)
 
     if (productList) {
-      const category = get(productCategoryState)
+      const categories = get(productCategoryState)
       const priceRange = get(priceRangeState)
       let filteredList = [...productList]
 
-      if (category) {
-        filteredList = productList.filter((product: any) => product.category === category)
+      if (categories.length > 0) {
+        filteredList = productList.filter((product: any) => categories.includes(product.category))
       }
 
       if (priceRange.length > 0) {

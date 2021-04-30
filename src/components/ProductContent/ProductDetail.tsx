@@ -17,7 +17,7 @@ const ProductDetail = () => {
   const product: any = useRecoilValue(productState)
   const { name, price, color, size, deliveryOption } = product
 
-  const formattedPrice = price ? price.toString().replace(COMMA_REGEX, ',') : price
+  const formattedPrice = price && price.toString().replace(COMMA_REGEX, ',')
   const priceLabel: string = formattedPrice + ' ' + t('baht')
   const colorLabel: string = t('color') + color
   const sizeLabel: string = t('size') + size

@@ -10,6 +10,8 @@ const NavbarAccount = () => {
   const router = useRouter()
   const { t } = useTranslation('common')
   const [session] = useSession()
+  const imagePath = session?.user.image || '#'
+  const accountName = session?.user.name || 'JohnC'
 
   useEffect(() => {
     const handleMouseClick = (event: MouseEvent) => {
@@ -26,11 +28,6 @@ const NavbarAccount = () => {
       document.removeEventListener('mousedown', handleMouseClick)
     }
   }, [])
-
-  const imagePath = session?.user.image || '#'
-
-  const accountName = session?.user.name || 'John C.'
-  console.log('Session: ', session?.user)
 
   const handleAvatarClick = () => {
     setDropdownMenuOpen((prevState) => !prevState)

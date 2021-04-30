@@ -44,7 +44,7 @@ const ProductListHeader = () => {
         <a className="product-search__link">{t('searchResult')}</a>
       </li>
       <li className="product-search__breadcrumb-item">
-        <a className="product-search__link">{t('shoe')}</a>
+        <a className="product-search__link">{t('footwear')}</a>
       </li>
     </ul>
   )

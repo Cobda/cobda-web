@@ -10,12 +10,17 @@ export const productListState = atom({
   default: []
 })
 
-export const productCategoryState = atom({
-  key: 'productCategoryState',
-  default: ''
+export const footwearCategoryState = atom({
+  key: 'footwearCategoryState',
+  default: true
+})
+
+export const shirtCategoryState = atom({
+  key: 'shirtCategoryState',
+  default: true
 })
 
 export const priceRangeState = atom({
   key: 'priceRangeState',
-  default: []
+  default: [] as number[]
 })
