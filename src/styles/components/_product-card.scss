@@ -1,8 +1,8 @@
 .product-card {
   display: inline-block;
+  box-sizing: border-box;
   width: 100%;
   height: rem(536px);
-  box-sizing: border-box;
   padding: rem(14px) 0;
 
   cursor: pointer;
@@ -10,6 +10,7 @@
   @include respond-above('sm') {
     height: rem(396px);
     width: 50%;
+
     &:not(:nth-child(even)) {
       padding-right: rem(12px);
     }
@@ -40,6 +41,10 @@
     margin: 0;
 
     background-color: $light;
+
+    &:hover {
+      box-shadow: 0 0 rem(3px) rem(3px) $havelock-blue;
+    }
   }
 
   &__image {
@@ -53,7 +58,7 @@
     @include respond-above('sm') {
       height: rem(260px);
     }
-    
+
     @include respond-above('md') {
       height: rem(310px);
     }

@@ -18,8 +18,6 @@ const ProductMedia = () => {
     }
   }, [product])
 
-  console.log(selectedImagePath)
-
   const renderImage = () => (
     <div className="product-media__image-wrapper">
       <img className="product-media__image" src={selectedImagePath} alt="Product Image" />
