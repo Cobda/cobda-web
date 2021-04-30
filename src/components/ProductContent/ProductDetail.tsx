@@ -1,7 +1,7 @@
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import { productState } from '../../recoil/atoms/product'
+import { productState } from '../../recoil/atoms'
 interface ProductDetail {
   readonly name: string
   readonly price: number

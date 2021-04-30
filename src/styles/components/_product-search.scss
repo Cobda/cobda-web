@@ -79,11 +79,6 @@
     margin: 0;
     list-style: none;
 
-    & > li + li:before {
-      color: $dark;
-      content: '>\00a0';
-    }
-
     @include respond-above('md') {
       display: block;
     }
@@ -91,20 +86,31 @@
 
   &__breadcrumb-item {
     display: inline;
-    &:nth-child(3) > a {
-      font-weight: 500;
-      color: $azure-radiance;
+
+    &--prepend {
+      &::before {
+        color: $dark;
+        content: '>\00a0';
+      }
     }
   }
 
   &__link {
     box-sizing: border-box;
     padding-right: rem(8px);
+
+    color: $dark;
+
     font-size: rem(18px);
     font-weight: 200;
     line-height: 1.5;
     text-decoration: none;
-    color: $dark;
+
     cursor: pointer;
+
+    &--primary {
+      font-weight: 500;
+      color: $azure-radiance;
+    }
   }
 }

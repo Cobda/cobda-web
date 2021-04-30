@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar'
 import ProductContent from '../../components/ProductContent'
 import axios from 'axios'
 import { useSetRecoilState } from 'recoil'
-import { productState } from '../../recoil/atoms/product'
+import { productState } from '../../recoil/atoms'
 import { BASE_URL } from '../../constant'
 
 const ProductView = ({ product }: any) => {

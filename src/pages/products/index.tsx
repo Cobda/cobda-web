@@ -8,7 +8,7 @@ import ProductListFooter from '../../components/ProductListFooter'
 import Meta from '../../components/Meta'
 import axios from 'axios'
 import { useSetRecoilState } from 'recoil'
-import { productListState } from '../../recoil/atoms/product'
+import { productListState } from '../../recoil/atoms'
 import { BASE_URL } from '../../constant'
 
 const Products = ({ products }: any) => {

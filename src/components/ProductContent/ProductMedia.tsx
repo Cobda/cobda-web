@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useRecoilValue } from 'recoil'
-import { productState } from '../../recoil/atoms/product'
+import { productState } from '../../recoil/atoms'
 
 const ProductMedia = () => {
   const [selectedImagePath, setSelectedImagePath] = useState('')

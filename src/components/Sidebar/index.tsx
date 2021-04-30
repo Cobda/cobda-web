@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import useTranslation from 'next-translate/useTranslation'
 import Dropdown, { Option } from 'react-dropdown'
 import { useRecoilState, useSetRecoilState } from 'recoil'
-import { footwearCategoryState, priceRangeState, shirtCategoryState } from '../../recoil/atoms/product'
+import { footwearCategoryState, priceRangeState, shirtCategoryState } from '../../recoil/atoms'
 
 const Sidebar = () => {
   const { t } = useTranslation('products')

@@ -2,8 +2,8 @@ import React from 'react'
 import ProductCard from '../ProductCard'
 import useTranslation from 'next-translate/useTranslation'
 import { useRecoilValue } from 'recoil'
-import { filteredProductListState } from '../../recoil/selectors/product'
-import { productListState } from '../../recoil/atoms/product'
+import { filteredProductListState } from '../../recoil/selectors'
+import { productListState } from '../../recoil/atoms'
 
 const ProductListBody = () => {
   const productList = useRecoilValue(filteredProductListState)
