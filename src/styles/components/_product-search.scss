@@ -3,6 +3,16 @@
   flex-wrap: wrap;
   width: 100%;
 
+  &__label,
+  &__link {
+    all: unset;
+
+    padding-right: rem(8px);
+    font-size: rem(18px);
+    font-weight: 200;
+    line-height: 1.5;
+  }
+
   &__search {
     width: 100%;
     margin-bottom: rem(24px);
@@ -95,22 +105,18 @@
     }
   }
 
-  &__link {
-    box-sizing: border-box;
-    padding-right: rem(8px);
-
-    color: $dark;
-
-    font-size: rem(18px);
-    font-weight: 200;
-    line-height: 1.5;
-    text-decoration: none;
-
-    cursor: pointer;
-
+  &__label {    
     &--primary {
       font-weight: 500;
       color: $azure-radiance;
+    }
+  }
+
+  &__link {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

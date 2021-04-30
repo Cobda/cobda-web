@@ -24,3 +24,8 @@ export const priceRangeState = atom({
   key: 'priceRangeState',
   default: [] as number[]
 })
+
+export const sortByFilterState = atom({
+  key: 'sortByFilterState',
+  default: ''
+})

@@ -2,15 +2,18 @@ import React, { useState } from 'react'
 import SearchBox from '../SearchBox'
 import Dropdown, { Option } from 'react-dropdown'
 import useTranslation from 'next-translate/useTranslation'
-import { useRecoilValue } from 'recoil'
+import Link from 'next/link'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { filteredProductListState, productCategoryState } from '../../recoil/selectors'
+import { sortByFilterState } from '../../recoil/atoms'
 
 const ProductListHeader = () => {
-  const { t } = useTranslation('products')
-  const [selectedFilter, setSelectedFilter] = useState<string>('')
-  const category = useRecoilValue(productCategoryState)
+  const categoryList = useRecoilValue(productCategoryState)
   const filteredProductList = useRecoilValue(filteredProductListState)
-  const sortOption: string[] = ['highestPrice', 'lowestPrice'].map((option) => t(option))
+  const setSortByFilterState = useSetRecoilState(sortByFilterState)
+  const [selectedSortByFilter, setSelectedSortByFilter] = useState<string>('')
+  const { t } = useTranslation('products')
+  const sortByFilterOption: string[] = ['highestPrice', 'lowestPrice'].map((option) => t(option))
 
   const renderSearchBox = () => (
     <div className="product-search__search">
@@ -21,6 +24,7 @@ const ProductListHeader = () => {
   const renderSortDropdown = () => {
     const handleDropdownChange = (setOption: (option: string) => void) => (selectedOption: Option) => {
       setOption(selectedOption.value)
+      setSortByFilterState(selectedOption.value[0])
     }
 
     return (
@@ -29,10 +33,10 @@ const ProductListHeader = () => {
           <label className="product-search__dropdown-label">{t('sortBy')}</label>
           <Dropdown
             className="product-search__dropdown-option"
-            options={sortOption}
-            value={selectedFilter}
+            options={sortByFilterOption}
+            value={selectedSortByFilter}
             placeholder="-"
-            onChange={handleDropdownChange(setSelectedFilter)}
+            onChange={handleDropdownChange(setSelectedSortByFilter)}
           />
         </div>
       </div>
@@ -40,22 +44,24 @@ const ProductListHeader = () => {
   }
 
   const renderBreadcrumb = () => {
-    let productCategory: string = ''
+    const productCategory = () => {
+      if (categoryList.includes('Footwear') && categoryList.includes('Shirt')) {
+        return t('bothFootwearAndShirt')
+      } else if (categoryList.includes('Footwear')) {
+        return t('footwear')
+      } else if (categoryList.includes('Shirt')) {
+        return t('shirt')
+      }
+    }
+
+    const category: string | undefined = productCategory()
     const resultNumber = filteredProductList && filteredProductList.length
     const resultLabel = `(${resultNumber} ${t('results')})`
 
-    if (category.includes('Footwear') && category.includes('Shirt')) {
-      productCategory = t('bothFootwearAndShirt')
-    } else if (category.includes('Footwear')) {
-      productCategory = t('footwear')
-    } else if (category.includes('Shirt')) {
-      productCategory = t('shirt')
-    }
-
     const renderProductCategory = () => {
-      return productCategory ? (
+      return category ? (
         <li className="product-search__breadcrumb-item product-search__breadcrumb-item--prepend">
-          <a className="product-search__link product-search__link--primary">{productCategory}</a>
+          <p className="product-search__label product-search__label--primary">{category}</p>
         </li>
       ) : (
         <></>
@@ -65,11 +71,13 @@ const ProductListHeader = () => {
     return (
       <ul className="product-search__breadcrumb">
         <li className="product-search__breadcrumb-item">
-          <a className="product-search__link">{t('home')}</a>
+          <Link href={'/'}>
+            <a className="product-search__link">{t('home')}</a>
+          </Link>
         </li>
         {renderProductCategory()}
         <li className="product-search__breadcrumb-item">
-          <a className="product-search__link">{resultLabel}</a>
+          <p className="product-search__label">{resultLabel}</p>
         </li>
       </ul>
     )
