@@ -116,8 +116,7 @@
   &__item:hover {
     cursor: pointer;
 
-    font-weight: 300;
-
     background-color: $primary;
+    color: $light;
   }
 }

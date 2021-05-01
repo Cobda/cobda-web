@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
+import { useRecoilValue } from 'recoil'
+import { filteredProductListState } from '../../recoil/selectors'
 
 interface SearchBox {
   readonly placeholder?: string
@@ -8,8 +10,9 @@ interface SearchBox {
 
 const SearchBox = ({ placeholder }: SearchBox) => {
   const [searchValue, setSearchValue] = useState<string>('')
-  const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([])
+  const [filteredSuggestions, setFilteredSuggestions] = useState<any>([])
   const [isSuggestionShown, setSuggestionShown] = useState(false)
+  const productList = useRecoilValue(filteredProductListState)
   const { t } = useTranslation('home')
   const router = useRouter()
   const searchBoxRef = useRef<HTMLDivElement>(null)
@@ -17,6 +20,7 @@ const SearchBox = ({ placeholder }: SearchBox) => {
   useEffect(() => {
     const handleMouseClick = (event: MouseEvent) => {
       const isFocused: boolean | undefined = searchBoxRef.current?.contains(event.target as Node)
+
       if (!isFocused) {
         setSuggestionShown(false)
       }
@@ -30,12 +34,9 @@ const SearchBox = ({ placeholder }: SearchBox) => {
   }, [])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    //TODO: This below data should be obtained from database
-    const suggestions: string[] = ['Alabama', 'Alaska', 'American Samoa', 'Bubble Holmes', 'Contra Hits', 'Amazon']
     const { value } = event.currentTarget
-    const newFilteredSuggestions = suggestions.filter(
-      (suggestion: string) => suggestion.toLowerCase().indexOf(value.toLowerCase()) > -1
-    )
+    const newFilteredSuggestions =
+      productList && productList.filter((product: any) => product.name.toLowerCase().indexOf(value.toLowerCase()) > -1)
     setFilteredSuggestions(newFilteredSuggestions)
     setSuggestionShown(true)
     setSearchValue(value)
@@ -47,15 +48,9 @@ const SearchBox = ({ placeholder }: SearchBox) => {
     }
   }
 
-  const handleListItemClick = (event: React.MouseEvent<HTMLLIElement>) => {
-    router.push(`products/${event.currentTarget.innerText}`)
-    setFilteredSuggestions([])
-    setSuggestionShown(false)
-  }
-
   const handleSearchClick = () => {
     if (searchValue) {
-      router.push(`products/${searchValue}`)
+      router.push(`products/`)
       setSearchValue('')
       setSuggestionShown(false)
     }
@@ -68,14 +63,19 @@ const SearchBox = ({ placeholder }: SearchBox) => {
   }
 
   const renderSearchSuggestion = () => {
+    const handleListItemClick = (suggestion: any) => () => {
+      const { id, name } = suggestion
+      router.push({ pathname: `/products/${id}`, query: { name } })
+      setFilteredSuggestions([])
+      setSuggestionShown(false)
+    }
+
     if (isSuggestionShown && searchValue) {
-      const filterResults = filteredSuggestions.map((suggestion) => {
-        return (
-          <li className="home-search-suggestion__item" key={suggestion} onClick={handleListItemClick}>
-            {suggestion}
-          </li>
-        )
-      })
+      const filterResults = filteredSuggestions.map((suggestion: any) => (
+        <li key={suggestion.id} className="home-search-suggestion__item" onClick={handleListItemClick(suggestion)}>
+          {suggestion.name}
+        </li>
+      ))
 
       const hasFilteredSuggestions: boolean = filteredSuggestions.length > 0
       const autoComplete = hasFilteredSuggestions ? (
