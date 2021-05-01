@@ -74,22 +74,33 @@ const SearchBox = ({ placeholder }: SearchBox) => {
     }
 
     if (isSuggestionShown && searchValue) {
-      const filterResults = filteredSuggestions.map((suggestion: any) => (
-        <li key={suggestion.id} className="search-suggestion__item" onClick={handleListItemClick(suggestion)}>
-          {suggestion.name}
-        </li>
-      ))
+      const filterResults = filteredSuggestions.map((suggestion: any) => {
+        const suggestionImagePath = suggestion.productImagePath && suggestion.productImagePath.split('?')[0]
+
+        return (
+          <li key={suggestion.id} className="search-suggestion__item" onClick={handleListItemClick(suggestion)}>
+            <div className="search-suggestion__image-wrapper">
+              <img className="search-suggestion__image" src={suggestionImagePath} alt="Product Image" />
+            </div>
+            <div>
+              <h4 className="search-suggestion__label">{suggestion.name}</h4>
+              <h5 className="search-suggestion__label search-suggestion__label--small">{suggestion.color}</h5>
+            </div>
+          </li>
+        )
+      })
 
       const hasFilteredSuggestions: boolean = filteredSuggestions.length > 0
-      const autoComplete = hasFilteredSuggestions ? (
-        <ul className="search-suggestion__list">{filterResults}</ul>
+
+      return hasFilteredSuggestions ? (
+        <ul className="search-suggestion">{filterResults}</ul>
       ) : (
-        <ul className="search-suggestion__list--small">
-          <li className="search-suggestion__item--grey">Not found</li>
+        <ul className="search-suggestion search-suggestion--small">
+          <li className="search-suggestion__item search-suggestion__item--small">
+            <h5 className="search-suggestion__label search-suggestion__label--small">{t('notFound')}</h5>
+          </li>
         </ul>
       )
-
-      return <div className="search-suggestion">{autoComplete}</div>
     } else {
       return <></>
     }
