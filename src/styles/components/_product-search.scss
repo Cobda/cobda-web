@@ -17,23 +17,23 @@
     width: 100%;
     margin-bottom: rem(24px);
 
-    & > .home-search-box {
+    & > .search-box {
       width: 100%;
     }
 
-    & > .home-search-box > input {
+    & > .search-box > input {
       height: rem(60px);
       font-size: rem(18px);
     }
 
-    & > .home-search-box > button {
+    & > .search-box > button {
       width: rem(50px);
     }
 
     @include respond-above('md') {
       width: 63%;
 
-      & > .home-search-box {
+      & > .search-box {
         width: 90%;
       }
     }

@@ -1,3 +1,4 @@
+import { searchInputValueState } from './../atoms/index'
 import { selector } from 'recoil'
 import {
   productListState,
@@ -26,6 +27,7 @@ export const filteredProductListState = selector({
       const category = get(productCategoryState)
       const priceRange = get(priceRangeState)
       const sortByFilter = get(sortByFilterState)
+      const searchInputValue = get(searchInputValueState)
       let filteredList = [...productList]
 
       if (category.length > 0) {
@@ -41,6 +43,12 @@ export const filteredProductListState = selector({
         filteredList.sort((first: any, second: any) => second.price - first.price)
       } else if (sortByFilter === 'L') {
         filteredList.sort((first: any, second: any) => first.price - second.price)
+      }
+
+      if (searchInputValue) {
+        filteredList = productList.filter(
+          (product: any) => product.name.toLowerCase().indexOf(searchInputValue.toLowerCase()) > -1
+        )
       }
 
       return filteredList

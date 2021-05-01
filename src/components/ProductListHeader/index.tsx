@@ -5,21 +5,28 @@ import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { filteredProductListState, productCategoryState } from '../../recoil/selectors'
-import { sortByFilterState } from '../../recoil/atoms'
+import { searchInputValueState, sortByFilterState } from '../../recoil/atoms'
 
 const ProductListHeader = () => {
   const categoryList = useRecoilValue(productCategoryState)
   const filteredProductList = useRecoilValue(filteredProductListState)
+  const searchInputValue = useRecoilValue(searchInputValueState)
   const setSortByFilterState = useSetRecoilState(sortByFilterState)
   const [selectedSortByFilter, setSelectedSortByFilter] = useState<string>('')
   const { t } = useTranslation('products')
   const sortByFilterOption: string[] = ['highestPrice', 'lowestPrice'].map((option) => t(option))
 
-  const renderSearchBox = () => (
-    <div className="product-search__search">
-      <SearchBox placeholder={t('searchPlaceholder')} />
-    </div>
-  )
+  console.log(searchInputValue)
+
+  const renderSearchBox = () => {
+    const placeholder = searchInputValue ? searchInputValue : t('searchPlaceholder')
+
+    return (
+      <div className="product-search__search">
+        <SearchBox placeholder={placeholder} />
+      </div>
+    )
+  }
 
   const renderSortDropdown = () => {
     const handleDropdownChange = (setOption: (option: string) => void) => (selectedOption: Option) => {

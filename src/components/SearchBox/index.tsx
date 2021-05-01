@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { filteredProductListState } from '../../recoil/selectors'
+import { searchInputValueState } from '../../recoil/atoms'
 
 interface SearchBox {
   readonly placeholder?: string
@@ -13,6 +14,7 @@ const SearchBox = ({ placeholder }: SearchBox) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState<any>([])
   const [isSuggestionShown, setSuggestionShown] = useState(false)
   const productList = useRecoilValue(filteredProductListState)
+  const setSearchInputValue = useSetRecoilState(searchInputValueState)
   const { t } = useTranslation('home')
   const router = useRouter()
   const searchBoxRef = useRef<HTMLDivElement>(null)
@@ -50,6 +52,7 @@ const SearchBox = ({ placeholder }: SearchBox) => {
 
   const handleSearchClick = () => {
     if (searchValue) {
+      setSearchInputValue(searchValue)
       router.push(`products/`)
       setSearchValue('')
       setSuggestionShown(false)
@@ -72,21 +75,21 @@ const SearchBox = ({ placeholder }: SearchBox) => {
 
     if (isSuggestionShown && searchValue) {
       const filterResults = filteredSuggestions.map((suggestion: any) => (
-        <li key={suggestion.id} className="home-search-suggestion__item" onClick={handleListItemClick(suggestion)}>
+        <li key={suggestion.id} className="search-suggestion__item" onClick={handleListItemClick(suggestion)}>
           {suggestion.name}
         </li>
       ))
 
       const hasFilteredSuggestions: boolean = filteredSuggestions.length > 0
       const autoComplete = hasFilteredSuggestions ? (
-        <ul className="home-search-suggestion__list">{filterResults}</ul>
+        <ul className="search-suggestion__list">{filterResults}</ul>
       ) : (
-        <ul className="home-search-suggestion__list--small">
-          <li className="home-search-suggestion__item--grey">Not found</li>
+        <ul className="search-suggestion__list--small">
+          <li className="search-suggestion__item--grey">Not found</li>
         </ul>
       )
 
-      return <div className="home-search-suggestion">{autoComplete}</div>
+      return <div className="search-suggestion">{autoComplete}</div>
     } else {
       return <></>
     }
@@ -96,9 +99,9 @@ const SearchBox = ({ placeholder }: SearchBox) => {
 
   return (
     <>
-      <div className="home-search-box" ref={searchBoxRef}>
+      <div className="search-box" ref={searchBoxRef}>
         <input
-          className="home-search-box__input"
+          className="search-box__input"
           name="search"
           value={searchValue}
           placeholder={inputPlaceholder}
@@ -107,7 +110,7 @@ const SearchBox = ({ placeholder }: SearchBox) => {
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
         />
-        <button className="home-search-box__button" onClick={handleSearchClick} />
+        <button className="search-box__button" onClick={handleSearchClick} />
         {renderSearchSuggestion()}
       </div>
     </>
