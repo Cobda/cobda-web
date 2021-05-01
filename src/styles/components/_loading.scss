@@ -1,5 +1,8 @@
+@import '../abstracts/_abstracts-dir';
+
 .loading {
-  position: absolute;
-  top: 35%;
-  left: 50%;
+  width: 100vw;
+  height: 100vh;
+
+  @include flex-center();
 }

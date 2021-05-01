@@ -32,7 +32,9 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
 
   const renderAppComponent = () =>
     isLoading ? (
-      <img className="loading" src="/icons/loading.svg" alt="Loading Image" />
+      <div className="loading">
+        <img src="/icons/loading.svg" alt="Loading Image" />
+      </div>
     ) : (
       <RecoilRoot>
         <Provider session={pageProps.session}>
