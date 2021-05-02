@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SearchBox from '../SearchBox'
 import Dropdown, { Option } from 'react-dropdown'
 import useTranslation from 'next-translate/useTranslation'
@@ -6,32 +6,37 @@ import Link from 'next/link'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { filteredProductListState, productCategoryState } from '../../recoil/selectors'
 import { searchInputValueState, sortByFilterState } from '../../recoil/atoms'
+import { useRouter } from 'next/router'
 
 const ProductListHeader = () => {
+  const [selectedSortByFilter, setSelectedSortByFilter] = useState<string>('')
   const categoryList = useRecoilValue(productCategoryState)
   const filteredProductList = useRecoilValue(filteredProductListState)
-  const searchInputValue = useRecoilValue(searchInputValueState)
   const setSortByFilterState = useSetRecoilState(sortByFilterState)
-  const [selectedSortByFilter, setSelectedSortByFilter] = useState<string>('')
+  const setSearchInputValue = useSetRecoilState(searchInputValueState)
+  const router = useRouter()
   const { t } = useTranslation('products')
-  const sortByFilterOption: string[] = ['highestPrice', 'lowestPrice'].map((option) => t(option))
+  const sortByFilterOption: Option[] = [
+    { value: 'highest', label: t('highestPrice') },
+    { value: 'lowest', label: t('lowestPrice') }
+  ]
 
-  console.log(searchInputValue)
+  useEffect(() => {
+    if (router.query.value) {
+      setSearchInputValue(router.query.value as string)
+    }
+  }, [])
 
-  const renderSearchBox = () => {
-    const placeholder = searchInputValue ? searchInputValue : t('searchPlaceholder')
-
-    return (
-      <div className="product-search__search">
-        <SearchBox placeholder={placeholder} />
-      </div>
-    )
-  }
+  const renderSearchBox = () => (
+    <div className="product-search__search">
+      <SearchBox disableSuggestion placeholder={t('searchPlaceholder')} />
+    </div>
+  )
 
   const renderSortDropdown = () => {
-    const handleDropdownChange = (setOption: (option: string) => void) => (selectedOption: Option) => {
-      setOption(selectedOption.value)
-      setSortByFilterState(selectedOption.value[0])
+    const handleDropdownChange = (selectedOption: Option) => {
+      setSelectedSortByFilter(selectedOption.value)
+      setSortByFilterState(selectedOption.value)
     }
 
     return (
@@ -43,7 +48,7 @@ const ProductListHeader = () => {
             options={sortByFilterOption}
             value={selectedSortByFilter}
             placeholder="-"
-            onChange={handleDropdownChange(setSelectedSortByFilter)}
+            onChange={handleDropdownChange}
           />
         </div>
       </div>

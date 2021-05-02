@@ -1,6 +1,6 @@
-import { searchInputValueState } from './../atoms/index'
 import { selector } from 'recoil'
 import {
+  searchInputValueState,
   productListState,
   priceRangeState,
   shirtCategoryState,
@@ -31,24 +31,24 @@ export const filteredProductListState = selector({
       let filteredList = [...productList]
 
       if (category.length > 0) {
-        filteredList = productList.filter((product: any) => category.includes(product.category))
+        filteredList = filteredList.filter((product: any) => category.includes(product.category))
       }
 
       if (priceRange.length > 0) {
         const [minPrice, maxPrice] = priceRange
-        filteredList = productList.filter((product: any) => product.price >= minPrice && product.price <= maxPrice)
-      }
-
-      if (sortByFilter === 'H') {
-        filteredList.sort((first: any, second: any) => second.price - first.price)
-      } else if (sortByFilter === 'L') {
-        filteredList.sort((first: any, second: any) => first.price - second.price)
+        filteredList = filteredList.filter((product: any) => product.price >= minPrice && product.price <= maxPrice)
       }
 
       if (searchInputValue) {
-        filteredList = productList.filter(
+        filteredList = filteredList.filter(
           (product: any) => product.name.toLowerCase().indexOf(searchInputValue.toLowerCase()) > -1
         )
+      }
+
+      if (sortByFilter === 'highest') {
+        filteredList.sort((first: any, second: any) => second.price - first.price)
+      } else if (sortByFilter === 'lowest') {
+        filteredList.sort((first: any, second: any) => first.price - second.price)
       }
 
       return filteredList

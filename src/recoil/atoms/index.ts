@@ -1,10 +1,5 @@
 import { atom } from 'recoil'
 
-export const searchInputValueState = atom({
-  key: 'searchInputValueState',
-  default: ''
-})
-
 export const productState = atom({
   key: 'productState',
   default: {}
@@ -32,5 +27,10 @@ export const priceRangeState = atom({
 
 export const sortByFilterState = atom({
   key: 'sortByFilterState',
+  default: ''
+})
+
+export const searchInputValueState = atom({
+  key: 'searchInputValueState',
   default: ''
 })

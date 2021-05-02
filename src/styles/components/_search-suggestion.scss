@@ -36,6 +36,8 @@
     align-items: center;
     padding: rem(8px 16px);
 
+    cursor: pointer;
+
     @include respond-above('sm') {
       padding: rem(12px 24px);
     }
@@ -54,6 +56,7 @@
 
     &--small {
       padding: rem(8px 24px);
+      cursor: default;
 
       @include respond-above('sm') {
         padding: rem(12px 32px);
@@ -65,6 +68,10 @@
 
       @include respond-above('lg') {
         padding: rem(20px 64px);
+      }
+
+      &:hover {
+        background-color: inherit;
       }
     }
   }
@@ -110,24 +117,25 @@
     margin: 0;
 
     font-size: rem(16px);
-    line-height: 1.5;
+    font-weight: 600;
+    line-height: 1.4;
 
     @include respond-above('sm') {
       font-size: rem(18px);
+      line-height: 1.5;
     }
 
     @include respond-above('md') {
       font-size: rem(22px);
-      line-height: 1.6;
     }
 
     @include respond-above('lg') {
       font-size: rem(26px);
-      line-height: 1.7;
     }
 
     &--small {
       color: $secondary;
+      font-weight: 400;
       font-size: rem(10px);
 
       @include respond-above('sm') {

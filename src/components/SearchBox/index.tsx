@@ -1,20 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { filteredProductListState } from '../../recoil/selectors'
 import { searchInputValueState } from '../../recoil/atoms'
 
 interface SearchBox {
   readonly placeholder?: string
+  readonly disableSuggestion?: boolean
 }
 
-const SearchBox = ({ placeholder }: SearchBox) => {
+const SearchBox = ({ placeholder, disableSuggestion }: SearchBox) => {
   const [searchValue, setSearchValue] = useState<string>('')
   const [filteredSuggestions, setFilteredSuggestions] = useState<any>([])
   const [isSuggestionShown, setSuggestionShown] = useState(false)
+  const searchInputValue = useRecoilValue(searchInputValueState)
   const productList = useRecoilValue(filteredProductListState)
-  const setSearchInputValue = useSetRecoilState(searchInputValueState)
   const { t } = useTranslation('home')
   const router = useRouter()
   const searchBoxRef = useRef<HTMLDivElement>(null)
@@ -28,12 +29,14 @@ const SearchBox = ({ placeholder }: SearchBox) => {
       }
     }
 
+    setSearchValue(searchInputValue)
     document.addEventListener('mousedown', handleMouseClick)
 
     return () => {
       document.removeEventListener('mousedown', handleMouseClick)
     }
-  }, [])
+  }, [searchInputValue])
+
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget
@@ -52,10 +55,7 @@ const SearchBox = ({ placeholder }: SearchBox) => {
 
   const handleSearchClick = () => {
     if (searchValue) {
-      setSearchInputValue(searchValue)
-      router.push(`products/`)
-      setSearchValue('')
-      setSuggestionShown(false)
+      router.push({ pathname: `products/`, query: { value: searchValue } })
     }
   }
 
@@ -73,7 +73,7 @@ const SearchBox = ({ placeholder }: SearchBox) => {
       setSuggestionShown(false)
     }
 
-    if (isSuggestionShown && searchValue) {
+    if (!disableSuggestion && isSuggestionShown && searchValue) {
       const filterResults = filteredSuggestions.map((suggestion: any) => {
         const suggestionImagePath = suggestion.productImagePath && suggestion.productImagePath.split('?')[0]
 
