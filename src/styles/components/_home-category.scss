@@ -7,9 +7,13 @@
 
   &__item {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     width: 25%;
     padding: 0 rem(8px);
+    margin: 0;
+
+    cursor: pointer;
 
     &:first-child {
       padding-left: 0;
@@ -40,10 +44,10 @@
     @include respond-above('lg') {
       margin-bottom: rem(24px);
     }
-  }
 
-  &__image-container {
-    margin: 0;
+    &:hover {
+      outline: rem(3px) solid $havelock-blue;
+    }
   }
 
   &__caption {
@@ -54,7 +58,7 @@
     @include respond-above('md') {
       font-size: rem(16px);
     }
-    
+
     @include respond-above('lg') {
       font-size: rem(22px);
     }
