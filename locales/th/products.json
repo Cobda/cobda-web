@@ -15,9 +15,11 @@
   "priceRange": "ช่วงราคา",
   "lowestPriceRange": "0 - 5,000 (บาท)",
   "middlePriceRange": "5,000 - 10,000 (บาท)",
-  "highestPriceRange": "10,000 + (บาท)",
+  "highestPriceRange": "10,s000 + (บาท)",
   "results": "ผลลัพธ์",
   "footwearCategory": "ประเภทรองเท้า",
   "shirtCategory": "ประเภทเสื้อผ้า",
-  "searchPlaceholder": "What are you looking for?"
+  "searchPlaceholder": "What are you looking for?",
+  "emptyResult": "ไม่พบผลลัพธ์",
+  "emptyResultHint": "กรุณาใช้คำอื่นหรือเปลี่ยนตัวกรองของคุณ"
 }

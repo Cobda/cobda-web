@@ -19,5 +19,7 @@
   "results": "results",
   "footwearCategory": "Footwear Category",
   "shirtCategory": "Shirt Category",
-  "searchPlaceholder": "What are you looking for?"
+  "searchPlaceholder": "What are you looking for?",
+  "emptyResult": "No Result Found",
+  "emptyResultHint": "Please try another keywords or change your filters"
 }
