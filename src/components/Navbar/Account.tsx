@@ -13,6 +13,8 @@ const NavbarAccount = () => {
   const imagePath = session?.user.image || '#'
   const accountName = session ? session?.user.name?.split('/')[0] : ''
 
+  console.log('Session in navbar: ', session)
+
   useEffect(() => {
     const handleMouseClick = (event: MouseEvent) => {
       const isFocused: boolean | undefined = accountRef.current?.contains(event.target as Node)
