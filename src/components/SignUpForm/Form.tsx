@@ -8,6 +8,7 @@ import useTranslation from 'next-translate/useTranslation'
 import { useForm } from 'react-hook-form'
 import { BASE_URL } from '../../constant'
 import axios from 'axios'
+import { signIn } from 'next-auth/client'
 
 interface FormInput {
   readonly email: string
@@ -37,6 +38,7 @@ const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.
 const Form = () => {
   const [profileImageUrl, setProfileImageUrl] = useState('')
   const [isRecaptchaVerified, setRecaptchaVerified] = useState<boolean>(false)
+  const [errorMessage, setErrorMessage] = useState<string>('')
   const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
     mode: 'onChange',
     defaultValues: initialInputValue
@@ -75,15 +77,22 @@ const Form = () => {
     setValue(name as keyof FormInput, value)
   }
 
-  const handleFormSubmit = (value: FormInput) => {
-    const registerProfile = async () => {
-      const body = { ...value, profileImagePath: profileImageUrl }
-      await axios.post(`${BASE_URL}/api/users/`, body)
-    }
-
-    registerProfile()
-    setProfileImageUrl('')
-    router.push('/')
+  const handleFormSubmit = async (value: FormInput) => {
+    const body = { ...value, profileImagePath: profileImageUrl }
+    await axios
+      .post(`${BASE_URL}/api/users/`, body)
+      .then(() => {
+        const { email, password } = value
+        setProfileImageUrl('')
+        signIn('credentials', {
+          email: email,
+          password: password,
+          callbackUrl: '/'
+        })
+          .then((response) => console.log('Response: ', response))
+          .catch((error) => console.log(error))
+      })
+      .catch(() => setErrorMessage(t('emailUsernameAlreadyUsed')))
   }
 
   const getErrorMessage = (inputKey: keyof FormInput, startValidationIndex: number): string => {
@@ -153,9 +162,6 @@ const Form = () => {
         value: USERNAME_PATTERN_VALUE,
         message: t('inputImproperName')
       }
-      // validate: {
-      //   TODO: Handle error when username is already taken
-      // }
     })
 
     const getEmailReference: (ref: HTMLInputElement) => void = register({
@@ -218,12 +224,16 @@ const Form = () => {
       setRecaptchaVerified((previousState) => !previousState)
     }
 
+    const renderErrorMessage = () =>
+      errorMessage ? <div className="form__help form__help--center">{errorMessage}</div> : <></>
+
     return (
       <div className="form__actionable">
         <div className="form__recaptcha">
           <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} onChange={handleRecaptchaChange} />
         </div>
         <input className="form__button" type="submit" value={t('register')} disabled={isFormSubmitDisabled} />
+        {renderErrorMessage()}
       </div>
     )
   }

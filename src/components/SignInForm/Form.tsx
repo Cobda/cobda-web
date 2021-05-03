@@ -18,7 +18,6 @@ const Form = () => {
 
     if (error) {
       setErrorMessage(error)
-      router.push('/sign-in')
     }
   }, [router])
 

@@ -1,8 +1,9 @@
 import { NextApiHandler } from 'next'
-import NextAuth from 'next-auth'
+import NextAuth, { Session, User } from 'next-auth'
 import Providers from 'next-auth/providers'
 import prismaClient from '../../../lib/prisma'
 
+let currentUser: any = {}
 const providers = {
   providers: [
     Providers.Credentials({
@@ -18,8 +19,11 @@ const providers = {
           })
           .catch((err: any) => err)
         const isUserAuthenticated: boolean = !user.code && user.length
+
         // TODO: Send useful error message
         if (isUserAuthenticated) {
+          currentUser = user[0]
+
           return user[0]
         } else {
           throw new Error('The email or password is incorrect.')
@@ -27,6 +31,18 @@ const providers = {
       }
     })
   ]
+}
+
+const callbacks = {
+  callbacks: {
+    async session(session: any) {
+      const { username, firstName, lastName, profileImagePath } = currentUser
+      session.user.name = `${username}/${firstName}/${lastName}`
+      session.user.image = profileImagePath
+
+      return session
+    }
+  }
 }
 
 const pages = {
@@ -38,6 +54,7 @@ const pages = {
 
 const options = {
   ...providers,
+  ...callbacks,
   ...pages
 }
 

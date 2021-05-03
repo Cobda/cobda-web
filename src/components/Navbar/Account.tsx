@@ -11,7 +11,7 @@ const NavbarAccount = () => {
   const { t } = useTranslation('common')
   const [session] = useSession()
   const imagePath = session?.user.image || '#'
-  const accountName = session?.user.name || 'JohnC'
+  const accountName = session ? session?.user.name?.split('/')[0] : ''
 
   useEffect(() => {
     const handleMouseClick = (event: MouseEvent) => {
