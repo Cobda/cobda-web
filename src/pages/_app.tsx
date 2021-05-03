@@ -36,15 +36,17 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         <img src="/icons/loading.svg" alt="Loading Image" />
       </div>
     ) : (
-      <RecoilRoot>
-        <Provider session={pageProps.session}>
-          <Meta />
-          <Component {...pageProps} />
-        </Provider>
-      </RecoilRoot>
+      <Component {...pageProps} />
     )
 
-  return renderAppComponent()
+  return (
+    <RecoilRoot>
+      <Provider session={pageProps.session}>
+        <Meta />
+        {renderAppComponent()}
+      </Provider>
+    </RecoilRoot>
+  )
 }
 
 export default App

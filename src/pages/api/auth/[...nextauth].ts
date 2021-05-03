@@ -54,7 +54,7 @@ const pages = {
 
 const options = {
   ...providers,
-  // ...callbacks,
+  ...callbacks,
   ...pages
 }
 

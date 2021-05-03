@@ -19,8 +19,6 @@ const AccountProduct = () => {
       setfullName(firstname + ' ' + lastname)
       setUsername(username)
       setImagePath(imagePath)
-    } else {
-      // router.push('/sign-in')
     }
   }, [])
 
