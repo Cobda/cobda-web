@@ -3,7 +3,7 @@ import NextAuth, { Session, User } from 'next-auth'
 import Providers from 'next-auth/providers'
 import prismaClient from '../../../lib/prisma'
 
-let currentUser: any = {}
+let currentUser: any
 const providers = {
   providers: [
     Providers.Credentials({
@@ -35,10 +35,12 @@ const providers = {
 
 const callbacks = {
   callbacks: {
-    async session(session: any) {
-      const { username, firstName, lastName, profileImagePath } = currentUser
-      session.user.name = `${username}/${firstName}/${lastName}`
-      session.user.image = profileImagePath
+    async session(session: any, user: any) {
+      if (currentUser) {
+        const { username, firstName, lastName, profileImagePath } = currentUser
+        session.user.name = `${username}/${firstName}/${lastName}`
+        session.user.image = profileImagePath
+      }
 
       return session
     }
