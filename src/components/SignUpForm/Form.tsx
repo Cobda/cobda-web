@@ -89,8 +89,6 @@ const Form = () => {
           password: password,
           callbackUrl: '/'
         })
-          .then((response) => console.log('Response: ', response))
-          .catch((error) => console.log(error))
       })
       .catch(() => setErrorMessage(t('emailUsernameAlreadyUsed')))
   }

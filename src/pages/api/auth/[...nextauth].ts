@@ -1,9 +1,10 @@
+import axios from 'axios'
 import { NextApiHandler } from 'next'
-import NextAuth, { Session, User } from 'next-auth'
+import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
+import { BASE_URL } from '../../../constant'
 import prismaClient from '../../../lib/prisma'
 
-let currentUser: any
 const providers = {
   providers: [
     Providers.Credentials({
@@ -22,8 +23,6 @@ const providers = {
 
         // TODO: Send useful error message
         if (isUserAuthenticated) {
-          currentUser = user[0]
-
           return user[0]
         } else {
           throw new Error('The email or password is incorrect.')
@@ -35,11 +34,15 @@ const providers = {
 
 const callbacks = {
   callbacks: {
-    async session(session: any, user: any) {
-      if (currentUser) {
-        const { username, firstName, lastName, profileImagePath } = currentUser
-        session.user.name = `${username}/${firstName}/${lastName}`
-        session.user.image = profileImagePath
+    async session(session: any) {
+      if (session.user) {
+        await axios.get(`${BASE_URL}/api/users`).then((response) => {
+          const currentUser = response.data.filter((user: any) => user.email === session.user.email)
+          const { id, username, firstName, lastName, profileImagePath } = currentUser[0]
+          session.user.id = id
+          session.user.name = `${username}/${firstName}/${lastName}`
+          session.user.image = profileImagePath
+        })
       }
 
       return session

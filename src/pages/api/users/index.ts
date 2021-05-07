@@ -6,18 +6,26 @@ import { ResponseStatusCode } from '../../../enum/response-status-code'
 const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req
 
-  if (method !== 'POST') {
-    res.setHeader('Allow', ['POST'])
-    res.status(ResponseStatusCode.MethodNotAllowed).end(`Method ${method} Not Allowed`)
-  }
+  switch (method) {
+    case 'GET':
+      return res.json(await prismaClient.user.findMany())
+    case 'POST':
+      try {
+        const user: Prisma.UserCreateInput = { ...body }
+        const postResponse = await prismaClient.user.create({ data: user }).catch((err: any) => err)
 
-  try {
-    const user: Prisma.UserCreateInput = { ...body }
-    const postResponse = await prismaClient.user.create({ data: user }).catch((err: any) => err)
-
-    res.status(postResponse.code ? ResponseStatusCode.BadRequest : ResponseStatusCode.Created).json(postResponse)
-  } catch (err: any) {
-    res.status(ResponseStatusCode.BadRequest).json(err.message)
+        return res.status(
+          postResponse.code
+            ? ResponseStatusCode.BadRequest
+            : ResponseStatusCode.Created
+          )
+          .json(postResponse)
+      } catch (err: any) {
+        return res.status(ResponseStatusCode.BadRequest).json(err.message)
+      }
+    default:
+      res.setHeader('Allow', ['POST', 'GET'])
+      res.status(ResponseStatusCode.MethodNotAllowed).end(`Method ${method} Not Allowed`)
   }
 }
 
