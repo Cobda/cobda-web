@@ -32,15 +32,9 @@
 
   &__body {
     padding: 0 rem(12px);
-    margin-bottom: rem(24px);
 
     @include respond-above('md') {
       padding: 0 rem(16px);
-      margin-bottom: rem(32px);
-    }
-
-    @include respond-above('lg') {
-      margin-bottom: rem(48px);
     }
   }
 
@@ -94,6 +88,16 @@
   &__footer {
     display: flex;
     justify-content: center;
+
+    margin-top: rem(24px);
+
+    @include respond-above('md') {
+      margin-top: rem(32px);
+    }
+
+    @include respond-above('lg') {
+      margin-top: rem(48px);
+    }
   }
 
   &__button {
@@ -127,5 +131,11 @@
     }
 
     @include button-darken-effect($cornflower-blue);
+
+    &:disabled {
+      box-shadow: none;
+      background-color: $silver;
+      cursor: auto;
+    }
   }
 }

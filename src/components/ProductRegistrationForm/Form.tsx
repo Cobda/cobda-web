@@ -9,6 +9,7 @@ import Dropdown, { Option } from 'react-dropdown'
 import TextArea from '../Textarea'
 import axios from 'axios'
 import { BASE_URL } from '../../constant'
+import { useSession } from 'next-auth/client'
 
 interface FormInput {
   readonly name: string
@@ -37,6 +38,7 @@ const Form = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [selectedDelivery, setSelectedDelivery] = useState<string>('')
   const router = useRouter()
+  const [session] = useSession()
   const { t } = useTranslation('product-registration')
   const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
     mode: 'onChange',
@@ -84,7 +86,8 @@ const Form = () => {
       price: parseInt(value.price),
       productImagePath: imagePath,
       category: selectedCategory,
-      deliveryOption: selectedDelivery
+      deliveryOption: selectedDelivery,
+      ownerId: session && session.user.id
     }
 
     await axios.post(BASE_URL + '/api/products/', body).then(() => {
