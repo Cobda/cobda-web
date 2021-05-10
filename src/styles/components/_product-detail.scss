@@ -38,39 +38,28 @@
     }
   }
 
-  &__label-container {
-    padding: rem(32px);
-    border-radius: rem(8px);
+  &__label-wrapper {
+    box-sizing: border-box;
+    padding: rem(16px);
+    border-radius: rem(24px);
     margin-bottom: rem(16px);
 
-    background-color: $light;
-    border: 2px solid $mercury;
-    color: $royal-blue;
+    background-color: $athens-gray;
 
     @include respond-above('md') {
+      padding: rem(24px);
       margin-bottom: rem(24px);
     }
 
     @include respond-above('lg') {
+      padding: rem(32px);
       margin-bottom: rem(32px);
     }
   }
 
-  &__label {
-    all: unset;
-
-    display: block;
-    font-size: rem(18px);
-    font-weight: 500;
-    line-height: 1.5;
-
-    @include respond-above('md') {
-      font-size: rem(20px);
-    }
-
-    @include respond-above('lg') {
-      font-size: rem(24px);
-    }
+  &__label-container {
+    display: flex;
+    align-items: center;
 
     &:not(:last-child) {
       margin-bottom: rem(16px);
@@ -81,6 +70,52 @@
 
       @include respond-above('lg') {
         margin-bottom: rem(32px);
+      }
+    }
+  }
+
+  &__label {
+    all: unset;
+
+    font-size: rem(16px);
+    font-weight: 600;
+    line-height: 1.5;
+
+    @include respond-above('md') {
+      font-size: rem(18px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(20px);
+    }
+
+    &--primary {
+      color: $royal-blue;
+      font-size: rem(22px);
+
+      @include respond-above('md') {
+        font-size: rem(26px);
+      }
+
+      @include respond-above('lg') {
+        font-size: rem(28px);
+      }
+    }
+
+    &--secondary {
+      display: inline-block;
+      width: rem(64px);
+      margin-right: rem(16px);
+
+      color: $shuttle-gray;
+      font-weight: 500;
+
+      @include respond-above('sm') {
+        width: rem(80px);
+      }
+
+      @include respond-above('md') {
+        width: rem(96px);
       }
     }
   }

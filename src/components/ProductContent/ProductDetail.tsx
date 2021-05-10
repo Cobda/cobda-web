@@ -24,11 +24,12 @@ const ProductDetail = () => {
   const isProductOwner: boolean = session && product ? product.ownerId === session.user.id : false
   const buttonText: string = session ? t('contactSeller') : t('signInRequired')
   const formattedPrice: string = price && price.toString().replace(COMMA_REGEX, ',')
-  const priceLabel: string = formattedPrice + ' ' + t('baht')
-  const colorLabel: string = t('color') + color
-  const sizeLabel: string = t('size') + size
-  const deliveryOptionLabel: string = t('deliveryOption') + deliveryOption
-  const labels: string[] = [colorLabel, sizeLabel, deliveryOptionLabel]
+  const priceLabel: string = `${formattedPrice} ${t('baht')}`
+  const productDetails = [
+    { label: t('color'), value: color },
+    { label: t('size'), value: size },
+    { label: t('deliveryOption'), value: deliveryOption }
+  ]
 
   const handleClick = () => {
     if (session) {
@@ -39,7 +40,13 @@ const ProductDetail = () => {
     }
   }
 
-  const renderProductLabels = () => labels.map((label) => <h3 className="product-detail__label">{label}</h3>)
+  const renderProductLabels = () =>
+    productDetails.map(({ label, value }) => (
+      <div className="product-detail__label-container">
+        <h4 className="product-detail__label product-detail__label--secondary">{label}</h4>
+        <h4 className="product-detail__label">{value}</h4>
+      </div>
+    ))
 
   const renderProductButton = () =>
     isProductOwner ? (
@@ -58,8 +65,8 @@ const ProductDetail = () => {
         <h2 className="product-detail__title">{name}</h2>
       </header>
       <div className="product-detail__body">
-        <div className="product-detail__label-container">
-          <h3 className="product-detail__label">{priceLabel}</h3>
+        <div className="product-detail__label-wrapper">
+          <h3 className="product-detail__label product-detail__label--primary">{priceLabel}</h3>
         </div>
         {renderProductLabels()}
       </div>
