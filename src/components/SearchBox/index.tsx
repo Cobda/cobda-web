@@ -37,7 +37,6 @@ const SearchBox = ({ placeholder, disableSuggestion }: SearchBox) => {
     }
   }, [searchInputValue])
 
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget
     const newFilteredSuggestions =
@@ -55,7 +54,7 @@ const SearchBox = ({ placeholder, disableSuggestion }: SearchBox) => {
 
   const handleSearchClick = () => {
     if (searchValue) {
-      router.push({ pathname: `products/`, query: { value: searchValue } })
+      router.push({ pathname: '/products', query: { value: searchValue } })
     }
   }
 

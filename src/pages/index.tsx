@@ -29,20 +29,18 @@ const Home = ({ products }: any) => {
   )
 }
 
-export const getStaticProps = async () => {
-  const rawProducts = await axios.get(`${BASE_URL}/api/products`)
-
-  if (rawProducts) {
-    const products = rawProducts.data
-
-    return {
-      props: {
-        products
+export const getStaticProps = async () =>
+  axios
+    .get(`${BASE_URL}/api/products`)
+    .then((product) => {
+      return {
+        props: {
+          products: product.data
+        }
       }
-    }
-  } else {
-    return {}
-  }
-}
+    })
+    .catch(() => {
+      return { props: {} }
+    })
 
 export default Home

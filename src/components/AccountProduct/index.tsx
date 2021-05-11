@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import useTranslation from 'next-translate/useTranslation'
-import { useSession } from 'next-auth/client'
-import { useRouter } from 'next/router'
+import { useRecoilValue } from 'recoil'
+import { userState } from '../../recoil/atoms'
 
 const AccountProduct = () => {
   const [fullName, setfullName] = useState<string>('')
   const [username, setUsername] = useState<string>('')
   const [imagePath, setImagePath] = useState<string | undefined>('')
   const { t } = useTranslation('account')
-  const [session] = useSession()
-  const router = useRouter()
+  const user: any = useRecoilValue(userState)
 
   useEffect(() => {
-    if (session) {
-      const { name, image } = session.user
-      const imagePath = image ? image : '#'
-      const [username, firstname, lastname] = name!.split('/')
-      setfullName(firstname + ' ' + lastname)
+    if (user) {
+      const { username, firstName, lastName, profileImagePath } = user
+      const imagePath = profileImagePath ? profileImagePath : '#'
+      setfullName(firstName + ' ' + lastName)
       setUsername(username)
       setImagePath(imagePath)
     }
-  }, [])
+  }, [user])
 
   return (
     <div className="account-product">

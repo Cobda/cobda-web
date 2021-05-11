@@ -32,21 +32,18 @@ const ProductView = ({ product }: any) => {
   )
 }
 
-export const getServerSideProps = async (context: any) => {
-  const productId = context.query.id
-  const rawProduct = await axios.get(`${BASE_URL}/api/products/${productId}`)
-
-  if (rawProduct) {
-    const product = rawProduct.data
-
-    return {
-      props: {
-        product
+export const getServerSideProps = async (context: any) =>
+  await axios
+    .get(`${BASE_URL}/api/products/${context.query.id}`)
+    .then((product) => {
+      return {
+        props: {
+          product: product.data
+        }
       }
-    }
-  } else {
-    return { isAllow: false }
-  }
-}
+    })
+    .catch(() => {
+      return { props: {} }
+    })
 
 export default ProductView

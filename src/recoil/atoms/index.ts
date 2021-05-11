@@ -1,5 +1,10 @@
 import { atom } from 'recoil'
 
+export const userState = atom({
+  key: 'userState',
+  default: {}
+})
+
 export const productState = atom({
   key: 'productState',
   default: {}

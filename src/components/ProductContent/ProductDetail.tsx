@@ -19,7 +19,7 @@ const ProductDetail = () => {
   const product: any = useRecoilValue(productState)
   const [session] = useSession()
   const router = useRouter()
-  const { name, price, color, size, deliveryOption } = product
+  const { name, price, color, size, deliveryOption, ownerId } = product
 
   const isProductOwner: boolean = session && product ? product.ownerId === session.user.id : false
   const buttonText: string = session ? t('contactSeller') : t('signInRequired')
@@ -33,8 +33,8 @@ const ProductDetail = () => {
 
   const handleClick = () => {
     if (session) {
-      // TODO: Append modal instead
-      router.push('/account')
+      // TODO: Notify seller instead
+      router.push({ pathname: `/account`, query: { id: ownerId } })
     } else {
       router.push('/sign-in')
     }

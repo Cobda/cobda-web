@@ -41,20 +41,18 @@ const Products = ({ products }: any) => {
   )
 }
 
-export const getServerSideProps = async () => {
-  const rawProducts = await axios.get(`${BASE_URL}/api/products`)
-  
-  if (rawProducts) {
-    const products = rawProducts.data
-
-    return {
-      props: {
-        products
+export const getServerSideProps = async () =>
+  axios
+    .get(`${BASE_URL}/api/products`)
+    .then((product) => {
+      return {
+        props: {
+          products: product.data
+        }
       }
-    }
-  } else {
-    return {}
-  }
-}
+    })
+    .catch(() => {
+      return { props: {} }
+    })
 
 export default Products
