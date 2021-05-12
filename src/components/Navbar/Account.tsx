@@ -10,8 +10,8 @@ const NavbarAccount = () => {
   const router = useRouter()
   const { t } = useTranslation('common')
   const [session] = useSession()
-  const imagePath = session?.user?.image || '#'
-  const accountName = session ? session?.user?.name?.split('/')[0] : ''
+  const imagePath: any = session?.user?.profileImagePath || '#'
+  const accountName: any = session?.user?.username || ''
 
   useEffect(() => {
     const handleMouseClick = (event: MouseEvent) => {
@@ -35,7 +35,8 @@ const NavbarAccount = () => {
 
   const renderDropdown = () => {
     const handleProfileClick = () => {
-      router.push('/account')
+      const { id }: any = session?.user
+      router.push({ pathname: `/account`, query: { id } })
     }
 
     const handleSignOut = () => {

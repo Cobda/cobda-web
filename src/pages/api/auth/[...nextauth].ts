@@ -38,10 +38,7 @@ const callbacks = {
       if (session.user) {
         await axios.get(`${BASE_URL}/api/users`).then((response) => {
           const currentUser = response.data.filter((user: any) => user.email === session.user.email)
-          const { id, username, firstName, lastName, profileImagePath } = currentUser[0]
-          session.user.id = id
-          session.user.name = `${username}/${firstName}/${lastName}`
-          session.user.image = profileImagePath
+          session.user = currentUser[0]
         })
       }
 
