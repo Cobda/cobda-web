@@ -19,7 +19,6 @@ const Account = ({ user }: any) => {
 
   return (
     <div className="layout-account">
-      {/* TODO: Title and file name should be username instead. Ex: Shawn Mentos | Cobda */}
       <Meta title={title} />
       <header>
         <Navbar />
