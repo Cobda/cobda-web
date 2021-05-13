@@ -9,17 +9,22 @@ const imagesHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const visionApiRequest = JSON.stringify({
-    requests: [{
+    requests: [
+      {
         image: { content: body.base64EncodedImage },
         features: [{ type: 'LABEL_DETECTION' }]
-      }]
+      }
+    ]
   })
   const fetchSettings = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: visionApiRequest,
+    body: visionApiRequest
   }
-  const visionApiResponse = await fetch(`https://vision.googleapis.com/v1/images:annotate?key=${process.env.GOOGLE_API_KEY}`, fetchSettings)
+  const visionApiResponse = await fetch(
+    `https://vision.googleapis.com/v1/images:annotate?key=${process.env.GOOGLE_API_KEY}`,
+    fetchSettings
+  )
   const response = await visionApiResponse.json()
 
   if (response.error) {
@@ -28,9 +33,9 @@ const imagesHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const isSteetwear = (): boolean => {
     const isValid = (description: string, score: number) => {
-      const validKeywords = ['footwear', 'shoes', 'sneakers', 'shirt', 't-shirt', 'top']
+      const validKeywords = body.validKeywords || []
       const validPercent = 0.8
-      
+
       return validKeywords.includes(description) && score >= validPercent
     }
 
@@ -43,7 +48,7 @@ const imagesHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (isSteetwear()) {
     res.json({ isAllowed: true })
   } else {
-    res.status(400).json({ isAllowed: false })
+    res.json({ isAllowed: false })
   }
 }
 

@@ -35,11 +35,12 @@ const ProductUpload = ({
   }, [nonVerifiedIndexList])
 
   const handleImageChange = (imageList: ImageListType) => {
-    const validateImage = async (image: ImageType, index: number) => {
+    const validateImage = async (image: ImageType, index: number, validKeywords: string[]) => {
       const encodedImage: string | undefined = image.dataURL?.split(',')[1]
       await axios
         .post(BASE_URL + '/api/images/', {
-          base64EncodedImage: encodedImage
+          base64EncodedImage: encodedImage,
+          validKeywords
         })
         .then((response) => {
           if (!response.data?.isAllowed) {
@@ -56,8 +57,9 @@ const ProductUpload = ({
 
     if (imageList.length > 0) {
       setLoading(true)
+      const validKeywords: string[] = ['footwear', 'shoes', 'sneakers', 'shirt', 't-shirt', 'top']
       imageList.forEach((image: ImageType, index: number) => {
-        validateImage(image, index)
+        validateImage(image, index, validKeywords)
       })
     }
 

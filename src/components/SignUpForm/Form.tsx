@@ -38,6 +38,7 @@ const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.
 const Form = () => {
   const [profileImageUrl, setProfileImageUrl] = useState('')
   const [isRecaptchaVerified, setRecaptchaVerified] = useState<boolean>(false)
+  const [isImageVerified, setImageVerified] = useState<boolean>(true)
   const [errorMessage, setErrorMessage] = useState<string>('')
   const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
     mode: 'onChange',
@@ -103,7 +104,12 @@ const Form = () => {
 
   const renderProfileUpload = () => (
     <div className="form__profile">
-      <ProfileUpload imageUrl={profileImageUrl} onUpload={setProfileImageUrl} />
+      <ProfileUpload
+        imageUrl={profileImageUrl}
+        isImageVerified={isImageVerified}
+        onUpload={setProfileImageUrl}
+        onImageVerified={setImageVerified}
+      />
     </div>
   )
 
@@ -216,7 +222,7 @@ const Form = () => {
 
   const renderActionable = () => {
     const hasInputError: boolean = Object.keys(errors).length > 0
-    const isFormSubmitDisabled: boolean = !isRecaptchaVerified || !hasProfileImage || hasInputError
+    const isFormSubmitDisabled: boolean = !isRecaptchaVerified || !isImageVerified || !hasProfileImage || hasInputError
 
     const handleRecaptchaChange = () => {
       setRecaptchaVerified((previousState) => !previousState)
