@@ -4,11 +4,24 @@ import { useRecoilValue } from 'recoil'
 import { userState } from '../../recoil/atoms'
 
 const AccountProduct = () => {
+  const [email, setEmail] = useState<string>('')
+  const [username, setUsername] = useState<string>('')
+  const [fullName, setFullName] = useState<string>('')
+  const [imagePath, setImagePath] = useState<string>('')
   const user: any = useRecoilValue(userState)
   const { t } = useTranslation('account')
-  const { email, username, firstName, lastName, profileImagePath } = user
-  const fullName = `${firstName} ${lastName}`
-  const imagePath = profileImagePath ? profileImagePath : '#'
+
+  useEffect(() => {
+    if (user) {
+      const { email, username, firstName, lastName, profileImagePath } = user
+      const fullName = `${firstName} ${lastName}`
+      const imagePath = profileImagePath ? profileImagePath : '#'
+      setEmail(email)
+      setUsername(username)
+      setFullName(fullName)
+      setImagePath(imagePath)
+    }
+  }, [user])
 
   return (
     <div className="account-product">

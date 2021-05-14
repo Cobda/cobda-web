@@ -42,10 +42,12 @@
 
   &__title {
     margin: 0;
+    background-color: $light;
     font-size: rem(24px);
     text-align: center;
 
     @include respond-above('sm') {
+      background-color: transparent;
       text-align: left;
     }
 
@@ -63,16 +65,20 @@
   }
 
   &__description {
+    padding: rem(8px);
     margin: 0;
+
+    background-color: $dark;
+    color: $light;
+
     font-size: rem(16px);
     line-height: 1.3;
-    -webkit-text-stroke: 0.65px black;
-    color: $light;
     text-align: center;
 
     @include respond-above('sm') {
+      padding: 0;
+      background-color: transparent;
       text-align: left;
-      -webkit-text-stroke: none;
       color: $dark;
     }
 
