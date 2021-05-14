@@ -1,15 +1,19 @@
 import React from 'react'
-import Link from 'next/link'
 import useTranslation from 'next-translate/useTranslation'
+import { useRouter } from 'next/router'
 
 const COMMA_REGEX = new RegExp(/\B(?=(\d{3})+(?!\d))/g)
 
 const ProductCard = (props: any) => {
   const { t } = useTranslation('products')
+  const router = useRouter()
   const { id, name, price, deliveryOption, productImagePath } = props.product
   const formattedPrice = price.toString().replace(COMMA_REGEX, ',')
-  const imagePath = productImagePath || '/images/yeezy-380.jpg'
-  const base64Prefix = 'data:image/jpeg;base64,'
+  const imagePath = productImagePath.split('?')[0] || '/images/yeezy-380.jpg'
+
+  const handleProductClick = () => {
+    router.push({ pathname: `/products/${id}`, query: { name } })
+  }
 
   const renderDeliveryOption = () => {
     const option = () => {
@@ -31,13 +35,11 @@ const ProductCard = (props: any) => {
   }
 
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={handleProductClick}>
       <figure className="product-card__image-container">
-        <Link href={{ pathname: `/products/${id}`, query: { name } }}>
-          <a className="product-card__link">
-            <img className="product-card__image" src={base64Prefix + imagePath} alt="product card" />
-          </a>
-        </Link>
+        <a className="product-card__link">
+          <img className="product-card__image" src={imagePath} alt="product card" />
+        </a>
         <figcaption className="product-card__content">
           <h2 className="product-card__title">{name}</h2>
           <h2 className="product-card__price">{formattedPrice}</h2>

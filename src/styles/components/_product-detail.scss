@@ -32,33 +32,34 @@
 
   &__body {
     padding: 0 rem(12px);
-    margin-bottom: rem(24px);
 
     @include respond-above('md') {
       padding: 0 rem(16px);
-      margin-bottom: rem(32px);
-    }
-
-    @include respond-above('lg') {
-      margin-bottom: rem(48px);
     }
   }
 
-  &__label {
-    all: unset;
+  &__label-wrapper {
+    box-sizing: border-box;
+    padding: rem(16px);
+    border-radius: rem(24px);
+    margin-bottom: rem(16px);
 
-    display: block;
-    font-size: rem(18px);
-    font-weight: 500;
-    line-height: 1.5;
+    background-color: $athens-gray;
 
     @include respond-above('md') {
-      font-size: rem(20px);
+      padding: rem(24px);
+      margin-bottom: rem(24px);
     }
 
     @include respond-above('lg') {
-      font-size: rem(24px);
+      padding: rem(32px);
+      margin-bottom: rem(32px);
     }
+  }
+
+  &__label-container {
+    display: flex;
+    align-items: center;
 
     &:not(:last-child) {
       margin-bottom: rem(16px);
@@ -73,9 +74,65 @@
     }
   }
 
+  &__label {
+    all: unset;
+
+    font-size: rem(16px);
+    font-weight: 600;
+    line-height: 1.5;
+
+    @include respond-above('md') {
+      font-size: rem(18px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(20px);
+    }
+
+    &--primary {
+      color: $royal-blue;
+      font-size: rem(22px);
+
+      @include respond-above('md') {
+        font-size: rem(26px);
+      }
+
+      @include respond-above('lg') {
+        font-size: rem(28px);
+      }
+    }
+
+    &--secondary {
+      display: inline-block;
+      width: rem(64px);
+      margin-right: rem(16px);
+
+      color: $shuttle-gray;
+      font-weight: 500;
+
+      @include respond-above('sm') {
+        width: rem(80px);
+      }
+
+      @include respond-above('md') {
+        width: rem(96px);
+      }
+    }
+  }
+
   &__footer {
     display: flex;
     justify-content: center;
+
+    margin-top: rem(24px);
+
+    @include respond-above('md') {
+      margin-top: rem(32px);
+    }
+
+    @include respond-above('lg') {
+      margin-top: rem(48px);
+    }
   }
 
   &__button {
@@ -109,5 +166,11 @@
     }
 
     @include button-darken-effect($cornflower-blue);
+
+    &:disabled {
+      box-shadow: none;
+      background-color: $silver;
+      cursor: auto;
+    }
   }
 }

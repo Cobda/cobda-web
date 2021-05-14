@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react'
+import axios from 'axios'
+import React, { ReactNode, useEffect, useState } from 'react'
 import ImageUploading, { ImageType, ImageListType, ErrorsType } from 'react-images-uploading'
-
+import { BASE_URL } from '../../constant'
 interface ProductUpload {
   readonly images: ImageListType
   readonly maxNumber?: number
@@ -9,6 +10,7 @@ interface ProductUpload {
   readonly imageCaption?: string
   readonly onUpload: (imageList: ImageListType) => void
   readonly onError: (errors: ErrorsType) => void
+  readonly onImageVerified: (isVerified: boolean) => void
 }
 
 const ProductUpload = ({
@@ -18,10 +20,49 @@ const ProductUpload = ({
   maxFileSize,
   imageCaption,
   onUpload,
-  onError
+  onError,
+  onImageVerified
 }: ProductUpload) => {
+  const [isLoading, setLoading] = useState<boolean>(false)
+  const [nonVerifiedIndexList, setNonVerifiedIndexList] = useState<number[]>([])
+
+  useEffect(() => {
+    if (nonVerifiedIndexList.length > 0) {
+      onImageVerified(false)
+    } else {
+      onImageVerified(true)
+    }
+  }, [nonVerifiedIndexList])
+
   const handleImageChange = (imageList: ImageListType) => {
-    // TODO: Handle validation from backend
+    const validateImage = async (image: ImageType, index: number, validKeywords: string[]) => {
+      const encodedImage: string | undefined = image.dataURL?.split(',')[1]
+      await axios
+        .post(BASE_URL + '/api/images/', {
+          base64EncodedImage: encodedImage,
+          validKeywords
+        })
+        .then((response) => {
+          if (!response.data?.isAllowed) {
+            setNonVerifiedIndexList((previousState) => [...previousState, index])
+          }
+        })
+        .catch(() => {
+          setNonVerifiedIndexList((previousState) => [...previousState, index])
+        })
+      setLoading(false)
+    }
+
+    setNonVerifiedIndexList([])
+
+    if (imageList.length > 0) {
+      setLoading(true)
+      const validKeywords: string[] = ['footwear', 'shoes', 'sneakers', 'shirt', 't-shirt', 'top']
+      imageList.forEach((image: ImageType, index: number) => {
+        validateImage(image, index, validKeywords)
+      })
+    }
+
     onUpload(imageList)
   }
 
@@ -54,8 +95,12 @@ const ProductUpload = ({
             const handleImageUpdate = () => onImageUpdate(index)
             const handleImageRemove = () => onImageRemove(index)
 
+            const containerClassName = !nonVerifiedIndexList.includes(index)
+              ? 'product-upload__image-container'
+              : 'product-upload__image-container product-upload__image-container--invalid'
+
             return (
-              <div key={index} className="product-upload__image-container">
+              <div key={index} className={containerClassName}>
                 <img
                   className="product-upload__image product-upload__image--selected"
                   src={image.dataURL}
@@ -87,10 +132,19 @@ const ProductUpload = ({
           return isImageAddable ? addMoreButton : <></>
         }
 
+        const renderProductUpload = () =>
+          isLoading ? (
+            <img src="/icons/loading.svg" alt="Loading Icon" />
+          ) : (
+            <>
+              {renderProductImage()}
+              {renderAddMoreButton()}
+            </>
+          )
+
         return (
           <div className={productUploadClassName} {...dragProps}>
-            {renderProductImage()}
-            {renderAddMoreButton()}
+            {renderProductUpload()}
           </div>
         )
       }}

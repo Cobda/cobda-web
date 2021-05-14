@@ -210,6 +210,14 @@
     @include respond-above('lg') {
       font-size: rem(14px);
     }
+
+    &--center {
+      text-align: center;
+
+      @include respond-above('md') {
+        position: static;
+      }
+    }
   }
 
   &__icon-eye {

@@ -5,7 +5,8 @@ import Navbar from '../../components/Navbar'
 import ProductContent from '../../components/ProductContent'
 import axios from 'axios'
 import { useSetRecoilState } from 'recoil'
-import { productState } from '../../recoil/atoms/product'
+import { productState } from '../../recoil/atoms'
+import { BASE_URL } from '../../constant'
 
 const ProductView = ({ product }: any) => {
   const setProductState = useSetRecoilState(productState)
@@ -31,25 +32,18 @@ const ProductView = ({ product }: any) => {
   )
 }
 
-export const getServerSideProps = async (context: any) => {
-  const productId = context.query.id
-  const basePath = 'http://localhost:3000'
-  const rawProduct = await axios.get(`${basePath}/api/products/${productId}`)
-
-  console.log('raw data: ', rawProduct)
-
-  if (rawProduct) {
-    const product = rawProduct.data
-    console.log(product)
-
-    return {
-      props: {
-        product
+export const getServerSideProps = async (context: any) =>
+  await axios
+    .get(`${BASE_URL}/api/products/${context.query.id}`)
+    .then((product) => {
+      return {
+        props: {
+          product: product.data
+        }
       }
-    }
-  } else {
-    return { isAllow: false }
-  }
-}
+    })
+    .catch(() => {
+      return { props: {} }
+    })
 
 export default ProductView

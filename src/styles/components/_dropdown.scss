@@ -67,16 +67,17 @@
     }
   }
 
-  // TODO: Change font properties
   &__label {
-    margin-left: rem(8px);
-
     @include respond-above('md') {
       font-size: rem(12px);
     }
 
     @include respond-above('lg') {
       font-size: rem(16px);
+    }
+
+    &:not(:first-child) {
+      margin-left: rem(8px);
     }
 
     &--bold {

@@ -1,10 +1,16 @@
-// Footer section
+// Common section
+@import './search-box';
+@import './search-suggestion';
+@import './loading';
 @import './footer';
-
-// Navbar section
 @import './navbar';
 @import './logo';
 @import './hamburger';
+@import './dropdown';
+@import 'react-dropdown/style.css';
+@import './carousel';
+@import './carousel-item';
+@import 'pure-react-carousel/dist/react-carousel.es.css';
 
 // Product section
 @import './product-search';
@@ -17,6 +23,7 @@
 @import './product-card';
 @import './product-review';
 @import './sidebar';
+@import './empty-result';
 
 // Form section
 @import './form';
@@ -30,8 +37,6 @@
 // Home section
 @import './home-section';
 @import './home-search';
-@import './home-search-box';
-@import './home-search-suggestion';
 @import './home-category';
 @import './new-release-banner';
 @import './new-release-item';
@@ -40,19 +45,10 @@
 @import './account-content';
 @import './account-information';
 @import './account-product';
-
-// Carousel section
 @import './profile-card';
-@import './carousel';
-@import './carousel-item';
-@import 'pure-react-carousel/dist/react-carousel.es.css';
 
 // About-us section
 @import './our-goal';
 @import './about-us-introduction';
 @import './about-us-section';
 @import './quote-box';
-
-// Dropdown section
-@import './dropdown';
-@import 'react-dropdown/style.css';

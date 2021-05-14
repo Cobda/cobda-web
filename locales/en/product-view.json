@@ -1,9 +1,10 @@
 {
   "baht": "Baht",
-  "price": "Price: ",
-  "color": "Color: ",
-  "size": "Size: ",
-  "deliveryOption": "Delivery Option: ",
+  "price": "Price",
+  "color": "Color",
+  "size": "Size",
+  "deliveryOption": "Delivery Option",
   "contactSeller": "Contact Seller",
+  "signInRequired": "SIGN IN REQUIRED",
   "productDetail": "Product Detail"
 }

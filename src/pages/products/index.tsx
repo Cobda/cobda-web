@@ -8,7 +8,8 @@ import ProductListFooter from '../../components/ProductListFooter'
 import Meta from '../../components/Meta'
 import axios from 'axios'
 import { useSetRecoilState } from 'recoil'
-import { productListState } from '../../recoil/atoms/product'
+import { productListState } from '../../recoil/atoms'
+import { BASE_URL } from '../../constant'
 
 const Products = ({ products }: any) => {
   const setProdutListState = useSetRecoilState(productListState)
@@ -40,23 +41,18 @@ const Products = ({ products }: any) => {
   )
 }
 
-export const getServerSideProps = async () => {
-  const basePath = 'http://localhost:3000'
-  const rawProducts = await axios.get(`${basePath}/api/products`)
-
-  console.log('raw data: ', rawProducts)
-
-  if (rawProducts) {
-    const products = rawProducts.data
-
-    return {
-      props: {
-        products
+export const getServerSideProps = async () =>
+  axios
+    .get(`${BASE_URL}/api/products`)
+    .then((product) => {
+      return {
+        props: {
+          products: product.data
+        }
       }
-    }
-  } else {
-    return {}
-  }
-}
+    })
+    .catch(() => {
+      return { props: {} }
+    })
 
 export default Products

@@ -30,8 +30,8 @@
   }
 
   &__title,
-  &__short-name {
-    margin: 0;
+  &__subtitle {
+    all: unset;
   }
 
   &__title {
@@ -45,7 +45,7 @@
     }
   }
 
-  &__short-name {
+  &__subtitle {
     font-size: rem(12px);
     font-weight: normal;
     line-height: 1.56;
@@ -60,18 +60,20 @@
     width: rem(120px);
     height: rem(120px);
     border-radius: 50%;
-    margin-bottom: rem(10px);
+    margin-bottom: rem(16px);
 
     box-shadow: 0 rem(3px 6px) 0 box-shadow-opacity(0.16);
 
     @include respond-above('md') {
       width: rem(180px);
       height: rem(180px);
+      margin-bottom: rem(24px);
     }
 
     @include respond-above('lg') {
       width: rem(250px);
       height: rem(250px);
+      margin-bottom: rem(32px);
     }
   }
 

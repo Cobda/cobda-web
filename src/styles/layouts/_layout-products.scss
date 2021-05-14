@@ -55,7 +55,11 @@
     }
 
     @include respond-above('lg') {
-      padding: rem(38px 33px);
+      padding: rem(32px 32px 24px);
+    }
+
+    @include respond-above('lg') {
+      padding-bottom: rem(18px);
     }
   }
 

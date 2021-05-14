@@ -4,18 +4,26 @@ import useTranslation from 'next-translate/useTranslation'
 import LanguageDropdown from '../LanguageDropdown'
 import { ComponentType } from '../../enum/component-type'
 import { useSession, signOut } from 'next-auth/client'
+import { useRouter } from 'next/router'
 
 const NavbarHamburger = () => {
-  const { t } = useTranslation('common')
+  const router = useRouter()
   const [session] = useSession()
-  const paths: string[] = ['/products', '/about-us', '/product-registration', '/sign-in', '/sign-up']
-  const pathsWithSession: string[] = ['/products', '/about-us', '/product-registration', '/sign-in']
+  const { t } = useTranslation('common')
+  const pathsWithoutSession: string[] = ['/products', '/about-us', '/product-registration', '/sign-in', '/sign-up']
+  const pathsWithSession: string[] = ['/products', '/about-us', '/product-registration', '/profile', '/']
+  const menuItemsWithoutSession: string[] = ['product', 'aboutUs', 'sell', 'signIn', 'signUp']
+  const menuItemsWithSession: string[] = ['product', 'aboutUs', 'sell', 'profile', 'signOut']
+  const menuItems: string[] = session ? menuItemsWithSession : menuItemsWithoutSession
+  const paths: string[] = session ? pathsWithSession : pathsWithoutSession
 
-  const hamburgerMenuItems: string[] = ['prodkuct', 'aboutUs', 'sell', 'signIn', 'signUp']
-  const hamburgerMenuItemsWithSession: string[] = ['product', 'aboutUs', 'sell', 'signOut']
-
-  const finalMenuItems: string[] = session ? hamburgerMenuItemsWithSession : hamburgerMenuItems
-  const finalPaths: string[] = session ? pathsWithSession : paths
+  const handleLinkClick = (path: string) => () => {
+    if (path === '/') {
+      signOut()
+    }
+    
+    router.push(path)
+  }
 
   const renderHamburgerIcon = () => (
     <div className="hamburger__icon">
@@ -26,15 +34,15 @@ const NavbarHamburger = () => {
   )
 
   const renderHamburgerMenu = () => {
-    const menuItems: ReactNode = finalPaths.map((path, index) => (
+    const hamburgerMenuitems: ReactNode = paths.map((path, index) => (
       <li className="hamburger__menu-item" key={index}>
-        <Link href={path}>
-          <a className="hamburger__link">{t(finalMenuItems[index])}</a>
-        </Link>
+        <a className="hamburger__link" onClick={handleLinkClick(path)}>
+          {t(menuItems[index])}
+        </a>
       </li>
     ))
 
-    return <ul className="hamburger__menu">{menuItems}</ul>
+    return <ul className="hamburger__menu">{hamburgerMenuitems}</ul>
   }
 
   const renderLocales = () => (

@@ -9,15 +9,15 @@ import { signIn, signOut } from 'next-auth/client'
 const Form = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [errorMessage, setErrorMessage] = useState<string>('')
+  const [errorMessage, setErrorMessage] = useState<string | string[]>('')
   const router = useRouter()
   const { t } = useTranslation('sign-in')
 
   useEffect(() => {
-    console.log('Router: ', router)
-    // Getting the error details from URL
-    if (router.query.error) {
-      setErrorMessage('Username is invalid') // Shown below the input field in my example
+    const { error } = router.query
+
+    if (error) {
+      setErrorMessage(error)
     }
   }, [router])
 
@@ -44,7 +44,6 @@ const Form = () => {
           label={t('email')}
           inputType="text"
           placeholder={t('emailPlaceholder')}
-          errorMessage={errorMessage}
           onChange={handleInputChange(setEmail)}
         />
         <PasswordField
@@ -75,6 +74,7 @@ const Form = () => {
     <form className="form">
       {renderCredentialInput()}
       {renderActionable()}
+      <span className="form__help form__help--center">{errorMessage}</span>
     </form>
   )
 }

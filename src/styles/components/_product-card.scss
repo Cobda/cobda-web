@@ -1,16 +1,16 @@
 .product-card {
   display: inline-block;
+  box-sizing: border-box;
   width: 100%;
   height: rem(536px);
-  box-sizing: border-box;
-  padding: rem(14px) 0;
+  padding: rem(12px) 0;
+
+  cursor: pointer;
 
   @include respond-above('sm') {
     height: rem(396px);
     width: 50%;
-    &:not(:nth-child(even)) {
-      padding-right: rem(12px);
-    }
+    padding: 0 rem(8px 16px);
   }
 
   @include respond-above('md') {
@@ -20,12 +20,12 @@
   @include respond-above('lg') {
     width: 33%;
     height: rem(336px);
-    padding: rem(14px 12px 14px) 0;
   }
 
   @include respond-above('xl') {
     width: 25%;
     height: rem(384px);
+    padding: 0 rem(12px 24px);
   }
 
   &__image-container {
@@ -38,6 +38,10 @@
     margin: 0;
 
     background-color: $light;
+
+    &:hover {
+      box-shadow: 0 0 rem(3px) rem(3px) $havelock-blue;
+    }
   }
 
   &__image {
@@ -51,7 +55,7 @@
     @include respond-above('sm') {
       height: rem(260px);
     }
-    
+
     @include respond-above('md') {
       height: rem(310px);
     }
@@ -127,7 +131,6 @@
     font-weight: 600;
     line-height: 1.53;
     text-align: center;
-    cursor: pointer;
 
     @include respond-above('lg') {
       font-size: rem(10px);

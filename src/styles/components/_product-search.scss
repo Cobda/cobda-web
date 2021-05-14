@@ -3,27 +3,37 @@
   flex-wrap: wrap;
   width: 100%;
 
+  &__label,
+  &__link {
+    all: unset;
+
+    padding-right: rem(8px);
+    font-size: rem(18px);
+    font-weight: 200;
+    line-height: 1.5;
+  }
+
   &__search {
     width: 100%;
     margin-bottom: rem(24px);
 
-    & > .home-search-box {
+    & > .search-box {
       width: 100%;
     }
 
-    & > .home-search-box > input {
+    & > .search-box > input {
       height: rem(60px);
       font-size: rem(18px);
     }
 
-    & > .home-search-box > button {
+    & > .search-box > button {
       width: rem(50px);
     }
 
     @include respond-above('md') {
       width: 63%;
 
-      & > .home-search-box {
+      & > .search-box {
         width: 90%;
       }
     }
@@ -33,6 +43,7 @@
     display: flex;
     height: rem(35px);
     width: 100%;
+    margin-top: rem(8px);
 
     @include respond-above('md') {
       width: 37%;
@@ -78,11 +89,6 @@
     margin: 0;
     list-style: none;
 
-    & > li + li:before {
-      color: $dark;
-      content: '>\00a0';
-    }
-
     @include respond-above('md') {
       display: block;
     }
@@ -90,20 +96,27 @@
 
   &__breadcrumb-item {
     display: inline;
-    &:nth-child(3) > a {
+
+    &--prepend {
+      &::before {
+        color: $dark;
+        content: '>\00a0';
+      }
+    }
+  }
+
+  &__label {    
+    &--primary {
       font-weight: 500;
       color: $azure-radiance;
     }
   }
 
   &__link {
-    box-sizing: border-box;
-    padding-right: rem(8px);
-    font-size: rem(18px);
-    font-weight: 200;
-    line-height: 1.5;
-    text-decoration: none;
-    color: $dark;
     cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

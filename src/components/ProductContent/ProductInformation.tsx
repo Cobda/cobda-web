@@ -1,7 +1,7 @@
 import React from 'react'
 import useTranslation from 'next-translate/useTranslation'
 import { useRecoilValue } from 'recoil'
-import { productState } from '../../recoil/atoms/product'
+import { productState } from '../../recoil/atoms'
 
 const ProductInformation = () => {
   const { t } = useTranslation('product-view')

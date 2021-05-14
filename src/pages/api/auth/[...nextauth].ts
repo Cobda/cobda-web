@@ -1,6 +1,8 @@
+import axios from 'axios'
 import { NextApiHandler } from 'next'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
+import { BASE_URL } from '../../../constant'
 import prismaClient from '../../../lib/prisma'
 
 const providers = {
@@ -16,8 +18,9 @@ const providers = {
               password: credentials.password
             }
           })
-          .catch((err) => err)
+          .catch((err: any) => err)
         const isUserAuthenticated: boolean = !user.code && user.length
+
         // TODO: Send useful error message
         if (isUserAuthenticated) {
           return user[0]
@@ -29,6 +32,21 @@ const providers = {
   ]
 }
 
+const callbacks = {
+  callbacks: {
+    async session(session: any) {
+      if (session.user) {
+        await axios.get(`${BASE_URL}/api/users`).then((response) => {
+          const currentUser = response.data.filter((user: any) => user.email === session.user.email)
+          session.user = currentUser[0]
+        })
+      }
+
+      return session
+    }
+  }
+}
+
 const pages = {
   pages: {
     signIn: '/sign-in',
@@ -38,6 +56,7 @@ const pages = {
 
 const options = {
   ...providers,
+  ...callbacks,
   ...pages
 }
 
