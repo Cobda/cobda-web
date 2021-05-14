@@ -59,10 +59,10 @@
   &__image {
     width: rem(120px);
     height: rem(120px);
+    box-shadow: 0 rem(3px 6px) 0 box-shadow-opacity(0.16);
     border-radius: 50%;
     margin-bottom: rem(16px);
-
-    box-shadow: 0 rem(3px 6px) 0 box-shadow-opacity(0.16);
+    object-fit: cover;
 
     @include respond-above('md') {
       width: rem(180px);
