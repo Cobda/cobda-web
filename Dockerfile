@@ -32,6 +32,7 @@ ARG BASE_URL
 ENV Recaptcha_Sitekey=${Recaptcha_Sitekey}
 ENV Cloud_Vision_Key=${Cloud_Vision_Key}
 ENV DATABASE_URL=${DATABASE_URL}
+ENV BASE_URL=${BASE_URL}
 RUN echo -e "NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY=${Recaptcha_Sitekey}\r\nNEXT_PUBLIC_GOOGLE_VISION_API_KEY=${Cloud_Vision_Key}\r\nDATABASE_URL=${DATABASE_URL}\r\nBASE_URL=${BASE_URL}" > .env.local
 RUN npx prisma generate --schema ./src/prisma/schema.prisma
 RUN yarn build
