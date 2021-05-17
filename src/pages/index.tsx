@@ -8,6 +8,7 @@ import { productListState } from '../recoil/atoms'
 
 const Home = ({ products }: any) => {
   const setProdutListState = useSetRecoilState(productListState)
+  console.log('Base URL: ', process.env.BASE_URL)
 
   useEffect(() => {
     setProdutListState(products)
