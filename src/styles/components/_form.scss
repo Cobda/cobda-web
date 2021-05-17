@@ -230,24 +230,27 @@
 
   &__recaptcha {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    width: rem(210px);
     margin-bottom: rem(32px);
+
+    @include transform-scale(0.8);
+
+    @include respond-above('sm') {
+      width: auto;
+      transform: none;
+    }
   }
 
   &__actionable {
-    display: flex;
-    flex-direction: column;
-
-    @include respond-above('md') {
-      align-items: center;
-    }
+    text-align: center;
   }
 
   &__button {
     all: unset;
 
-    padding: rem(16px 112px);
+    width: 100%;
+    padding: rem(16px) 0;
     border-radius: rem(26px);
 
     background-color: $dodger-blue;
@@ -261,6 +264,7 @@
     cursor: pointer;
 
     @include respond-above('md') {
+      width: auto;
       padding: rem(12px 42px);
       font-size: rem(16px);
     }
