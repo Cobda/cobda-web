@@ -38,7 +38,7 @@ const ProductCard = (props: any) => {
     <div className="product-card" onClick={handleProductClick}>
       <figure className="product-card__image-container">
         <a className="product-card__link">
-          <img className="product-card__image" src={imagePath} alt="product card" />
+          <img className="product-card__image" src={imagePath} alt="Product Card" />
         </a>
         <figcaption className="product-card__content">
           <h2 className="product-card__title">{name}</h2>
