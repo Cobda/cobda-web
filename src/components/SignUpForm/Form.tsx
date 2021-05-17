@@ -6,7 +6,6 @@ import TextField from '../InputField/TextField'
 import PasswordField from '../InputField/PasswordField'
 import useTranslation from 'next-translate/useTranslation'
 import { useForm } from 'react-hook-form'
-import { BASE_URL } from '../../constant'
 import axios from 'axios'
 import { signIn } from 'next-auth/client'
 
@@ -81,7 +80,7 @@ const Form = () => {
   const handleFormSubmit = async (value: FormInput) => {
     const body = { ...value, profileImagePath: profileImageUrl }
     await axios
-      .post(`${BASE_URL}/api/users/`, body)
+      .post(`${process.env.BASE_URL}/api/users/`, body)
       .then(() => {
         const { email, password } = value
         setProfileImageUrl('')

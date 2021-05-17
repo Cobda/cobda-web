@@ -32,7 +32,7 @@ const PasswordField = ({ name, label, placeholder, errorMessage, expanded, onCha
 
       return (
         <div className="form__icon-eye" onClick={handlePasswordToggle}>
-          <Image src={imageSelected} height={17} width={21} />
+          <Image src={imageSelected} alt="Password Eye Icon" height={17} width={21} />
         </div>
       )
     }

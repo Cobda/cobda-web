@@ -2,11 +2,15 @@
 
 .sidebar {
   display: flex;
-  align-items: baseline;
-  flex-direction: row;
+  flex-direction: column;
   height: auto;
-  padding: rem(13.5px 16px);
+  padding: rem(16px);
   background-color: $light;
+
+  @include respond-above('sm') {
+    flex-direction: row;
+    align-items: center;
+  }
 
   @include respond-above('md') {
     padding: rem(24px 56px);
@@ -14,28 +18,31 @@
 
   @include respond-above('lg') {
     flex-direction: column;
+    align-items: flex-start;
     padding: rem(38px 32px);
   }
 
   &__filter {
     display: flex;
-    flex-direction: row;
     align-items: center;
     height: fit-content;
-    margin-right: rem(24px);
 
-    @include respond-above('sm') {
-      flex-direction: row;
+    &:not(:last-child) {
+      margin-bottom: rem(8px);
+
+      @include respond-above('sm') {
+        margin: 0 rem(24px) 0 0;
+      }
+
+      @include respond-above('lg') {
+        margin-bottom: rem(16px);
+      }
     }
 
     @include respond-above('lg') {
       display: flex;
       flex-direction: column;
       align-items: baseline;
-
-      &:not(:last-child) {
-        margin-bottom: rem(16px);
-      }
     }
   }
 

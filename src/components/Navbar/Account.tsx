@@ -46,7 +46,7 @@ const NavbarAccount = () => {
     return isDropdownMenuOpen ? (
       <ul className="dropdown__menu">
         <li className="dropdown__menu-item" onClick={handleProfileClick}>
-          <span className="dropdown__label">{t('profile')}</span>
+          <span className="dropdown__label">{t('account')}</span>
         </li>
         <li className="dropdown__menu-item" onClick={handleSignOut}>
           <span className="dropdown__label">{t('signOut')}</span>

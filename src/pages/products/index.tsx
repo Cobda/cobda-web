@@ -9,7 +9,6 @@ import Meta from '../../components/Meta'
 import axios from 'axios'
 import { useSetRecoilState } from 'recoil'
 import { productListState } from '../../recoil/atoms'
-import { BASE_URL } from '../../constant'
 
 const Products = ({ products }: any) => {
   const setProdutListState = useSetRecoilState(productListState)
@@ -43,7 +42,7 @@ const Products = ({ products }: any) => {
 
 export const getServerSideProps = async () =>
   axios
-    .get(`${BASE_URL}/api/products`)
+    .get(`${process.env.BASE_URL}/api/products`)
     .then((product) => {
       return {
         props: {

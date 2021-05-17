@@ -68,11 +68,9 @@
   }
 
   &__label {
-    @include respond-above('md') {
-      font-size: rem(12px);
-    }
+    font-size: rem(12px);
 
-    @include respond-above('lg') {
+    @include respond-above('md') {
       font-size: rem(16px);
     }
 

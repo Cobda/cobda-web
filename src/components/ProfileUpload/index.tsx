@@ -2,7 +2,6 @@ import React, { ReactNode, useState } from 'react'
 import useTranslation from 'next-translate/useTranslation'
 import Trans from 'next-translate/Trans'
 import axios from 'axios'
-import { BASE_URL } from '../../constant'
 
 interface ProfileUpload {
   readonly imageUrl: string
@@ -23,7 +22,7 @@ const ProfileUpload = ({ imageUrl, isImageVerified, onUpload, onImageVerified }:
     const validateImage = async (image: string, validKeywords: string[]) => {
       const encodedImage: string | undefined = image.split(',')[1]
       await axios
-        .post(BASE_URL + '/api/images/', {
+        .post(process.env.BASE_URL + '/api/images/', {
           base64EncodedImage: encodedImage,
           validKeywords
         })

@@ -48,6 +48,7 @@
 
     @include respond-above('sm') {
       background-color: transparent;
+      font-size: rem(28px);
       text-align: left;
     }
 
@@ -71,19 +72,21 @@
     background-color: $dark;
     color: $light;
 
-    font-size: rem(16px);
+    font-size: rem(12px);
     line-height: 1.3;
     text-align: center;
 
     @include respond-above('sm') {
       padding: 0;
       background-color: transparent;
+      font-size: rem(14px);
       text-align: left;
       color: $dark;
     }
 
     @include respond-above('md') {
       padding-bottom: rem(90px);
+      font-size: rem(16px);
       line-height: 1.5;
       text-align: left;
     }

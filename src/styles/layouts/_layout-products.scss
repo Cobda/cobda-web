@@ -1,7 +1,7 @@
 .layout-products {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: map-get($header-height, 'sm') rem(60px) 1fr 1fr;
+  grid-template-rows: map-get($header-height, 'sm') repeat(3, 1fr);
   grid-template-areas:
     'header'
     'sidebar'

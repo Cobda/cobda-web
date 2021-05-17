@@ -49,15 +49,15 @@ const LanguageDropdown = ({ parent }: LanguageDropdown) => {
     const imageSize: number = 32
 
     return selectedLocale === LocaleCode.Thai ? (
-      <Image src="/icons/thailand.svg" height={imageSize} width={imageSize} />
+      <Image src="/icons/thailand.svg" alt="Thailand Flag Icon" height={imageSize} width={imageSize} />
     ) : (
-      <Image src="/icons/united-states.svg" height={imageSize} width={imageSize} />
+      <Image src="/icons/united-states.svg" alt="United States Flag Icon" height={imageSize} width={imageSize} />
     )
   }
 
   const renderSelectedLocale = () => (
     <>
-      <Image src="/icons/world.svg" height={16} width={16} />
+      <Image src="/icons/world.svg" alt="World Icon" height={16} width={16} />
       <span className="dropdown__label dropdown__label--bold">{selectedLocale.toLocaleUpperCase()}</span>
     </>
   )

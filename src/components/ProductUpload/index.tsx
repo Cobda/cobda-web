@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { ReactNode, useEffect, useState } from 'react'
 import ImageUploading, { ImageType, ImageListType, ErrorsType } from 'react-images-uploading'
-import { BASE_URL } from '../../constant'
+
 interface ProductUpload {
   readonly images: ImageListType
   readonly maxNumber?: number
@@ -38,7 +38,7 @@ const ProductUpload = ({
     const validateImage = async (image: ImageType, index: number, validKeywords: string[]) => {
       const encodedImage: string | undefined = image.dataURL?.split(',')[1]
       await axios
-        .post(BASE_URL + '/api/images/', {
+        .post(process.env.BASE_URL + '/api/images/', {
           base64EncodedImage: encodedImage,
           validKeywords
         })

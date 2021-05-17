@@ -2,7 +2,6 @@ import axios from 'axios'
 import { NextApiHandler } from 'next'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
-import { BASE_URL } from '../../../constant'
 import prismaClient from '../../../lib/prisma'
 
 const providers = {
@@ -36,7 +35,7 @@ const callbacks = {
   callbacks: {
     async session(session: any) {
       if (session.user) {
-        await axios.get(`${BASE_URL}/api/users`).then((response) => {
+        await axios.get(`${process.env.BASE_URL}/api/users`).then((response) => {
           const currentUser = response.data.filter((user: any) => user.email === session.user.email)
           session.user = currentUser[0]
         })
