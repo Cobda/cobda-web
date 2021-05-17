@@ -6,7 +6,6 @@ import ProductContent from '../../components/ProductContent'
 import axios from 'axios'
 import { useSetRecoilState } from 'recoil'
 import { productState } from '../../recoil/atoms'
-import { BASE_URL } from '../../constant'
 
 const ProductView = ({ product }: any) => {
   const setProductState = useSetRecoilState(productState)
@@ -34,7 +33,7 @@ const ProductView = ({ product }: any) => {
 
 export const getServerSideProps = async (context: any) =>
   await axios
-    .get(`${BASE_URL}/api/products/${context.query.id}`)
+    .get(`${process.env.BASE_URL}/api/products/${context.query.id}`)
     .then((product) => {
       return {
         props: {

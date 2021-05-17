@@ -8,7 +8,6 @@ import ProductUpload from '../ProductUpload'
 import Dropdown, { Option } from 'react-dropdown'
 import TextArea from '../Textarea'
 import axios from 'axios'
-import { BASE_URL } from '../../constant'
 import { useSession } from 'next-auth/client'
 
 interface FormInput {
@@ -90,7 +89,7 @@ const Form = () => {
       ownerId: session && session.user.id
     }
 
-    await axios.post(BASE_URL + '/api/products/', body).then(() => {
+    await axios.post(process.env.BASE_URL + '/api/products/', body).then(() => {
       setProductImages([])
       router.push('/products')
     })

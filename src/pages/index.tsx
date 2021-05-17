@@ -4,7 +4,6 @@ import { useSetRecoilState } from 'recoil'
 import Footer from '../components/Footer'
 import HomeSection from '../components/HomeSection'
 import Navbar from '../components/Navbar'
-import { BASE_URL } from '../constant'
 import { productListState } from '../recoil/atoms'
 
 const Home = ({ products }: any) => {
@@ -31,7 +30,7 @@ const Home = ({ products }: any) => {
 
 export const getStaticProps = async () =>
   axios
-    .get(`${BASE_URL}/api/products`)
+    .get(`${process.env.BASE_URL}/api/products`)
     .then((product) => {
       return {
         props: {

@@ -5,7 +5,6 @@ import Navbar from '../components/Navbar'
 import AccountContent from '../components/AccountContent'
 import AccountInformation from '../components/AccountInformation'
 import axios from 'axios'
-import { BASE_URL } from '../constant'
 import { useSetRecoilState } from 'recoil'
 import { userState } from '../recoil/atoms'
 
@@ -39,7 +38,7 @@ const Account = ({ user }: any) => {
 
 export const getServerSideProps = async (context: any) =>
   axios
-    .get(`${BASE_URL}/api/users/${context.query.id}`)
+    .get(`${process.env.BASE_URL}/api/users/${context.query.id}`)
     .then((user) => {
       return {
         props: {
