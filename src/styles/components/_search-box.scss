@@ -1,8 +1,10 @@
 @import '../abstracts/_abstracts-dir';
 
-.home-search-box {
+.search-box {
+  position: relative;
+
   display: flex;
-  width: 80%;
+  width: 85%;
   box-shadow: rem(5px 10px 20px) 0 box-shadow-opacity(0.16);
 
   background-color: $light;
@@ -14,7 +16,7 @@
   &__input {
     box-sizing: border-box;
     width: 100%;
-    padding: rem(5px 10px);
+    padding: rem(16px 24px);
     border: none;
 
     color: $dove-gray;
@@ -24,32 +26,34 @@
     line-height: 1.23;
 
     @include respond-above('sm') {
-      padding: rem(10px 20px);
+      padding: rem(20px 32px);
       font-size: rem(16px);
     }
 
     @include respond-above('md') {
-      padding: rem(20px 40px);
+      padding: rem(28px 48px);
       font-size: rem(20px);
     }
 
     @include respond-above('lg') {
-      padding: rem(35px 60px);
+      padding: rem(36px 64px);
       font-size: rem(24px);
     }
   }
 
   &__button {
-    width: rem(28px);
-    padding: 0;
-    border: none;
+    all: unset;
+
+    padding: rem(16px);
+
     background: {
-      color: $light;
       image: url('/icons/search-icon.svg');
       repeat: no-repeat;
-      size: 70%;
-      position: left;
+      size: 50%;
+      position: center;
     }
+
+    cursor: pointer;
 
     @include respond-above('sm') {
       width: rem(40px);
@@ -61,6 +65,10 @@
 
     @include respond-above('lg') {
       width: rem(100px);
+    }
+
+    &:hover {
+      background-color: $porcelain;
     }
   }
 }

@@ -1,10 +1,14 @@
 {
   "search": "Search",
+  "notFound": "Not Found",
+  "searchPlaceholder": "What are you looking for?",
   "popularSectionTitle": "POPULAR SEARCHES",
   "categorySectionTitle": "CATEGORIES",
-  "searchSectionTitle": "COBDA, PRESENTED BY BANK.",
-  "searchSectionDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mimagna, placerat eu semper at, pretium sit amet libero. Integerultrices tristique quam.",
-  "searchPlaceholder": "What are you looking for?",
+  "searchSectionTitle": "COBDA, A STREETWEAR MARKETPLACE",
+  "searchSectionDescription": "Cobda, a place where your desired goods can be found by other friendly traders who are also desired to sell.",
   "newReleaseSectionTitle": "<0>NEW<1/>RELEASES</0>",
-  "newReleaseSectionDescription": "In consequat, quam id sodales hendrerit, eros mi molestie leo, nec lacinia risus neque tristique augue. Proin tempus urna vel congue elementum. Vestibulum euismod accumsan dui, ac iaculis sem"
+  "newReleaseSectionDescription": "All new popular models released from each brand.",
+  "newReleaseItemSectionHeader": "<0>NIKE VAPORMAX<1/>FLYKNIT</0>",
+  "newReleaseItemSectionDescription": "Designed with sustainability, the Nike Air VaporMax Flyknit is made from recycled.",
+  "newReleaseItemSectionProduct": "VIEW PRODUCT"
 }

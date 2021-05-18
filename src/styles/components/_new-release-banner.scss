@@ -8,7 +8,7 @@
   padding: rem(16px);
 
   background: {
-    image: url('/images/new-release-banner.png');
+    image: url('/images/new-release-banner.jpg');
     position: center;
     repeat: no-repeat;
     size: cover;
@@ -32,6 +32,7 @@
   &__header > * {
     display: flex;
     flex-direction: column;
+
     &:not(:last-child) {
       margin-bottom: rem(12px);
     }

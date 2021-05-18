@@ -27,6 +27,13 @@
         margin-right: 10%;
       }
     }
+
+    &--expanded {
+      @include respond-above('md') {
+        width: 100%;
+        margin: 0;
+      }
+    }
   }
 
   &__input-group,
@@ -113,6 +120,18 @@
     }
   }
 
+  &__input-initial {
+    margin-bottom: rem(32px);
+
+    @include respond-above('md') {
+      margin-bottom: rem(46px);
+    }
+
+    @include respond-above('lg') {
+      margin-bottom: rem(50px);
+    }
+  }
+
   &__input-product {
     flex-wrap: wrap;
     margin-bottom: rem(24px);
@@ -191,6 +210,14 @@
     @include respond-above('lg') {
       font-size: rem(14px);
     }
+
+    &--center {
+      text-align: center;
+
+      @include respond-above('md') {
+        position: static;
+      }
+    }
   }
 
   &__icon-eye {
@@ -203,24 +230,27 @@
 
   &__recaptcha {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    width: rem(210px);
     margin-bottom: rem(32px);
+
+    @include transform-scale(0.8);
+
+    @include respond-above('sm') {
+      width: auto;
+      transform: none;
+    }
   }
 
   &__actionable {
-    display: flex;
-    flex-direction: column;
-
-    @include respond-above('md') {
-      align-items: center;
-    }
+    text-align: center;
   }
 
   &__button {
     all: unset;
 
-    padding: rem(16px 112px);
+    width: 100%;
+    padding: rem(16px) 0;
     border-radius: rem(26px);
 
     background-color: $dodger-blue;
@@ -234,6 +264,7 @@
     cursor: pointer;
 
     @include respond-above('md') {
+      width: auto;
       padding: rem(12px 42px);
       font-size: rem(16px);
     }

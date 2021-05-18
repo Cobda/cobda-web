@@ -32,6 +32,9 @@
   }
 
   &__image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
     box-shadow: 1px 1px rem(2px 4px) $popular-item-shadow;
     width: 100%;
@@ -56,10 +59,20 @@
   }
 
   &__image {
-    // TODO: Remove when images are inserted
-    width: 100%;
     height: 100%;
-    background-color: lightgray;
+    max-height: rem(300px);
+
+    @include respond-above('md') {
+      max-height: rem(240px);
+    }
+
+    @include respond-above('lg') {
+      max-height: rem(300px);
+    }
+
+    @include respond-above('xl') {
+      max-height: rem(360px);
+    }
   }
 
   &__caption {
@@ -71,7 +84,7 @@
       font-size: rem(16px);
     }
 
-    @include respond-above('lg') {
+    @include respond-above('xl') {
       font-size: rem(22px);
     }
   }

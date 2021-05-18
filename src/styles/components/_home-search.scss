@@ -2,19 +2,18 @@
 
 .home-search {
   position: relative;
+
   display: flex;
-  justify-content: flex-end;
-  padding-top: rem(43px);
-  height: rem(250px);
+  justify-content: center;
+  height: rem(450px);
 
   @include respond-above('sm') {
-    padding-top: rem(55px);
-    height: rem(375px);
+    justify-content: flex-end;
   }
 
   @include respond-above('md') {
-    padding: 0;
     height: rem(500px);
+    padding: 0;
   }
 
   @include respond-above('lg') {
@@ -29,7 +28,7 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    max-width: 47.5%;
+    max-width: 80%;
 
     @include respond-above('sm') {
       max-width: 50%;
@@ -43,7 +42,15 @@
 
   &__title {
     margin: 0;
+    background-color: $light;
     font-size: rem(24px);
+    text-align: center;
+
+    @include respond-above('sm') {
+      background-color: transparent;
+      font-size: rem(28px);
+      text-align: left;
+    }
 
     @include respond-above('md') {
       font-size: rem(45px);
@@ -59,39 +66,50 @@
   }
 
   &__description {
+    padding: rem(8px);
     margin: 0;
+
+    background-color: $dark;
+    color: $light;
+
     font-size: rem(12px);
     line-height: 1.3;
+    text-align: center;
+
+    @include respond-above('sm') {
+      padding: 0;
+      background-color: transparent;
+      font-size: rem(14px);
+      text-align: left;
+      color: $dark;
+    }
 
     @include respond-above('md') {
-      padding: 0 5% rem(20px);
+      padding-bottom: rem(90px);
       font-size: rem(16px);
       line-height: 1.5;
+      text-align: left;
     }
 
     @include respond-above('lg') {
-      padding: 0 10% rem(26px);
+      padding-bottom: rem(130px);
       font-size: rem(20px);
     }
 
     @include respond-above('xl') {
-      padding-bottom: rem(32px);
+      padding-bottom: rem(150px);
       font-size: rem(26px);
     }
   }
 
   &__box {
     position: absolute;
-    top: 0%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     width: 100%;
 
     @include flex-center();
-
-    @include respond-above('md') {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
   }
 }

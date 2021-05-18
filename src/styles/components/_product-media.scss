@@ -1,30 +1,114 @@
 .product-media {
-  display: flex;
   flex-direction: column;
-  align-items: center;
   box-sizing: border-box;
   padding: rem(16px);
 
-  &__header {
-    margin-bottom: rem(24px);
+  @include flex-center();
+
+  @include respond-above('md') {
+    padding: rem(12px 24px 24px);
+    border-radius: 0 0 rem(48px 48px);
+    background: $light;
   }
 
-  &__title {
-    margin: 0;
+  @include respond-above('lg') {
+    padding: rem(12px 32px 32px);
+    border-radius: 0 0 rem(64px 64px);
   }
 
-  &__image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: rem(200px);
-    height: rem(200px);
-    background-color: black;
+  @include respond-above('xl') {
+    padding: rem(12px 48px 48px);
+    border-radius: 0 0 rem(80px 80px);
+  }
+
+  &__image-wrapper {
+    margin-bottom: rem(16px);
+
+    @include respond-above('md') {
+      margin-bottom: rem(24px);
+    }
+
+    @include respond-above('lg') {
+      margin-bottom: rem(32px);
+    }
+
+    @include respond-above('xl') {
+      margin-bottom: rem(48px);
+    }
   }
 
   &__image {
-    width: 60%;
-    height: 60%;
-    background-color: blueviolet;
+    width: rem(250px);
+    height: rem(250px);
+    object-fit: cover;
+
+    @include respond-above('md') {
+      width: rem(350px);
+      height: rem(350px);
+    }
+
+    @include respond-above('lg') {
+      width: rem(450px);
+      height: rem(450px);
+    }
+
+    @include respond-above('xl') {
+      width: rem(550px);
+      height: rem(550px);
+    }
+  }
+
+  &__image-selector {
+    display: flex;
+  }
+
+  &__thumbnail-wrapper {
+    &:not(:last-child) {
+      margin-right: rem(12px);
+
+      @include respond-above('lg') {
+        margin-right: rem(16px);
+      }
+
+      @include respond-above('xl') {
+        margin-right: rem(24px);
+      }
+    }
+  }
+
+  &__thumbnail {
+    width: rem(64px);
+    height: rem(64px);
+    border-radius: rem(12px);
+    object-fit: cover;
+
+    cursor: pointer;
+
+    @include respond-above('md') {
+      width: rem(70px);
+      height: rem(70px);
+    }
+
+    @include respond-above('lg') {
+      width: rem(86px);
+      height: rem(86px);
+    }
+
+    @include respond-above('xl') {
+      width: rem(100px);
+      height: rem(100px);
+    }
+
+    &:hover {
+      box-shadow: 0 rem(4px 20px) 0 box-shadow-opacity(0.16);
+    }
+
+    &--active {
+      border: rem(2px) solid $havelock-blue;
+
+      @include respond-above('lg') {
+        border-width: rem(3px);
+      }
+    }
   }
 }

@@ -21,15 +21,36 @@ interface QuoteBoxItem {
 
 const QuoteBoxCarousel = () => {
   const { t } = useTranslation('about-us')
-
-  // TODO: Remove this sample and use data from backend instead
-  const carouselItemList: Array<QuoteBoxItem> = new Array(4).fill({
-    imagePath: '/images/yeezy-380.jpg',
-    alternate: 'Adidas fashion sportswear',
-    name: t('name'),
-    role: t('role'),
-    quote: t('quoteSectionContent')
-  })
+  const carouselItemList: Array<QuoteBoxItem> = [
+    {
+      imagePath: '/images/author-bank.jpg',
+      alternate: 'Author Bank',
+      name: t('author1Name'),
+      role: t('author1Role'),
+      quote: t('author1Quote')
+    },
+    {
+      imagePath: '/images/author-kim.jpg',
+      alternate: 'Author Kim',
+      name: t('author2Name'),
+      role: t('author2Role'),
+      quote: t('author2Quote')
+    },
+    {
+      imagePath: '/images/author-beau.jpg',
+      alternate: 'Author Beau',
+      name: t('author3Name'),
+      role: t('author3Role'),
+      quote: t('author3Quote')
+    },
+    {
+      imagePath: '/images/author-kit.jpg',
+      alternate: 'Author Kit',
+      name: t('author4Name'),
+      role: t('author4Role'),
+      quote: t('author4Quote')
+    }
+  ]
 
   const renderCarouselSlide = () => {
     return carouselItemList?.map((item, index) => {

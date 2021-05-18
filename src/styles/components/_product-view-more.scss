@@ -1,0 +1,16 @@
+@import '../abstracts/_abstracts-dir';
+
+.product-view-more {
+  display: flex;
+  justify-content: center;
+
+  &__button {
+    padding: rem(8px 18px 9px 19px);
+    box-sizing: border-box;
+    box-shadow: 0 rem(3px 20px) 0 box-shadow-opacity(0.16);
+    border: solid rem(4px) $light;
+    color: $light;
+    background-color: $mine-shaft;
+    cursor: pointer;
+  }
+}

@@ -1,14 +1,13 @@
 import React from 'react'
 import AccountProduct from '../AccountProduct'
-import ProductReview from '../ProductReview'
 
 const AccountContent = () => {
   return (
     <section className="account-content">
       <AccountProduct />
-      <ProductReview />
+      {/* TODO: Add other parts according to the design */}
     </section>
   )
-}
+} 
 
 export default AccountContent

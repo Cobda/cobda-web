@@ -24,6 +24,11 @@ $dark-charcoal: #333;
 $iron: #5e5e5e;
 $darker-gunpowder-gray: #303030;
 $dodger-blue: #569eff;
+$california: #Fd9f02;
+$outrageous-orange: #ff5d35;
+$onahau: #d1e5ff;
+$buttercup: #f6b80c;
+$malachite: #00ce45;
 
 // Map of breakpoints
 $breakpoints: (
@@ -65,6 +70,8 @@ $header-height: (
 
 // Components width
 $navbar-max-width: rem(1536px);
+$sign-in-form-min-width-md: rem(400px);
+$sign-in-form-max-width-xl: rem(1344px);
 $registration-form-min-width-md: rem(512px);
 $registration-form-min-width-lg: rem(608px);
 $registration-form-max-width-xl: rem(1344px);

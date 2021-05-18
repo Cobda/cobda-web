@@ -1,6 +1,6 @@
 import React from 'react'
 import useTranslation from 'next-translate/useTranslation'
-import HomeSearchBox from '../HomeSearchBox/'
+import SearchBox from '../SearchBox'
 
 const HomeSearchSection = () => {
   const { t } = useTranslation('home')
@@ -15,7 +15,7 @@ const HomeSearchSection = () => {
           </p>
         </div>
         <div className="home-search__box">
-          <HomeSearchBox />
+          <SearchBox />
         </div>
       </div>
     </section>

@@ -1,0 +1,13 @@
+{
+  "welcome": "ยินดีต้อนรับ",
+  "signIn": "เข้าสู่ระบบ",
+  "email": "อีเมล์",
+  "password": "รหัสผ่าน",
+  "emailPlaceholder": "ป้อนอีเมลของคุณ",
+  "passwordPlaceholder": "ป้อนรหัสผ่านของคุณ",
+  "doNotHaveAccount": "ยังไม่มีบัญชีผู้ใช้",
+  "createAccount": "สมัครใช้งาน",
+  "forgotPassword": "ลืมรหัสผ่าน",
+  "inputValueRequired": "กรุณากรอกข้อมูลให้ครบถ้วน",
+  "emailAlreadyUsed": "อีเมลชื่อนี้ถูกใช้ไปแล้ว กรุณาใช้ชื่ออื่น"
+}

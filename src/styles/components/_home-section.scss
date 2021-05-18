@@ -48,18 +48,19 @@
 
   &--background-image {
     background: {
-      image: url('/images/bank-jojo.jpg'), url('/images/plain-grey-square.png');
+      image: url('/images/home-search-bar-background.jpg');
       repeat: no-repeat;
-      size: contain, auto 40%;
-      position: left, bottom 30% right;
+      size: contain;
+      position: center;
     }
-  }
 
-  &--dark {
-    background-color: $alabaster;
-  }
-
-  &--light {
-    background-color: $light;
+    @include respond-above('sm') {
+        background: {
+        image: url('/images/home-search-bar-background.jpg'), url('/images/plain-grey-square.png');
+        repeat: no-repeat;
+        size: contain, auto 40%;
+        position: left, bottom 30% right;
+      }
+    }
   }
 }

@@ -19,9 +19,9 @@ const LanguageItem = ({ locale, isSelected, handleItemClick }: LanguageItem) => 
     const imageSize: number = 16
 
     return locale === LocaleCode.Thai ? (
-      <Image src="/icons/thailand.svg" height={imageSize} width={imageSize} />
+      <Image src="/icons/thailand.svg" alt="Thailand Flag Icon" height={imageSize} width={imageSize} />
     ) : (
-      <Image src="/icons/united-states.svg" height={imageSize} width={imageSize} />
+      <Image src="/icons/united-states.svg" alt="United States Flag Icon" height={imageSize} width={imageSize} />
     )
   }
 

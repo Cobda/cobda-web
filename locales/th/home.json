@@ -1,10 +1,14 @@
 {
   "search": "ค้นหา",
+  "notFound": "ไม่พบสินค้า",
+  "searchPlaceholder": "คุณกำลังมองหาอะไรอยู่?",
   "popularSectionTitle": "ไอเทมยอดฮิต",
   "categorySectionTitle": "หมวดหมู่",
-  "searchSectionTitle": "COBDA, สุดที่จะภูมิใจเสนอ.",
-  "searchSectionDescription": "นี่คือบทความที่เป็นภาษาไทยโดยที่เขียนแบบไม่ได้มีความหมายอะไรใดๆทั้งสิ้น เพียงแค่จำลองข้อความยาวๆ",
-  "searchPlaceholder": "คุณกำลังมองหาอะไรอยู่?",
+  "searchSectionTitle": "COBDA, สุดที่จะภูมิใจเสนอ",
+  "searchSectionDescription": "Cobda, ที่ที่คุณจะเจอของที่คุณกำลังมองหา ซึ่งของเหล่านั้นก็มาจากเทรดเดอร์ที่ต้องการขายให้คุณอย่างเต็มใจ",
   "newReleaseSectionTitle": "<0>สินค้า<1/>เข้าใหม่</0>",
-  "newReleaseSectionDescription": "ข้อความต่อไปนี้เพียงแค่จำลองข้อความยาวๆ รองเท้าคู่ใจมาใหม่ ใส่เลยรับรองคุณจะเท่จนสาวต้องเหล่ คู่นี้ใส่สบายมีฟองน้ำข้างในห้าสิบชั้นตกจากตึกก็ยังเอาอยู่ พร้อมกับสีใหม่เทาแดงคู่ใจ ใส่แล้วแคล้วคลาดปลอดภัยคุ้มครองยันลูกบวช"
+  "newReleaseSectionDescription": "โมเดลใหม่ๆยอดนิยมจากแบรนต่างๆ",
+  "newReleaseItemSectionHeader": "<0>NIKE VAPORMAX<1/>FLYKNIT</0>",
+  "newReleaseItemSectionDescription": "ดีไซน์โดยคำนึงถึงสิ่งแวดล้อม ทั้งยังผลิตจากวัสดุรีไซเคิล",
+  "newReleaseItemSectionProduct": "ดูสินค้า"
 }

@@ -1,1 +1,25 @@
-{}
+{
+  "productCardPostal": "postal",
+  "productCardMeetUp": "meet-up",
+  "sortBy": "Sorted By:",
+  "filter": "Filter",
+  "highestPrice": "Highest Price",
+  "lowestPrice": "Lowest Price",
+  "viewMore": "View more",
+  "home": "Home",
+  "footwear": "Footwear",
+  "shirt": "Shirt",
+  "bothFootwearAndShirt": "Footwear & Shirt",
+  "category": "Category",
+  "baht": "(THB)",
+  "priceRange": " Price Range",
+  "lowestPriceRange": "0 - 5,000 (THB)",
+  "middlePriceRange": "5,000 - 10,000 (THB)",
+  "highestPriceRange": "10,000 + (THB)",
+  "results": "results",
+  "footwearCategory": "Footwear Category",
+  "shirtCategory": "Shirt Category",
+  "searchPlaceholder": "What are you looking for?",
+  "emptyResult": "No Result Found",
+  "emptyResultHint": "Please try another keywords or change your filters"
+}

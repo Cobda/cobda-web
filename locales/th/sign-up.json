@@ -15,6 +15,7 @@
   "passwordPlaceholder": "ป้อนรหัสผ่านของคุณ",
   "firstNamePlaceholder": "ป้อนชื่อจริงของคุณ",
   "lastNamePlaceholder": "ป้อนนามสกุลของคุณ",
+  "emailUsernameAlreadyUsed": "อีเมลหรือชื่อผู้ใช้ของคุณถูกใช้ไปแล้ว",  
   "inputValueRequired": "กรุณากรอกข้อมูลให้ครบถ้วน",
   "inputImproperName": "กรุณากรอกข้อมูลลงในช่องว่างให้ถูกต้อง",
   "usernameCharactersMinimum": "ชื่อผู้ใช้งานอย่างน้อยต้องมี 6 ตัวอักษร",

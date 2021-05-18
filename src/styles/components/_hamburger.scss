@@ -1,5 +1,7 @@
 .hamburger {
   position: absolute;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
 
   @include respond-above('md') {
@@ -20,7 +22,17 @@
     transform-origin: left center;
   }
 
+  &__locales {
+    display: block;
+    padding-right: rem(16px);
+
+    & > .dropdown > .dropdown__menu {
+      width: rem(100px);
+    }
+  }
+
   &__icon {
+    z-index: 100;
     box-sizing: border-box;
     padding-left: rem(16px);
 

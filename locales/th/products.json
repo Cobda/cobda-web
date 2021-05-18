@@ -1,1 +1,25 @@
-{}
+{
+  "productCardPostal": "ไปรษณีย์",
+  "productCardMeetUp": "นัดรับ",
+  "sortBy": "จัดเรียงตาม:",
+  "filter": "ตัวกรอง",
+  "highestPrice": "ราคาแพงที่สุด",
+  "lowestPrice": "ราคาถูกที่สุด",
+  "viewMore": "แสดงเพิ่ม",
+  "home": "หน้าหลัก",
+  "footwear": "รองเท้า",
+  "shirt": "เสื้อผ้า",
+  "bothFootwearAndShirt": "รองเท้า & เสื้อผ้า",
+  "category": "ประเภท",
+  "baht": "(บาท)",
+  "priceRange": "ช่วงราคา",
+  "lowestPriceRange": "0 - 5,000 (บาท)",
+  "middlePriceRange": "5,000 - 10,000 (บาท)",
+  "highestPriceRange": "10,s000 + (บาท)",
+  "results": "ผลลัพธ์",
+  "footwearCategory": "ประเภทรองเท้า",
+  "shirtCategory": "ประเภทเสื้อผ้า",
+  "searchPlaceholder": "What are you looking for?",
+  "emptyResult": "ไม่พบผลลัพธ์",
+  "emptyResultHint": "กรุณาใช้คำอื่นหรือเปลี่ยนตัวกรองของคุณ"
+}
