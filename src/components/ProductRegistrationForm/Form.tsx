@@ -89,7 +89,7 @@ const Form = () => {
       ownerId: session && session.user.id
     }
 
-    await axios.post(process.env.BASE_URL + '/api/products/', body).then(() => {
+    await axios.post(process.env.NEXT_PUBLIC_BASE_URL + '/api/products/', body).then(() => {
       setProductImages([])
       router.push('/products')
     })

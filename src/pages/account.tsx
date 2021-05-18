@@ -38,7 +38,7 @@ const Account = ({ user }: any) => {
 
 export const getServerSideProps = async (context: any) =>
   axios
-    .get(`${process.env.BASE_URL}/api/users/${context.query.id}`)
+    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users/${context.query.id}`)
     .then((user) => {
       return {
         props: {

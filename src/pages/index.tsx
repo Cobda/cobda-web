@@ -8,7 +8,7 @@ import { productListState } from '../recoil/atoms'
 
 const Home = ({ products }: any) => {
   const setProdutListState = useSetRecoilState(productListState)
-  console.log('Base URL: ', process.env.BASE_URL)
+  console.log('Base URL: ', process.env.NEXT_PUBLIC_BASE_URL)
 
   useEffect(() => {
     setProdutListState(products)
@@ -31,7 +31,7 @@ const Home = ({ products }: any) => {
 
 export const getStaticProps = async () =>
   axios
-    .get(`${process.env.BASE_URL}/api/products`)
+    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`)
     .then((product) => {
       return {
         props: {

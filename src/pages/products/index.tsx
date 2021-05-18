@@ -42,7 +42,7 @@ const Products = ({ products }: any) => {
 
 export const getServerSideProps = async () =>
   axios
-    .get(`${process.env.BASE_URL}/api/products`)
+    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`)
     .then((product) => {
       return {
         props: {
