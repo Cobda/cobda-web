@@ -9,7 +9,7 @@ const NavbarAccount = () => {
   const accountRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
   const { t } = useTranslation('common')
-  const [session] = useSession()
+  const [session]: any = useSession()
   const imagePath: any = session?.user?.profileImagePath || '#'
   const accountName: any = session?.user?.username || ''
 

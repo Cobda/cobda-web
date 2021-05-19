@@ -17,7 +17,7 @@ const COMMA_REGEX = new RegExp(/\B(?=(\d{3})+(?!\d))/g)
 const ProductDetail = () => {
   const { t } = useTranslation('product-view')
   const product: any = useRecoilValue(productState)
-  const [session] = useSession()
+  const [session]: any = useSession()
   const router = useRouter()
   const { name, price, color, size, deliveryOption, ownerId } = product
 

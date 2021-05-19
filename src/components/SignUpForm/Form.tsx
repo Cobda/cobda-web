@@ -80,7 +80,7 @@ const Form = () => {
   const handleFormSubmit = async (value: FormInput) => {
     const body = { ...value, profileImagePath: profileImageUrl }
     await axios
-      .post(`${process.env.BASE_URL}/api/users/`, body)
+      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users/`, body)
       .then(() => {
         const { email, password } = value
         setProfileImageUrl('')

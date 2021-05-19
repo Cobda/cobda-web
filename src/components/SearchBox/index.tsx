@@ -73,7 +73,7 @@ const SearchBox = ({ placeholder, disableSuggestion }: SearchBox) => {
     }
 
     if (!disableSuggestion && isSuggestionShown && searchValue) {
-      const filterResults = filteredSuggestions.map((suggestion: any) => {
+      const filterResults = filteredSuggestions?.map((suggestion: any) => {
         const suggestionImagePath = suggestion.productImagePath && suggestion.productImagePath.split('?')[0]
 
         return (
@@ -89,7 +89,7 @@ const SearchBox = ({ placeholder, disableSuggestion }: SearchBox) => {
         )
       })
 
-      const hasFilteredSuggestions: boolean = filteredSuggestions.length > 0
+      const hasFilteredSuggestions: boolean = filteredSuggestions?.length > 0
 
       return hasFilteredSuggestions ? (
         <ul className="search-suggestion">{filterResults}</ul>

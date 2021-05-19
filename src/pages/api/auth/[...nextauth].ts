@@ -9,7 +9,7 @@ const providers = {
     Providers.Credentials({
       name: 'Credentials',
       credentials: {},
-      authorize: async (credentials) => {
+      authorize: async (credentials: any) => {
         const user = await prismaClient.user
           .findMany({
             where: {
@@ -35,7 +35,7 @@ const callbacks = {
   callbacks: {
     async session(session: any) {
       if (session.user) {
-        await axios.get(`${process.env.BASE_URL}/api/users`).then((response) => {
+        await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users`).then((response) => {
           const currentUser = response.data.filter((user: any) => user.email === session.user.email)
           session.user = currentUser[0]
         })

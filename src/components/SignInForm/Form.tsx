@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-// import { signIn, signOut } from 'next-auth/client'
 import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router'
 import TextField from '../InputField/TextField'
 import PasswordField from '../InputField/PasswordField'
-import { signIn, signOut } from 'next-auth/client'
+import { signIn } from 'next-auth/client'
 
 const Form = () => {
   const [email, setEmail] = useState<string>('')

@@ -22,7 +22,7 @@ const imagesHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     body: visionApiRequest
   }
   const visionApiResponse = await fetch(
-    `https://vision.googleapis.com/v1/images:annotate?key=${process.env.GOOGLE_API_KEY}`,
+    `https://vision.googleapis.com/v1/images:annotate?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`,
     fetchSettings
   )
   const response = await visionApiResponse.json()

@@ -37,7 +37,7 @@ const Form = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [selectedDelivery, setSelectedDelivery] = useState<string>('')
   const router = useRouter()
-  const [session] = useSession()
+  const [session]: any = useSession()
   const { t } = useTranslation('product-registration')
   const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
     mode: 'onChange',
@@ -89,7 +89,7 @@ const Form = () => {
       ownerId: session && session.user.id
     }
 
-    await axios.post(process.env.BASE_URL + '/api/products/', body).then(() => {
+    await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/`, body).then(() => {
       setProductImages([])
       router.push('/products')
     })

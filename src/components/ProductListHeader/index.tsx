@@ -67,7 +67,7 @@ const ProductListHeader = () => {
     }
 
     const category: string | undefined = productCategory()
-    const resultNumber = filteredProductList && filteredProductList.length
+    const resultNumber = filteredProductList ? filteredProductList.length : 0
     const resultLabel = `(${resultNumber} ${t('results')})`
 
     const renderProductCategory = () => {

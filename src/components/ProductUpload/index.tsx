@@ -38,7 +38,7 @@ const ProductUpload = ({
     const validateImage = async (image: ImageType, index: number, validKeywords: string[]) => {
       const encodedImage: string | undefined = image.dataURL?.split(',')[1]
       await axios
-        .post(process.env.BASE_URL + '/api/images/', {
+        .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/images/`, {
           base64EncodedImage: encodedImage,
           validKeywords
         })

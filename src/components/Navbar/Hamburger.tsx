@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 
 const NavbarHamburger = () => {
   const router = useRouter()
-  const [session] = useSession()
+  const [session]: any = useSession()
   const { t } = useTranslation('common')
   const pathsWithoutSession: string[] = ['/products', '/about-us', '/product-registration', '/sign-in', '/sign-up']
   const pathsWithSession: string[] = ['/products', '/about-us', '/product-registration', '/account', '/']

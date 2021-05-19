@@ -33,7 +33,7 @@ const ProductView = ({ product }: any) => {
 
 export const getServerSideProps = async (context: any) =>
   await axios
-    .get(`${process.env.BASE_URL}/api/products/${context.query.id}`)
+    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${context.query.id}`)
     .then((product) => {
       return {
         props: {

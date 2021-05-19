@@ -7,7 +7,7 @@ import { useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 
 const ProductRegistration = () => {
-  const [session] = useSession()
+  const [session]: any = useSession()
   const router = useRouter()
 
   useEffect(() => {

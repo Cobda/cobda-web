@@ -22,7 +22,7 @@ const ProfileUpload = ({ imageUrl, isImageVerified, onUpload, onImageVerified }:
     const validateImage = async (image: string, validKeywords: string[]) => {
       const encodedImage: string | undefined = image.split(',')[1]
       await axios
-        .post(process.env.BASE_URL + '/api/images/', {
+        .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/images/`, {
           base64EncodedImage: encodedImage,
           validKeywords
         })
