@@ -24,7 +24,8 @@
     "react-images-uploading": "^3.1.2",
     "recoil": "^0.2.0",
     "sass": "^1.32.5",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "postcss": "^8.2.10"
   },
   "devDependencies": {
     "@types/node": "^14.14.22",
