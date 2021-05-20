@@ -95,11 +95,14 @@ const ProfileUpload = ({ imageUrl, isImageVerified, onUpload, onImageVerified }:
     )
   }
 
+  const renderErrorMessage = () => (!isImageVerified ? <div className="profile-upload__help">{t('nonVerifiedImageError')}</div> : <></>)
+
   return (
     <figure className="profile-upload">
       {renderProfileUpload()}
       <figcaption className="profile-upload__caption">
         <Trans i18nKey={t('profileImageCaution')} components={[<span />]} />
+        {renderErrorMessage()}
       </figcaption>
     </figure>
   )

@@ -274,7 +274,8 @@ const Form = () => {
       !hasProductImage ||
       !isImageVerified ||
       !selectedCategory ||
-      !selectedDelivery
+      !selectedDelivery ||
+      !session
 
     return (
       <div className="form__actionable">

@@ -101,6 +101,7 @@
     font-size: rem(8px);
     font-style: italic;
     line-height: 1.14;
+    text-align: center;
 
     @include respond-above('lg') {
       font-size: rem(12px);
@@ -112,6 +113,15 @@
       @include respond-above('lg') {
         margin-right: rem(32px);
       }
+    }
+  }
+
+  &__help {
+    margin-top: rem(12px);
+    color: $coral-red;
+
+    @include respond-above('lg') {
+      margin-top: rem(16px);
     }
   }
 }

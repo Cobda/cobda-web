@@ -7,14 +7,15 @@ import { useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 
 const ProductRegistration = () => {
-  const [session]: any = useSession()
-  const router = useRouter()
+  // TODO: Fix session bugs in production, then uncomment these
+  // const [session]: any = useSession()
+  // const router = useRouter()
 
-  useEffect(() => {
-    if (!session) {
-      router.push('/sign-in')
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (!session) {
+  //     router.push('/sign-in')
+  //   }
+  // }, [])
 
   return (
     <div className="layout-product-registration">
