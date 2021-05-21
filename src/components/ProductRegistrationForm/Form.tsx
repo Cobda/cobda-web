@@ -44,7 +44,7 @@ const Form = () => {
     defaultValues: initialInputValue
   })
   // TODO: Fetch these options from database instead
-  const categoryOption: string[] = ['footwear', 'shirt', 'accessory'].map((option) => t(option))
+  const categoryOption: string[] = ['footwear', 'shirt'].map((option) => t(option))
   const deliveryOption: string[] = ['postal', 'meetUp', 'both'].map((option) => t(option))
   const hasProductImage: boolean = productImages.length > 0
 

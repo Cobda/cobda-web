@@ -13,11 +13,10 @@ const Sidebar = () => {
   const priceOption: string[] = ['lowestPriceRange', 'middlePriceRange', 'highestPriceRange'].map((option) => t(option))
 
   const renderCategoryItem = () => {
-    const handleInputChange = (setCheckboxValue: (isChecked: boolean) => void) => (
-      event: React.ChangeEvent<HTMLInputElement>
-    ) => {
-      setCheckboxValue(event.target.checked)
-    }
+    const handleInputChange =
+      (setCheckboxValue: (isChecked: boolean) => void) => (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCheckboxValue(event.target.checked)
+      }
 
     return (
       <div className="sidebar__item">

@@ -36,7 +36,13 @@ export const filteredProductListState = selector({
 
       if (priceRange.length > 0) {
         const [minPrice, maxPrice] = priceRange
-        filteredList = filteredList.filter((product: any) => product.price >= minPrice && product.price <= maxPrice)
+        filteredList = filteredList.filter((product: any) => {
+          if (!Number.isInteger(maxPrice)) {
+            return product.price >= minPrice
+          } else {
+            return product.price >= minPrice && product.price <= maxPrice
+          }
+        })
       }
 
       if (searchInputValue) {

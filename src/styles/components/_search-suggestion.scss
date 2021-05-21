@@ -96,6 +96,7 @@
     width: rem(48px);
     height: rem(48px);
     border-radius: 50%;
+    object-fit: cover;
 
     @include respond-above('sm') {
       width: rem(64px);

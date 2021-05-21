@@ -28,7 +28,7 @@ const Home = ({ products }: any) => {
   )
 }
 
-export const getStaticProps = async () =>
+export const getServerSideProps = async () =>
   axios
     .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`)
     .then((product) => {
