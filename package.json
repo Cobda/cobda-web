@@ -1,7 +1,10 @@
 {
   "name": "cobda-web",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=14.15.1"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
