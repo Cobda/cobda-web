@@ -9,7 +9,7 @@
 - `.env` **Please ask project owner privately for the environment variables.**
 
 ## Run locally
-*** Now that the developers are quite busy, the `development`and the `master` branch are not stable, please use the `pre-development` branch.
+*** Now that the developers are quite busy, the `development` and the `master` branch are not stable, please use the `pre-development` branch.
 
 ### Step 1: Clone the project to your local directory.
 
