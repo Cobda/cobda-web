@@ -1,6 +1,6 @@
 # Installation stage
 # Offical Node.js Alpine base image
-FROM node:lts-alpine AS base
+FROM docker.io/node:fermium-alpine3.14 AS base
 
 # Set working directory
 WORKDIR /base
@@ -37,11 +37,11 @@ ENV DATABASE_URL=${DATABASE_URL}
 ENV BASE_URL=${BASE_URL}
 ENV AUTH_URL=${AUTH_URL}
 RUN echo -e "NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY=${Recaptcha_Sitekey}\r\nNEXT_PUBLIC_GOOGLE_API_KEY=${Cloud_Vision_Key}\r\nDATABASE_URL=${DATABASE_URL}\r\nNEXT_PUBLIC_BASE_URL=${BASE_URL}\r\nNEXTAUTH_URL=${AUTH_URL}" > .env.local
-RUN npx prisma generate --schema ./prisma/schema.prisma 
+RUN npx prisma generate --schema ./prisma/schema.prisma
 RUN yarn build
 
 # Production stage
-FROM node:current-alpine AS runner
+FROM docker.io/node:fermium-alpine3.14 AS runner
 
 WORKDIR /app
 
