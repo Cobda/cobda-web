@@ -1,52 +1,24 @@
 .layout-account {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: map-get($header-height, 'sm') rem(250px) 1fr 1fr;
+  grid-template-rows: map-get($header-height, 'sm') repeat(2, 1fr);
   grid-template-areas:
     'header'
-    'sidebar'
     'main'
     'footer';
 
   height: 100vh;
 
   @include respond-above('md') {
-    grid-template-rows: map-get($header-height, 'md') rem(450px) 1fr map-get($footer-height, 'md');
+    grid-template-rows: map-get($header-height, 'md') 1fr map-get($footer-height, 'md');
   }
 
   @include respond-above('lg') {
-    // TODO: Modify function to accept comma as a parameter 
-    grid-template-columns: minmax(
-        $account-sidebar-template-column-min-lg,
-        $account-sidebar-template-column-max-lg
-      ) minmax(
-        $account-main-template-column-min-lg,
-        $account-main-template-column-max-lg
-      );
     grid-template-rows: map-get($header-height, 'lg') 1fr map-get($footer-height, 'lg');
-    column-gap: rem(32px);
-    grid-template-areas:
-      'header header'
-      'sidebar main'
-      'footer footer';
   }
 
   @include respond-above('xl') {
-    grid-template-columns:
-      1fr minmax(
-        $account-sidebar-template-column-min-xl,
-        $account-sidebar-template-column-max-xl
-      )
-      minmax(
-        $account-main-template-column-min-xl,
-        $account-main-template-column-max-xl
-      )
-      1fr;
     grid-template-rows: map-get($header-height, 'xl') 1fr map-get($footer-height, 'xl');
-    grid-template-areas:
-      'header header header header'
-      '. sidebar main .'
-      'footer footer footer footer';
   }
 
   & > header {
@@ -62,39 +34,26 @@
     background-color: $light;
   }
 
-  & > aside {
-    grid-area: sidebar;
-
-    padding: rem(24px 16px 16px);
-
-    @include respond-above('md') {
-      padding: 4% 6% rem(16px);
-    }
-
-    @include respond-above('lg') {
-      padding: rem(45px) 0 rem(350px) 10%;
-    }
-    
-    @include respond-above('xl') {
-      padding-left: 0;
-    }
-  }
-
   & > main {
     grid-area: main;
 
-    padding: rem(16px 16px 24px);
+    padding: rem(32px 24px);
 
     @include respond-above('md') {
-      padding: rem(16px) 6% 4%;
+      display: flex;
+      justify-content: center;
+      padding: rem(48px) 0;
+
+      background: {
+        image: url('/images/form-background.jpg');
+        repeat: no-repeat;
+        size: cover;
+        position: top 10% center;
+      }
     }
 
     @include respond-above('lg') {
-      padding: rem(45px) 6% rem(75px) 0;
-    }
-
-    @include respond-above('xl') {
-      padding-right: 0;
+      padding: rem(64px) 0;
     }
   }
 

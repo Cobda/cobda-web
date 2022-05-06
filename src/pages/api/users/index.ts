@@ -1,48 +1,31 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { Role } from '../../../enum/role'
-import { user, product } from '../../../entity/entities'
+import { Prisma } from '@prisma/client'
+import prismaClient from '../../../lib/prisma'
+import { ResponseStatusCode } from '../../../enum/response-status-code'
 
-const userHandler = (req: NextApiRequest, res: NextApiResponse) => {
+const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req
 
-  // TODO: Handle the function properly
-  const handlePatch = () => {
-    return {
-      message: 'This is a PATCH request, currently in progress...',
-      context: body
-    }
-  }
-
-  // TODO: Handle the function properly
-  const handlePost = () => {
-    return {
-      users: mockUsers(),
-      context: body
-    }
-  }
-
-  const mockUsers = () => {
-    const userNames: string[] = ['mocking-bird', 'wood-pecker', 'black-crow']
-    const products: Array<ReturnType<typeof product>> = [product('shoe1', 1), product('shoe2', 1), product('shoe3', 1)]
-    const histories: Array<ReturnType<typeof product>> = products.reverse()
-    const users: Array<ReturnType<typeof user>> = userNames.map(name => {
-      const password: string = [...name].reverse().join('')
-      const splitName: string[] = name.split('-')
-
-      return user(name, password, splitName[0], splitName[1], '0', Role.User, products, histories)
-    })
-
-    return users
-  }
-
   switch (method) {
+    case 'GET':
+      return res.json(await prismaClient.user.findMany())
     case 'POST':
-      return res.json(handlePost())
-    case 'PATCH':
-      return res.json(handlePatch())
+      try {
+        const user: Prisma.UserCreateInput = { ...body }
+        const postResponse = await prismaClient.user.create({ data: user }).catch((err: any) => err)
+
+        return res.status(
+          postResponse.code
+            ? ResponseStatusCode.BadRequest
+            : ResponseStatusCode.Created
+          )
+          .json(postResponse)
+      } catch (err: any) {
+        return res.status(ResponseStatusCode.BadRequest).json(err.message)
+      }
     default:
-      res.setHeader('Allow', ['POST', 'PATCH'])
-      res.status(405).end(`Method ${method} Not Allowed`)
+      res.setHeader('Allow', ['POST', 'GET'])
+      res.status(ResponseStatusCode.MethodNotAllowed).end(`Method ${method} Not Allowed`)
   }
 }
 

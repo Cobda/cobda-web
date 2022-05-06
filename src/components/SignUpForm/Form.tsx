@@ -6,6 +6,8 @@ import TextField from '../InputField/TextField'
 import PasswordField from '../InputField/PasswordField'
 import useTranslation from 'next-translate/useTranslation'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
+import { signIn } from 'next-auth/client'
 
 interface FormInput {
   readonly email: string
@@ -24,7 +26,7 @@ const initialInputValue: FormInput = {
 }
 
 const NAME_VALIDATION_INDEX = 1
-const CREDENTIAL_VALIDATION_INDEX: number = 4
+const CREDENTIAL_VALIDATION_INDEX: number = 3
 const MINIMUM_USERNAME_LENGTH: number = 6
 const MINIMUM_PASSWORD_LENGTH: number = 8
 const NAME_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
@@ -33,25 +35,28 @@ const EMAIL_PATTERN_VALUE: RegExp = new RegExp(/\S+@\S+\.\S+/)
 const PASSWORD_PATTERN_VALUE: RegExp = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z])/)
 
 const Form = () => {
-  const [isProfileUploaded, setProfileUploaded] = useState<boolean>(false)
+  const [profileImageUrl, setProfileImageUrl] = useState('')
   const [isRecaptchaVerified, setRecaptchaVerified] = useState<boolean>(false)
+  const [isImageVerified, setImageVerified] = useState<boolean>(true)
+  const [errorMessage, setErrorMessage] = useState<string>('')
   const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
     mode: 'onChange',
     defaultValues: initialInputValue
   })
   const router = useRouter()
   const { t } = useTranslation('sign-up')
+  const hasProfileImage: boolean = !!profileImageUrl
 
   useEffect(() => {
     const handleWindowClose = (event: BeforeUnloadEvent) => {
-      if (isProfileUploaded) {
+      if (hasProfileImage) {
         event.preventDefault()
         event.returnValue = t('warningText')
       }
     }
 
     const handleBrowseAway = () => {
-      if (isProfileUploaded && !window.confirm(t('warningText'))) {
+      if (hasProfileImage && !window.confirm(t('warningText'))) {
         router.events.emit('routeChangeError')
         throw 'routeChange aborted.'
       }
@@ -65,29 +70,45 @@ const Form = () => {
       window.removeEventListener('beforeunload', handleWindowClose)
       router.events.off('routeChangeStart', handleBrowseAway)
     }
-  }, [isProfileUploaded])
+  }, [profileImageUrl])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
     setValue(name as keyof FormInput, value)
   }
 
-  const handleFormSubmit = (value: FormInput) => {
-    // TODO: Send POST request to backend and verify if username is already taken
-    setProfileUploaded(false)
-    router.push('/sign-up-success')
+  const handleFormSubmit = async (value: FormInput) => {
+    const body = { ...value, profileImagePath: profileImageUrl }
+    await axios
+      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users/`, body)
+      .then(() => {
+        const { email, password } = value
+        setProfileImageUrl('')
+        signIn('credentials', {
+          email: email,
+          password: password,
+          callbackUrl: '/'
+        })
+      })
+      .catch(() => setErrorMessage(t('emailUsernameAlreadyUsed')))
   }
 
   const getErrorMessage = (inputKey: keyof FormInput, startValidationIndex: number): string => {
     const errorMessage: string | undefined = errors[inputKey]?.message
-    const isErrorDisplayed: boolean | undefined = getValues()[inputKey]?.length >= startValidationIndex
+    const inputLength: number = getValues()[inputKey]?.length
+    const isErrorDisplayed: boolean | undefined = inputLength >= startValidationIndex || inputLength === 0
 
     return errorMessage && isErrorDisplayed ? errorMessage : ''
   }
 
   const renderProfileUpload = () => (
     <div className="form__profile">
-      <ProfileUpload onUpload={setProfileUploaded} />
+      <ProfileUpload
+        imageUrl={profileImageUrl}
+        isImageVerified={isImageVerified}
+        onUpload={setProfileImageUrl}
+        onImageVerified={setImageVerified}
+      />
     </div>
   )
 
@@ -128,11 +149,14 @@ const Form = () => {
   }
 
   const renderCredentialInput = () => {
-    const getUsernameReference: (ref: HTMLInputElement) => void = register({
+    const requiredProperty: Object = {
       required: {
         value: true,
         message: t('inputValueRequired')
-      },
+      }
+    }
+    const getUsernameReference: (ref: HTMLInputElement) => void = register({
+      ...requiredProperty,
       minLength: {
         value: MINIMUM_USERNAME_LENGTH,
         message: t('usernameCharactersMinimum')
@@ -141,16 +165,10 @@ const Form = () => {
         value: USERNAME_PATTERN_VALUE,
         message: t('inputImproperName')
       }
-      // validate: {
-      //   TODO: Handle error when username is already taken
-      // }
     })
 
     const getEmailReference: (ref: HTMLInputElement) => void = register({
-      required: {
-        value: true,
-        message: t('inputValueRequired')
-      },
+      ...requiredProperty,
       pattern: {
         value: EMAIL_PATTERN_VALUE,
         message: t('emailIncorrectFormat')
@@ -158,10 +176,7 @@ const Form = () => {
     })
 
     const getPasswordReference: (ref: HTMLInputElement) => void = register({
-      required: {
-        value: true,
-        message: t('inputValueRequired')
-      },
+      ...requiredProperty,
       minLength: {
         value: MINIMUM_PASSWORD_LENGTH,
         message: t('passwordCharactersMinimum')
@@ -206,11 +221,14 @@ const Form = () => {
 
   const renderActionable = () => {
     const hasInputError: boolean = Object.keys(errors).length > 0
-    const isFormSubmitDisabled: boolean = !isRecaptchaVerified || !isProfileUploaded || hasInputError
+    const isFormSubmitDisabled: boolean = !isRecaptchaVerified || !isImageVerified || !hasProfileImage || hasInputError
 
     const handleRecaptchaChange = () => {
       setRecaptchaVerified((previousState) => !previousState)
     }
+
+    const renderErrorMessage = () =>
+      errorMessage ? <div className="form__help form__help--center">{errorMessage}</div> : <></>
 
     return (
       <div className="form__actionable">
@@ -218,6 +236,7 @@ const Form = () => {
           <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY!} onChange={handleRecaptchaChange} />
         </div>
         <input className="form__button" type="submit" value={t('register')} disabled={isFormSubmitDisabled} />
+        {renderErrorMessage()}
       </div>
     )
   }

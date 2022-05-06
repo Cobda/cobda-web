@@ -1,0 +1,155 @@
+@import '../abstracts/_abstracts-dir';
+
+.search-suggestion {
+  all: unset;
+
+  position: absolute;
+  top: 105%;
+  left: 0;
+  right: 0;
+
+  max-height: rem(120px);
+  box-shadow: rem(5px 10px 20px) 0 box-shadow-opacity(0.16);
+  padding: rem(12px) 0;
+
+  background-color: $light;
+  list-style-type: none;
+
+  overflow-y: auto;
+
+  @include respond-above('md') {
+    max-height: rem(150px);
+    padding: rem(16px) 0;
+  }
+
+  @include respond-above('lg') {
+    max-height: rem(250px);
+  }
+
+  &--small {
+    height: auto;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: rem(8px 16px);
+
+    cursor: pointer;
+
+    @include respond-above('sm') {
+      padding: rem(12px 24px);
+    }
+
+    @include respond-above('md') {
+      padding: rem(16px 32px);
+    }
+
+    @include respond-above('lg') {
+      padding: rem(20px 40px);
+    }
+
+    &:hover {
+      background-color: $porcelain;
+    }
+
+    &--small {
+      padding: rem(8px 24px);
+      cursor: default;
+
+      @include respond-above('sm') {
+        padding: rem(12px 32px);
+      }
+
+      @include respond-above('md') {
+        padding: rem(16px 48px);
+      }
+
+      @include respond-above('lg') {
+        padding: rem(20px 64px);
+      }
+
+      &:hover {
+        background-color: inherit;
+      }
+    }
+  }
+
+  &__image-wrapper {
+    margin-right: rem(14px);
+
+    @include respond-above('sm') {
+      margin-right: rem(16px);
+    }
+
+    @include respond-above('md') {
+      margin-right: rem(20px);
+    }
+
+    @include respond-above('lg') {
+      margin-right: rem(24px);
+    }
+  }
+
+  &__image {
+    width: rem(48px);
+    height: rem(48px);
+    border-radius: 50%;
+    object-fit: cover;
+
+    @include respond-above('sm') {
+      width: rem(64px);
+      height: rem(64px);
+    }
+
+    @include respond-above('md') {
+      width: rem(80px);
+      height: rem(80px);
+    }
+
+    @include respond-above('lg') {
+      width: rem(96px);
+      height: rem(96px);
+    }
+  }
+
+  &__label {
+    margin: 0;
+
+    font-size: rem(16px);
+    font-weight: 600;
+    line-height: 1.4;
+
+    @include respond-above('sm') {
+      font-size: rem(18px);
+      line-height: 1.5;
+    }
+
+    @include respond-above('md') {
+      font-size: rem(22px);
+    }
+
+    @include respond-above('lg') {
+      font-size: rem(26px);
+    }
+
+    &--small {
+      color: $secondary;
+      font-weight: 400;
+      font-size: rem(10px);
+
+      @include respond-above('sm') {
+        font-size: rem(12px);
+      }
+
+      @include respond-above('md') {
+        font-size: rem(16px);
+      }
+
+      @include respond-above('lg') {
+        font-size: rem(20px);
+      }
+    }
+  }
+}

@@ -1,8 +1,12 @@
 import React from 'react'
 import useTranslation from 'next-translate/useTranslation'
+import { useRecoilValue } from 'recoil'
+import { productState } from '../../recoil/atoms'
 
 const ProductInformation = () => {
   const { t } = useTranslation('product-view')
+  const product: any = useRecoilValue(productState)
+  const { name, description } = product
 
   const renderHeaderSection = () => (
     <header className="product-information__header">
@@ -19,23 +23,9 @@ const ProductInformation = () => {
     <div className="product-information__body">
       <div className="product-information__subheader">
         {/* TODO: Remove these mocking contents and fetch data instead */}
-        <h3 className="product-information__subtitle">
-          Men Running Shoes Black Trainer Sport Sneaker
-        </h3>
+        <h3 className="product-information__subtitle">{name}</h3>
       </div>
-      <p className="product-information__description">
-        Vestibulum commodo sapien non elit porttitor, vitae volutpat nibh
-        mollis. Nulla porta risus id neque tempor, in efficitur justo imperdiet.
-        Etiam a ex at ante tincidunt imperdiet. Nunc congue ex vel nisl viverra,
-        sit amet aliquet lectus ullamcorper. Praesent luctus lacus non lorem
-        elementum, eu tristique sapien suscipit. Sed bibendum, ipsum nec viverra
-        malesuada, erat nisi sodales purus, eget hendrerit dui ligula eu enim.
-        Ut non est nisi. Pellentesque tristique pretium dolor eu commodo. Proin
-        iaculis nibh vitae lectus mollis bibendum. Quisque varius eget urna sit
-        amet luctus. Suspendisse potenti. Curabitur ac placerat est, sit amet
-        sodales risus. Pellentesque viverra dui auctor, ullamcorper turpis
-        pharetra, facilisis quam.
-      </p>
+      <p className="product-information__description">{description}</p>
     </div>
   )
 

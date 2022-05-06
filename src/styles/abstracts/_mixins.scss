@@ -53,6 +53,14 @@
   transition: $what $time $how;
 }
 
+@mixin transform-scale($number) {
+  -moz-transform: scale($number);
+  -ms-transform: scale($number);
+  -o-transform: scale($number);
+  -webkit-transform: scale($number);
+  transform: scale($number);
+}
+
 @mixin button-darken-effect($background-color) {
   &:hover {
     background: darken($background-color, 8%);

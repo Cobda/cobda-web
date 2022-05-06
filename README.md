@@ -27,6 +27,10 @@ Open the Terminal and type the following command:
 
     $ yarn install
 
+### Step 4: Generate Prisma schema.
+
+    $ npx prisma generate --schema ./src/prisma/schema.prisma
+
 ## Run Application Locally.
 
     $ yarn dev

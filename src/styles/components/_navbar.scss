@@ -133,11 +133,26 @@
         font-size: rem(16px);
       }
     }
+  }
 
-    &--avatar {
-      width: rem(48px);
-      height: rem(48px);
-      border-radius: 50%;
+  &__avatar {
+    display: flex;
+    align-items: center;
+  }
+
+  &__image {
+    width: rem(48px);
+    height: rem(48px);
+    border-radius: 50%;
+    margin-right: rem(8px);
+    object-fit: cover;
+  }
+
+  &__label {
+    font-size: rem(16px);
+
+    &:hover {
+      color: $picton-blue;
     }
   }
 
@@ -165,11 +180,11 @@
   }
 
   &__account {
-    display: flex;
-    align-items: center;
-
+    position: relative;
     font-size: rem(16px);
     font-weight: 600;
+
+    cursor: pointer;
   }
 
   &__flag {

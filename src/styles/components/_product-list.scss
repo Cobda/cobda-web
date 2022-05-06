@@ -1,16 +1,22 @@
 @import '../abstracts/_abstracts-dir';
 
 .product-list {
-  background-color: $shuttle-gray;
-  padding: rem(16px);
+  display: flex;
+  flex-wrap: wrap;
   box-sizing: border-box;
+  max-width: $primary-template-column-max-xl;
+  margin: rem(12px) 0 0;
+
+  @include respond-above('sm') {
+    margin-top: rem(28px);
+  }
 
   @include respond-above('lg') {
-    padding: rem(24px);
+    margin-top: rem(24px);
   }
 
   &__title {
-    margin: 0 0 rem(24px) 0;
+    margin-bottom: rem(24px);
   }
 
   &__description {

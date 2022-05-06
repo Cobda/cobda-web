@@ -1,50 +1,130 @@
 .account-product {
-  display: flex;
-  flex-direction: column;
   box-sizing: border-box;
   height: rem(200px);
-  padding: rem(16px);
+  padding: rem(0 16px);
 
-  background-color: orange;
+  background-color: $light;
 
   @include respond-above('md') {
     height: rem(350px);
-    padding: rem(32px);
+    padding: rem(0 32px);
   }
 
   @include respond-above('lg') {
-    height: rem(500px);
-    padding: rem(40px);
+    height: rem(400px);
+    padding: rem(0 40px);
   }
 
-  &__header {
-    margin-bottom: rem(32px);
-  }
-
-  &__list {
-    list-style-type: none;
+  &__image-container,
+  &__caption {
     display: flex;
-    padding: 0;
+    flex-direction: column;
+    align-items: center;
     margin: 0;
   }
 
-  &__list-item {
-    &:not(:last-child) {
-      margin-right: rem(16px);
+  &__caption {
+    & > *:not(:last-child) {
+      margin-bottom: rem(6px);
     }
   }
 
-  &__link {
-    text-decoration: none;
+  &__title,
+  &__subtitle {
+    all: unset;
+  }
 
-    &--primary {
-      // TODO: Change color according to design
-      color: $dark;
+  &__title {
+    font-size: rem(16px);
+    font-weight: bold;
+    line-height: 1.48;
+    color: $dark-charcoal;
+
+    @include respond-above('md') {
+      font-size: rem(20px);
+    }
+  }
+
+  &__subtitle {
+    font-size: rem(12px);
+    font-weight: normal;
+    line-height: 1.56;
+    color: $dark-charcoal;
+
+    @include respond-above('md') {
+      font-size: rem(16px);
+    }
+  }
+
+  &__image {
+    width: rem(120px);
+    height: rem(120px);
+    box-shadow: 0 rem(3px 6px) 0 box-shadow-opacity(0.16);
+    border-radius: 50%;
+    margin-bottom: rem(16px);
+    object-fit: cover;
+
+    @include respond-above('md') {
+      width: rem(180px);
+      height: rem(180px);
+      margin-bottom: rem(24px);
     }
 
-    &--secondary {
-      // TODO: Change color according to design
-      color: $light;
+    @include respond-above('lg') {
+      width: rem(250px);
+      height: rem(250px);
+      margin-bottom: rem(32px);
     }
+  }
+
+  &__option {
+    display: flex;
+    width: 100%;
+
+    & > *:not(:last-child) {
+      margin-right: rem(6px);
+    }
+  }
+
+  &__postal,
+  &__meet-up {
+    width: rem(80px);
+    padding: rem(2px);
+    border-radius: rem(6px);
+    box-sizing: border-box;
+
+    color: $light;
+    font-size: rem(12px);
+    font-weight: 600;
+    line-height: 1.53;
+    cursor: pointer;
+
+    @include flex-center();
+
+    @include respond-above('lg') {
+      font-size: rem(10px);
+    }
+
+    @include respond-above('xl') {
+      font-size: rem(12px);
+    }
+  }
+
+  &__label {
+    font-size: rem(12px);
+    font-weight: 500;
+    line-height: 1.53;
+
+    @include respond-above('md') {
+      font-size: rem(16px);
+    }
+  }
+
+  &__postal {
+    background-color: $buttercup;
+  }
+
+  &__meet-up {
+    background-color: $malachite;
   }
 }

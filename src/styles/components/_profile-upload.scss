@@ -15,16 +15,24 @@
       margin-bottom: rem(24px);
     }
 
-    &--selected {
+    &--valid,
+    &--invalid {
       position: relative;
 
       padding: rem(7.5px 9px);
-      border: solid 1px $mercury;
       border-radius: rem(10px);
 
       @include respond-above('lg') {
         padding: rem(10.5px 12px);
       }
+    }
+
+    &--valid {
+      border: solid rem(2px) $malachite;
+    }
+
+    &--invalid {
+      border: solid rem(2px) $coral-red;
     }
   }
 
@@ -93,6 +101,7 @@
     font-size: rem(8px);
     font-style: italic;
     line-height: 1.14;
+    text-align: center;
 
     @include respond-above('lg') {
       font-size: rem(12px);
@@ -104,6 +113,15 @@
       @include respond-above('lg') {
         margin-right: rem(32px);
       }
+    }
+  }
+
+  &__help {
+    margin-top: rem(12px);
+    color: $coral-red;
+
+    @include respond-above('lg') {
+      margin-top: rem(16px);
     }
   }
 }

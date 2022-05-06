@@ -1,7 +1,7 @@
 .layout-products {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: map-get($header-height, 'sm') rem(50px) 1fr 1fr;
+  grid-template-rows: map-get($header-height, 'sm') repeat(3, 1fr);
   grid-template-areas:
     'header'
     'sidebar'
@@ -11,11 +11,11 @@
   height: 100vh;
 
   @include respond-above('md') {
-    grid-template-rows: map-get($header-height, 'md') rem(100px) 1fr map-get($footer-height, 'md');
+    grid-template-rows: map-get($header-height, 'md') rem(80px) 1fr map-get($footer-height, 'md');
   }
 
   @include respond-above('lg') {
-    grid-template-columns: minmax(250px, 400px) minmax(742px, 1fr);
+    grid-template-columns: minmax(200px, 270px) minmax(742px, 1fr);
     grid-template-rows: map-get($header-height, 'lg') 1fr map-get($footer-height, 'lg');
     grid-template-areas:
       'header header'
@@ -46,15 +46,20 @@
 
   & > main {
     grid-area: main;
+    background-color: $alabaster;
 
     padding: rem(24px 16px);
 
     @include respond-above('md') {
-      padding: 4.5% 6%;
+      padding: rem(24px 56px);
     }
 
     @include respond-above('lg') {
-      padding: 5% 10%;
+      padding: rem(32px 32px 24px);
+    }
+
+    @include respond-above('lg') {
+      padding-bottom: rem(18px);
     }
   }
 

@@ -21,6 +21,14 @@ const LanguageDropdown = ({ parent }: LanguageDropdown) => {
   const flagRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    const handleMouseClick = (event: MouseEvent) => {
+      const isFocused: boolean | undefined = flagRef.current?.contains(event.target as Node)
+
+      if (!isFocused) {
+        setMenuOpen(false)
+      }
+    }
+    
     document.addEventListener('mousedown', handleMouseClick)
 
     return () => {
@@ -29,14 +37,6 @@ const LanguageDropdown = ({ parent }: LanguageDropdown) => {
   }, [])
 
   const handleDropdownToggle = () => setMenuOpen((prevState) => !prevState)
-
-  const handleMouseClick = (event: MouseEvent) => {
-    const isFocused: boolean | undefined = flagRef.current?.contains(event.target as Node)
-
-    if (!isFocused) {
-      setMenuOpen(false)
-    }
-  }
 
   const handleItemClick = (locale: string) => {
     const { pathname, asPath } = router
@@ -49,32 +49,26 @@ const LanguageDropdown = ({ parent }: LanguageDropdown) => {
     const imageSize: number = 32
 
     return selectedLocale === LocaleCode.Thai ? (
-      <Image src="/icons/thailand.svg" height={imageSize} width={imageSize} />
+      <Image src="/icons/thailand.svg" alt="Thailand Flag Icon" height={imageSize} width={imageSize} />
     ) : (
-      <Image src="/icons/united-states.svg" height={imageSize} width={imageSize} />
+      <Image src="/icons/united-states.svg" alt="United States Flag Icon" height={imageSize} width={imageSize} />
     )
   }
 
   const renderSelectedLocale = () => (
     <>
-      <Image src="/icons/world.svg" height={16} width={16} />
-      <span className="dropdown__label dropdown__label--bold">
-        {selectedLocale.toLocaleUpperCase()}
-      </span>
+      <Image src="/icons/world.svg" alt="World Icon" height={16} width={16} />
+      <span className="dropdown__label dropdown__label--bold">{selectedLocale.toLocaleUpperCase()}</span>
     </>
   )
 
   const renderDropdownToggle = () => {
     const arrowClassName: string =
-      parent === ComponentType.Header
-        ? 'dropdown__arrow'
-        : 'dropdown__arrow dropdown__arrow--large'
+      parent === ComponentType.Header ? 'dropdown__arrow' : 'dropdown__arrow dropdown__arrow--large'
 
     return (
       <div className="dropdown__toggle" onClick={handleDropdownToggle}>
-        {parent === ComponentType.Header
-          ? renderSelectedFlagImage()
-          : renderSelectedLocale()}
+        {parent === ComponentType.Header ? renderSelectedFlagImage() : renderSelectedLocale()}
         <div className={arrowClassName} />
       </div>
     )

@@ -6,10 +6,10 @@ const HomePopularSection = () => {
   const { t } = useTranslation('home')
 
   return (
-    <section className="home-section home-section--light">
-      <header className="home-section__header">
+    <section className="home-section">
+      {/* <header className="home-section__header">
         <h2 className="home-section__title">{t('popularSectionTitle')}</h2>
-      </header>
+      </header> */}
       <PopularItemCarousel />
     </section>
   )

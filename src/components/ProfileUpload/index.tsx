@@ -1,24 +1,54 @@
 import React, { ReactNode, useState } from 'react'
 import useTranslation from 'next-translate/useTranslation'
 import Trans from 'next-translate/Trans'
+import axios from 'axios'
 
 interface ProfileUpload {
-  readonly onUpload: (isUploaded: boolean) => void
+  readonly imageUrl: string
+  readonly isImageVerified: boolean
+  readonly onUpload: (image: string) => void
+  readonly onImageVerified: (isVerified: boolean) => void
 }
 
-const ProfileUpload = ({ onUpload }: ProfileUpload) => {
-  const [selectedImageUrl, setSelectedImageUrl] = useState<string>('')
+const ProfileUpload = ({ imageUrl, isImageVerified, onUpload, onImageVerified }: ProfileUpload) => {
+  const [isLoading, setLoading] = useState<boolean>(false)
   const { t } = useTranslation('sign-up')
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLoading(true)
     const { files } = event.target
     const hasSingleFile: boolean = files?.length === 1
 
+    const validateImage = async (image: string, validKeywords: string[]) => {
+      const encodedImage: string | undefined = image.split(',')[1]
+      await axios
+        .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/images/`, {
+          base64EncodedImage: encodedImage,
+          validKeywords
+        })
+        .then((response) => {
+          if (response.data?.isAllowed) {
+            onImageVerified(true)
+          } else {
+            onImageVerified(false)
+          }
+        })
+        .catch(() => {
+          onImageVerified(false)
+        })
+      setLoading(false)
+    }
+
     if (files && hasSingleFile) {
       const [selectedFile] = files
-      const imageUrl: string = URL.createObjectURL(selectedFile)
-      setSelectedImageUrl(imageUrl)
-      onUpload(true)
+      const validKeywords: string[] = ['person', 'people', 'human', 'man', 'woman', 'head', 'body']
+      let reader: any = new FileReader()
+      reader.readAsDataURL(selectedFile)
+      reader.onload = () => {
+        const { result } = reader
+        onUpload(result)
+        validateImage(result, validKeywords)
+      }
     }
   }
 
@@ -34,22 +64,25 @@ const ProfileUpload = ({ onUpload }: ProfileUpload) => {
       <>
         <img
           className="profile-upload__image profile-upload__image--selected"
-          src={selectedImageUrl}
+          src={imageUrl}
           alt="Uploaded Profile Image"
         />
         <img className="profile-upload__icon" src="/icons/pencil.svg" alt="Profile Image Edit Icon" />
       </>
     )
 
-    return selectedImageUrl ? selectedProfileImage : defaultProfileImage
+    return imageUrl ? selectedProfileImage : defaultProfileImage
   }
 
   const renderProfileUpload = () => {
-    const labelClassName: string = selectedImageUrl
-      ? 'profile-upload__label profile-upload__label--selected'
-      : 'profile-upload__label'
+    const selectedImageClassName: string =
+      'profile-upload__label ' + (isImageVerified ? 'profile-upload__label--valid' : 'profile-upload__label--invalid')
 
-    return (
+    const labelClassName: string = imageUrl ? selectedImageClassName : 'profile-upload__label'
+
+    return isLoading ? (
+      <img src="/icons/loading.svg" alt="Loading Icon" />
+    ) : (
       <label className={labelClassName}>
         <input
           className="profile-upload__input"
@@ -62,11 +95,14 @@ const ProfileUpload = ({ onUpload }: ProfileUpload) => {
     )
   }
 
+  const renderErrorMessage = () => (!isImageVerified ? <div className="profile-upload__help">{t('nonVerifiedImageError')}</div> : <></>)
+
   return (
     <figure className="profile-upload">
       {renderProfileUpload()}
       <figcaption className="profile-upload__caption">
         <Trans i18nKey={t('profileImageCaution')} components={[<span />]} />
+        {renderErrorMessage()}
       </figcaption>
     </figure>
   )

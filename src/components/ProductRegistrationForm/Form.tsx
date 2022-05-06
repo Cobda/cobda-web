@@ -3,10 +3,12 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import TextField from '../InputField/TextField'
 import useTranslation from 'next-translate/useTranslation'
-import { ErrorsType, ImageListType } from 'react-images-uploading'
+import { ImageListType } from 'react-images-uploading'
 import ProductUpload from '../ProductUpload'
 import Dropdown, { Option } from 'react-dropdown'
 import TextArea from '../Textarea'
+import axios from 'axios'
+import { useSession } from 'next-auth/client'
 
 interface FormInput {
   readonly name: string
@@ -24,25 +26,25 @@ const initialInputValue: FormInput = {
   description: ''
 }
 
-const INPUT_TEXT_VALIDATION_INDEX: number = 2
-const INPUT_NUMBER_VALIDATION_INDEX: number = 1
 const NUMBER_ONLY_PATTERN_VALUE = new RegExp(/^[1-9][0-9]*$/)
 const TEXT_ONLY_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z' ,.'-]+$/i)
 const TEXT_AND_NUMBER_PATTERN_VALUE: RegExp = new RegExp(/^[\u0E00-\u0E7Fa-zA-Z0-9' ,.'-]+$/i)
 
 const Form = () => {
   const [productImages, setProductImages] = useState<ImageListType>([])
-  const [ImageError, setImageError] = useState<ErrorsType>({})
+  const [isImageVerified, setImageVerified] = useState<boolean>(true)
+  const [ImageError, setImageError] = useState<any>({})
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [selectedDelivery, setSelectedDelivery] = useState<string>('')
   const router = useRouter()
+  const [session]: any = useSession()
   const { t } = useTranslation('product-registration')
   const { register, handleSubmit, getValues, setValue, watch, errors } = useForm<FormInput>({
     mode: 'onChange',
     defaultValues: initialInputValue
   })
   // TODO: Fetch these options from database instead
-  const categoryOption: string[] = ['footwear', 'shirt', 'accessory'].map((option) => t(option))
+  const categoryOption: string[] = ['footwear', 'shirt'].map((option) => t(option))
   const deliveryOption: string[] = ['postal', 'meetUp', 'both'].map((option) => t(option))
   const hasProductImage: boolean = productImages.length > 0
 
@@ -76,16 +78,27 @@ const Form = () => {
     setValue(name as keyof FormInput, value)
   }
 
-  const handleFormSubmit = (value: FormInput) => {
-    // TODO: Send POST request to backend
-    setProductImages([])
+  const handleFormSubmit = async (value: FormInput) => {
+    const imagePath: string = productImages.map((product) => product.dataURL).join('?')
+    const body = {
+      ...value,
+      price: parseInt(value.price),
+      productImagePath: imagePath,
+      category: selectedCategory,
+      deliveryOption: selectedDelivery,
+      ownerId: session && session.user.id
+    }
+
+    await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/`, body).then(() => {
+      setProductImages([])
+      router.push('/products')
+    })
   }
 
-  const getErrorMessage = (inputKey: keyof FormInput, startValidationIndex: number): string => {
+  const getErrorMessage = (inputKey: keyof FormInput): string => {
     const errorMessage: string = errors[inputKey]?.message || ''
-    const isErrorDisplayed: boolean = getValues()[inputKey]?.length >= startValidationIndex
 
-    return errorMessage || isErrorDisplayed ? errorMessage : ''
+    return errorMessage ? errorMessage : ''
   }
 
   const renderProductUpload = () => {
@@ -97,6 +110,8 @@ const Form = () => {
           return t('maxFileNumberExceed')
         } else if (ImageError?.maxFileSize) {
           return t('maxFileSizeExceed')
+        } else if (!isImageVerified) {
+          return t('nonVerifiedImageError')
         } else {
           return ''
         }
@@ -115,6 +130,7 @@ const Form = () => {
           imageCaption={t('addThreeImages')}
           onUpload={setProductImages}
           onError={setImageError}
+          onImageVerified={setImageVerified}
         />
         {renderErrorMessage()}
       </div>
@@ -164,7 +180,7 @@ const Form = () => {
           label={t('name')}
           inputType="text"
           placeholder={t('namePlaceholder')}
-          errorMessage={getErrorMessage('name', INPUT_TEXT_VALIDATION_INDEX)}
+          errorMessage={getErrorMessage('name')}
           onChange={handleInputChange}
           inputRef={getNameReference}
         />
@@ -173,7 +189,7 @@ const Form = () => {
           label={t('price')}
           inputType="number"
           placeholder={t('pricePlaceholder')}
-          errorMessage={getErrorMessage('price', INPUT_NUMBER_VALIDATION_INDEX)}
+          errorMessage={getErrorMessage('price')}
           onChange={handleInputChange}
           inputRef={getPriceReference}
         />
@@ -182,7 +198,7 @@ const Form = () => {
           label={t('color')}
           inputType="text"
           placeholder={t('colorPlaceholder')}
-          errorMessage={getErrorMessage('color', INPUT_TEXT_VALIDATION_INDEX)}
+          errorMessage={getErrorMessage('color')}
           onChange={handleInputChange}
           inputRef={getColorReference}
         />
@@ -191,7 +207,7 @@ const Form = () => {
           label={t('size')}
           inputType="text"
           placeholder={t('sizePlaceholder')}
-          errorMessage={getErrorMessage('size', INPUT_TEXT_VALIDATION_INDEX)}
+          errorMessage={getErrorMessage('size')}
           onChange={handleInputChange}
           inputRef={getSizeReference}
         />
@@ -211,7 +227,7 @@ const Form = () => {
       <TextArea
         name="description"
         label={t('description')}
-        errorMessage={getErrorMessage('description', INPUT_TEXT_VALIDATION_INDEX)}
+        errorMessage={getErrorMessage('description')}
         onChange={handleInputChange}
         textareaRef={getTextareaReference}
       />
@@ -253,7 +269,13 @@ const Form = () => {
     const hasEmptyInputValue: boolean = Object.values(getValues()).includes('')
     const hasInputError: boolean = Object.keys(errors).length > 0
     const isFormSubmitDisabled: boolean =
-      !hasProductImage || hasEmptyInputValue || hasInputError || !selectedCategory || !selectedDelivery
+      hasInputError ||
+      hasEmptyInputValue ||
+      !hasProductImage ||
+      !isImageVerified ||
+      !selectedCategory ||
+      !selectedDelivery ||
+      !session
 
     return (
       <div className="form__actionable">

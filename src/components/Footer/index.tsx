@@ -38,7 +38,7 @@ const Footer = () => {
     <ul className="footer__list">
       <FooterItem context={ContextType.Title} label={t('contactUs')} />
       <div className="footer__email-container">
-        <Image src="/icons/email.svg" height={17} width={21} />
+        <Image src="/icons/email.svg" alt="Email Icon" height={17} width={21} />
         {/* TODO: Redirect when path is available */}
         <FooterItem href="" label="cobda.dev@gmail.com" />
       </div>

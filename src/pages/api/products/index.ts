@@ -1,35 +1,31 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { product } from '../../../entity/entities'
+import { Prisma } from '@prisma/client'
+import prismaClient from '../../../lib/prisma'
+import { ResponseStatusCode } from '../../../enum/response-status-code'
 
-const productHandler = (req: NextApiRequest, res: NextApiResponse) => {
+const productHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req
 
-  // TODO: Handle the function properly
-  const handlePatch = () => {
-    return {
-      message: 'This is a PATCH request, currently in progress...',
-      context: body
-    }
-  }
-
-  // TODO: Handle the function properly
-  const handlePost = () => {
-    const products: Array<ReturnType<typeof product>> = [product('shoe1', 1), product('shoe2', 1), product('shoe3', 1)]
-
-    return {
-      products,
-      context: body
-    }
-  }
-
   switch (method) {
+    case 'GET':
+      return res.json(await prismaClient.product.findMany())
     case 'POST':
-      return res.json(handlePost())
-    case 'PATCH':
-      return res.json(handlePatch())
+      try {
+        const product: Prisma.ProductCreateInput = { ...body }
+        const postResponse = await prismaClient.product.create({ data: product }).catch((err: any) => err)
+    
+        return res.status(
+          postResponse.code
+            ? ResponseStatusCode.BadRequest
+            : ResponseStatusCode.Created
+          )
+          .json(postResponse)
+      } catch (err: any) {
+        return res.status(ResponseStatusCode.BadRequest).json(err.message)
+      }
     default:
-      res.setHeader('Allow', ['POST', 'PATCH'])
-      res.status(405).end(`Method ${method} Not Allowed`)
+      res.setHeader('Allow', ['GET', 'POST'])
+      res.status(ResponseStatusCode.MethodNotAllowed).end(`Method ${method} Not Allowed`)
   }
 }
 

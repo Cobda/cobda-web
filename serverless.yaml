@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: cobda-web
+  namespace: bank-serverless
+spec:
+  template:
+    spec:
+      containers:
+        - image: quay.io/lazy_coder_bank/cobda-web:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: TARGET
+              value: "Cobda on OCP Serverless"
